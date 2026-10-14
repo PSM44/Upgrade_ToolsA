@@ -1,0 +1,26 @@
+{
+  "task_id": "UTA_TASK001_BOOTSTRAP_DSH_OMNIROUTE_V2",
+  "observed_at": "2026-10-14",
+  "local_root_windows": "C:\\01. GitHub\\Upgrade_TA",
+  "local_root_wsl": "/mnt/c/01. GitHub/Upgrade_TA",
+  "remote": "https://github.com/PSM44/Upgrade_ToolsA.git",
+  "remote_observed": {
+    "ls_remote_exit": 0,
+    "refs_observed": 0,
+    "default_head_observed": false
+  },
+  "runtime_observed": {
+    "dsh_launcher": "/home/aazcl/.local/bin/DSH2--",
+    "dsh_version": "0.1.7-rc.2",
+    "dsh_launcher_sha256": "d15c3f9dfc51f60462bf4abe4e45c59224336a775a83d67374a3388bdb26d1cb",
+    "omniroute_version": "3.8.50",
+    "node_version": "24.15.0",
+    "dsh_port": 3080,
+    "omniroute_ports": [20128, 20131, 20132]
+  },
+  "upgrade_targets": {
+    "dsh": "HOLD; no stable target authorized or established",
+    "omniroute": "HOLD at 3.8.50; latest stable observed as 3.8.50"
+  },
+  "secrets": "not recorded"
+}
