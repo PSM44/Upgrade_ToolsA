@@ -1,26 +1,65 @@
 {
-  "task_id": "UTA_TASK001_BOOTSTRAP_DSH_OMNIROUTE_V2",
+  "task_id": "UTA_TASK004_POST_UPGRADE_COLD_START_ROUTING_PLUGINS_CONTINUITY",
   "observed_at": "2026-10-14",
   "local_root_windows": "C:\\01. GitHub\\Upgrade_TA",
   "local_root_wsl": "/mnt/c/01. GitHub/Upgrade_TA",
   "remote": "https://github.com/PSM44/Upgrade_ToolsA.git",
   "remote_observed": {
-    "ls_remote_exit": 0,
-    "refs_observed": 0,
-    "default_head_observed": false
+    "branch": "main",
+    "head": "bd907230580c76907e5a855f4d65fb4c6b7f1b4f",
+    "worktree_clean": true
   },
   "runtime_observed": {
     "dsh_launcher": "/home/aazcl/.local/bin/DSH2--",
-    "dsh_version": "0.1.7-rc.2",
-    "dsh_launcher_sha256": "d15c3f9dfc51f60462bf4abe4e45c59224336a775a83d67374a3388bdb26d1cb",
+    "dsh_version": "0.2.0-rc.2",
+    "dsh_launcher_sha256": "e0afd95902e9bc7b184e23a23361e4f7765da48d05e36ac690a7a0ee62c1cfde",
     "omniroute_version": "3.8.50",
     "node_version": "24.15.0",
     "dsh_port": 3080,
-    "omniroute_ports": [20128, 20131, 20132]
+    "omniroute_ports": [20128, 20131, 20132],
+    "dsh_http": 401,
+    "omniroute_health_http": 200
   },
   "upgrade_targets": {
-    "dsh": "HOLD; no stable target authorized or established",
+    "dsh": "0.2.0-rc.2; post-upgrade cold-start validation pending HUMAN WSL reopen",
     "omniroute": "HOLD at 3.8.50; latest stable observed as 3.8.50"
   },
-  "secrets": "not recorded"
+  "routing": {
+    "config_verified": true,
+    "mock_path_verified": true,
+    "live_model_route_tested": false,
+    "paid_calls": 0
+  },
+  "plugins": {
+    "web_bundles": ["@deepseek-ai/dsh-base", "@deepseek-ai/dsh-web-app"],
+    "third_party_registry_observed": false
+  },
+  "full_wsl_cold_start": "AWAITING_HUMAN_REOPEN",
+  "uta005": {
+    "status": "LAB_PREPARED_NO_PRODUCTION_INSTALL",
+    "external_lab_root": "/home/aazcl/.local/state/upgrade_ta/labs/UTA005",
+    "human_cold_start": "HUMAN_ATTESTED_REAL_COLD_START; not independently instrumented PASS",
+    "live_model_route_tested": false,
+    "provider_calls": 0,
+    "candidate_screen": "external evidence only; no candidate installed",
+    "evidence_root": "/home/aazcl/.local/state/upgrade_ta/evidence/UTA005"
+  },
+  "secrets": "not recorded",
+  "uta011": {
+    "status": "PREPROD_READY_SINGLE_USER_DEFAULT_DSH",
+    "observed_at": "2026-10-14",
+    "git_expected_head": "bd907230580c76907e5a855f4d65fb4c6b7f1b4f",
+    "launcher_sha256_pre_post": "e0afd95902e9bc7b184e23a23361e4f7765da48d05e36ac690a7a0ee62c1cfde",
+    "default_dsh": "0.2.0-rc.2 via /home/aazcl/.local/bin/dsh",
+    "legacy_user_link": "quarantined with protected rollback copy; restore rehearsal passed",
+    "root_owned_residual": "/usr/local/bin/dsh -> @deepseek-ai/dsh 0.1.1-rc.2; not modified",
+    "windows_shim": "present and not modified",
+    "omniroute": "3.8.50 unchanged",
+    "adapters": {
+      "everos": "REAL_CODE_WITH_MOCK_LLM_PASS; preproduction only",
+      "composio": "REAL_CODE_WITH_LOCAL_ADAPTER_MOCK_PASS; remote connector not tested"
+    },
+    "provider_calls": 0,
+    "production_adapter_install": false
+  }
 }
