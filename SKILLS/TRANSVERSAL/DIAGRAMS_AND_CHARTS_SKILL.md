@@ -1,0 +1,3 @@
+# Transversal Skill — Diagram & Chart Creation
+Use Mermaid CLI for source-controlled architecture/GOALS/DAG/sequence/state diagrams. Use ECharts for time series, cost, QA and KPI dashboards. Archify provides optional natural-language diagram workflow once its installed DSH adapter passes a real sample.
+Contract: receive source requirements and data with provenance; create editable text source (`.mmd` or chart JSON/JS), render to SVG/PNG/HTML as appropriate, ensure labels/readability and deterministic rerun; attach image only after actual generated file exists. Never invent metrics or hide missing points. Do not require paid cloud services. Generated artifacts are consumer project-owned, not automatically added to Upgrade_TA Git.

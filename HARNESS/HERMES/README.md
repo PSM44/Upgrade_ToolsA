@@ -1,0 +1,2 @@
+# Hermes Agent — candidate Harness
+Prior isolated lab Python 3.14.8 / uv 0.13.1; `--help`, `--version`, `doctor` worked. No real inference invocation, cost accounting, DSH integration or long-running autonomy established. Keep independent of DSH installation. Before promotion: license/provenance, pinned install, safety, real provider or local inference under explicit cost gate, test output, clean restart and rollback.

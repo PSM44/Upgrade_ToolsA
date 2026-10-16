@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "category",
+          "version",
+          "lifecycle",
+          "evidence",
+          "radar"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "lifecycle": {
+            "enum": [
+              "DISCOVERED",
+              "SCREENED",
+              "LAB_VALIDATED",
+              "INTEGRATED",
+              "PRODUCTION_VERIFIED",
+              "MAINTAINED",
+              "DEPRECATED",
+              "RETIRED"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "radar": {
+            "enum": [
+              "ADOPT",
+              "TRIAL",
+              "ASSESS",
+              "CAUTION"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

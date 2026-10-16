@@ -1,32 +1,21 @@
-# Upgrade_TA Upgrade Plan
-
-Status: DSH 0.2.0-rc.2 upgraded and post-upgrade validation partially complete.
-
-Current gate: preserve the literal `DSH2--` command and OmniRoute `3.8.50`.
-The offline/fresh-shell checks passed; a real WSL shutdown/reopen remains a
-HUMAN-controlled validation boundary.
-
-Required evidence before an upgrade: verified remote baseline, package
-provenance, complete external backup, tested restore rehearsal, exact pinned
-target, compatibility test plan, and a user-visible rollback command.
-
-UTA004 routing status: local OmniRoute configuration and dry-run route
-selection verified without upstream calls; live model routing remains untested.
-UTA004 plugin status: web profile bundles are present and compatible by
-startup/profile smoke; no separate third-party plugin registry was observed.
-
-UTA005 lab gate: benchmark functional completion, security/gates, restart and
-recovery, memory provenance, interoperability, resource/cost, and traceability.
-Negative fixtures cover prompt injection, unauthorized writes, and incorrect
-memory. Promotion requires all security gates, zero unauthorized writes/calls,
-and HUMAN approval; candidate review is not an installation or compatibility
-PASS.
-
-UTA011 measured outcome: the user-owned default `dsh` entrypoint now resolves
-to the existing pinned DSH `0.2.0-rc.2`; the previous user symlink to
-`0.1.5-rc.2` is protected and restore-rehearsed outside the repository.
-The root-owned `/usr/local/bin/dsh` and Windows npm shim were not modified.
-DSH2-- is unchanged, OmniRoute remains `3.8.50`, and no provider calls or
-production adapter installs occurred. EverOS and Composio are preproduction
-adapter results only: deterministic/mock boundary evidence, not live-provider
-connectivity. Any production integration remains a separate HUMAN gate.
+# Upgrade_TA — Integrated Product & Lifecycle Plan
+Authority: `HUMAN/NORTH_STAR.md`, this plan, `HUMAN/DICTIONARY/DICTIONARY.md`; actual runtime observations in `CONTINUITY/STATE.md`; MR0 review in `HUMAN/MR0/MR0.md`.
+## North Star
+AI Technology Intelligence & Lifecycle Management Platform serving specific and transversal AI projects. Research → Compare → Test → Adopt → Maintain → Retire; prioritize free-first and reproducible evidence. See `HUMAN/NORTH_STAR.md`.
+## Functional domains
+`HARNESS` DSH/Hermes and future runtimes; `MEMORY`, `MODELS`, `AGENTS`, `ORCHESTRATION`, `TOOLS` (diagrams, charts, connectors), `INTEGRATIONS`; `REGISTRY` canonical technology identity; `RADAR` judgment and delta history; `ARENA` experiments and acceptance; `SECURITY` supply-chain controls.
+## Governance
+`MR0` integrated management review (weekly operational, monthly portfolio); `HO.1` session/agent handoff and reconstruction; Dictionary resolves terms. No duplicate sources of truth. HUMAN > MORCH > RORCH > EXE applies within NightShift; Upgrade_TA cannot bypass project authority.
+## Program DAG
+P0 foundation: UTA019 eight-document overlay confirmed by RORCH, not Git-published → UTA021 reconcile restructure, preserve evidence, validate locally → optional authorized exact Git publication.
+Parallel P0: HARNESS/DSH inventory and real session canaries; HARNESS/HERMES functional bridge; Registry/Radar/Arena schemas and sample entries; Mermaid/ECharts deterministic diagram/chart tests; LINGSHU vs OpenViking memory isolated trials.
+P1: Hindsight backend real integration, EverOS/Composio DSH bridges, proactive/task-board budgets, supply-chain score automation.
+P2: OpenHands/container runtime, dashboard/portal after CLI/data contracts mature; retirement drills.
+## Qualification policy
+No silent cost escalation; US$0 incremental financial commitments by default. Free software != free model usage. Reversible installs with pinned versions, exact profile, provenance, credentials policy, negative tests, real DSH-originated invocation, persistence and rollback. All live model calls must be accounted and bounded.
+## Source of truth
+Registry entries identify tools; Radar entries evaluate; Arena reports prove tests; HARNESS manifests describe deployment; `CONTINUITY/STATE.md` records observed reality, not wishful states. `BATON/` supports independent blank-AI continuation.
+## Future market surveillance
+Weekly technology landscape DELTA; daily critical security watch after implementation; monthly MR0 decisions; quarterly portfolio refresh. Monitoring task is configured in ChatGPT weekly; it does **not** update the local repository automatically.
+## Git & publication
+Separate prepare → validate → user authorization → exact stage/commit → verify → authorized push → remote verify. No global `git add -A`; no force. Public repository until HUMAN changes visibility, so redact secrets now.

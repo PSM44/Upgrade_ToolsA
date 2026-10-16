@@ -1,0 +1,3 @@
+# ARENA — Reproducible Qualification Contract
+Experiment record: technology ID; pinned commit/package checksum; test OS/profile; exact commands; test fixture; dependency DAG; static/supply-chain review; negative tests (prompt injection, unauthorized write, secrets, network); functional real E2E; persistence after restart; restore; resource/cost; result and unambiguous evidence provenance.
+States: NOT_RUN, MOCK_PASS, LAB_REAL_PASS, DSH_ORIGIN_E2E_PASS, FAILED, BLOCKED. Do not conflate with Registry lifecycle. Independent tests parallel; live paid tests must have approved budget and route. Test output must not contain secrets. Redact data before Git inclusion.

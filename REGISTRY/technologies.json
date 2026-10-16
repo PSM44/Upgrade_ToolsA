@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-16",
+  "records": [
+    {
+      "id": "harness.dsh",
+      "name": "DeepSeek Harness",
+      "category": "HARNESS",
+      "version": "0.2.0-rc.2",
+      "lifecycle": "INTEGRATED",
+      "evidence": "USER_REPORTED_AND_LAUNCHER_OBSERVATIONS",
+      "radar": "ADOPT"
+    },
+    {
+      "id": "harness.hermes",
+      "name": "Hermes Agent",
+      "category": "HARNESS",
+      "version": "unverified",
+      "lifecycle": "LAB_VALIDATED",
+      "evidence": "ISOLATED_CLI_SMOKE",
+      "radar": "TRIAL"
+    },
+    {
+      "id": "plugin.dshmarket",
+      "name": "dshmarket",
+      "category": "PLUGIN",
+      "version": "1.66.27",
+      "lifecycle": "INTEGRATED",
+      "evidence": "USER_SCREENSHOT_UI",
+      "radar": "ADOPT"
+    },
+    {
+      "id": "plugin.archify-dsh",
+      "name": "Archify DSH",
+      "category": "DIAGRAMS",
+      "version": "unverified",
+      "lifecycle": "INTEGRATED",
+      "evidence": "USER_SCREENSHOT_UI_ONLY",
+      "radar": "TRIAL"
+    },
+    {
+      "id": "plugin.hindsight-coding-agents",
+      "name": "Hindsight Coding Agents",
+      "category": "MEMORY",
+      "version": "unverified",
+      "lifecycle": "INTEGRATED",
+      "evidence": "USER_SCREENSHOT_UI_ONLY_BACKEND_UNVERIFIED",
+      "radar": "TRIAL"
+    },
+    {
+      "id": "plugin.dsh-proactive",
+      "name": "dsh-proactive",
+      "category": "AUTOMATION",
+      "version": "unverified",
+      "lifecycle": "INTEGRATED",
+      "evidence": "USER_SCREENSHOT_UI_ONLY",
+      "radar": "TRIAL"
+    },
+    {
+      "id": "plugin.dsh-pua",
+      "name": "dsh-pua",
+      "category": "AUTOMATION",
+      "version": "unverified",
+      "lifecycle": "INTEGRATED",
+      "evidence": "USER_SCREENSHOT_UI_ONLY",
+      "radar": "TRIAL"
+    },
+    {
+      "id": "plugin.dsh-task-board",
+      "name": "DSH Task Board",
+      "category": "MANAGEMENT",
+      "version": "unverified",
+      "lifecycle": "INTEGRATED",
+      "evidence": "USER_SCREENSHOT_UI_ONLY",
+      "radar": "TRIAL"
+    },
+    {
+      "id": "memory.lingshu",
+      "name": "LINGSHU",
+      "category": "MEMORY",
+      "version": "0.8.1 candidate",
+      "lifecycle": "SCREENED",
+      "evidence": "INSTALL_NOT_CONFIRMED",
+      "radar": "TRIAL"
+    },
+    {
+      "id": "memory.openviking",
+      "name": "OpenViking",
+      "category": "MEMORY",
+      "version": "unverified",
+      "lifecycle": "SCREENED",
+      "evidence": "UPSTREAM_COMPAT_CLAIM_NOT_RUNTIME",
+      "radar": "TRIAL"
+    },
+    {
+      "id": "memory.everos",
+      "name": "EverOS",
+      "category": "MEMORY",
+      "version": "1.4.1",
+      "lifecycle": "LAB_VALIDATED",
+      "evidence": "MOCK_LLM_PASS",
+      "radar": "TRIAL"
+    },
+    {
+      "id": "connectors.composio",
+      "name": "Composio",
+      "category": "CONNECTORS",
+      "version": "0.24.0",
+      "lifecycle": "LAB_VALIDATED",
+      "evidence": "SDK_LOCAL_MOCK_PASS",
+      "radar": "TRIAL"
+    },
+    {
+      "id": "tool.mermaid-cli",
+      "name": "Mermaid CLI",
+      "category": "DIAGRAMS",
+      "version": "unverified",
+      "lifecycle": "SCREENED",
+      "evidence": "INSTALL_NOT_CONFIRMED",
+      "radar": "TRIAL"
+    },
+    {
+      "id": "tool.echarts",
+      "name": "Apache ECharts",
+      "category": "CHARTS",
+      "version": "unverified",
+      "lifecycle": "SCREENED",
+      "evidence": "INSTALL_NOT_CONFIRMED",
+      "radar": "TRIAL"
+    }
+  ]
+}

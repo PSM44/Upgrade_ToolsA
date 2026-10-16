@@ -1,0 +1,3 @@
+# BATON — START HERE (blank AI onboarding)
+You are continuing Upgrade_TA from no prior memory. **Read BATON.md in full; BATON.json is machine-oriented companion.** This is a snapshot, not live truth. Immediately inspect local repo and execution environments before claiming current state. Read HUMAN/NORTH_STAR.md, HUMAN/UPGRADE_PLAN.md, CONTINUITY/STATE.md, CONTINUITY/HO1/HO1_CONTRACT.md, HUMAN/MR0/MR0.md, HUMAN/DICTIONARY/DICTIONARY.md and DEPLOYMENT instructions.
+Report baseline vs live deltas, plan parallel eligible paths, stop on financial/irreversible/Git gates. Preserve exact DSH2-- and folder BOOSTRAP. Never ask the HUMAN to relay tool state that RORCH can obtain directly. No tunnel vision; quality and safety first.

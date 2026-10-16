@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-16",
+  "project": "Upgrade_TA",
+  "purpose": "blank_ai_handoff",
+  "north_star": "AI Technology Intelligence & Lifecycle Management Platform",
+  "root_windows": "C:\\01. GitHub\\Upgrade_TA",
+  "root_wsl": "/mnt/c/01. GitHub/Upgrade_TA",
+  "remote": "PSM44/Upgrade_ToolsA",
+  "branch": "main",
+  "last_user_reported_head": "7a9cf2db38309a1de300042cf42d00b3100caa49",
+  "current_task": "UTA023_CANONICAL_RECONCILIATION_AND_PUBLICATION_PREFLIGHT",
+  "previous_task": "UTA022_BASELINE_RECONCILIATION_PASS",
+  "runtime": {
+    "dsh": "0.2.0-rc.2",
+    "launcher": "DSH2--",
+    "home": "/home/aazcl/.dsh-prod-0.2.0-rc.2",
+    "omniroute": "3.8.50"
+  },
+  "required_reads": [
+    "BATON/BATON.md",
+    "CONTINUITY/STATE.md",
+    "HUMAN/NORTH_STAR.md",
+    "HUMAN/UPGRADE_PLAN.md",
+    "CONTINUITY/HO1/HO1_CONTRACT.md",
+    "HUMAN/MR0/MR0.md",
+    "HUMAN/DICTIONARY/DICTIONARY.md"
+  ],
+  "gates": [
+    "NO_UNAUTHORIZED_COMMIT_OR_PUSH",
+    "NO_IRREVERSIBLE_CLEANUP",
+    "NO_PAID_COMMITMENTS",
+    "NO_CROSS_PROJECT_EDITS",
+    "PRESERVE_DSH2_AND_OMNIROUTE"
+  ],
+  "secrets_included": false,
+  "last_task": "UTA_TASK023_CANONICAL_RECONCILIATION_PREPARED",
+  "status": "PASS",
+  "head": "7a9cf2db38309a1de300042cf42d00b3100caa49",
+  "worktree_modified_count": 38,
+  "timestamp": "2026-10-16"
+}

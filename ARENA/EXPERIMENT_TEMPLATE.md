@@ -1,0 +1,13 @@
+# Arena Experiment — TEMPLATE
+- ID / date / owner:
+- Technology Registry ID and version:
+- Source reference and digest:
+- Host, profile, OS, network/provider scope:
+- Hypothesis and acceptance criterion:
+- Inputs and exact invocation:
+- Negative tests / containment:
+- Results, logs and hashes:
+- Money/token consumption:
+- Cold restart and rollback:
+- Status (NOT_RUN/MOCK_PASS/LAB_REAL_PASS/DSH_ORIGIN_E2E_PASS/FAILED/BLOCKED):
+- Reviewer and next decision:

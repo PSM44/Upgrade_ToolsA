@@ -1,0 +1,3 @@
+# Technology Radar — Decision Policy
+Four independent recommendation rings inspired by Thoughtworks: ADOPT, TRIAL, ASSESS, CAUTION. Recommendation and lifecycle status are distinct fields.
+Required evidence: problem/fitness, competing candidates, security/legal/license, support/version, costs, performance, integration, reproducibility, rollback and confidence; dated decision with reviewer, next review and citations. Keep temporal history, do not overwrite past evaluation. Review weekly significant releases, monthly portfolio, quarterly ring calibrations. Critical alert only when security or operating risk materially changes.
