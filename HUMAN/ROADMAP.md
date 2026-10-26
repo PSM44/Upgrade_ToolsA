@@ -3,7 +3,7 @@
 **DOCUMENT_ID:** `RM-UTA-DOC-001`  
 **Versión:** `2026-10-23.v0.7-INTEGRATED`  
 **Ruta objetivo:** `HUMAN/ROADMAP.md`  
-**Estado:** `HUMAN_CONTENT_APPROVED_LOCAL_OPERATIONAL_SOURCE`; HUMAN aprobó el contenido, la conciliación local en UTA037R, la normalización de BATON en UTA041, la consolidación documental/hardenización NTV en UTA044–049C (`SKILLS/INTERNAL/NTV.md`, `TOOLS/ntv_verify.py`), la corrección de no conformidad de límite de iteraciones de continuidad en UTA052 (`NC-MORCH-20261023-ITERATION_LIMIT`), y la integración controlada v0.7 (`UTA_ROADMAP_V07_INTEGRATION_20261023`), incorporando frentes multiproceso NTV01–NTV06 e higiene permanente T08. UTA048 permanece como `UNKNOWN_HOLD`. La publicación Git permanece `NOT_AUTHORIZED`.  
+**Estado:** `HUMAN_CONTENT_APPROVED_LOCAL_OPERATIONAL_SOURCE`; HUMAN aprobó el contenido, la conciliación local en UTA037R, la normalización de BATON en UTA041, la consolidación documental/hardenización NTV en UTA044–049C (`SKILLS/INTERNAL/NTV.md`, `TOOLS/ntv_verify.py`), la corrección de no conformidad de límite de iteraciones de continuidad en UTA052 (`NC-MORCH-20261023-ITERATION_LIMIT`), y la integración controlada v0.7 (`UTA_ROADMAP_V07_INTEGRATION_20261023`), incorporando frentes multiproceso NTV01–NTV06 e higiene permanente T08. UTA048 permanece como `UNKNOWN_HOLD`. La publicación Git general permanece `NOT_AUTHORIZED`, salvo el piloto acotado de rama de revisión y Pull Request (`review/UTA-ROADMAP-V07-BRIDGE-001` / PR #1) explícitamente autorizado por HUMAN para recuperación de evidencia por MORCH (con merge estrictamente prohibido).  
 **Skill transversal de referencia:** `20261017_Trans.ROADMAP_Skills.md` (criterio aprobado por HUMAN; existencia local de `SKILLS/TRANSVERSAL/ROADMAP.md` sin comprobar).  
 **Skill interna:** `SKILLS/INTERNAL/UTA_ROADMAP.md` (HUMAN informa que colocó el archivo allí; contenido efectivo local aún no verificado).  
 **Fuente estratégica:** `HUMAN/NORTH_STAR.md`, `HUMAN/UPGRADE_PLAN.md`. Este Roadmap es la **única planificación operativa activa local**; `UPGRADE_PLAN.md` conserva alcance estratégico y no emite un DAG concurrente. La adopción local no implica publicación Git.  
@@ -272,6 +272,10 @@ Una verdad activa al adoptar. Registro semántico deltas; no renumerar `RM-UTA-0
 | RM-UTA-WS-006 | RM-UTA-016 | Jev en Registry/Radar: acceso/precio/schemas/bench independiente | READY DISCOVERY |
 | RM-UTA-WS-007 | RM-UTA-017 | Hermes cron/adapters frente a DSH y alternativas | READY DISCOVERY |
 | RM-UTA-WS-008 | RM-UTA-015 | Contrato de paridad parcial NightShift, sin cambios a NSH | READY DESIGN; gate consumidor posterior |
+| RM-UTA-WS-009 | RM-UTA-003 | GitHub Operational Bridge: canal versionado de evidencia y PR | PILOT ACTIVE en review/UTA-ROADMAP-V07-BRIDGE-001 (PR #1); no merge |
+| RM-UTA-WS-010 | RM-UTA-002 | Vertical Slices, TDD y verificación de producto | READY / aplicándose a UTA051 / RIRE v0.1 |
+| RM-UTA-WS-011 | RM-UTA-003 | Skills Manager: evaluación aislada en entorno de laboratorio | READY / onlineUpdate=false |
+| RM-UTA-WS-012 | RM-UTA-012 | Gobernanza del ciclo de vida de Git refs y NTV_ROOT | READY / inventario y clasificación recursiva |
 
 **Convergencia:** sólo cerrar el alcance demostrablemente completo, con evidencia, los bloqueos explícitos, comparación frente a alternativa y siguientes nodos. Priorizar cerrar pilotos cortos (NTV, canary Scheduler) antes de expandir sin fin el inventario tecnológico. Paralelizar discovery no exige ejecutar en producción.
 
@@ -287,7 +291,7 @@ Una verdad activa al adoptar. Registro semántico deltas; no renumerar `RM-UTA-0
 | RM-UTA-DEC-006 | Esquema IDs `RM-UTA-*` extendido por tipo, sin renumerar módulos — APROBADO | HUMAN conversación |
 | RM-UTA-DEC-007 | Skill interna en `SKILLS/INTERNAL/UTA_ROADMAP.md`, Roadmap nuevo en `HUMAN/ROADMAP.md`, UPGRADE_PLAN referencia — APROBADO | HUMAN conversación |
 | RM-UTA-DEC-008 | Aprobar el contenido y adoptar este documento como fuente operativa local — **HUMAN_APPROVED**; stage/commit/push/tag — **NOT_AUTHORIZED** | HUMAN UTA037R; gate Git separado |
-| RM-UTA-DEC-009 | Integración controlada Roadmap v0.7 (`UTA_ROADMAP_V07_INTEGRATION_20261023`) ejecutada preservando estructura y puertas de autoridad — APROBADO | MORCH / AgentTeams |
+| RM-UTA-DEC-009 | Integración controlada Roadmap v0.7 (`UTA_ROADMAP_V07_INTEGRATION_20261023`) ejecutada con autorización de alcance HUMAN, coordinación/revisión MORCH y ejecución AgentTeams — APROBADO (merge prohibido) | HUMAN autorizado / MORCH coordinado / AgentTeams ejecutado |
 
 ## 18 — Apéndice, referencias y conservación histórica
 
