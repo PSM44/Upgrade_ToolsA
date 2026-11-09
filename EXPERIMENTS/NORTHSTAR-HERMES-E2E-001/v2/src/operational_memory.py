@@ -12,6 +12,7 @@ import hashlib
 import json
 import sqlite3
 import uuid
+import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -364,6 +365,32 @@ class OperationalMemory:
             (task_id, after_seq),
         ).fetchall()
         return [self._row(row) for row in rows]
+
+    def search(self, task_id: str, query: str, *, kinds: Iterable[str] | None = None,
+               limit: int = 10) -> list[dict[str, Any]]:
+        """Retrieve relevant durable decisions/context using deterministic token overlap.
+
+        This is deliberately local and inspectable; it is retrieval, not an LLM
+        claim.  Results include score and chain identity so callers can verify
+        every returned memory record after a process restart.
+        """
+        tokens = set(re.findall(r"[a-z0-9_]+", query.lower()))
+        if not tokens or limit < 1:
+            return []
+        allowed = set(kinds) if kinds is not None else None
+        ranked: list[tuple[int, int, MemoryRecord]] = []
+        for record in self.records(task_id):
+            if allowed is not None and record.kind not in allowed:
+                continue
+            haystack = _canonical(record.payload).lower()
+            score = sum(1 for token in tokens if token in haystack)
+            if score:
+                ranked.append((score, record.seq, record))
+        ranked.sort(key=lambda item: (item[0], item[1]), reverse=True)
+        return [{"score": score, "seq": record.seq, "kind": record.kind,
+                 "actor": record.actor, "payload": record.payload,
+                 "chain_sha256": record.chain_sha256}
+                for score, _, record in ranked[:limit]]
 
     def recover(self, task_id: str) -> dict[str, Any]:
         rows = self.records(task_id)

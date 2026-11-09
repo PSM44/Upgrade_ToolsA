@@ -1,0 +1,113 @@
+{
+  "checkpoint_sha256": "b348bc6f370a0904935e3ed32ad32729ec42e6bbd7307f2a165abb5295bebd18",
+  "completed_requirements": [
+    "authenticated MORCH local submission",
+    "persistent UWS dispatcher",
+    "automatic isolated role launch",
+    "consumer-owned ACK/NACK",
+    "QA rejection and rework",
+    "MORCH result and RORCH ACK",
+    "real process restart recovery",
+    "relevant memory retrieval after restart",
+    "invalid/legitimate patch controls"
+  ],
+  "external_dependencies": [
+    "authorized secret-zero broker receipt for real model calls",
+    "second distinct underlying model ID if existing route exposes one",
+    "external MORCH authority/activation interface",
+    "full-system VM or equivalent boundary for Hermes/gateway"
+  ],
+  "last_independently_verified": {
+    "baseline": "NTV_FUNCTIONAL_PASS_V4",
+    "full_ntv_root": "UNVERIFIED",
+    "session1_control_plane": "IMPLEMENTER_VERIFIED_PENDING_INDEPENDENT_REVIEW"
+  },
+  "mission_id": "NORTHSTAR-DELIVERY-20261209",
+  "next_action": {
+    "command": [
+      "{python}",
+      "src/persistent_control_plane.py",
+      "run",
+      "--runtime",
+      "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session1",
+      "--poll",
+      "0.1"
+    ],
+    "id": "resume_control_plane"
+  },
+  "objective_ids": [
+    "P0_PERSISTENT_CONTROL_PLANE",
+    "P2_MEMORY_RETRIEVAL",
+    "P3_MODEL_ROUTING",
+    "P4_NTV",
+    "P5_E2E"
+  ],
+  "recovery": {
+    "behavior": "on restart, RUNNING dispatches become ABANDONED; pending/expired transport messages are reclaimed",
+    "control_db": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session1\\control_plane.db",
+    "endpoint": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session1\\endpoint.json",
+    "memory_db": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session1\\memory.db",
+    "transport_db": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session1\\transport.db"
+  },
+  "remaining_tasks": [
+    "replace deterministic RORCH adapter with isolated real Hermes or compatible runtime",
+    "prove two real underlying model IDs",
+    "authoritative cost receipts",
+    "full-system NTV_ROOT including gateway",
+    "bind external MORCH authority or record MORCH_CHATGPT_ACTIVATION_BLOCKED"
+  ],
+  "revision": 2,
+  "running_processes": [
+    {
+      "component": "persistent_control_plane",
+      "pid": 68312,
+      "runtime": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session1",
+      "status": "RUNNING"
+    }
+  ],
+  "schema_version": "upgrade-ta.northstar-state/v1",
+  "security_restrictions": {
+    "allow_production_service_restart": false,
+    "allowed_write_root": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2",
+    "baton_protected": true,
+    "no_new_billing": true,
+    "original_worktree_read_only": true,
+    "production_uta006_hold_active": true
+  },
+  "source_artifacts": {
+    "resume_northstar.ps1": "8da085b41ccd8878e6cba0478c05bc54390a844b8c7d89c7ea9b3df2e23463e3",
+    "src/control_actor.py": "2ff7da11b23c7be4ddd70bdea51bcb34126a8603f8a03f99345610064e8608d8",
+    "src/mission_checkpoint.py": "e43ed57976826063192fb9c86bcadac087e1b616bed23cb684d239cf7d869a19",
+    "src/model_route_probe.py": "cdb6a3525bc3b80a3e02d1c6f5de1899cc341379a66d7e10bdb9e6f588d17572",
+    "src/model_router.py": "31101ca1b9587cb09bba133607fbdef35403039f644c26f99c3705647d36cbd2",
+    "src/morch_submit.py": "3c21b032815d4db0326ed1a3f9d8c4ba5731dfba0626329fb147112dd96ddff7",
+    "src/operational_memory.py": "f84c4caac8b2c2ec5ccd7fcc2c58d19d8a73af15612c26bc5bb56d9ae0b37749",
+    "src/persistent_control_plane.py": "3df6fa47ff369a30a699ea4977f1fb3daa0e9bfdade8593d459a0d85bc7f51e1",
+    "src/secure_transport.py": "055fdbe263d07360cc3e10e1c7e9e5ecf8c911ed782da1077951755d095fb232",
+    "src/transport_rpc.py": "e50398f64f9f530068e302d79532eee2ed17d6b466b41ba8e77a7c99117f0502",
+    "tests/test_persistent_control_plane.py": "fb46f8de50f922680ee01d76915ff00454f74446cbbaecf63050f8d155fdb6b2"
+  },
+  "source_commit": "b225c01cbbfbdeb5d18b15582816fe46310705a5",
+  "tests": [
+    {
+      "exit_code": 0,
+      "name": "control_plane_integration",
+      "passed": 6,
+      "total": 6
+    },
+    {
+      "exit_code": 0,
+      "name": "full_v2_gate",
+      "passed": 50,
+      "total": 50
+    },
+    {
+      "classification": "harness invocation repaired",
+      "exit_code": 1,
+      "name": "initial_absolute_path_unittest_invocation"
+    }
+  ],
+  "updated_at": "2026-11-09T15:02:10.512436+00:00",
+  "workspace_root": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2"
+}
+

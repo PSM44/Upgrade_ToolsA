@@ -20,13 +20,18 @@ class ModelRouterTests(unittest.TestCase):
         self.db = self.root / "router.db"
         self.config = {
             "roles": {
-                "MORCH": [{"provider": "provider-a", "model": "alpha"}],
+                "MORCH": [{"provider": "provider-a", "model": "alpha", "require_identity_receipt": True}],
                 "RORCH": [
                     {"provider": "provider-fail", "model": "broken", "max_attempts": 2},
                     {"provider": "provider-a", "model": "alpha"},
                 ],
-                "QA": [{"provider": "provider-b", "model": "beta"}],
-            }
+                "QA": [{"provider": "provider-b", "model": "beta", "require_identity_receipt": True}],
+            },
+            "task_routes": {
+                "RORCH:SECURITY_REVIEW": [
+                    {"provider": "provider-b", "model": "beta", "route_id": "rorch-security", "require_identity_receipt": True}
+                ]
+            },
         }
 
         def backend_a(route, prompt, context):
@@ -34,6 +39,7 @@ class ModelRouterTests(unittest.TestCase):
                 "ok": True,
                 "response": f"A:{route.model}:{prompt}",
                 "usage": {"input_tokens": 5, "output_tokens": 2, "api_calls": 1, "cost_status": "unknown", "cost_usd": 0},
+                "receipt": {"provider": "provider-a", "model": "alpha", "request_id": "req-a", "cost_authority": "unknown"},
             }
 
         def backend_b(route, prompt, context):
@@ -41,6 +47,7 @@ class ModelRouterTests(unittest.TestCase):
                 "ok": True,
                 "response": f"B:{route.model}:{prompt}",
                 "usage": {"input_tokens": 7, "output_tokens": 3, "api_calls": 1, "cost_status": "measured", "cost_usd": 0.002},
+                "receipt": {"provider": "provider-b", "model": "beta", "request_id": "req-b", "cost_authority": "provider"},
             }
 
         def backend_fail(route, prompt, context):
@@ -88,6 +95,43 @@ class ModelRouterTests(unittest.TestCase):
         path.write_text(json.dumps(self.config), encoding="utf-8")
         second = ModelRouter(path, self.root / "second.db", self.router.backends)
         self.assertEqual(second.invoke("QA", "x")["model"], "beta")
+
+    def test_task_specific_route_and_correlated_receipt(self):
+        result = self.router.invoke(
+            "RORCH", "inspect", task_type="security_review", correlation_id="corr-123"
+        )
+        self.assertEqual(result["route_id"], "rorch-security")
+        self.assertEqual(result["model"], "beta")
+        receipts = self.router.invocation_receipts("corr-123")
+        self.assertEqual(len(receipts), 1)
+        self.assertEqual(receipts[0]["actual_model"], "beta")
+        self.assertEqual(receipts[0]["identity_status"], "VERIFIED_PROVIDER_RECEIPT")
+        self.assertEqual(len(receipts[0]["receipt_sha256"]), 64)
+
+    def test_required_identity_receipt_rejects_relabeling(self):
+        def relabeled(route, prompt, context):
+            return {
+                "response": "fake",
+                "usage": {"cost_status": "unknown"},
+                "receipt": {"provider": "provider-a", "model": "different", "request_id": "req-x"},
+            }
+        router = ModelRouter(
+            {"roles": {"QA": [{"provider": "provider-a", "model": "alpha", "require_identity_receipt": True}]}},
+            self.root / "relabel.db", {"provider-a": relabeled},
+        )
+        with self.assertRaises(AllRoutesFailed):
+            router.invoke("QA", "review")
+        self.assertFalse(router.multimodel_verified())
+
+    def test_unattested_declared_routes_do_not_count_as_multimodel(self):
+        router = ModelRouter(
+            {"roles": {"QA": [{"provider": "declared", "model": "label-only"}]}},
+            self.root / "declared.db",
+            {"declared": lambda route, prompt, context: {"response": "ok", "usage": {"cost_status": "unknown"}}},
+        )
+        result = router.invoke("QA", "review")
+        self.assertEqual(result["identity"]["status"], "UNVERIFIED_DECLARED_ROUTE")
+        self.assertFalse(router.multimodel_verified())
 
     def test_missing_role_is_fail_closed(self):
         with self.assertRaises(NoRouteError):

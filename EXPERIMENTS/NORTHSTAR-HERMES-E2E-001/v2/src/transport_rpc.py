@@ -87,7 +87,8 @@ class Server:
             receipt = self.transport.ack(consumer=actor, consumer_key=key, message_id=delivery.message_id,
                                          claim_token=delivery.claim_token)
             return {"ok": True, "actor": actor, "message_id": delivery.message_id,
-                    "message_type": delivery.message_type, "payload_sha256": delivery.payload_sha256,
+                    "producer": delivery.producer, "message_type": delivery.message_type,
+                    "payload": delivery.payload, "payload_sha256": delivery.payload_sha256,
                     "receipt_sha256": self.transport._digest(receipt)}
         if op == "reconcile":
             return {"ok": True, "actor": actor, "stats": self.transport.reconcile()}
