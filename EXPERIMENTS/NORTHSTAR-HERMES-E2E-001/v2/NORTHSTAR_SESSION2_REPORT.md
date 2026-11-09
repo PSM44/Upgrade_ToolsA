@@ -28,7 +28,7 @@ Status: **FAIL** for binary NorthStar acceptance. The persistent real-agent slic
 - General regression: 47/47 executed PASS; two evidence-only suites skip without their runtime environment variables.
 - Existing independent control-plane verifier rerun: 12/12 PASS at `evidence/session2_ntv_controlplane.json`.
 - Original repository remained at `e85a0de276cde4ad74bd8466c68f51d6274e689c`; no original-worktree write was performed.
-- Checkpoint revision 5 validates with digest `09b5429c579306d771f689b3a8db77a1c5d3525578ea264bb7bb09f6b7cbcbf2`.
+- Checkpoint revision 6 validates with digest `cc41082cd625c3959af67a1026d209c3b835153bd6eaacfe0fe5f0b69c56c0e2`.
 
 ## Unmet binary acceptance gates
 
