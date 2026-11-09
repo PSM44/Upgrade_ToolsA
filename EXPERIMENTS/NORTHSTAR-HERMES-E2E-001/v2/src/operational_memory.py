@@ -392,6 +392,19 @@ class OperationalMemory:
                  "chain_sha256": record.chain_sha256}
                 for score, _, record in ranked[:limit]]
 
+    def search_all(self, query: str, *, kinds: Iterable[str] | None = None,
+                   limit: int = 10) -> list[dict[str, Any]]:
+        """Retrieve relevant memory across objectives without changing UWS ownership."""
+        task_ids = [row[0] for row in self._conn.execute(
+            "SELECT DISTINCT task_id FROM operational_memory ORDER BY task_id"
+        )]
+        combined: list[dict[str, Any]] = []
+        for task_id in task_ids:
+            for item in self.search(task_id, query, kinds=kinds, limit=limit):
+                combined.append({"task_id": task_id, **item})
+        combined.sort(key=lambda item: (item["score"], item["seq"]), reverse=True)
+        return combined[:limit]
+
     def recover(self, task_id: str) -> dict[str, Any]:
         rows = self.records(task_id)
         checkpoints = [r for r in rows if r.kind == "CHECKPOINT"]
