@@ -76,7 +76,7 @@ class Server:
                 message_id=request["message_id"], nonce=request["nonce"],
             )
             return {"ok": True, "state": state, "actor": actor}
-        if op == "consume":
+        if op in {"claim", "consume"}:
             delivery = self.transport.claim(consumer=actor, consumer_key=key, lease_s=30)
             if delivery is None:
                 return {"ok": False, "error": "NO_DELIVERY"}
@@ -84,12 +84,27 @@ class Server:
                 self.transport.nack(consumer=actor, consumer_key=key, message_id=delivery.message_id,
                                     claim_token=delivery.claim_token, reason="unexpected message", retryable=True)
                 return {"ok": False, "error": "UNEXPECTED_MESSAGE", "observed": delivery.message_id}
-            receipt = self.transport.ack(consumer=actor, consumer_key=key, message_id=delivery.message_id,
-                                         claim_token=delivery.claim_token)
-            return {"ok": True, "actor": actor, "message_id": delivery.message_id,
+            response = {"ok": True, "actor": actor, "message_id": delivery.message_id,
                     "producer": delivery.producer, "message_type": delivery.message_type,
                     "payload": delivery.payload, "payload_sha256": delivery.payload_sha256,
+                    "claim_token": delivery.claim_token, "lease_expires_at": delivery.lease_expires_at,
+                    "attempt": delivery.attempt}
+            if op == "consume":
+                receipt = self.transport.ack(consumer=actor, consumer_key=key, message_id=delivery.message_id,
+                                             claim_token=delivery.claim_token)
+                response["receipt_sha256"] = self.transport._digest(receipt)
+            return response
+        if op == "ack":
+            receipt = self.transport.ack(consumer=actor, consumer_key=key,
+                                         message_id=request["message_id"], claim_token=request["claim_token"])
+            return {"ok": True, "actor": actor, "message_id": request["message_id"],
                     "receipt_sha256": self.transport._digest(receipt)}
+        if op == "nack":
+            state = self.transport.nack(consumer=actor, consumer_key=key,
+                                        message_id=request["message_id"], claim_token=request["claim_token"],
+                                        reason=request.get("reason", "worker failure"),
+                                        retryable=bool(request.get("retryable", True)))
+            return {"ok": True, "actor": actor, "message_id": request["message_id"], "state": state}
         if op == "reconcile":
             return {"ok": True, "actor": actor, "stats": self.transport.reconcile()}
         if op == "snapshot":
@@ -136,8 +151,14 @@ def client(args: argparse.Namespace) -> int:
             "message_id": args.message_id, "nonce": args.nonce,
             "payload": json.loads(Path(args.payload).read_text(encoding="utf-8")),
         })
-    elif args.operation == "consume":
+    elif args.operation in {"claim", "consume"}:
         request["expected_message_id"] = args.message_id
+    elif args.operation in {"ack", "nack"}:
+        request["message_id"] = args.message_id
+        request["claim_token"] = args.claim_token
+        if args.operation == "nack":
+            request["reason"] = args.reason
+            request["retryable"] = not args.non_retryable
     elif args.operation == "snapshot":
         request["message_ids"] = args.message_ids or []
     with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
@@ -149,7 +170,7 @@ def client(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(); sub = parser.add_subparsers(dest="command", required=True)
     s = sub.add_parser("serve"); s.add_argument("--db", required=True); s.add_argument("--key-dir", required=True); s.add_argument("--socket", required=True)
-    c = sub.add_parser("client"); c.add_argument("--socket", required=True); c.add_argument("--key", required=True); c.add_argument("--actor", required=True, choices=ACTORS); c.add_argument("operation", choices=("send", "consume", "reconcile", "snapshot", "shutdown")); c.add_argument("--recipient"); c.add_argument("--message-type"); c.add_argument("--message-id"); c.add_argument("--nonce"); c.add_argument("--payload"); c.add_argument("--message-ids", nargs="*")
+    c = sub.add_parser("client"); c.add_argument("--socket", required=True); c.add_argument("--key", required=True); c.add_argument("--actor", required=True, choices=ACTORS); c.add_argument("operation", choices=("send", "claim", "consume", "ack", "nack", "reconcile", "snapshot", "shutdown")); c.add_argument("--recipient"); c.add_argument("--message-type"); c.add_argument("--message-id"); c.add_argument("--nonce"); c.add_argument("--payload"); c.add_argument("--message-ids", nargs="*"); c.add_argument("--claim-token"); c.add_argument("--reason"); c.add_argument("--non-retryable", action="store_true")
     args = parser.parse_args()
     return serve(args) if args.command == "serve" else client(args)
 
