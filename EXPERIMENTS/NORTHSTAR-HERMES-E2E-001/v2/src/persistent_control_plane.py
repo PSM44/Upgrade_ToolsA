@@ -16,11 +16,13 @@ def wsl(path:Path)->str:
  p=path.resolve(); return f"/mnt/{p.drive[0].lower()}/{p.as_posix()[3:]}"
 
 class ControlPlane:
- def __init__(self,runtime:Path):
+ def __init__(self,runtime:Path,backend:str="deterministic",routes:Path|None=None):
   self.runtime=runtime.resolve(); self.runtime.mkdir(parents=True,exist_ok=True)
   self.db=self.runtime/"control_plane.db"; self.transport_db=self.runtime/"transport.db"; self.memory_db=self.runtime/"memory.db"; self.keys=self.runtime/"identity"
   token=hashlib.sha256(str(self.runtime).encode()).hexdigest()[:12]
   self.socket_dir=f"/tmp/northstar-control-{token}"; self.socket=self.socket_dir+"/transport.sock"; self.daemon=None
+  self.backend=backend; self.routes=(routes or V2/"config"/"model_routes_session2.json").resolve()
+  self.model_socket_dir=f"/tmp/northstar-model-{token}"; self.model_socket=self.model_socket_dir+"/model.sock"; self.model_daemon=None
   with sqlite3.connect(self.db) as c:
    c.executescript(SCHEMA); c.execute("UPDATE dispatches SET state='ABANDONED',finished_at=?,exit_code=-1 WHERE state='RUNNING'",(time.time(),))
    c.execute("INSERT INTO events(timestamp,event_type,objective_id,detail_json) VALUES(?,?,?,?)",(time.time(),"CONTROL_PLANE_STARTED",None,json.dumps({"pid":os.getpid()})))
@@ -32,12 +34,32 @@ class ControlPlane:
   for _ in range(200):
    ready=subprocess.run(["wsl.exe","-d","kali-linux","--","test","-S",self.socket],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode==0
    if ready and all((self.keys/f"{a}.key").exists() for a in ("morch","rorch","qa","uws")):
-    (self.runtime/"endpoint.json").write_text(json.dumps({"socket":self.socket,"pid":os.getpid(),"started_at":time.time()},sort_keys=True),encoding="utf-8")
+    endpoint={"socket":self.socket,"pid":os.getpid(),"started_at":time.time(),"backend":self.backend}
+    (self.runtime/"endpoint.json").write_text(json.dumps(endpoint,sort_keys=True),encoding="utf-8")
     return
    if self.daemon.poll() is not None:
     out,err=self.daemon.communicate(); raise RuntimeError(f"transport exited: {out} {err}")
    time.sleep(.05)
   raise RuntimeError("transport socket timeout")
+ def start_model_broker(self):
+  if self.backend!="hermes": return
+  cmd=["wsl.exe","-d","kali-linux","--","/usr/bin/python3",wsl(HERE/"model_broker.py"),"serve","--socket",self.model_socket,"--db",wsl(self.runtime/"model_calls.db"),"--key-dir",wsl(self.keys),"--work-root",wsl(self.runtime/"model_calls"),"--routes",wsl(self.routes)]
+  self.model_daemon=subprocess.Popen(cmd,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+  for _ in range(200):
+   ready=subprocess.run(["wsl.exe","-d","kali-linux","--","test","-S",self.model_socket],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode==0
+   if ready:
+    endpoint=json.loads((self.runtime/"endpoint.json").read_text(encoding="utf-8"));endpoint.update({"model_socket":self.model_socket,"model_broker_pid":self.model_daemon.pid,"routes":str(self.routes)})
+    (self.runtime/"endpoint.json").write_text(json.dumps(endpoint,sort_keys=True),encoding="utf-8");return
+   if self.model_daemon.poll() is not None:
+    out,err=self.model_daemon.communicate();raise RuntimeError(f"model broker exited: {out} {err}")
+   time.sleep(.05)
+  raise RuntimeError("model broker socket timeout")
+ def stop_model_broker(self):
+  if not self.model_daemon or self.model_daemon.poll() is not None:return
+  request={"op":"shutdown","actor":"MORCH","key":(self.keys/"morch.key").read_bytes().hex()}
+  code="import json,socket,sys;s=socket.socket(socket.AF_UNIX);s.connect(sys.argv[1]);s.sendall((json.dumps(json.loads(sys.argv[2]))+'\\n').encode());print(s.recv(4096).decode())"
+  subprocess.run(["wsl.exe","-d","kali-linux","--","/usr/bin/python3","-c",code,self.model_socket,json.dumps(request)],capture_output=True,text=True,timeout=15)
+  self.model_daemon.wait(timeout=15)
  def stop_transport(self):
   if self.daemon and self.daemon.poll() is None:
    subprocess.run(["wsl.exe","-d","kali-linux","--","/usr/bin/python3",wsl(HERE/"transport_rpc.py"),"client","--socket",self.socket,"--key",wsl(self.keys/"uws.key"),"--actor","UWS","shutdown"],capture_output=True,text=True,timeout=15)
@@ -62,7 +84,10 @@ class ControlPlane:
   if actor=="RORCH": cmd += ["--bind",wsl(app),"/role/app","--bind",wsl(qa),"/role/qa"]
   elif actor=="QA": cmd += ["--ro-bind",wsl(app),"/role/app","--bind",wsl(qa),"/role/qa"]
   else: cmd += ["--ro-bind",wsl(app),"/role/app","--ro-bind",wsl(qa),"/role/qa"]
-  return cmd+["--chdir","/code","/usr/bin/python3","/code/control_actor.py","--actor",actor,"--key","/identity/key.bin","--socket","/ipc/transport.sock","--message-id",mid]
+  if self.backend=="hermes":cmd += ["--bind",self.model_socket_dir,"/model"]
+  result=cmd+["--chdir","/code","/usr/bin/python3","/code/control_actor.py","--actor",actor,"--key","/identity/key.bin","--socket","/ipc/transport.sock","--message-id",mid,"--backend",self.backend]
+  if self.backend=="hermes":result += ["--model-socket","/model/model.sock"]
+  return result
  def reconcile(self):
   p=subprocess.run(["wsl.exe","-d","kali-linux","--","/usr/bin/python3",wsl(HERE/"transport_rpc.py"),"client","--socket",self.socket,"--key",wsl(self.keys/"uws.key"),"--actor","UWS","reconcile"],text=True,capture_output=True,timeout=20)
   if p.returncode: raise RuntimeError(p.stdout+p.stderr)
@@ -96,7 +121,7 @@ class ControlPlane:
  def run(self,poll:float,max_idle:float|None):
   stop=self.runtime/"STOP"
   if stop.exists(): stop.unlink()
-  self.start_transport(); idle=time.time()
+  self.start_transport(); self.start_model_broker(); idle=time.time()
   try:
    while not stop.exists():
     try: worked=self.dispatch_once()
@@ -106,7 +131,7 @@ class ControlPlane:
     if worked: idle=time.time()
     elif max_idle is not None and time.time()-idle>=max_idle: break
     time.sleep(poll)
-  finally:self.stop_transport()
+  finally:self.stop_model_broker();self.stop_transport()
   return 0
 
 def status(runtime:Path)->dict[str,Any]:
@@ -116,8 +141,8 @@ def status(runtime:Path)->dict[str,Any]:
   c.row_factory=sqlite3.Row
   return {"objectives":[dict(r) for r in c.execute("SELECT * FROM objectives ORDER BY created_at")],"dispatches":[dict(r) for r in c.execute("SELECT * FROM dispatches ORDER BY started_at")],"event_count":c.execute("SELECT count(*) FROM events").fetchone()[0]}
 def main():
- p=argparse.ArgumentParser();p.add_argument("command",choices=("run","status"));p.add_argument("--runtime",type=Path,default=DEFAULT_RUNTIME);p.add_argument("--poll",type=float,default=.2);p.add_argument("--max-idle",type=float);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument("command",choices=("run","status"));p.add_argument("--runtime",type=Path,default=DEFAULT_RUNTIME);p.add_argument("--poll",type=float,default=.2);p.add_argument("--max-idle",type=float);p.add_argument("--backend",choices=("deterministic","hermes"),default="deterministic");p.add_argument("--model-routes",type=Path);a=p.parse_args()
  if a.command=="status":print(json.dumps(status(a.runtime),indent=2,sort_keys=True));return 0
- return ControlPlane(a.runtime).run(a.poll,a.max_idle)
+ return ControlPlane(a.runtime,a.backend,a.model_routes).run(a.poll,a.max_idle)
 if __name__=="__main__":raise SystemExit(main())
 
