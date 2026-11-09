@@ -44,7 +44,7 @@
     "src/control_actor.py": "2ff7da11b23c7be4ddd70bdea51bcb34126a8603f8a03f99345610064e8608d8",
     "src/transport_rpc.py": "e50398f64f9f530068e302d79532eee2ed17d6b466b41ba8e77a7c99117f0502",
     "src/operational_memory.py": "f84c4caac8b2c2ec5ccd7fcc2c58d19d8a73af15612c26bc5bb56d9ae0b37749",
-    "NORTHSTAR_STATE.json": "38a7c2965c0bb4a9117cfdd4bd0e5995fd2a51f705ffe0933ecf47ac12e39e83"
+    "NORTHSTAR_STATE.json": "91afddffcefd19657e883e0ed8769136a327fec73894b90fbd3178d48e27f786"
   }
 }
 

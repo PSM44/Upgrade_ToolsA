@@ -1,5 +1,5 @@
 {
-  "checkpoint_sha256": "b348bc6f370a0904935e3ed32ad32729ec42e6bbd7307f2a165abb5295bebd18",
+  "checkpoint_sha256": "d350984faf2dd5869737d78030cc5937aab961753c1f957a41b15fcf09b5b85e",
   "completed_requirements": [
     "authenticated MORCH local submission",
     "persistent UWS dispatcher",
@@ -56,7 +56,7 @@
     "full-system NTV_ROOT including gateway",
     "bind external MORCH authority or record MORCH_CHATGPT_ACTIVATION_BLOCKED"
   ],
-  "revision": 2,
+  "revision": 3,
   "running_processes": [
     {
       "component": "persistent_control_plane",
@@ -87,7 +87,7 @@
     "src/transport_rpc.py": "e50398f64f9f530068e302d79532eee2ed17d6b466b41ba8e77a7c99117f0502",
     "tests/test_persistent_control_plane.py": "fb46f8de50f922680ee01d76915ff00454f74446cbbaecf63050f8d155fdb6b2"
   },
-  "source_commit": "b225c01cbbfbdeb5d18b15582816fe46310705a5",
+  "source_commit": "76ae96764e16c94875f16c5b38025520eef3f20b",
   "tests": [
     {
       "exit_code": 0,
@@ -107,7 +107,7 @@
       "name": "initial_absolute_path_unittest_invocation"
     }
   ],
-  "updated_at": "2026-11-09T15:02:10.512436+00:00",
+  "updated_at": "2026-11-09T15:07:30.741298+00:00",
   "workspace_root": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2"
 }
 
