@@ -68,12 +68,12 @@ def main() -> int:
     p = argparse.ArgumentParser(); p.add_argument("--actor", required=True, choices=("MORCH", "RORCH", "QA"))
     p.add_argument("--key", required=True, type=Path); p.add_argument("--socket", required=True)
     p.add_argument("--message-id", required=True); p.add_argument("--app", type=Path, default=Path("/role/app"))
-    p.add_argument("--qa", type=Path, default=Path("/role/qa"));p.add_argument("--backend",choices=("deterministic","hermes"),default="deterministic");p.add_argument("--model-socket"); a = p.parse_args()
+    p.add_argument("--dev", type=Path, default=Path("/role/dev")); p.add_argument("--qa", type=Path, default=Path("/role/qa"));p.add_argument("--backend",choices=("deterministic","hermes"),default="deterministic");p.add_argument("--model-socket"); a = p.parse_args()
     key = a.key.read_bytes(); delivery = rpc(a.socket, a.actor, key, "claim", expected_message_id=a.message_id)
     payload = dict(delivery["payload"]); oid = str(payload["objective_id"]); kind = str(delivery["message_type"])
-    a.qa.mkdir(parents=True, exist_ok=True)
     if a.actor == "RORCH" and kind == "TASK_HANDOFF":
         a.app.mkdir(parents=True, exist_ok=True)
+        a.dev.mkdir(parents=True, exist_ok=True)
         broker=None
         if a.backend=="hermes":
             prompt="""You are RORCH round 1. Return JSON only: {\"files\":{\"app.py\":\"...\",\"test_app.py\":\"...\"}}. Build a Python palindrome function is_palindrome. This seeded first delivery must intentionally normalize only case and ASCII spaces, not punctuation, and tests must cover only basic palindrome and non-palindrome. No markdown."""
@@ -84,9 +84,10 @@ def main() -> int:
         else:
             (a.app/"app.py").write_text(BUGGY, encoding="utf-8");(a.app/"test_app.py").write_text(TEST, encoding="utf-8")
         result = tests(a.app);result["model_receipt"]=broker and broker["receipt"]
-        (a.qa/"rorch_round1.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
+        (a.dev/"rorch_round1.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
         emit(a.socket,"RORCH",key,"QA","DELIVERY",oid,{"objective_id":oid,"round":1,"local_test":result["exit_code"],"artifact_sha256":hashlib.sha256((a.app/"app.py").read_bytes()).hexdigest()},"delivery-1")
     elif a.actor == "QA" and kind in {"DELIVERY", "REWORK_RESPONSE"}:
+        a.qa.mkdir(parents=True, exist_ok=True)
         result=qa(a.app); rnd=int(payload.get("round",1)); ev=a.qa/f"qa_round{rnd}.json"
         if a.backend=="hermes":
             code=(a.app/"app.py").read_text(encoding="utf-8")
@@ -101,6 +102,7 @@ def main() -> int:
         else:
             emit(a.socket,"QA",key,"MORCH","QA_PASS",oid,{"objective_id":oid,"round":rnd,"evidence":str(ev),"verdict":"PASS"},f"qa-pass-{rnd}")
     elif a.actor == "RORCH" and kind == "QA_REJECTED":
+        a.dev.mkdir(parents=True, exist_ok=True)
         broker=None
         if a.backend=="hermes":
             current=(a.app/"app.py").read_text(encoding="utf-8");tests_current=(a.app/"test_app.py").read_text(encoding="utf-8")
@@ -110,7 +112,7 @@ def main() -> int:
             (a.app/"app.py").write_text(str(files["app.py"]),encoding="utf-8");(a.app/"test_app.py").write_text(str(files["test_app.py"]),encoding="utf-8")
         else:(a.app/"app.py").write_text(FIXED,encoding="utf-8")
         result=tests(a.app);result["model_receipt"]=broker and broker["receipt"]
-        (a.qa/"rorch_round2.json").write_text(json.dumps(result,indent=2),encoding="utf-8")
+        (a.dev/"rorch_round2.json").write_text(json.dumps(result,indent=2),encoding="utf-8")
         emit(a.socket,"RORCH",key,"QA","REWORK_RESPONSE",oid,{"objective_id":oid,"round":2,"local_test":result["exit_code"],"artifact_sha256":hashlib.sha256((a.app/"app.py").read_bytes()).hexdigest()},"rework-2")
     elif a.actor == "MORCH" and kind == "QA_PASS":
         if payload.get("verdict") != "PASS": raise RuntimeError("malformed QA_PASS")

@@ -7,7 +7,7 @@ from typing import Any
 from operational_memory import OperationalMemory
 
 HERE=Path(__file__).resolve().parent; V2=HERE.parent; DEFAULT_RUNTIME=V2/"runtime"/"control_plane"
-SCHEMA="""PRAGMA journal_mode=WAL;
+SCHEMA="""PRAGMA journal_mode=DELETE;
 CREATE TABLE IF NOT EXISTS objectives(objective_id TEXT PRIMARY KEY,state TEXT NOT NULL,current_message_id TEXT,created_at REAL NOT NULL,updated_at REAL NOT NULL,result_json TEXT,last_error TEXT);
 CREATE TABLE IF NOT EXISTS dispatches(message_id TEXT PRIMARY KEY,objective_id TEXT NOT NULL,actor TEXT NOT NULL,state TEXT NOT NULL,attempt INTEGER NOT NULL,started_at REAL NOT NULL,finished_at REAL,exit_code INTEGER,output_json TEXT);
 CREATE TABLE IF NOT EXISTS events(seq INTEGER PRIMARY KEY AUTOINCREMENT,timestamp REAL NOT NULL,event_type TEXT NOT NULL,objective_id TEXT,detail_json TEXT NOT NULL);
@@ -23,11 +23,20 @@ class ControlPlane:
   self.socket_dir=f"/tmp/northstar-control-{token}"; self.socket=self.socket_dir+"/transport.sock"; self.daemon=None
   self.backend=backend; self.routes=(routes or V2/"config"/"model_routes_session2.json").resolve()
   self.model_socket_dir=f"/tmp/northstar-model-{token}"; self.model_socket=self.model_socket_dir+"/model.sock"; self.model_daemon=None
-  with sqlite3.connect(self.db) as c:
+  self.delegate_socket_dir=f"/tmp/northstar-delegate-{token}";self.delegate_socket=self.delegate_socket_dir+"/delegate.sock";self.delegate_daemon=None
+  c=sqlite3.connect(self.db)
+  try:
    c.executescript(SCHEMA); c.execute("UPDATE dispatches SET state='ABANDONED',finished_at=?,exit_code=-1 WHERE state='RUNNING'",(time.time(),))
-   c.execute("INSERT INTO events(timestamp,event_type,objective_id,detail_json) VALUES(?,?,?,?)",(time.time(),"CONTROL_PLANE_STARTED",None,json.dumps({"pid":os.getpid()})))
+   c.execute("INSERT INTO events(timestamp,event_type,objective_id,detail_json) VALUES(?,?,?,?)",(time.time(),"CONTROL_PLANE_STARTED",None,json.dumps({"pid":os.getpid()}))); c.commit()
+  finally:c.close()
  def conn(self):
   c=sqlite3.connect(self.db,timeout=20); c.row_factory=sqlite3.Row; return c
+ def restrict_identity_acls(self):
+  if os.name!="nt":return
+  principal=f"{os.environ.get('USERDOMAIN','')}\\{os.environ.get('USERNAME','')}"
+  for path in self.keys.glob("*.key"):
+   proc=subprocess.run(["icacls",str(path),"/inheritance:r","/grant:r",f"{principal}:(F)","*S-1-5-18:(F)"],text=True,capture_output=True)
+   if proc.returncode:raise RuntimeError(f"identity ACL failed for {path.name}: {proc.stdout} {proc.stderr}")
  def start_transport(self):
   cmd=["wsl.exe","-d","kali-linux","--","/usr/bin/python3",wsl(HERE/"transport_rpc.py"),"serve","--db",wsl(self.transport_db),"--key-dir",wsl(self.keys),"--socket",self.socket]
   self.daemon=subprocess.Popen(cmd,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
@@ -60,6 +69,23 @@ class ControlPlane:
   code="import json,socket,sys;s=socket.socket(socket.AF_UNIX);s.connect(sys.argv[1]);s.sendall((json.dumps(json.loads(sys.argv[2]))+'\\n').encode());print(s.recv(4096).decode())"
   subprocess.run(["wsl.exe","-d","kali-linux","--","/usr/bin/python3","-c",code,self.model_socket,json.dumps(request)],capture_output=True,text=True,timeout=15)
   self.model_daemon.wait(timeout=15)
+ def start_delegate(self):
+  cmd=["wsl.exe","-d","kali-linux","--","/usr/bin/python3",wsl(HERE/"morch_delegate.py"),"serve","--socket",self.delegate_socket,"--db",wsl(self.runtime/"delegate.db"),"--transport-socket",self.socket,"--control-db",wsl(self.db),"--key-dir",wsl(self.keys)]
+  self.delegate_daemon=subprocess.Popen(cmd,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+  for _ in range(200):
+   ready=subprocess.run(["wsl.exe","-d","kali-linux","--","test","-S",self.delegate_socket],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode==0
+   if ready:
+    self.restrict_identity_acls()
+    endpoint=json.loads((self.runtime/"endpoint.json").read_text(encoding="utf-8"));endpoint.update({"delegate_socket":self.delegate_socket,"delegate_pid":self.delegate_daemon.pid,"authority":"MORCH_LOCAL_DELEGATE"})
+    (self.runtime/"endpoint.json").write_text(json.dumps(endpoint,sort_keys=True),encoding="utf-8");return
+   if self.delegate_daemon.poll() is not None:
+    out,err=self.delegate_daemon.communicate();raise RuntimeError(f"delegate exited: {out} {err}")
+   time.sleep(.05)
+  raise RuntimeError("delegate socket timeout")
+ def stop_delegate(self):
+  if not self.delegate_daemon or self.delegate_daemon.poll() is not None:return
+  subprocess.run(["wsl.exe","-d","kali-linux","--","/usr/bin/python3",wsl(HERE/"morch_delegate.py"),"client","--socket",self.delegate_socket,"--key",wsl(self.keys/"human.key"),"--operation","shutdown"],capture_output=True,text=True,timeout=15)
+  self.delegate_daemon.wait(timeout=15)
  def stop_transport(self):
   if self.daemon and self.daemon.poll() is None:
    subprocess.run(["wsl.exe","-d","kali-linux","--","/usr/bin/python3",wsl(HERE/"transport_rpc.py"),"client","--socket",self.socket,"--key",wsl(self.keys/"uws.key"),"--actor","UWS","shutdown"],capture_output=True,text=True,timeout=15)
@@ -76,14 +102,14 @@ class ControlPlane:
    c.execute("INSERT OR IGNORE INTO objectives VALUES(?,?,?,?,?,?,?)",(oid,"ACTIVE",msg["message_id"],now,now,None,None))
   if not existed:
    with OperationalMemory(self.memory_db) as memory:
-    memory.append(task_id=oid,kind="OBJECTIVE",actor="MORCH_LOCAL_ADAPTER",payload=payload,record_id=f"objective:{oid}")
+    memory.append(task_id=oid,kind="OBJECTIVE",actor="MORCH_LOCAL_DELEGATE",payload=payload,record_id=f"objective:{oid}")
   return oid
  def worker_cmd(self,actor:str,mid:str,oid:str):
-  app=self.runtime/"objectives"/oid/"app"; qa=self.runtime/"objectives"/oid/"qa"; app.mkdir(parents=True,exist_ok=True); qa.mkdir(parents=True,exist_ok=True)
+  app=self.runtime/"objectives"/oid/"app"; dev=self.runtime/"objectives"/oid/"dev"; qa=self.runtime/"objectives"/oid/"qa"; app.mkdir(parents=True,exist_ok=True); dev.mkdir(parents=True,exist_ok=True); qa.mkdir(parents=True,exist_ok=True)
   cmd=["wsl.exe","-d","kali-linux","--","bwrap","--unshare-all","--die-with-parent","--new-session","--clearenv","--ro-bind","/usr","/usr","--ro-bind","/bin","/bin","--ro-bind","/lib","/lib","--ro-bind","/lib64","/lib64","--ro-bind","/etc","/etc","--ro-bind",wsl(HERE),"/code","--ro-bind",wsl(self.keys/f"{actor.lower()}.key"),"/identity/key.bin","--bind",self.socket_dir,"/ipc","--proc","/proc","--dev","/dev","--tmpfs","/tmp","--setenv","HOME","/tmp/home","--setenv","PYTHONDONTWRITEBYTECODE","1"]
-  if actor=="RORCH": cmd += ["--bind",wsl(app),"/role/app","--bind",wsl(qa),"/role/qa"]
-  elif actor=="QA": cmd += ["--ro-bind",wsl(app),"/role/app","--bind",wsl(qa),"/role/qa"]
-  else: cmd += ["--ro-bind",wsl(app),"/role/app","--ro-bind",wsl(qa),"/role/qa"]
+  if actor=="RORCH": cmd += ["--bind",wsl(app),"/role/app","--bind",wsl(dev),"/role/dev"]
+  elif actor=="QA": cmd += ["--ro-bind",wsl(app),"/role/app","--ro-bind",wsl(dev),"/role/dev","--bind",wsl(qa),"/role/qa"]
+  else: cmd += ["--ro-bind",wsl(app),"/role/app","--ro-bind",wsl(dev),"/role/dev","--ro-bind",wsl(qa),"/role/qa"]
   if self.backend=="hermes":cmd += ["--bind",self.model_socket_dir,"/model"]
   result=cmd+["--chdir","/code","/usr/bin/python3","/code/control_actor.py","--actor",actor,"--key","/identity/key.bin","--socket","/ipc/transport.sock","--message-id",mid,"--backend",self.backend]
   if self.backend=="hermes":result += ["--model-socket","/model/model.sock"]
@@ -99,7 +125,7 @@ class ControlPlane:
    old=c.execute("SELECT attempt FROM dispatches WHERE message_id=?",(mid,)).fetchone(); attempt=(old["attempt"] if old else 0)+1
    c.execute("INSERT INTO dispatches VALUES(?,?,?,?,?,?,NULL,NULL,NULL) ON CONFLICT(message_id) DO UPDATE SET state='RUNNING',attempt=?,started_at=?,finished_at=NULL,exit_code=NULL,output_json=NULL",(mid,oid,actor,"RUNNING",attempt,now,attempt,now))
    c.execute("INSERT INTO events(timestamp,event_type,objective_id,detail_json) VALUES(?,?,?,?)",(now,"WORKER_STARTED",oid,json.dumps({"actor":actor,"message_id":mid,"attempt":attempt},sort_keys=True)))
-  p=subprocess.run(self.worker_cmd(actor,mid,oid),text=True,capture_output=True,timeout=120); state="COMPLETED" if p.returncode==0 else "FAILED"
+  p=subprocess.run(self.worker_cmd(actor,mid,oid),text=True,capture_output=True,timeout=360); state="COMPLETED" if p.returncode==0 else "FAILED"
   with self.conn() as c:
    c.execute("UPDATE dispatches SET state=?,finished_at=?,exit_code=?,output_json=? WHERE message_id=?",(state,time.time(),p.returncode,json.dumps({"stdout":p.stdout[-4000:],"stderr":p.stderr[-4000:]}),mid))
    c.execute("UPDATE objectives SET current_message_id=?,updated_at=?,last_error=? WHERE objective_id=?",(mid,time.time(),None if p.returncode==0 else p.stderr[-1000:],oid))
@@ -121,7 +147,7 @@ class ControlPlane:
  def run(self,poll:float,max_idle:float|None):
   stop=self.runtime/"STOP"
   if stop.exists(): stop.unlink()
-  self.start_transport(); self.start_model_broker(); idle=time.time()
+  self.start_transport(); self.start_model_broker(); self.start_delegate(); idle=time.time()
   try:
    while not stop.exists():
     try: worked=self.dispatch_once()
@@ -131,7 +157,7 @@ class ControlPlane:
     if worked: idle=time.time()
     elif max_idle is not None and time.time()-idle>=max_idle: break
     time.sleep(poll)
-  finally:self.stop_model_broker();self.stop_transport()
+  finally:self.stop_delegate();self.stop_model_broker();self.stop_transport()
   return 0
 
 def status(runtime:Path)->dict[str,Any]:

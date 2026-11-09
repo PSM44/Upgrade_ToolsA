@@ -36,14 +36,14 @@ class CursorError(MemoryErrorBase):
 
 
 ALLOWED_ACTORS: dict[str, frozenset[str]] = {
-    "OBJECTIVE": frozenset({"MORCH_LOCAL_ADAPTER"}),
-    "DECISION": frozenset({"MORCH_LOCAL_ADAPTER"}),
+    "OBJECTIVE": frozenset({"MORCH_LOCAL_ADAPTER", "MORCH_LOCAL_DELEGATE"}),
+    "DECISION": frozenset({"MORCH_LOCAL_ADAPTER", "MORCH_LOCAL_DELEGATE"}),
     "DEV_CONTEXT": frozenset({"RORCH"}),
     "CHECKPOINT": frozenset({"UWS"}),
     "QA_EVENT": frozenset({"QA"}),
     "MORCH_ACTIVATION": frozenset({"UWS"}),
-    "ERROR": frozenset({"UWS", "RORCH", "QA", "MORCH_LOCAL_ADAPTER"}),
-    "RESULT": frozenset({"UWS", "RORCH", "QA", "MORCH_LOCAL_ADAPTER"}),
+    "ERROR": frozenset({"UWS", "RORCH", "QA", "MORCH_LOCAL_ADAPTER", "MORCH_LOCAL_DELEGATE"}),
+    "RESULT": frozenset({"UWS", "RORCH", "QA", "MORCH_LOCAL_ADAPTER", "MORCH_LOCAL_DELEGATE"}),
 }
 
 
@@ -113,8 +113,8 @@ class OperationalMemory:
     """Append-only task memory with transactional checkpoints and activations."""
 
     GENESIS = "0" * 64
-    MORCH_COMPONENT = "MORCH_LOCAL_ADAPTER"
-    MORCH_LIMITATION = "local durable coordinator; not ChatGPT and not a remote listener"
+    MORCH_COMPONENT = "MORCH_LOCAL_DELEGATE"
+    MORCH_LIMITATION = "HUMAN-authorized local durable coordinator; not ChatGPT"
 
     def __init__(self, db_path: str | Path):
         self.db_path = str(Path(db_path))

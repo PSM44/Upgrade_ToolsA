@@ -12,6 +12,13 @@ from typing import Any
 
 HERMES="/home/aazcl/.local/bin/hermes"
 ALLOWED={"RORCH":{"BUILD","FIX"},"QA":{"REVIEW1","REVIEW2"},"MORCH":{"DECISION"}}
+BROKER_RULES="""# NORTHSTAR model-broker execution policy
+
+This is a tool-free transformation request. Do not invoke tools, shells,
+plugins, MCP servers, network clients, filesystem APIs, Skills or delegation.
+Read only the prompt and return exactly the requested JSON object. The broker
+will reject non-JSON output and independently validate every resulting file.
+"""
 SCHEMA="""PRAGMA journal_mode=DELETE;
 CREATE TABLE IF NOT EXISTS calls(request_id TEXT PRIMARY KEY,actor TEXT NOT NULL,stage TEXT NOT NULL,requested_model TEXT NOT NULL,actual_provider TEXT,actual_model TEXT,session_id TEXT,status TEXT NOT NULL,input_sha256 TEXT NOT NULL,output_sha256 TEXT,input_tokens INTEGER,output_tokens INTEGER,total_tokens INTEGER,cost_value REAL,cost_status TEXT,cost_source TEXT,exit_code INTEGER,created_at REAL NOT NULL,completed_at REAL,response_json TEXT,usage_json TEXT,error TEXT);
 """
@@ -54,15 +61,20 @@ class Broker:
     if prior["status"]=="COMPLETED":return {"ok":True,"duplicate":True,"result":json.loads(prior["response_json"]),"receipt":self.receipt(dict(prior))}
    else:c.execute("INSERT INTO calls(request_id,actor,stage,requested_model,status,input_sha256,created_at) VALUES(?,?,?,?,?,?,?)",(request_id,actor,stage,model,"RUNNING",hashlib.sha256(prompt.encode()).hexdigest(),time.time()))
   call_dir=self.work_root/request_id.replace(":","_");call_dir.mkdir(parents=True,exist_ok=True);usage=call_dir/"usage.json"
-  cmd=shlex.split(self.hermes, posix=os.name!="nt")+["--ignore-rules","--in",str(call_dir),"--pass-session-id","--usage-file",str(usage),"--provider",provider,"--model",model,"-z",prompt]
-  p=subprocess.run(cmd,text=True,capture_output=True,timeout=int(route.get("timeout_seconds",300)))
+  (call_dir/"AGENTS.md").write_text(BROKER_RULES,encoding="utf-8")
+  # Hermes treats an explicitly empty toolset list as the supported zero-tool
+  # state.  The literal name ``none`` is an unknown toolset and the gateway
+  # rejects it as invalid_params.
+  cmd=shlex.split(self.hermes, posix=os.name!="nt")+["--in",str(call_dir),"--toolsets","","--pass-session-id","--usage-file",str(usage),"--provider",provider,"--model",model,"-z",prompt]
+  safe_env=os.environ.copy();safe_env.update({"HERMES_IGNORE_RULES":"0","HERMES_YOLO_MODE":"0","HERMES_ACCEPT_HOOKS":"0"})
+  p=subprocess.run(cmd,text=True,capture_output=True,timeout=int(route.get("timeout_seconds",300)),env=safe_env)
   used=json.loads(usage.read_text(encoding="utf-8")) if usage.exists() else {}
   if p.returncode:
    with sqlite3.connect(self.db) as c:c.execute("UPDATE calls SET status='FAILED',exit_code=?,completed_at=?,usage_json=?,error=? WHERE request_id=?",(p.returncode,time.time(),json.dumps(used,sort_keys=True),p.stderr[-2000:],request_id))
    raise RuntimeError(f"Hermes exit {p.returncode}: {p.stderr[-500:]}")
   result=json_object(p.stdout);response=json.dumps(result,sort_keys=True);cost=used.get("estimated_cost_usd") if used.get("cost_status")=="known" else None
   values=(used.get("provider"),used.get("model"),used.get("session_id"),"COMPLETED",hashlib.sha256(response.encode()).hexdigest(),used.get("input_tokens"),used.get("output_tokens"),used.get("total_tokens"),cost,used.get("cost_status","unknown"),used.get("cost_source","none"),0,time.time(),response,json.dumps(used,sort_keys=True),request_id)
-  with sqlite3.connect(self.db) as c:c.execute("UPDATE calls SET actual_provider=?,actual_model=?,session_id=?,status=?,output_sha256=?,input_tokens=?,output_tokens=?,total_tokens=?,cost_value=?,cost_status=?,cost_source=?,exit_code=?,completed_at=?,response_json=?,usage_json=? WHERE request_id=?",values)
+  with sqlite3.connect(self.db) as c:c.execute("UPDATE calls SET actual_provider=?,actual_model=?,session_id=?,status=?,output_sha256=?,input_tokens=?,output_tokens=?,total_tokens=?,cost_value=?,cost_status=?,cost_source=?,exit_code=?,completed_at=?,response_json=?,usage_json=?,error=NULL WHERE request_id=?",values)
   row={"request_id":request_id,"actor":actor,"stage":stage,"requested_model":model,"actual_provider":used.get("provider"),"actual_model":used.get("model"),"session_id":used.get("session_id"),"status":"COMPLETED","input_sha256":hashlib.sha256(prompt.encode()).hexdigest(),"output_sha256":hashlib.sha256(response.encode()).hexdigest(),"input_tokens":used.get("input_tokens"),"output_tokens":used.get("output_tokens"),"total_tokens":used.get("total_tokens"),"cost_value":cost,"cost_status":used.get("cost_status","unknown"),"cost_source":used.get("cost_source","none"),"exit_code":0}
   return {"ok":True,"duplicate":False,"result":result,"receipt":self.receipt(row)}
  @staticmethod
@@ -76,9 +88,9 @@ class Broker:
   raise ValueError("unsupported broker operation")
 
 def serve(a:argparse.Namespace)->int:
- path=Path(a.socket);path.parent.mkdir(parents=True,exist_ok=True);path.unlink(missing_ok=True);broker=Broker(Path(a.db),Path(a.key_dir),Path(a.work_root),Path(a.routes),a.hermes)
+ path=Path(a.socket);path.parent.mkdir(parents=True,exist_ok=True);path.parent.chmod(0o700);path.unlink(missing_ok=True);broker=Broker(Path(a.db),Path(a.key_dir),Path(a.work_root),Path(a.routes),a.hermes)
  with socket.socket(socket.AF_UNIX,socket.SOCK_STREAM) as listener:
-  listener.bind(str(path));listener.listen(8);listener.settimeout(1)
+  listener.bind(str(path));path.chmod(0o600);listener.listen(8);listener.settimeout(1)
   while broker.running:
    try:conn,_=listener.accept()
    except TimeoutError:continue

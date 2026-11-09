@@ -72,7 +72,7 @@ class OperationalMemoryTests(unittest.TestCase):
             payload={"verdict": "PASS", "artifact_sha256": "a" * 64},
         )
         self.assertEqual("MORCH_ACTIVATION", activation.kind)
-        self.assertEqual("MORCH_LOCAL_ADAPTER", activation.payload["authority_component"])
+        self.assertEqual("MORCH_LOCAL_DELEGATE", activation.payload["authority_component"])
         self.assertEqual(0, activation.payload["human_relay_count"])
         receipt = self.mem.consume_morch_activation("qa-pass-1")
         self.assertEqual("CONSUMED", receipt["status"])

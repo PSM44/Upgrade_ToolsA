@@ -128,6 +128,18 @@ class TransportTest(unittest.TestCase):
         self.assertEqual(self.t.nack(consumer="rorch", consumer_key=KEYS["rorch"], message_id="m1",
                                      claim_token=d2.claim_token, reason="again"), "DEAD")
 
+    def test_uws_redrive_dead_resets_retry_budget_and_is_audited(self):
+        self.enqueue_task(retries=1)
+        delivery = self.t.claim(consumer="rorch", consumer_key=KEYS["rorch"])
+        self.assertEqual(self.t.nack(consumer="rorch", consumer_key=KEYS["rorch"], message_id="m1",
+                                     claim_token=delivery.claim_token, reason="implementation defect"), "DEAD")
+        self.assertEqual(self.t.redrive_dead("m1", reason="implementation repaired"), "PENDING")
+        state = self.t.state("m1")["outbox"]
+        self.assertEqual(state["attempt_count"], 0)
+        self.assertEqual(self.t.audit_rows()[-1]["action"], "UWS_DEAD_REDRIVE")
+        with self.assertRaises(ConflictError):
+            self.t.redrive_dead("m1", reason="duplicate redrive")
+
     def test_expired_lease_recovers_without_duplicate_inbox(self):
         base = time.time()
         self.enqueue_task(now=base)

@@ -68,7 +68,7 @@ class Server:
 
     def handle(self, request: dict) -> dict:
         op = request.get("op")
-        actor, key = self.authenticate(request, "UWS" if op in {"reconcile", "snapshot", "shutdown"} else None)
+        actor, key = self.authenticate(request, "UWS" if op in {"reconcile", "redrive_dead", "snapshot", "shutdown"} else None)
         if op == "send":
             state = self.transport.enqueue(
                 producer=actor, producer_key=key, recipient=request["recipient"],
@@ -107,6 +107,9 @@ class Server:
             return {"ok": True, "actor": actor, "message_id": request["message_id"], "state": state}
         if op == "reconcile":
             return {"ok": True, "actor": actor, "stats": self.transport.reconcile()}
+        if op == "redrive_dead":
+            state = self.transport.redrive_dead(request["message_id"], reason=request.get("reason", "repaired implementation"))
+            return {"ok": True, "actor": actor, "message_id": request["message_id"], "state": state}
         if op == "snapshot":
             return {"ok": True, "counts": self.transport.counts(),
                     "audit_rows": len(self.transport.audit_rows()),
@@ -121,11 +124,12 @@ class Server:
 def serve(args: argparse.Namespace) -> int:
     socket_path = Path(args.socket)
     socket_path.parent.mkdir(parents=True, exist_ok=True)
+    socket_path.parent.chmod(0o700)
     if socket_path.exists():
         socket_path.unlink()
     server = Server(Path(args.db), Path(args.key_dir))
     with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as listener:
-        listener.bind(str(socket_path)); listener.listen(16); listener.settimeout(1.0)
+        listener.bind(str(socket_path)); socket_path.chmod(0o600); listener.listen(16); listener.settimeout(1.0)
         while server.running:
             try:
                 conn, _ = listener.accept()
@@ -153,7 +157,7 @@ def client(args: argparse.Namespace) -> int:
         })
     elif args.operation in {"claim", "consume"}:
         request["expected_message_id"] = args.message_id
-    elif args.operation in {"ack", "nack"}:
+    elif args.operation in {"ack", "nack", "redrive_dead"}:
         request["message_id"] = args.message_id
         request["claim_token"] = args.claim_token
         if args.operation == "nack":
@@ -170,7 +174,7 @@ def client(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(); sub = parser.add_subparsers(dest="command", required=True)
     s = sub.add_parser("serve"); s.add_argument("--db", required=True); s.add_argument("--key-dir", required=True); s.add_argument("--socket", required=True)
-    c = sub.add_parser("client"); c.add_argument("--socket", required=True); c.add_argument("--key", required=True); c.add_argument("--actor", required=True, choices=ACTORS); c.add_argument("operation", choices=("send", "claim", "consume", "ack", "nack", "reconcile", "snapshot", "shutdown")); c.add_argument("--recipient"); c.add_argument("--message-type"); c.add_argument("--message-id"); c.add_argument("--nonce"); c.add_argument("--payload"); c.add_argument("--message-ids", nargs="*"); c.add_argument("--claim-token"); c.add_argument("--reason"); c.add_argument("--non-retryable", action="store_true")
+    c = sub.add_parser("client"); c.add_argument("--socket", required=True); c.add_argument("--key", required=True); c.add_argument("--actor", required=True, choices=ACTORS); c.add_argument("operation", choices=("send", "claim", "consume", "ack", "nack", "reconcile", "redrive_dead", "snapshot", "shutdown")); c.add_argument("--recipient"); c.add_argument("--message-type"); c.add_argument("--message-id"); c.add_argument("--nonce"); c.add_argument("--payload"); c.add_argument("--message-ids", nargs="*"); c.add_argument("--claim-token"); c.add_argument("--reason"); c.add_argument("--non-retryable", action="store_true")
     args = parser.parse_args()
     return serve(args) if args.command == "serve" else client(args)
 

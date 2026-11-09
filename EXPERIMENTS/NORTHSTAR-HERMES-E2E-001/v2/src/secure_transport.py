@@ -382,7 +382,7 @@ class SecureTransport:
                     self._audit(conn, "ACK_RECONCILE_REJECTED", "UWS", row["message_id"], {})
                     stats["invalid_receipt"] += 1
                 else:
-                    conn.execute("UPDATE outbox SET state='ACKED',updated_at=? WHERE message_id=?", (now, row["message_id"]))
+                    conn.execute("UPDATE outbox SET state='ACKED',last_error=NULL,updated_at=? WHERE message_id=?", (now, row["message_id"]))
                     self._audit(conn, "ACK_RECONCILED", "UWS", row["message_id"], {})
                     stats["acked"] += 1
             expired = conn.execute("SELECT * FROM outbox WHERE state='CLAIMED' AND lease_expires_at<=?", (now,)).fetchall()
@@ -393,6 +393,18 @@ class SecureTransport:
                 self._audit(conn, "LEASE_RECOVERED", "UWS", row["message_id"], {"next_state": state})
                 stats["dead" if state == "DEAD" else "requeued"] += 1
         return stats
+
+    def redrive_dead(self, message_id: str, *, reason: str, now: float | None = None) -> str:
+        """Explicit UWS maintenance action after a diagnosed implementation repair."""
+        now = time.time() if now is None else now
+        with self._tx() as conn:
+            row = conn.execute("SELECT state FROM outbox WHERE message_id=?", (message_id,)).fetchone()
+            if row is None: raise TransportError("unknown message")
+            if row["state"] != "DEAD": raise ConflictError("only DEAD messages may be redriven")
+            conn.execute("UPDATE outbox SET state='PENDING',attempt_count=0,lease_owner=NULL,claim_token=NULL,lease_expires_at=NULL,last_error=?,updated_at=? WHERE message_id=?", (f"UWS redrive: {reason}", now, message_id))
+            conn.execute("UPDATE inbox SET state='NACKED',decided_at=?,decision_reason=? WHERE message_id=?", (now, f"UWS redrive: {reason}", message_id))
+            self._audit(conn, "UWS_DEAD_REDRIVE", "UWS", message_id, {"reason": reason})
+        return "PENDING"
 
     def state(self, message_id: str) -> dict[str, Any]:
         with self._read_conn() as conn:

@@ -16,10 +16,11 @@ class ModelBrokerTest(unittest.TestCase):
             "RORCH":{"provider":"custom","model":"dev"},
             "QA":{"provider":"custom","model":"review"}}}),encoding="utf-8")
         fake=root/"hermes";fake.write_text("""#!/usr/bin/env python3
-import json,sys
+import json,os,sys
 u=sys.argv[sys.argv.index('--usage-file')+1]
 json.dump({'provider':'custom','model':sys.argv[sys.argv.index('--model')+1],'session_id':'fake-session','input_tokens':7,'output_tokens':3,'total_tokens':10,'cost_status':'unknown','cost_source':'none'},open(u,'w'))
-print(json.dumps({'files':{'app.py':'x','test_app.py':'y'}}))
+cwd=sys.argv[sys.argv.index('--in')+1]
+print(json.dumps({'files':{'app.py':'x','test_app.py':'y'},'security':{'args':sys.argv[1:],'rules':open(os.path.join(cwd,'AGENTS.md')).read(),'ignore':os.environ.get('HERMES_IGNORE_RULES'),'yolo':os.environ.get('HERMES_YOLO_MODE'),'hooks':os.environ.get('HERMES_ACCEPT_HOOKS')}}))
 """,encoding="utf-8");fake.chmod(fake.stat().st_mode|stat.S_IEXEC)
         self.broker=Broker(root/"calls.db",keys,root/"work",routes,f'{sys.executable} {fake}');self.root=root
     def tearDown(self):self.tmp.cleanup()
@@ -30,6 +31,11 @@ print(json.dumps({'files':{'app.py':'x','test_app.py':'y'}}))
         self.assertFalse(first["duplicate"]);self.assertTrue(second["duplicate"])
         self.assertEqual(first["receipt"]["actual_model"],"dev")
         self.assertEqual(first["receipt"]["cost_status"],"unknown");self.assertIsNone(first["receipt"]["cost_value"])
+        security=first["result"]["security"]
+        self.assertNotIn("--ignore-rules",security["args"])
+        self.assertEqual(security["args"][security["args"].index("--toolsets")+1],"")
+        self.assertIn("Do not invoke tools",security["rules"])
+        self.assertEqual((security["ignore"],security["yolo"],security["hooks"]),("0","0","0"))
         with self.assertRaises(PermissionError):self.broker.handle(self.req(stage="REVIEW1",rid="bad"))
         forged=self.req(rid="forged");forged["key"]="00"*16
         with self.assertRaises(PermissionError):self.broker.handle(forged)
