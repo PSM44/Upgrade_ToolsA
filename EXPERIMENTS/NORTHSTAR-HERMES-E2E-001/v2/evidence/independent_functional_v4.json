@@ -1,0 +1,131 @@
+{
+  "schema_version": "upgrade-ta.northstar.independent-functional-review/v4",
+  "reviewed_at_utc": "2026-11-09T10:08:40.4988340Z",
+  "task_id": "NORTHSTAR-HERMES-CONVERGENCE-002",
+  "run_id": "RUN-V2-003",
+  "correlation_id": "northstar-v2-eb1576a68cd49f4f155f",
+  "reviewer_identity": "/root/uws_contracts-independent-reviewer-v4",
+  "executor_identity": "CODEX_DESKTOP_ROOT_V4",
+  "reviewed_fronts": ["NTV_FUNCTIONAL"],
+  "overall_status": "PASS",
+  "scope_statement": "PASS applies to the implemented offline V4 FSM, authenticated transport boundary, role-process mount isolation, memory/checkpoint recovery and zero-human-relay fixture. It is not NORTHSTAR_E2E_PASS: V4 replays pinned Hermes outputs, performs no new inference and does not verify two real models.",
+  "criteria": [
+    {
+      "criterion": "uws_fsm_and_terminal_sequence",
+      "status": "PASS",
+      "evidence": "Read-only uws_v4.db inspection found exactly 15 events, 15 unique event IDs, 15 unique idempotency keys, valid payload hashes and the required rejection -> rework -> QA_PASS -> MORCH_REVIEW -> ACCEPTED -> TERMINAL_COMPLETED sequence."
+    },
+    {
+      "criterion": "actor_process_send_consume_ack_separation",
+      "status": "PASS",
+      "evidence": "Each send and consume is initiated by a new actor-specific bwrap client. Each client receives only /identity/key.bin for its actor plus the Unix socket; UWS reconciliation is initiated by a separate UWS bwrap client. The daemon executes ledger mutations and validates the actor capability before accepting the operation."
+    },
+    {
+      "criterion": "supervisor_transport_authority_separation",
+      "status": "PASS",
+      "evidence": "Current supervisor_v2.py has no SecureTransport import or call. It does not read key bytes; it selects one key path for a bwrap mount and invokes the RPC client. SecureTransport and transport_v4.db are owned by the ephemeral transport_rpc daemon."
+    },
+    {
+      "criterion": "single_capability_actor_mount",
+      "status": "PASS",
+      "evidence": "Independent QA-context mount probe observed exactly one identity file named key.bin, size 32 bytes; no MORCH key, state directory or transport DB was visible. The same actor_rpc construction is used for MORCH, RORCH, QA and UWS."
+    },
+    {
+      "criterion": "qa_code_state_identity_isolation",
+      "status": "PASS",
+      "evidence": "QA role execution receives RORCH app read-only and QA evidence writable, with no state mount. Runtime permission evidence records app write denial and missing state path. Independent mount probe confirmed state_visible=false, transport_db_visible=false and other_key_visible=false."
+    },
+    {
+      "criterion": "identity_authentication_order_and_privileged_role_denial",
+      "status": "PASS",
+      "evidence": "Current transport_rpc authenticates the supplied HMAC capability before privileged-role authorization. Independent ephemeral RPC probe verified QA key presented as MORCH => actor capability mismatch, while authenticated QA requesting UWS snapshot => operation requires UWS. evidence/identity_boundary_probe.json records the same two fail-closed outcomes."
+    },
+    {
+      "criterion": "transport_outbox_inbox_ack_reconcile",
+      "status": "PASS",
+      "evidence": "transport_v4.db has 7 unique messages/nonces, 7 outbox ACKED, 7 inbox ACKED and 32 append-only audit rows. Independent recomputation verified all producer signatures, consumer receipts, payload hashes and audit hashes. Each message has attempt_count=1."
+    },
+    {
+      "criterion": "negative_transport_security_and_recovery",
+      "status": "PASS",
+      "evidence": "Independent read-only bwrap suite passed 29/29 tests. Transport cases include replay/stale timestamp, role/route escalation, spoofed QA, forged QA_PASS, wrong consumer, concurrent single-winner claim, duplicate/conflict, retry/dead-letter, lease recovery, ambiguous ACK reopen and append-only audit. A separate ephemeral RPC flow passed valid send/consume/reconcile and rejected three focalized identity/role attacks."
+    },
+    {
+      "criterion": "ephemeral_single_ledger_daemon_lifecycle",
+      "status": "PASS",
+      "evidence": "supervisor_v2 starts one transport_rpc serve process for transport_v4.db, waits for its Unix socket and capabilities, uses only RPC during the run, requests UWS-authenticated shutdown in finally, and waits for daemon exit. No transport daemon remained after evidence collection."
+    },
+    {
+      "criterion": "memory_checkpoint_and_restart_recovery",
+      "status": "PASS",
+      "evidence": "memory_v4.db has 10 hash-chained records, 3 checkpoints, a consumed MORCH_LOCAL_ADAPTER activation and a valid independently recomputed chain. Phase evidence shows controlled interruption at QA_REJECTED and later terminal recovery without duplicate events/messages."
+    },
+    {
+      "criterion": "morch_local_adapter_activation",
+      "status": "PASS",
+      "evidence": "QA_PASS v4-qa-pass durably produced one consumed MORCH_ACTIVATION; the subsequent decision is authored as MORCH_LOCAL_ADAPTER. This is a local durable coordinator, not ChatGPT or a remote always-on listener."
+    },
+    {
+      "criterion": "human_relay_count_zero",
+      "status": "PASS",
+      "evidence": "After supervisor launch, the fixture transports all seven handoffs and completes rejection, repair, re-review, MORCH acceptance and RORCH acknowledgement without manual message relay. Durable memory/result evidence records human_relay_count=0."
+    },
+    {
+      "criterion": "pinned_hermes_baseline_replay",
+      "status": "PASS",
+      "evidence": "V4 accurately labels its seven model-derived inputs PINNED_REAL_HERMES_BASELINE_REPLAY and pins their SHA256 values. The fixture does not misclassify replay as new inference."
+    },
+    {
+      "criterion": "new_hermes_inference",
+      "status": "UNVERIFIED",
+      "evidence": "V4 makes no provider call; it replays previously captured Hermes result artifacts."
+    },
+    {
+      "criterion": "real_multimodel_execution",
+      "status": "UNVERIFIED",
+      "evidence": "Offline router tests cover two synthetic backends and fallback, but no second authenticated real model/provider was executed. This remains outside the V4 functional PASS and prevents NORTHSTAR_E2E_PASS."
+    }
+  ],
+  "independent_reproduction": [
+    {
+      "command_summary": "networkless bwrap with V2 source read-only; python3 -B -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "result": "29/29 tests passed"
+    },
+    {
+      "command_summary": "read-only SQLite inspection and independent SHA256/HMAC/receipt/memory-chain recomputation",
+      "exit_code": 0,
+      "result": "15 UWS events; 7 outbox; 7 inbox; 32 audit; 10 memory records; all checked hashes valid"
+    },
+    {
+      "command_summary": "QA bwrap visibility probe with only qa.key mounted",
+      "exit_code": 0,
+      "result": "one 32-byte capability visible; state, transport DB and other keys absent"
+    },
+    {
+      "command_summary": "ephemeral transport_rpc Server negative and valid-flow probe in tmpfs",
+      "exit_code": 0,
+      "result": "QA-key/MORCH spoof rejected by capability; QA privileged snapshot rejected by role; RORCH forged QA_PASS rejected; valid MORCH->RORCH send/consume/UWS reconcile ACKED"
+    }
+  ],
+  "sha256": {
+    "src/supervisor_v2.py": "6a11cb729c8e340022dfb9afebe781e80c26c3ba5393bf9fa4bbeeb83c85de04",
+    "src/transport_rpc.py": "cbc3fe166772afa5d6b8b11b8e7c65ede4e2833e9e3c4842eceaea1980d61b76",
+    "src/role_worker.py": "b6c24e854cc7fd705bfe0daac77b95b56cd235a66964c06096db827cde4952f6",
+    "src/secure_transport.py": "055fdbe263d07360cc3e10e1c7e9e5ecf8c911ed782da1077951755d095fb232",
+    "runtime/state/transport_v4.db": "84a0569f9af785a0938466f951a0f37992a263b8606902e8378f139e7f8a6632",
+    "runtime/state/memory_v4.db": "6d1c1657f1613d6cdbfa9d3e7fd740dd93d9c8796916d5a226616d18a5e5dd68",
+    "runtime/state/uws_v4.db": "cd2d1484816e68ad43e9ad1e474f783cc061681a71267c1d3fd6e3b5aa6ded42",
+    "evidence/v4_functional_result.json": "83cb53baf966b54799e2af39a1be8e44e028c5de1226c82269acf37a037ed83f",
+    "evidence/identity_boundary_probe.json": "ac4e35178affa31da8fb68e82ffcff680c381b5152db39ac631a00bae2c689c8",
+    "evidence/v4_phase1_stdout.log": "8ac38f2204a90cdf88a33ddb2b20bd3847554ec0d1dfbbb596a994ff6478fee3",
+    "evidence/v4_phase2_stdout.log": "cf905ad9d0c14e1e008269bc71d12d92ed81182713c2b09980a635d57349a73b"
+  },
+  "limitations": [
+    "NTV_FUNCTIONAL PASS does not cover NTV_ROOT, Windows ACL effectiveness, key-file host permissions, rollback, post-close drift or writes by unrelated host processes.",
+    "Actor clients initiate authenticated send/consume operations; the daemon validates capabilities and performs the durable SQLite mutation. This is a brokered ACK design, not direct actor access to the ledger.",
+    "The consume RPC returns message identity/type and payload digest, while fixture work products are supplied through separately mounted pinned artifacts. Production payload-dispatch integration remains outside this fixture.",
+    "Pinned replay and absent real multimodel execution mean the overall mission remains NORTHSTAR_PARTIAL even though the implemented V4 functional slice passes."
+  ]
+}
+

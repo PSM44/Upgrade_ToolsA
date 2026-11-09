@@ -1,0 +1,77 @@
+{
+  "schema": "northstar.hermes.runtime-probe/v1",
+  "observed_at_utc": "2026-11-09T02:59:11.5380669Z",
+  "mode": "READ_ONLY_NO_INFERENCE",
+  "hermes": {
+    "version": "0.22.6",
+    "profile": "default",
+    "configured_provider": "custom",
+    "configured_model": "20261030_RORCH",
+    "gateway": {
+      "status": "running",
+      "pid": 1588,
+      "manager_reported_by_status_full": "systemd-user",
+      "inside_experimental_bwrap": false
+    },
+    "fallback_providers": [],
+    "openrouter_configured": false,
+    "auth_providers_logged_in": [],
+    "memory": {
+      "built_in_enabled": true,
+      "external_provider": null
+    }
+  },
+  "omniroute": {
+    "process_pid": 532,
+    "listeners": [
+      {"address": "0.0.0.0", "port": 20128, "models_without_auth_http": 401},
+      {"address": "127.0.0.1", "port": 20131, "models_without_auth_http": 426},
+      {"address": "127.0.0.1", "port": 20132, "models_without_auth_http": 404}
+    ],
+    "authenticated_models_probe": {
+      "status": "HTTP_401",
+      "secret_printed": false,
+      "inference_calls": 0
+    }
+  },
+  "declarative_moa_only": {
+    "active": false,
+    "references": [
+      "openai-codex:gpt-5.5",
+      "openrouter:deepseek/deepseek-v4-pro",
+      "openrouter:anthropic/claude-opus-4.8"
+    ],
+    "operational_evidence": false,
+    "reason": "OpenRouter is not configured and no corresponding authenticated route was proven."
+  },
+  "isolated_runtime_feasibility": {
+    "hermes_agent_bytes_class": "approximately 1.1 GiB",
+    "python_runtime_bytes_class": "approximately 260 MiB",
+    "config_mode": "0644_contains_route_configuration",
+    "env_mode": "0600_contains_credentials",
+    "safe_to_copy_code_and_python_without_secrets": true,
+    "real_inference_after_secretless_copy": false,
+    "egress_credential_injection": {
+      "enabled": false,
+      "binary": "missing",
+      "config": "missing",
+      "process": "stopped"
+    },
+    "blocking_condition": "A secretless isolated HERMES_HOME can run offline tests but cannot authenticate the current custom provider. Copying config/.env would move credentials into the fixture, while sharing host loopback/gateway would leave Hermes outside the verified boundary. No configured credential-injection proxy exists.",
+    "status": "ISOLATED_LIVE_HERMES_BLOCKED_EXTERNAL_CREDENTIAL_INJECTION"
+  },
+  "multimodel": {
+    "offline_router_two_backends": "VERIFIED_BY_TESTS",
+    "two_real_models": "UNVERIFIED",
+    "second_real_route": "NOT_AVAILABLE_FROM_CURRENT_AUTHORIZED_CONFIGURATION",
+    "cost_of_any_second_route": "UNKNOWN",
+    "live_second_model_call_performed": false
+  },
+  "safety": {
+    "configuration_modified": false,
+    "gateway_modified": false,
+    "credentials_read_into_artifacts": false,
+    "provider_inference_invocations": 0
+  }
+}
+

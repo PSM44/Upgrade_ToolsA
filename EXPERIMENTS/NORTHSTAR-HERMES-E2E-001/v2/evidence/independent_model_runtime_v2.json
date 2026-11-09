@@ -1,0 +1,131 @@
+{
+  "schema": "northstar.hermes.independent-model-runtime/v2",
+  "observed_at_utc": "2026-11-09T09:57:23.3202496Z",
+  "review_mode": "READ_ONLY_NO_INFERENCE_NO_SECRET_READ",
+  "source_evidence": "v2/evidence/runtime_probe.json",
+  "overall_status": "BLOCKED_EXTERNAL_DEPENDENCY",
+  "configured_runtime": {
+    "status": "VERIFIED",
+    "hermes_version": "0.22.6",
+    "profile": "default",
+    "provider": "custom",
+    "model": "20261030_RORCH",
+    "config_path": "/home/aazcl/.hermes/config.yaml",
+    "config_mode": "0644",
+    "env_path": "/home/aazcl/.hermes/.env",
+    "env_mode": "0600",
+    "verification": "Hermes status and path commands reported the same provider/model and paths as runtime_probe.json; only file metadata was inspected. Secret values were neither read nor printed."
+  },
+  "fallbacks": {
+    "status": "VERIFIED",
+    "configured": [],
+    "verification": "hermes fallback list reported no fallback providers."
+  },
+  "openrouter": {
+    "status": "VERIFIED",
+    "configured": false,
+    "authenticated_route_proven": false,
+    "verification": "hermes status --full reported OpenRouter not set; no OpenRouter model call was made."
+  },
+  "omniroute": {
+    "status": "VERIFIED",
+    "current_process": {
+      "pid": 532,
+      "command_identity": "omniroute (v16.3.1)",
+      "started_local": "2026-11-09T03:01:17-03:00"
+    },
+    "listeners": [
+      {
+        "address": "0.0.0.0",
+        "port": 20128,
+        "unauthenticated_models_http": 401
+      },
+      {
+        "address": "127.0.0.1",
+        "port": 20131,
+        "unauthenticated_models_http": 426
+      },
+      {
+        "address": "127.0.0.1",
+        "port": 20132,
+        "unauthenticated_models_http": 404
+      }
+    ],
+    "authenticated_models": {
+      "status": "UNVERIFIED",
+      "reason": "No credential was read and no authenticated models request or inference call was made."
+    },
+    "process_continuity_from_runtime_probe": {
+      "status": "UNVERIFIED",
+      "reason": "runtime_probe.json was observed at 2026-11-09T02:59:11.5380669Z, but the current PID 532 process reports a later start time. PID equality does not prove process identity continuity."
+    }
+  },
+  "gateway": {
+    "status": "VERIFIED",
+    "running": true,
+    "current_pid": 1588,
+    "current_command": "python3 -m hermes_cli.main --profile default gateway run --quiet --idle-exit",
+    "started_local": "2026-11-09T05:15:43-03:00",
+    "inside_experimental_boundary": false,
+    "manager_identity": {
+      "status": "UNVERIFIED",
+      "reason": "hermes status --full reported systemd-user while hermes gateway status reported manual foreground mode."
+    },
+    "process_continuity_from_runtime_probe": {
+      "status": "UNVERIFIED",
+      "reason": "The current PID 1588 start time is later than runtime_probe.json observation time; the repeated PID is not continuity evidence."
+    }
+  },
+  "egress_credential_injection": {
+    "status": "VERIFIED",
+    "enabled": false,
+    "binary": "missing",
+    "config": "not generated",
+    "ca_cert": "not generated",
+    "process": "stopped",
+    "listening": false,
+    "verification": "hermes egress status reported the integration disabled and all runtime components absent/stopped."
+  },
+  "experimental_secret_zero_hermes": {
+    "offline_runtime": {
+      "status": "UNVERIFIED",
+      "reason": "bubblewrap 0.11.2 is installed, but no Hermes code tree, Python runtime, HERMES_HOME, config.yaml, or .env was present under the v2 fixture and no secret-zero Hermes process was executed."
+    },
+    "live_current_model": {
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY",
+      "reason": "The only configured live route is the host custom provider. Its models endpoint returns HTTP 401 without authentication. Copying or mounting the host config/.env would introduce credentials into the fixture, and using the host gateway would execute Hermes outside the experimental boundary. No credential-injection egress exists."
+    },
+    "live_multimodel": {
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY",
+      "reason": "OpenRouter is not configured, Hermes has no fallback route, and the declarative MoA references have no authenticated operational evidence. The v2 baseline-replay route is replay evidence, not a second live inference route."
+    }
+  },
+  "minimum_exact_dependency": {
+    "for_one_live_secret_zero_route": "Provide one already-authorized credential-injection boundary outside the experimental guest, reachable only through a dedicated guest egress endpoint, that maps an opaque guest token to the existing custom OmniRoute credential for the /v1 route. The guest must not receive or mount the real credential, host .env, host config.yaml, host HERMES_HOME, or host gateway socket.",
+    "for_live_multimodel": "In the same credential-injection boundary, provide one additional already-authorized real provider/model mapping with a distinct model identity and measured usage/cost response. No new purchase is implied or authorized. Both mappings must be callable from separate isolated Hermes role processes and produce redacted call receipts.",
+    "acceptance_evidence_required": [
+      "secret-zero guest filesystem and environment inventory before and after execution",
+      "two authenticated model-list or inference route receipts with secret values redacted",
+      "one real inference receipt per distinct model identity",
+      "provider, model, request correlation, token usage, cost status, and exit status",
+      "negative proof that the guest cannot reach the host gateway, host HERMES_HOME, or provider endpoints except through the injection boundary"
+    ]
+  },
+  "multimodel_conclusion": {
+    "status": "UNVERIFIED",
+    "real_distinct_models_proven": 0,
+    "configured_live_routes_proven": 1,
+    "replay_routes_proven": 1,
+    "reason": "No real model call was authorized or performed during this review; current evidence proves configuration and listeners, not two live distinct models."
+  },
+  "safety": {
+    "model_calls": 0,
+    "authenticated_provider_requests": 0,
+    "secret_values_read": false,
+    "secret_values_printed": false,
+    "runtime_configuration_modified": false,
+    "gateway_modified": false,
+    "only_written_artifact": "v2/evidence/independent_model_runtime_v2.json"
+  }
+}
+
