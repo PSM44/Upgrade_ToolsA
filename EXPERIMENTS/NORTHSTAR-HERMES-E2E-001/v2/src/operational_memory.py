@@ -119,6 +119,14 @@ class OperationalMemory:
     def __init__(self, db_path: str | Path, *, read_only: bool = False):
         path = Path(db_path)
         self.db_path = str(path)
+        if read_only:
+            wal = path.with_name(path.name + "-wal")
+            if wal.exists() and wal.stat().st_size > 0:
+                raise IntegrityError(
+                    f"refusing read-only open of {path}: non-empty WAL "
+                    f"{wal.name} means immutable=1 would read stale data; "
+                    "checkpoint the database first"
+                )
         target = f"file:{path.as_posix()}?mode=ro&immutable=1" if read_only else self.db_path
         self._conn = sqlite3.connect(
             target,

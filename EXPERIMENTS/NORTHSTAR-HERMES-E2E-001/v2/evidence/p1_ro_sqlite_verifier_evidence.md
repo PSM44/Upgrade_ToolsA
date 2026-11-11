@@ -109,3 +109,26 @@ FAIL by design until such a principal exists.
   `mode=ro` (no immutable) against the real runtime touched `memory.db-shm`/`-wal`
   mtimes (content unchanged, wal empty) — exactly the defect class this patch
   closes; recorded for transparency.
+
+## 6. Follow-up: non-empty-WAL guard (same day, HUMAN-approved)
+
+QA finding 1 (MEDIUM) addressed: in read-only mode, `OperationalMemory.__init__`
+now raises `IntegrityError` before connecting when `<db>-wal` exists with
+size > 0, closing the silent-stale-read case (`immutable=1` reading pre-WAL
+state). Delta: +8 lines in `src/operational_memory.py`, +16 in
+`tests/test_operational_memory.py` (new `test_read_only_refuses_non_empty_wal`),
+pure additions.
+
+Verification: suite 57 OK + 2 pre-existing skips; immutability re-verified by
+SHA256 pre/post on writable and write-protected runtime copies (identical,
+auditor verdict unchanged at 10/13 NORTHSTAR_FAIL); real runtime's 0-byte
+`memory.db-wal` exercises the guard's allow path.
+
+Independent QA re-review: **QA_PASS**. QA confirmed by its own probes that the
+previously demonstrated stale scenario is now rejected loudly, 0-byte/absent
+WAL opens fine, write mode is unaffected, and `stat` on an unreadable WAL still
+guards. Non-blocking notes: conservative false positive on a fully
+checkpointed but non-truncated WAL (safe direction for an auditor); TOCTOU
+check-then-connect race is irrelevant because `immutable=1` already assumes a
+quiescent runtime. Still open (unchanged): LOW URI percent-encoding; INFO
+auditor `rows()` uses plain `mode=ro` for the other dbs.

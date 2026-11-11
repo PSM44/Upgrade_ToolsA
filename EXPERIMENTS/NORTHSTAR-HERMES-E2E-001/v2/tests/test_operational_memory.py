@@ -56,6 +56,22 @@ class OperationalMemoryTests(unittest.TestCase):
         with self.assertRaises(sqlite3.OperationalError):
             self.mem.append(task_id=self.task, kind="ERROR", actor="QA", payload={})
 
+    def test_read_only_refuses_non_empty_wal(self) -> None:
+        self.mem.append(
+            task_id=self.task,
+            kind="OBJECTIVE",
+            actor="MORCH_LOCAL_ADAPTER",
+            payload={"goal": "inspect"},
+        )
+        self.mem.close()
+        wal = self.db.with_name(self.db.name + "-wal")
+        wal.write_bytes(b"\x00" * 32)
+        with self.assertRaises(IntegrityError):
+            OperationalMemory(self.db, read_only=True)
+        wal.write_bytes(b"")
+        self.mem = OperationalMemory(self.db, read_only=True)
+        self.assertTrue(self.mem.verify_chain(self.task))
+
     def test_qa_and_rorch_cannot_write_morch_decisions(self) -> None:
         for actor in ("QA", "RORCH", "UWS"):
             with self.subTest(actor=actor), self.assertRaises(AuthorizationError):
