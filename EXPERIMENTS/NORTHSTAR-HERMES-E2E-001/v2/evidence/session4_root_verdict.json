@@ -1,0 +1,28 @@
+{
+  "after_sha256": "44578b6374d64cbb0e2ccaedb39ab61d2e9b002c6bd4e856800a0809971e351b",
+  "before_sha256": "12b6b6f2fe0a791eef2c73fa8e2e7efdfe67b984799b6741434b9bfb9d364521",
+  "checks": [
+    {
+      "detail": "full file SHA256 manifest comparison",
+      "name": "original_root_unchanged",
+      "passed": true
+    },
+    {
+      "detail": "all approved-root SQLite databases PRAGMA quick_check",
+      "name": "sqlite_integrity",
+      "passed": true
+    },
+    {
+      "detail": "FAIL when Hermes/OmniRoute runtime remains host-scoped outside the experimental boundary",
+      "name": "full_runtime_contained",
+      "passed": false
+    },
+    {
+      "detail": "process, socket, mount and external metadata inventory",
+      "name": "wsl_inventory_completed",
+      "passed": true
+    }
+  ],
+  "schema": "upgrade-ta.northstar.full-root-ntv/v1",
+  "status": "FAIL"
+}

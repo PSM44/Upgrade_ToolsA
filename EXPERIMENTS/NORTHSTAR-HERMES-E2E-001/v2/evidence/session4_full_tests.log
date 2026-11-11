@@ -1,0 +1,88 @@
+test_active_process_requires_reconciliation (test_mission_checkpoint.MissionCheckpointTest.test_active_process_requires_reconciliation) ... ok
+test_atomic_roundtrip_and_revision (test_mission_checkpoint.MissionCheckpointTest.test_atomic_roundtrip_and_revision) ... ok
+test_command_escape_is_rejected (test_mission_checkpoint.MissionCheckpointTest.test_command_escape_is_rejected) ... ok
+test_dry_run_does_not_execute (test_mission_checkpoint.MissionCheckpointTest.test_dry_run_does_not_execute) ... ok
+test_human_hold_cannot_be_relaxed (test_mission_checkpoint.MissionCheckpointTest.test_human_hold_cannot_be_relaxed) ... ok
+test_shell_command_is_rejected (test_mission_checkpoint.MissionCheckpointTest.test_shell_command_is_rejected) ... ok
+test_source_hash_mismatch_is_rejected (test_mission_checkpoint.MissionCheckpointTest.test_source_hash_mismatch_is_rejected) ... ok
+test_tamper_is_rejected (test_mission_checkpoint.MissionCheckpointTest.test_tamper_is_rejected) ... ok
+test_valid_resume_executes_foreground_without_shell (test_mission_checkpoint.MissionCheckpointTest.test_valid_resume_executes_foreground_without_shell) ... ok
+test_write_root_escape_is_rejected (test_mission_checkpoint.MissionCheckpointTest.test_write_root_escape_is_rejected) ... ok
+test_labels_alone_are_not_multimodel_evidence (test_model_route_probe.ModelRouteProbeTests.test_labels_alone_are_not_multimodel_evidence) ... ok
+test_two_provider_receipts_are_required (test_model_route_probe.ModelRouteProbeTests.test_two_provider_receipts_are_required) ... ok
+test_all_routes_failed_records_terminal_failure (test_model_router.ModelRouterTests.test_all_routes_failed_records_terminal_failure) ... ok
+test_bounded_retry_then_fallback (test_model_router.ModelRouterTests.test_bounded_retry_then_fallback) ... ok
+test_config_file_changes_role_selection_without_code_change (test_model_router.ModelRouterTests.test_config_file_changes_role_selection_without_code_change) ... ok
+test_missing_role_is_fail_closed (test_model_router.ModelRouterTests.test_missing_role_is_fail_closed) ... ok
+test_required_identity_receipt_rejects_relabeling (test_model_router.ModelRouterTests.test_required_identity_receipt_rejects_relabeling) ... ok
+test_task_specific_route_and_correlated_receipt (test_model_router.ModelRouterTests.test_task_specific_route_and_correlated_receipt) ... ok
+test_two_distinct_role_routes_are_persisted (test_model_router.ModelRouterTests.test_two_distinct_role_routes_are_persisted) ... ok
+test_unattested_declared_routes_do_not_count_as_multimodel (test_model_router.ModelRouterTests.test_unattested_declared_routes_do_not_count_as_multimodel) ... ok
+test_unknown_cost_is_null_not_zero (test_model_router.ModelRouterTests.test_unknown_cost_is_null_not_zero) ... ok
+test_usage_validation_requires_known_cost_value (test_model_router.ModelRouterTests.test_usage_validation_requires_known_cost_value) ... ok
+test_authenticated_ingress_replay_and_terminal_egress (test_morch_delegate.MorchDelegateTest.test_authenticated_ingress_replay_and_terminal_egress) ... ok
+test_activation_replay_is_idempotent_but_conflict_fails (test_operational_memory.OperationalMemoryTests.test_activation_replay_is_idempotent_but_conflict_fails) ... ok
+test_chain_detects_tampering (test_operational_memory.OperationalMemoryTests.test_chain_detects_tampering) ... ok
+test_crash_before_checkpoint_commit_rolls_back (test_operational_memory.OperationalMemoryTests.test_crash_before_checkpoint_commit_rolls_back) ... ok
+test_cursor_is_monotonic_and_persistent (test_operational_memory.OperationalMemoryTests.test_cursor_is_monotonic_and_persistent) ... ok
+test_non_qa_pass_cannot_activate_morch (test_operational_memory.OperationalMemoryTests.test_non_qa_pass_cannot_activate_morch) ... ok
+test_persists_across_close_and_reopen (test_operational_memory.OperationalMemoryTests.test_persists_across_close_and_reopen) ... ok
+test_qa_and_rorch_cannot_write_morch_decisions (test_operational_memory.OperationalMemoryTests.test_qa_and_rorch_cannot_write_morch_decisions) ... ok
+test_qa_pass_durably_activates_local_morch_without_human (test_operational_memory.OperationalMemoryTests.test_qa_pass_durably_activates_local_morch_without_human) ... ok
+test_record_types_and_chain (test_operational_memory.OperationalMemoryTests.test_record_types_and_chain) ... ok
+test_recovery_returns_checkpoint_and_later_context (test_operational_memory.OperationalMemoryTests.test_recovery_returns_checkpoint_and_later_context) ... ok
+test_relevant_memory_survives_reopen (test_persistent_control_plane.MemoryRetrievalTest.test_relevant_memory_survives_reopen) ... ok
+setUpClass (test_persistent_control_plane.PersistentSessionEvidenceTest) ... skipped 'NORTHSTAR_CP_RUNTIME not set'
+test_ack_ambiguous_crash_reconciles_after_reopen (test_secure_transport.TransportTest.test_ack_ambiguous_crash_reconciles_after_reopen) ... ok
+test_audit_is_append_only_even_for_authenticated_uws (test_secure_transport.TransportTest.test_audit_is_append_only_even_for_authenticated_uws) ... ok
+test_concurrent_claim_has_single_winner (test_secure_transport.TransportTest.test_concurrent_claim_has_single_winner) ... ok
+test_duplicate_suppressed_and_id_conflict_detected (test_secure_transport.TransportTest.test_duplicate_suppressed_and_id_conflict_detected) ... ok
+test_expired_lease_recovers_without_duplicate_inbox (test_secure_transport.TransportTest.test_expired_lease_recovers_without_duplicate_inbox) ... ok
+test_nack_retries_then_dead_letter (test_secure_transport.TransportTest.test_nack_retries_then_dead_letter) ... ok
+test_only_intended_consumer_can_claim_and_ack (test_secure_transport.TransportTest.test_only_intended_consumer_can_claim_and_ack) ... ok
+test_outbox_inbox_ack_are_distinct_phases (test_secure_transport.TransportTest.test_outbox_inbox_ack_are_distinct_phases) ... ok
+test_payload_claims_do_not_grant_authority (test_secure_transport.TransportTest.test_payload_claims_do_not_grant_authority) ... ok
+test_replay_nonce_and_stale_timestamp_rejected (test_secure_transport.TransportTest.test_replay_nonce_and_stale_timestamp_rejected) ... ok
+test_role_route_prevents_privilege_escalation (test_secure_transport.TransportTest.test_role_route_prevents_privilege_escalation) ... ok
+test_spoofed_qa_and_forged_pass_rejected (test_secure_transport.TransportTest.test_spoofed_qa_and_forged_pass_rejected) ... ok
+test_uws_redrive_dead_resets_retry_budget_and_is_audited (test_secure_transport.TransportTest.test_uws_redrive_dead_resets_retry_budget_and_is_audited) ... ok
+test_cross_objective_retrieval_survives_restart (test_session2_model_broker.CrossObjectiveMemoryTest.test_cross_objective_retrieval_survives_restart) ... ok
+test_authenticated_acl_idempotent_receipt_unknown_cost (test_session2_model_broker.ModelBrokerTest.test_authenticated_acl_idempotent_receipt_unknown_cost) ... ok
+setUpClass (test_session2_real_runtime.Session2RealRuntimeTest) ... skipped 'NORTHSTAR_SESSION2_RUNTIME not set'
+test_qa_sees_app_and_dev_read_only_and_owns_qa (test_session3_role_mounts.RoleMountPolicyTest.test_qa_sees_app_and_dev_read_only_and_owns_qa) ... ERROR
+test_rorch_cannot_mount_qa_evidence (test_session3_role_mounts.RoleMountPolicyTest.test_rorch_cannot_mount_qa_evidence) ... ERROR
+test_empty_final_content_fails_closed (test_session4_omniroute_broker.DirectOmniRouteBrokerTests.test_empty_final_content_fails_closed) ... ok
+test_records_actual_model_usage_cost_and_deduplicates (test_session4_omniroute_broker.DirectOmniRouteBrokerTests.test_records_actual_model_usage_cost_and_deduplicates) ... ok
+
+======================================================================
+ERROR: test_qa_sees_app_and_dev_read_only_and_owns_qa (test_session3_role_mounts.RoleMountPolicyTest.test_qa_sees_app_and_dev_read_only_and_owns_qa)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/c/UTA_ISOLATION/NORTHSTAR-HERMES-E2E-001/v2/tests/test_session3_role_mounts.py", line 22, in test_qa_sees_app_and_dev_read_only_and_owns_qa
+    command = cp.worker_cmd("QA", "m1", "o1")
+  File "/mnt/c/UTA_ISOLATION/NORTHSTAR-HERMES-E2E-001/v2/src/persistent_control_plane.py", line 109, in worker_cmd
+    cmd=["wsl.exe","-d","kali-linux","--","bwrap","--unshare-all","--die-with-parent","--new-session","--clearenv","--ro-bind","/usr","/usr","--ro-bind","/bin","/bin","--ro-bind","/lib","/lib","--ro-bind","/lib64","/lib64","--ro-bind","/etc","/etc","--ro-bind",wsl(HERE),"/code","--ro-bind",wsl(self.keys/f"{actor.lower()}.key"),"/identity/key.bin","--bind",self.socket_dir,"/ipc","--proc","/proc","--dev","/dev","--tmpfs","/tmp","--setenv","HOME","/tmp/home","--setenv","PYTHONDONTWRITEBYTECODE","1"]
+                                                                                                                                                                                                                                                                     ~~~^^^^^^
+  File "/mnt/c/UTA_ISOLATION/NORTHSTAR-HERMES-E2E-001/v2/src/persistent_control_plane.py", line 16, in wsl
+    p=path.resolve(); return f"/mnt/{p.drive[0].lower()}/{p.as_posix()[3:]}"
+                                     ~~~~~~~^^^
+IndexError: string index out of range
+
+======================================================================
+ERROR: test_rorch_cannot_mount_qa_evidence (test_session3_role_mounts.RoleMountPolicyTest.test_rorch_cannot_mount_qa_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/c/UTA_ISOLATION/NORTHSTAR-HERMES-E2E-001/v2/tests/test_session3_role_mounts.py", line 15, in test_rorch_cannot_mount_qa_evidence
+    command = cp.worker_cmd("RORCH", "m1", "o1")
+  File "/mnt/c/UTA_ISOLATION/NORTHSTAR-HERMES-E2E-001/v2/src/persistent_control_plane.py", line 109, in worker_cmd
+    cmd=["wsl.exe","-d","kali-linux","--","bwrap","--unshare-all","--die-with-parent","--new-session","--clearenv","--ro-bind","/usr","/usr","--ro-bind","/bin","/bin","--ro-bind","/lib","/lib","--ro-bind","/lib64","/lib64","--ro-bind","/etc","/etc","--ro-bind",wsl(HERE),"/code","--ro-bind",wsl(self.keys/f"{actor.lower()}.key"),"/identity/key.bin","--bind",self.socket_dir,"/ipc","--proc","/proc","--dev","/dev","--tmpfs","/tmp","--setenv","HOME","/tmp/home","--setenv","PYTHONDONTWRITEBYTECODE","1"]
+                                                                                                                                                                                                                                                                     ~~~^^^^^^
+  File "/mnt/c/UTA_ISOLATION/NORTHSTAR-HERMES-E2E-001/v2/src/persistent_control_plane.py", line 16, in wsl
+    p=path.resolve(); return f"/mnt/{p.drive[0].lower()}/{p.as_posix()[3:]}"
+                                     ~~~~~~~^^^
+IndexError: string index out of range
+
+----------------------------------------------------------------------
+Ran 53 tests in 1.682s
+
+FAILED (errors=2, skipped=2)

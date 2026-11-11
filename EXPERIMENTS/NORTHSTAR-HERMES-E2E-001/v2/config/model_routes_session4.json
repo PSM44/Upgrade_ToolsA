@@ -1,0 +1,26 @@
+{
+  "roles": {
+    "MORCH": {
+      "runtime": "omniroute",
+      "provider": "openrouter",
+      "model": "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "max_tokens": 2048,
+      "timeout_seconds": 300
+    },
+    "RORCH": {
+      "runtime": "omniroute",
+      "provider": "openrouter",
+      "model": "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free",
+      "max_tokens": 2048,
+      "timeout_seconds": 300
+    },
+    "QA": {
+      "runtime": "omniroute",
+      "provider": "openrouter",
+      "model": "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "max_tokens": 2048,
+      "timeout_seconds": 300
+    }
+  },
+  "policy": "Direct OpenAI-compatible OmniRoute endpoint. Distinct provider-returned model IDs are required; empty final content fails closed. Hermes remains available through runtime=hermes but is not a credential transport dependency."
+}

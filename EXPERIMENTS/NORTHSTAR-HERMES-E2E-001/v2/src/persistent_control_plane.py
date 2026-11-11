@@ -13,7 +13,9 @@ CREATE TABLE IF NOT EXISTS dispatches(message_id TEXT PRIMARY KEY,objective_id T
 CREATE TABLE IF NOT EXISTS events(seq INTEGER PRIMARY KEY AUTOINCREMENT,timestamp REAL NOT NULL,event_type TEXT NOT NULL,objective_id TEXT,detail_json TEXT NOT NULL);
 """
 def wsl(path:Path)->str:
- p=path.resolve(); return f"/mnt/{p.drive[0].lower()}/{p.as_posix()[3:]}"
+ p=path.resolve()
+ if not p.drive:return p.as_posix()
+ return f"/mnt/{p.drive[0].lower()}/{p.as_posix()[3:]}"
 
 class ControlPlane:
  def __init__(self,runtime:Path,backend:str="deterministic",routes:Path|None=None):
@@ -51,7 +53,7 @@ class ControlPlane:
    time.sleep(.05)
   raise RuntimeError("transport socket timeout")
  def start_model_broker(self):
-  if self.backend!="hermes": return
+  if self.backend not in {"hermes","model-broker"}: return
   cmd=["wsl.exe","-d","kali-linux","--","/usr/bin/python3",wsl(HERE/"model_broker.py"),"serve","--socket",self.model_socket,"--db",wsl(self.runtime/"model_calls.db"),"--key-dir",wsl(self.keys),"--work-root",wsl(self.runtime/"model_calls"),"--routes",wsl(self.routes)]
   self.model_daemon=subprocess.Popen(cmd,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
   for _ in range(200):
@@ -110,9 +112,9 @@ class ControlPlane:
   if actor=="RORCH": cmd += ["--bind",wsl(app),"/role/app","--bind",wsl(dev),"/role/dev"]
   elif actor=="QA": cmd += ["--ro-bind",wsl(app),"/role/app","--ro-bind",wsl(dev),"/role/dev","--bind",wsl(qa),"/role/qa"]
   else: cmd += ["--ro-bind",wsl(app),"/role/app","--ro-bind",wsl(dev),"/role/dev","--ro-bind",wsl(qa),"/role/qa"]
-  if self.backend=="hermes":cmd += ["--bind",self.model_socket_dir,"/model"]
+  if self.backend in {"hermes","model-broker"}:cmd += ["--bind",self.model_socket_dir,"/model"]
   result=cmd+["--chdir","/code","/usr/bin/python3","/code/control_actor.py","--actor",actor,"--key","/identity/key.bin","--socket","/ipc/transport.sock","--message-id",mid,"--backend",self.backend]
-  if self.backend=="hermes":result += ["--model-socket","/model/model.sock"]
+  if self.backend in {"hermes","model-broker"}:result += ["--model-socket","/model/model.sock"]
   return result
  def reconcile(self):
   p=subprocess.run(["wsl.exe","-d","kali-linux","--","/usr/bin/python3",wsl(HERE/"transport_rpc.py"),"client","--socket",self.socket,"--key",wsl(self.keys/"uws.key"),"--actor","UWS","reconcile"],text=True,capture_output=True,timeout=20)
@@ -167,8 +169,7 @@ def status(runtime:Path)->dict[str,Any]:
   c.row_factory=sqlite3.Row
   return {"objectives":[dict(r) for r in c.execute("SELECT * FROM objectives ORDER BY created_at")],"dispatches":[dict(r) for r in c.execute("SELECT * FROM dispatches ORDER BY started_at")],"event_count":c.execute("SELECT count(*) FROM events").fetchone()[0]}
 def main():
- p=argparse.ArgumentParser();p.add_argument("command",choices=("run","status"));p.add_argument("--runtime",type=Path,default=DEFAULT_RUNTIME);p.add_argument("--poll",type=float,default=.2);p.add_argument("--max-idle",type=float);p.add_argument("--backend",choices=("deterministic","hermes"),default="deterministic");p.add_argument("--model-routes",type=Path);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument("command",choices=("run","status"));p.add_argument("--runtime",type=Path,default=DEFAULT_RUNTIME);p.add_argument("--poll",type=float,default=.2);p.add_argument("--max-idle",type=float);p.add_argument("--backend",choices=("deterministic","model-broker","hermes"),default="deterministic");p.add_argument("--model-routes",type=Path);a=p.parse_args()
  if a.command=="status":print(json.dumps(status(a.runtime),indent=2,sort_keys=True));return 0
  return ControlPlane(a.runtime,a.backend,a.model_routes).run(a.poll,a.max_idle)
 if __name__=="__main__":raise SystemExit(main())
-

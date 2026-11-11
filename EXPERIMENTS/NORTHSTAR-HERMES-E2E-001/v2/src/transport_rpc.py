@@ -77,7 +77,8 @@ class Server:
             )
             return {"ok": True, "state": state, "actor": actor}
         if op in {"claim", "consume"}:
-            delivery = self.transport.claim(consumer=actor, consumer_key=key, lease_s=30)
+            lease_s = max(1, min(int(request.get("lease_seconds", 30)), 900))
+            delivery = self.transport.claim(consumer=actor, consumer_key=key, lease_s=lease_s)
             if delivery is None:
                 return {"ok": False, "error": "NO_DELIVERY"}
             if delivery.message_id != request["expected_message_id"]:

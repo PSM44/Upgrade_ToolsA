@@ -1,0 +1,12 @@
+test_empty_final_content_fails_closed (tests.test_session4_omniroute_broker.DirectOmniRouteBrokerTests.test_empty_final_content_fails_closed) ... ok
+test_records_actual_model_usage_cost_and_deduplicates (tests.test_session4_omniroute_broker.DirectOmniRouteBrokerTests.test_records_actual_model_usage_cost_and_deduplicates) ... ok
+test_cross_objective_retrieval_survives_restart (tests.test_session2_model_broker.CrossObjectiveMemoryTest.test_cross_objective_retrieval_survives_restart) ... ok
+test_authenticated_acl_idempotent_receipt_unknown_cost (tests.test_session2_model_broker.ModelBrokerTest.test_authenticated_acl_idempotent_receipt_unknown_cost) ... ok
+test_relevant_memory_survives_reopen (tests.test_persistent_control_plane.MemoryRetrievalTest.test_relevant_memory_survives_reopen) ... ok
+setUpClass (tests.test_persistent_control_plane.PersistentSessionEvidenceTest) ... skipped 'NORTHSTAR_CP_RUNTIME not set'
+test_authenticated_ingress_replay_and_terminal_egress (tests.test_morch_delegate.MorchDelegateTest.test_authenticated_ingress_replay_and_terminal_egress) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.208s
+
+OK (skipped=1)
