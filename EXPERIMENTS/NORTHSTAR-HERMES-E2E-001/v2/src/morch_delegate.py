@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse,hashlib,hmac,json,os,socket,sqlite3,time
 from pathlib import Path
 from typing import Any
+from p2_task import SPEC_ID, SPEC_SHA256, safe_objective_id
 
 SCHEMA="""PRAGMA journal_mode=DELETE;
 CREATE TABLE IF NOT EXISTS requests(objective_id TEXT PRIMARY KEY,nonce TEXT NOT NULL UNIQUE,objective_sha256 TEXT NOT NULL,status TEXT NOT NULL,transport_state TEXT,created_at REAL NOT NULL,updated_at REAL NOT NULL,result_json TEXT);
@@ -17,8 +18,9 @@ def recv(s:socket.socket)->dict[str,Any]:
   if not part:break
   data+=part
  return json.loads(data.decode())
-def transport_rpc(path:str,key:bytes,objective_id:str,objective:str)->dict[str,Any]:
- mid=f"{objective_id}:task-handoff";request={"op":"send","actor":"MORCH","key":key.hex(),"recipient":"RORCH","message_type":"TASK_HANDOFF","message_id":mid,"nonce":hashlib.sha256(mid.encode()).hexdigest(),"payload":{"objective_id":objective_id,"objective":objective,"fixture_spec":"palindrome_v1","authority":"MORCH_LOCAL_DELEGATE"}}
+def transport_rpc(path:str,key:bytes,objective_id:str,objective:str,fixture_spec:str="palindrome_v1")->dict[str,Any]:
+ mid=f"{objective_id}:task-handoff";request={"op":"send","actor":"MORCH","key":key.hex(),"recipient":"RORCH","message_type":"TASK_HANDOFF","message_id":mid,"nonce":hashlib.sha256(mid.encode()).hexdigest(),"payload":{"objective_id":objective_id,"objective":objective,"fixture_spec":fixture_spec,"authority":"MORCH_LOCAL_DELEGATE"}}
+ if fixture_spec==SPEC_ID:request["payload"]["fixture_sha256"]=SPEC_SHA256
  with socket.socket(socket.AF_UNIX,socket.SOCK_STREAM) as s:s.connect(path);send(s,request);return recv(s)
 
 class Delegate:
@@ -35,20 +37,23 @@ class Delegate:
  def terminal(self,oid:str)->dict[str,Any]|None:
   if not self.control_db.exists():return None
   with sqlite3.connect(f"file:{self.control_db.as_posix()}?mode=ro",uri=True) as c:row=c.execute("SELECT state,result_json FROM objectives WHERE objective_id=?",(oid,)).fetchone()
-  return json.loads(row[1]) if row and row[0]=="COMPLETED" and row[1] else None
+  return json.loads(row[1]) if row and row[0] in {"COMPLETED","FAILED"} and row[1] else None
  def handle(self,r:dict[str,Any])->dict[str,Any]:
   self.auth(r);op=str(r.get("operation"))
   if op=="shutdown":self.running=False;return {"ok":True,"authority":"MORCH_LOCAL_DELEGATE"}
-  oid=str(r["objective_id"])
+  oid=safe_objective_id(r["objective_id"])
   if op=="submit":
-   objective=str(r["objective"]);nonce=str(r["nonce"]);digest=hashlib.sha256(objective.encode()).hexdigest();now=time.time()
+   objective=str(r["objective"]);nonce=str(r["nonce"]);fixture_spec=str(r.get("fixture_spec","palindrome_v1"))
+   if fixture_spec not in {"palindrome_v1",SPEC_ID}:raise ValueError("unsupported fixture_spec")
+   fingerprint=objective if fixture_spec=="palindrome_v1" else json.dumps({"objective":objective,"fixture_spec":fixture_spec,"fixture_sha256":SPEC_SHA256},sort_keys=True)
+   digest=hashlib.sha256(fingerprint.encode()).hexdigest();now=time.time()
    with sqlite3.connect(self.db) as c:
     prior=c.execute("SELECT nonce,objective_sha256,transport_state FROM requests WHERE objective_id=?",(oid,)).fetchone()
     if prior:
      if prior[0]!=nonce or prior[1]!=digest:raise RuntimeError("objective replay conflict")
      return {"ok":True,"duplicate":True,"objective_id":oid,"transport_state":prior[2],"authority":"MORCH_LOCAL_DELEGATE"}
     if c.execute("SELECT 1 FROM requests WHERE nonce=?",(nonce,)).fetchone():raise RuntimeError("nonce replay")
-    response=transport_rpc(self.transport_socket,self.morch_key,oid,objective)
+    response=transport_rpc(self.transport_socket,self.morch_key,oid,objective,fixture_spec)
     if not response.get("ok"):raise RuntimeError(f"transport rejected objective: {response}")
     c.execute("INSERT INTO requests VALUES(?,?,?,?,?,?,?,NULL)",(oid,nonce,digest,"ACTIVE",response.get("state"),now,now))
    return {"ok":True,"duplicate":False,"objective_id":oid,"transport_state":response.get("state"),"authority":"MORCH_LOCAL_DELEGATE"}
@@ -83,12 +88,13 @@ def client(a:argparse.Namespace)->int:
  if a.objective is not None:fields["objective"]=a.objective
  if a.nonce:fields["nonce"]=a.nonce
  if a.timeout is not None:fields["timeout"]=a.timeout
+ if a.operation=="submit":fields["fixture_spec"]=a.fixture_spec
  with socket.socket(socket.AF_UNIX,socket.SOCK_STREAM) as s:s.connect(a.socket);send(s,signed(key,fields));response=recv(s)
  print(json.dumps(response,sort_keys=True));return 0 if response.get("ok") else 3
 def main()->int:
  p=argparse.ArgumentParser();sub=p.add_subparsers(dest="command",required=True)
  s=sub.add_parser("serve");s.add_argument("--socket",required=True);s.add_argument("--db",required=True);s.add_argument("--transport-socket",required=True);s.add_argument("--control-db",required=True);s.add_argument("--key-dir",required=True)
- c=sub.add_parser("client");c.add_argument("--socket",required=True);c.add_argument("--key",required=True,type=Path);c.add_argument("--operation",required=True,choices=("submit","result","wait","shutdown"));c.add_argument("--objective-id");c.add_argument("--objective");c.add_argument("--nonce");c.add_argument("--timeout",type=float)
+ c=sub.add_parser("client");c.add_argument("--socket",required=True);c.add_argument("--key",required=True,type=Path);c.add_argument("--operation",required=True,choices=("submit","result","wait","shutdown"));c.add_argument("--objective-id");c.add_argument("--objective");c.add_argument("--nonce");c.add_argument("--timeout",type=float);c.add_argument("--fixture-spec",choices=("palindrome_v1",SPEC_ID),default="palindrome_v1")
  a=p.parse_args();return serve(a) if a.command=="serve" else client(a)
 if __name__=="__main__":raise SystemExit(main())
 

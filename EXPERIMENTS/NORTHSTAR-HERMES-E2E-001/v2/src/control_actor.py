@@ -26,9 +26,9 @@ def rpc(socket_path: str, actor: str, key: bytes, op: str, **fields: Any) -> dic
 
 
 def model_rpc(socket_path: str, actor: str, key: bytes, request_id: str,
-              stage: str, prompt: str) -> dict[str, Any]:
+              stage: str, prompt: str, **extra: Any) -> dict[str, Any]:
     request={"op":"call","actor":actor,"key":key.hex(),"request_id":request_id,
-             "stage":stage,"prompt":prompt}
+             "stage":stage,"prompt":prompt,**extra}
     with socket.socket(socket.AF_UNIX,socket.SOCK_STREAM) as sock:
         sock.connect(socket_path);sock.sendall(json.dumps(request,sort_keys=True,separators=(",",":")).encode()+b"\n")
         data=b""
@@ -79,6 +79,14 @@ def main() -> int:
     a = p.parse_args()
     key = a.key.read_bytes(); delivery = rpc(a.socket, a.actor, key, "claim", expected_message_id=a.message_id, lease_seconds=600)
     payload = dict(delivery["payload"]); oid = str(payload["objective_id"]); kind = str(delivery["message_type"])
+    from p2_task import handle as handle_p2, safe_objective_id
+    safe_objective_id(oid)
+    p2_result = handle_p2(a, delivery, key, rpc, model_rpc, emit)
+    if p2_result is not None:
+        ack = rpc(a.socket, a.actor, key, "ack", message_id=a.message_id, claim_token=delivery["claim_token"])
+        print(json.dumps({**p2_result,"actor":a.actor,"message_id":a.message_id,
+                          "message_type":kind,"objective_id":oid,"receipt_sha256":ack["receipt_sha256"]},sort_keys=True))
+        return 0
     adapter = OpenCodeAdapter(
         a.opencode_bin, a.opencode_rorch_model, a.opencode_qa_model
     ) if a.backend == "opencode" else None

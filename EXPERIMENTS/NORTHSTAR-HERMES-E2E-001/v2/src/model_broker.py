@@ -57,11 +57,15 @@ class Broker:
   limits=self.routes.get("limits",{})
   if len(prompt)>int(limits.get("max_prompt_chars",12000)):raise ValueError("prompt budget exceeded")
   max_calls=int(limits.get("max_calls",8))
+  if self.routes.get("p2"):
+   if actor!="QA" or runtime!="opencode" or not model.startswith("opencode-go/"):raise PermissionError("P2 call operation is QA-only Go, no fallback")
+   if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}",request_id) or ".." in request_id:raise ValueError("unsafe request id")
   with sqlite3.connect(self.db) as c:
    c.row_factory=sqlite3.Row;prior=c.execute("SELECT * FROM calls WHERE request_id=?",(request_id,)).fetchone()
    if prior:
     if prior["actor"]!=actor or prior["stage"]!=stage or prior["input_sha256"]!=hashlib.sha256(prompt.encode()).hexdigest():raise RuntimeError("request id conflict")
     if prior["status"]=="COMPLETED":return {"ok":True,"duplicate":True,"result":json.loads(prior["response_json"]),"receipt":self.receipt(dict(prior))}
+    if limits.get("retry_failed_requests") is False:raise RuntimeError("failed/in-flight invocation cannot be retried")
    else:
     if c.execute("SELECT count(*) FROM calls").fetchone()[0]>=max_calls:raise RuntimeError("model call budget exhausted")
     c.execute("INSERT INTO calls(request_id,actor,stage,requested_model,status,input_sha256,created_at) VALUES(?,?,?,?,?,?,?)",(request_id,actor,stage,model,"RUNNING",hashlib.sha256(prompt.encode()).hexdigest(),time.time()))
@@ -95,6 +99,13 @@ class Broker:
   command=[binary,"run","--standalone","--archived","--format","json","--model",model,prompt]
   deny={"OPENAI_API_KEY","ANTHROPIC_API_KEY","OPENROUTER_API_KEY","SSH_AUTH_SOCK","GIT_ASKPASS"}
   env={k:v for k,v in os.environ.items() if k not in deny}
+  if self.routes.get("p2"):
+   from p2_editor import command as sandbox_command, copy_account, policy
+   account=call_dir/"account";account.mkdir(mode=0o700,exist_ok=False)
+   config_path.write_text(json.dumps(policy(editor=False),sort_keys=True),encoding="utf-8")
+   copy_account(account)
+   command=sandbox_command(Path(binary),call_dir,account,model,prompt,editor=False)
+   env={"PATH":"/usr/bin:/bin"}
   try:
    p=subprocess.run(command,cwd=call_dir,env=env,stdin=subprocess.DEVNULL,text=True,capture_output=True,timeout=int(route.get("timeout_seconds",300)))
   except subprocess.TimeoutExpired as exc:
@@ -116,6 +127,8 @@ class Broker:
    usage=part.get("tokens") or {}
    for key in tokens:tokens[key]+=int(usage.get(key) or 0)
   cost=sum(float(part.get("cost") or 0) for part in finishes)
+  if self.routes.get("p2") and (not finishes or any(type(part.get("cost")) not in (int,float) for part in finishes)):cost=None
+  if self.routes.get("p2") and any(e.get("type")=="tool_use" for e in events):raise PermissionError("P2 QA model must be tool-free")
   if p.returncode or not texts:
    detail=(p.stderr or p.stdout)[-2000:]
    with sqlite3.connect(self.db) as c:c.execute("UPDATE calls SET status='FAILED',exit_code=?,completed_at=?,usage_json=?,error=? WHERE request_id=?",(p.returncode,time.time(),json.dumps({"tokens":tokens,"cost":cost},sort_keys=True),detail,request_id))
@@ -124,7 +137,11 @@ class Broker:
   used={"provider":"opencode-go","model":model,"session_id":session,"tokens":tokens,"cost":cost,"allowance":"not_exposed_by_cli"}
   values=("opencode-go",model,session,"COMPLETED",hashlib.sha256(response.encode()).hexdigest(),tokens["input"],tokens["output"],total,cost,"provider_reported","opencode_step_finish",0,time.time(),response,json.dumps(used,sort_keys=True),request_id)
   with sqlite3.connect(self.db) as c:c.execute("UPDATE calls SET actual_provider=?,actual_model=?,session_id=?,status=?,output_sha256=?,input_tokens=?,output_tokens=?,total_tokens=?,cost_value=?,cost_status=?,cost_source=?,exit_code=?,completed_at=?,response_json=?,usage_json=?,error=NULL WHERE request_id=?",values)
+  if self.routes.get("p2"):
+   with sqlite3.connect(self.db) as c:c.execute("UPDATE calls SET actual_provider=NULL,actual_model=NULL,cost_status=? WHERE request_id=?",("unknown" if cost is None else "provider_reported",request_id))
   row={"request_id":request_id,"actor":actor,"stage":stage,"requested_model":model,"actual_provider":"opencode-go","actual_model":model,"session_id":session,"status":"COMPLETED","input_sha256":hashlib.sha256(prompt.encode()).hexdigest(),"output_sha256":hashlib.sha256(response.encode()).hexdigest(),"input_tokens":tokens["input"],"output_tokens":tokens["output"],"total_tokens":total,"cost_value":cost,"cost_status":"provider_reported","cost_source":"opencode_step_finish","exit_code":0}
+  if self.routes.get("p2"):
+   row.update(actual_provider=None,actual_model=None,cost_status="unknown" if cost is None else "provider_reported")
   return {"ok":True,"duplicate":False,"result":result,"receipt":self.receipt(row)}
  def call_omniroute(self,actor:str,stage:str,request_id:str,prompt:str,route:dict[str,Any],model:str,provider:str)->dict[str,Any]:
   client=Path(str(route.get("client",Path(__file__).with_name("omniroute_direct.mjs"))))
@@ -151,6 +168,9 @@ class Broker:
  def receipt(row:dict[str,Any])->dict[str,Any]:return {k:row.get(k) for k in ("request_id","actor","stage","requested_model","actual_provider","actual_model","session_id","status","input_sha256","output_sha256","input_tokens","output_tokens","total_tokens","cost_value","cost_status","cost_source","exit_code")}
  def handle(self,r:dict[str,Any])->dict[str,Any]:
   actor,_=self.auth(r)
+  if r.get("op")=="edit":
+   from p2_editor import edit
+   return edit(self,actor,r)
   if r.get("op")=="call":return self.call(actor,r)
   if r.get("op")=="shutdown":
    if actor!="MORCH":raise PermissionError("shutdown requires MORCH")

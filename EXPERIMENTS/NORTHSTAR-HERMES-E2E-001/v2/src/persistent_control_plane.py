@@ -122,7 +122,10 @@ class ControlPlane:
  def dispatch_once(self):
   rows=self.pending()
   if not rows:return False
-  msg=rows[0]; oid=self.objective(msg); actor=str(msg["recipient_actor"]); mid=str(msg["message_id"]); now=time.time()
+  msg=rows[0]; oid=self.objective(msg)
+  with self.conn() as c:
+   if c.execute("SELECT state FROM objectives WHERE objective_id=?",(oid,)).fetchone()[0]=="FAILED":return False
+  actor=str(msg["recipient_actor"]); mid=str(msg["message_id"]); now=time.time()
   with self.conn() as c:
    old=c.execute("SELECT attempt FROM dispatches WHERE message_id=?",(mid,)).fetchone(); attempt=(old["attempt"] if old else 0)+1
    c.execute("INSERT INTO dispatches VALUES(?,?,?,?,?,?,NULL,NULL,NULL) ON CONFLICT(message_id) DO UPDATE SET state='RUNNING',attempt=?,started_at=?,finished_at=NULL,exit_code=NULL,output_json=NULL",(mid,oid,actor,"RUNNING",attempt,now,attempt,now))
@@ -132,13 +135,30 @@ class ControlPlane:
    c.execute("UPDATE dispatches SET state=?,finished_at=?,exit_code=?,output_json=? WHERE message_id=?",(state,time.time(),p.returncode,json.dumps({"stdout":p.stdout[-4000:],"stderr":p.stderr[-4000:]}),mid))
    c.execute("UPDATE objectives SET current_message_id=?,updated_at=?,last_error=? WHERE objective_id=?",(mid,time.time(),None if p.returncode==0 else p.stderr[-1000:],oid))
    c.execute("INSERT INTO events(timestamp,event_type,objective_id,detail_json) VALUES(?,?,?,?)",(time.time(),"WORKER_"+state,oid,json.dumps({"actor":actor,"message_id":mid,"exit_code":p.returncode},sort_keys=True)))
-  if p.returncode: raise RuntimeError(f"worker {actor}/{mid}: {p.stderr[-1000:]}")
+  if p.returncode:
+   payload=json.loads(msg["payload_json"])
+   if payload.get("fixture_spec")=="retry_schedule_v1":
+    result={"objective_id":oid,"status":"FAILED","human_relay_count":0,"reason":"P2_WORKER_FAILED","completed_at":time.time()}
+    with self.conn() as c:c.execute("UPDATE objectives SET state='FAILED',result_json=?,updated_at=? WHERE objective_id=?",(json.dumps(result,sort_keys=True),time.time(),oid))
+    return True
+   raise RuntimeError(f"worker {actor}/{mid}: {p.stderr[-1000:]}")
+  worker_result={}
+  try:worker_result=json.loads(p.stdout.strip().splitlines()[-1])
+  except (ValueError,IndexError):pass
+  if worker_result.get("terminal_failure"):
+   result={"objective_id":oid,"status":"FAILED","human_relay_count":0,"reason":worker_result.get("reason","P2_REWORK_EXHAUSTED"),"completed_at":time.time()}
+   with self.conn() as c:c.execute("UPDATE objectives SET state='FAILED',result_json=?,updated_at=? WHERE objective_id=?",(json.dumps(result,sort_keys=True),time.time(),oid))
+   return True
   with OperationalMemory(self.memory_db) as memory:
    if not any(r.kind=="CHECKPOINT" and r.payload.get("event_id")==mid for r in memory.records(oid)):
     memory.checkpoint(task_id=oid,state="MESSAGE_CONSUMED",event_id=mid,context={"actor":actor,"message_type":msg["message_type"]})
   self.reconcile()
   if msg["message_type"]=="RORCH_ACK":
    result={"objective_id":oid,"status":"ACCEPTED","human_relay_count":0,"completed_at":time.time()}
+   payload=json.loads(msg["payload_json"])
+   if payload.get("fixture_spec")=="retry_schedule_v1":
+    if not worker_result.get("terminal_metadata"):raise RuntimeError("P2 terminal metadata missing")
+    result["evidence"]={k:v for k,v in payload.items() if k not in {"objective_id","decision"}}
    with self.conn() as c:
     c.execute("UPDATE objectives SET state='COMPLETED',result_json=?,updated_at=? WHERE objective_id=?",(json.dumps(result,sort_keys=True),time.time(),oid))
     c.execute("INSERT INTO events(timestamp,event_type,objective_id,detail_json) VALUES(?,?,?,?)",(time.time(),"OBJECTIVE_COMPLETED",oid,json.dumps(result,sort_keys=True)))
@@ -149,8 +169,9 @@ class ControlPlane:
  def run(self,poll:float,max_idle:float|None):
   stop=self.runtime/"STOP"
   if stop.exists(): stop.unlink()
-  self.start_transport(); self.start_model_broker(); self.start_delegate(); idle=time.time()
+  idle=time.time()
   try:
+   self.start_transport(); self.start_model_broker(); self.start_delegate()
    while not stop.exists():
     try: worked=self.dispatch_once()
     except Exception as exc:
@@ -159,7 +180,11 @@ class ControlPlane:
     if worked: idle=time.time()
     elif max_idle is not None and time.time()-idle>=max_idle: break
     time.sleep(poll)
-  finally:self.stop_delegate();self.stop_model_broker();self.stop_transport()
+  finally:
+   try:self.stop_delegate()
+   finally:
+    try:self.stop_model_broker()
+    finally:self.stop_transport()
   return 0
 
 def status(runtime:Path)->dict[str,Any]:
