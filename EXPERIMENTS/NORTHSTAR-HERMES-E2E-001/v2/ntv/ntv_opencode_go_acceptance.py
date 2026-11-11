@@ -83,7 +83,7 @@ def main() -> int:
     qa2 = json.loads((qa_root / "qa_round2.json").read_text(encoding="utf-8"))
     result = json.loads(objective[0]["result_json"]) if objective else {}
 
-    with OperationalMemory(runtime / "memory.db") as memory:
+    with OperationalMemory(runtime / "memory.db", read_only=True) as memory:
         memory_ok = memory.verify_chain(objective_id)
         recovered = memory.recover(objective_id)
 

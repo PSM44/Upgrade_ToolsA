@@ -43,6 +43,19 @@ class OperationalMemoryTests(unittest.TestCase):
         self.assertEqual(record.chain_sha256, recovered[0].chain_sha256)
         self.assertTrue(self.mem.verify_chain(self.task))
 
+    def test_read_only_mode_verifies_without_writing(self) -> None:
+        self.mem.append(
+            task_id=self.task,
+            kind="OBJECTIVE",
+            actor="MORCH_LOCAL_ADAPTER",
+            payload={"goal": "inspect"},
+        )
+        self.mem.close()
+        self.mem = OperationalMemory(self.db, read_only=True)
+        self.assertTrue(self.mem.verify_chain(self.task))
+        with self.assertRaises(sqlite3.OperationalError):
+            self.mem.append(task_id=self.task, kind="ERROR", actor="QA", payload={})
+
     def test_qa_and_rorch_cannot_write_morch_decisions(self) -> None:
         for actor in ("QA", "RORCH", "UWS"):
             with self.subTest(actor=actor), self.assertRaises(AuthorizationError):

@@ -116,11 +116,19 @@ class OperationalMemory:
     MORCH_COMPONENT = "MORCH_LOCAL_DELEGATE"
     MORCH_LIMITATION = "HUMAN-authorized local durable coordinator; not ChatGPT"
 
-    def __init__(self, db_path: str | Path):
-        self.db_path = str(Path(db_path))
-        self._conn = sqlite3.connect(self.db_path, timeout=30, isolation_level=None)
+    def __init__(self, db_path: str | Path, *, read_only: bool = False):
+        path = Path(db_path)
+        self.db_path = str(path)
+        target = f"file:{path.as_posix()}?mode=ro&immutable=1" if read_only else self.db_path
+        self._conn = sqlite3.connect(
+            target,
+            timeout=30,
+            isolation_level=None,
+            uri=read_only,
+        )
         self._conn.row_factory = sqlite3.Row
-        self._conn.executescript(SCHEMA)
+        if not read_only:
+            self._conn.executescript(SCHEMA)
 
     def close(self) -> None:
         self._conn.close()
