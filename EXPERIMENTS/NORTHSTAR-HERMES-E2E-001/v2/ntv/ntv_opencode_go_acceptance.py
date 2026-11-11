@@ -9,14 +9,21 @@ import stat
 import sys
 from pathlib import Path
 from typing import Any
+from urllib.parse import quote
 
 V2 = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(V2 / "src"))
-from operational_memory import OperationalMemory
+from operational_memory import IntegrityError, OperationalMemory
 
 
 def rows(db: Path, query: str, args: tuple[Any, ...] = ()) -> list[dict[str, Any]]:
-    with sqlite3.connect(f"file:{db.as_posix()}?mode=ro", uri=True) as conn:
+    wal = db.with_name(db.name + "-wal")
+    if wal.exists() and wal.stat().st_size > 0:
+        raise IntegrityError(
+            f"refusing read-only open of {db}: non-empty WAL {wal.name} means "
+            "immutable=1 would read stale data; checkpoint the database first"
+        )
+    with sqlite3.connect(f"file:{quote(db.as_posix())}?mode=ro&immutable=1", uri=True) as conn:
         conn.row_factory = sqlite3.Row
         return [dict(row) for row in conn.execute(query, args)]
 

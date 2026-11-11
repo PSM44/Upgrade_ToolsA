@@ -17,6 +17,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
+from urllib.parse import quote
 
 
 class MemoryErrorBase(RuntimeError):
@@ -127,7 +128,7 @@ class OperationalMemory:
                     f"{wal.name} means immutable=1 would read stale data; "
                     "checkpoint the database first"
                 )
-        target = f"file:{path.as_posix()}?mode=ro&immutable=1" if read_only else self.db_path
+        target = f"file:{quote(path.as_posix())}?mode=ro&immutable=1" if read_only else self.db_path
         self._conn = sqlite3.connect(
             target,
             timeout=30,

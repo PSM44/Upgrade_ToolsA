@@ -132,3 +132,24 @@ checkpointed but non-truncated WAL (safe direction for an auditor); TOCTOU
 check-then-connect race is irrelevant because `immutable=1` already assumes a
 quiescent runtime. Still open (unchanged): LOW URI percent-encoding; INFO
 auditor `rows()` uses plain `mode=ro` for the other dbs.
+
+## 7. Follow-up: URI percent-encoding + auditor rows() hardening (same day, HUMAN-approved)
+
+Closes the two remaining QA findings. `OperationalMemory` read-only target now
+percent-encodes the path (`quote(path.as_posix())`), and the auditor's `rows()`
+helper gains the same non-empty-WAL guard (module `IntegrityError`) and opens
+via `mode=ro&immutable=1` with the encoded path. New unit test covers a db
+under a directory named `a b#c%d?e`. Delta: +28/−3 across the same 3 files.
+
+Verification: suite 58 OK + 2 pre-existing skips. Independent QA (3rd round):
+**QA_PASS** — empirically confirmed that `?`/`#`/`%41`/space/UTF-8 paths now
+open the CORRECT database (unique per-path marker read back), that relative
+and non-ASCII paths still work, that `rows()`'s guard raises on a 32-byte WAL,
+and that the full auditor is regression-free: byte-identical runtime-copy
+hashes pre/post (writable and write-protected), and a programmatic diff of the
+auditor's JSON output pre- vs post-delta is empty (same 10/13 NORTHSTAR_FAIL).
+
+Remaining non-blocking notes: conservative guard false positive on a fully
+checkpointed non-truncated WAL (safe direction), and verbatim guard
+duplication between `rows()` and the constructor (suggested follow-up: shared
+`readonly_uri()`/`assert_no_pending_wal()` helper in `operational_memory`).

@@ -72,6 +72,23 @@ class OperationalMemoryTests(unittest.TestCase):
         self.mem = OperationalMemory(self.db, read_only=True)
         self.assertTrue(self.mem.verify_chain(self.task))
 
+    def test_read_only_opens_paths_with_uri_special_characters(self) -> None:
+        tricky = Path(self.tmp.name) / "a b#c%d?e" / "memory.db"
+        tricky.parent.mkdir()
+        mem = OperationalMemory(tricky)
+        mem.append(
+            task_id=self.task,
+            kind="OBJECTIVE",
+            actor="MORCH_LOCAL_ADAPTER",
+            payload={"goal": "inspect"},
+        )
+        mem.close()
+        mem = OperationalMemory(tricky, read_only=True)
+        try:
+            self.assertTrue(mem.verify_chain(self.task))
+        finally:
+            mem.close()
+
     def test_qa_and_rorch_cannot_write_morch_decisions(self) -> None:
         for actor in ("QA", "RORCH", "UWS"):
             with self.subTest(actor=actor), self.assertRaises(AuthorizationError):
