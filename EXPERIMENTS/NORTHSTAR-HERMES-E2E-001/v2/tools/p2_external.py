@@ -63,6 +63,19 @@ class IndependentWitness:
         raise GateBlocked(";".join(BLOCKERS))
 
 
+def verify_witness(witness, runtime: Path, objective: str, phase: str):
+    """Testable boundary; no dictionary verdict has operational accreditation.
+
+    The existing injected-object seam supports mocked lifecycle unit tests only.
+    No CLI plugin/configuration admits an injected witness. A real typed verifier
+    and trust-anchor admission require separate implementation and review.
+    """
+    result = witness.verify(runtime, objective, phase)
+    if isinstance(result, dict):
+        raise GateBlocked("NO_ACCREDITED_VERDICT_CONSUMER;SIMULATION_NOT_ACCREDITED")
+    return result
+
+
 def canonical(value: object) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
 
@@ -232,7 +245,7 @@ def quiesce(process: subprocess.Popen, runtime: Path, chain: EvidenceChain) -> b
 def execute(runtime: Path, timeout: float, witness: IndependentWitness | None = None) -> dict:
     witness = witness or IndependentWitness()
     runtime = validate_runtime(runtime)
-    witness.verify(runtime, OBJECTIVE, "before_create")
+    verify_witness(witness, runtime, OBJECTIVE, "before_create")
     validate_routes()
     if service_members() != {os.getpid()}:
         raise GateBlocked("SERVICE_CGROUP_NOT_EXCLUSIVE")
@@ -262,7 +275,7 @@ def execute(runtime: Path, timeout: float, witness: IndependentWitness | None = 
             submitted = False
             last_seq = 0
             while time.monotonic() - started < timeout:
-                witness.verify(runtime, OBJECTIVE, "heartbeat")
+                verify_witness(witness, runtime, OBJECTIVE, "heartbeat")
                 rows = process_snapshot()
                 chain.append("LINUX_SAMPLE", {"processes": rows,
                              "supervisor_descendants": descendants(rows, process.pid)})
@@ -320,7 +333,7 @@ def execute(runtime: Path, timeout: float, witness: IndependentWitness | None = 
             quiescent = True
         if quiescent:
             try:
-                witness.verify(runtime, OBJECTIVE, "after_quiescence")
+                verify_witness(witness, runtime, OBJECTIVE, "after_quiescence")
                 state, events = read_control(runtime, OBJECTIVE)
                 chain.append("QUIESCENT_CONTROL_SUMMARY", {"state": state, "event_count": len(events)})
                 if complete and process is not None and process.returncode == 0:

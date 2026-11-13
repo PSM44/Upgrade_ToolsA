@@ -1,0 +1,81 @@
+FINAL INDEPENDENT COMPLETION (33; final hashes in qa.md)
+$ PYTHONDONTWRITEBYTECODE=1 python3 -B -W error::ResourceWarning -m unittest discover -s tests -p test_host_witness_completion.py -v
+test_abort_tombstone_allows_only_fresh_run_nonce (test_host_witness_completion.CompletionTests.test_abort_tombstone_allows_only_fresh_run_nonce) ... ok
+test_clock_high_water_future_source_and_receipt_regressions (test_host_witness_completion.CompletionTests.test_clock_high_water_future_source_and_receipt_regressions) ... ok
+test_close_requires_drain_and_late_post_drain_revokes (test_host_witness_completion.CompletionTests.test_close_requires_drain_and_late_post_drain_revokes) ... ok
+test_complete_signed_health_quiescence_drain_restart_audit (test_host_witness_completion.CompletionTests.test_complete_signed_health_quiescence_drain_restart_audit) ... ok
+test_concurrent_reservations_serialize_before_reads (test_host_witness_completion.CompletionTests.test_concurrent_reservations_serialize_before_reads) ... ok
+test_consumer_buffer_interrupt_and_unknown_parent_fail_closed (test_host_witness_completion.CompletionTests.test_consumer_buffer_interrupt_and_unknown_parent_fail_closed) ... ok
+test_crash_reserve_arm_exec_ack_and_lost_ack_boundaries (test_host_witness_completion.CompletionTests.test_crash_reserve_arm_exec_ack_and_lost_ack_boundaries) ... ok
+test_custody_path_replacement_revokes_detached_connection (test_host_witness_completion.CompletionTests.test_custody_path_replacement_revokes_detached_connection) ... ok
+test_custody_receipt_and_observation_truncation (test_host_witness_completion.CompletionTests.test_custody_receipt_and_observation_truncation) ... ok
+test_diverged_state_and_aborted_restart (test_host_witness_completion.CompletionTests.test_diverged_state_and_aborted_restart) ... ok
+test_drain_faults_and_final_inventory_reconciliation (test_host_witness_completion.CompletionTests.test_drain_faults_and_final_inventory_reconciliation) ... ok
+test_duplicate_ack_resend_and_replay_abort (test_host_witness_completion.CompletionTests.test_duplicate_ack_resend_and_replay_abort) ... ok
+test_event_gap_duplicate_out_of_order_and_restart (test_host_witness_completion.CompletionTests.test_event_gap_duplicate_out_of_order_and_restart) ... ok
+test_health_binding_counter_and_replay_rejected_durably (test_host_witness_completion.CompletionTests.test_health_binding_counter_and_replay_rejected_durably) ... ok
+test_health_identity_signature_and_principal (test_host_witness_completion.CompletionTests.test_health_identity_signature_and_principal) ... ok
+test_heartbeat_loss_expired_challenge_and_clock_abort (test_host_witness_completion.CompletionTests.test_heartbeat_loss_expired_challenge_and_clock_abort) ... ok
+test_initial_forbidden_unknown_ambiguous_inventory (test_host_witness_completion.CompletionTests.test_initial_forbidden_unknown_ambiguous_inventory) ... ok
+test_late_forbidden_between_quiescent_and_close (test_host_witness_completion.CompletionTests.test_late_forbidden_between_quiescent_and_close) ... ok
+test_missing_custody_not_recreated (test_host_witness_completion.CompletionTests.test_missing_custody_not_recreated) ... ok
+test_missing_ledger_after_open_revokes_other (test_host_witness_completion.CompletionTests.test_missing_ledger_after_open_revokes_other) ... ok
+test_no_health_or_residual_process_or_premature_close (test_host_witness_completion.CompletionTests.test_no_health_or_residual_process_or_premature_close) ... ok
+test_parent_exited_and_post_quiescent_descendants (test_host_witness_completion.CompletionTests.test_parent_exited_and_post_quiescent_descendants) ... ok
+test_partial_physical_ledger_is_not_reconstructed (test_host_witness_completion.CompletionTests.test_partial_physical_ledger_is_not_reconstructed) ... ok
+test_pid_reuse_tracks_start_identity_and_rejects_stale_exit (test_host_witness_completion.CompletionTests.test_pid_reuse_tracks_start_identity_and_rejects_stale_exit) ... ok
+test_quiescent_payload_signed_D_and_binding (test_host_witness_completion.CompletionTests.test_quiescent_payload_signed_D_and_binding) ... ok
+test_reopen_cannot_bypass_recovery_with_direct_health (test_host_witness_completion.CompletionTests.test_reopen_cannot_bypass_recovery_with_direct_health) ... ok
+test_repeated_health_monotonic_counter_and_fresh_challenges (test_host_witness_completion.CompletionTests.test_repeated_health_monotonic_counter_and_fresh_challenges) ... ok
+test_replica_initial_middle_terminal_truncation (test_host_witness_completion.CompletionTests.test_replica_initial_middle_terminal_truncation) ... ok
+test_simulated_result_cannot_unlock_runner (test_host_witness_completion.CompletionTests.test_simulated_result_cannot_unlock_runner) ... ok
+test_stale_initial_inventory_before_capture_rejected (test_host_witness_completion.CompletionTests.test_stale_initial_inventory_before_capture_rejected) ... ok
+test_subpolling_forbidden_lifetime_is_detected (test_host_witness_completion.CompletionTests.test_subpolling_forbidden_lifetime_is_detected) ... ok
+test_terminal_fresh_status_single_use_persists (test_host_witness_completion.CompletionTests.test_terminal_fresh_status_single_use_persists) ... ok
+test_terminal_status_wrong_binding_expiry_and_partial_commit (test_host_witness_completion.CompletionTests.test_terminal_status_wrong_binding_expiry_and_partial_commit) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 82.239s
+
+OK
+
+
+DEVELOPER LEGACY REGRESSION (15; original source/test unchanged)
+test_all_prefixes_and_initial_middle_suffix_truncation (test_host_witness_offline.ProtocolTests.test_all_prefixes_and_initial_middle_suffix_truncation) ... ok
+test_clock_deadline_and_sequence (test_host_witness_offline.ProtocolTests.test_clock_deadline_and_sequence) ... ok
+test_coverage_faults_and_polling_only (test_host_witness_offline.ProtocolTests.test_coverage_faults_and_polling_only) ... ok
+test_durable_abort_on_simulated_source_failure (test_host_witness_offline.ProtocolTests.test_durable_abort_on_simulated_source_failure) ... ok
+test_every_identity_field_substitution (test_host_witness_offline.ProtocolTests.test_every_identity_field_substitution) ... ok
+test_failed_transition_atomic_and_missing_custody (test_host_witness_offline.ProtocolTests.test_failed_transition_atomic_and_missing_custody) ... ok
+test_out_of_order_and_direct_execute (test_host_witness_offline.ProtocolTests.test_out_of_order_and_direct_execute) ... ok
+test_positive_and_restart_custody (test_host_witness_offline.ProtocolTests.test_positive_and_restart_custody) ... ok
+test_replay_and_concurrent_reservation (test_host_witness_offline.ProtocolTests.test_replay_and_concurrent_reservation) ... ok
+test_runner_adapter_never_authorizes (test_host_witness_offline.ProtocolTests.test_runner_adapter_never_authorizes) ... ok
+test_scheduler_test_xml_no_triggers (test_host_witness_offline.ProtocolTests.test_scheduler_test_xml_no_triggers) ... ok
+test_schema_and_real_evidence_rejected (test_host_witness_offline.ProtocolTests.test_schema_and_real_evidence_rejected) ... ok
+test_signature_alteration_and_wrong_key (test_host_witness_offline.ProtocolTests.test_signature_alteration_and_wrong_key) ... ok
+test_terminal_challenge_consumption_and_replay (test_host_witness_offline.ProtocolTests.test_terminal_challenge_consumption_and_replay) ... ok
+test_terminal_loss_late_event_and_no_drain (test_host_witness_offline.ProtocolTests.test_terminal_loss_late_event_and_no_drain) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 1.312s
+
+OK
+
+DEVELOPER RUNNER REGRESSION (11; runner unchanged since this run)
+test_arbitrary_json_cannot_supply_independent_assurance (test_p2_external.ExternalRunnerTests.test_arbitrary_json_cannot_supply_independent_assurance) ... ok
+test_descendant_ancestry (test_p2_external.ExternalRunnerTests.test_descendant_ancestry) ... ok
+test_existing_runtime_and_symlink_are_preserved (test_p2_external.ExternalRunnerTests.test_existing_runtime_and_symlink_are_preserved) ... ok
+test_hash_chain_has_monotonic_observation_times (test_p2_external.ExternalRunnerTests.test_hash_chain_has_monotonic_observation_times) ... ok
+test_no_witness_never_creates_runtime_or_starts_process (test_p2_external.ExternalRunnerTests.test_no_witness_never_creates_runtime_or_starts_process) ... ok
+test_one_shot_reuses_existing_debian_supervisor (test_p2_external.ExternalRunnerTests.test_one_shot_reuses_existing_debian_supervisor) ... ok
+test_preflight_and_arm_are_blocked_without_writes (test_p2_external.ExternalRunnerTests.test_preflight_and_arm_are_blocked_without_writes) ... ok
+test_process_snapshot_redacts_argv_and_environment (test_p2_external.ExternalRunnerTests.test_process_snapshot_redacts_argv_and_environment) ... ok
+test_start_failure_writes_stop_and_fail_without_pass (test_p2_external.ExternalRunnerTests.test_start_failure_writes_stop_and_fail_without_pass) ... ok
+test_stop_affects_only_owned_runtime (test_p2_external.ExternalRunnerTests.test_stop_affects_only_owned_runtime) ... ok
+test_timeout_stops_and_never_collects_before_quiescence (test_p2_external.ExternalRunnerTests.test_timeout_stops_and_never_collects_before_quiescence) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.009s
+
+OK
