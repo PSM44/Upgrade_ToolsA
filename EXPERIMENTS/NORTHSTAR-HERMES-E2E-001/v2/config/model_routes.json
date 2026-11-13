@@ -1,0 +1,14 @@
+{
+  "roles": {
+    "MORCH": [
+      {"provider": "baseline-replay", "model": "20261030_RORCH", "max_attempts": 1}
+    ],
+    "RORCH": [
+      {"provider": "baseline-replay", "model": "20261030_RORCH", "max_attempts": 1}
+    ],
+    "QA": [
+      {"provider": "baseline-replay", "model": "20261030_RORCH", "max_attempts": 1}
+    ]
+  }
+}
+

@@ -1,0 +1,32 @@
+{
+  "test_keys_only": true,
+  "private_key_persisted": false,
+  "canonical_bytes_equal": true,
+  "cases": [
+    {
+      "name": "der_valid",
+      "returncode": 0,
+      "stdout": "Verified OK",
+      "expected": "accept"
+    },
+    {
+      "name": "tampered_domain",
+      "returncode": 1,
+      "stdout": "Verification failure",
+      "expected": "reject"
+    },
+    {
+      "name": "wrong_signature_encoding",
+      "returncode": 1,
+      "stdout": "",
+      "expected": "reject"
+    }
+  ],
+  "files": {
+    "body.bin": "bc6ead6496790c2e121484e684862a0252834c156de11c38f3289dfe6200a508",
+    "signature.der": "2cfcce441c484519496c5bcf661f8073ef4369993f664ad92f4ce921357ee05d",
+    "signature.p1363": "1a2e9627361138ca3d6d40cacd2acd10072d6d01ec9248aea0574af65b7a859f",
+    "tampered.bin": "b82b6a58e132e955798f97f299bc057c807b650d4256f07abc545272518baf50",
+    "test_public.pem": "592e5bcc1e1ae0510fe653c80258911ec4dd7342ce7e227ad8b1d631a85fc3ba"
+  }
+}

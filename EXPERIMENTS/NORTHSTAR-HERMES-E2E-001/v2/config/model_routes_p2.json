@@ -1,0 +1,45 @@
+{
+  "schema_version": "northstar-model-routes-p2-v1",
+  "authority": "MORCH_LOCAL_DELEGATE_NOT_CHATGPT",
+  "credential_boundary": "HOST_TRUSTED_OPENCODE_GO_BROKER_SECRET_ZERO_GUEST",
+  "limits": {
+    "max_calls": 6,
+    "max_prompt_chars": 24000,
+    "timeout_seconds": 180,
+    "extra_usage": false,
+    "available_credit_usd": 0,
+    "retry_failed_requests": false,
+    "max_model_steps_per_editor_invocation": 8,
+    "max_model_steps_per_qa_invocation": 2
+  },
+  "roles": {
+    "RORCH": {
+      "runtime": "opencode",
+      "provider": "opencode-go",
+      "model": "opencode-go/glm-5.3-flash",
+      "binary": "/home/psm/.opencode/bin/opencode",
+      "timeout_seconds": 180
+    },
+    "QA": {
+      "runtime": "opencode",
+      "provider": "opencode-go",
+      "model": "opencode-go/mimo-v2.6-flash",
+      "binary": "/home/psm/.opencode/bin/opencode",
+      "timeout_seconds": 300
+    },
+    "MORCH": {
+      "runtime": "opencode",
+      "provider": "opencode-go",
+      "model": "opencode-go/glm-5.3-flash",
+      "binary": "/home/psm/.opencode/bin/opencode",
+      "timeout_seconds": 180
+    }
+  },
+  "p2": {
+    "fixture_spec": "retry_schedule_v1",
+    "max_rounds": 2,
+    "requires_external_host_observer": true,
+    "requires_account_usage_attestation": true,
+    "provider_calls_authorized_only_after_external_gates": true
+  }
+}

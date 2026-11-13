@@ -1,0 +1,83 @@
+{
+  "calls": [
+    {
+      "actual_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "catalog_cost": {
+        "formula": "prompt_tokens*prompt_unit_price + completion_tokens*completion_unit_price",
+        "status": "computed_from_public_unit_pricing",
+        "value_usd": "0"
+      },
+      "cost_status": "unknown",
+      "cost_value": null,
+      "input_tokens": 158,
+      "output_tokens": 312,
+      "request_id": "SESSION4-FINAL-004:rorch-build",
+      "total_tokens": 470
+    },
+    {
+      "actual_model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "catalog_cost": {
+        "formula": "prompt_tokens*prompt_unit_price + completion_tokens*completion_unit_price",
+        "status": "computed_from_public_unit_pricing",
+        "value_usd": "0"
+      },
+      "cost_status": "unknown",
+      "cost_value": null,
+      "input_tokens": 195,
+      "output_tokens": 345,
+      "request_id": "SESSION4-FINAL-004:qa-review-1",
+      "total_tokens": 540
+    },
+    {
+      "actual_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "catalog_cost": {
+        "formula": "prompt_tokens*prompt_unit_price + completion_tokens*completion_unit_price",
+        "status": "computed_from_public_unit_pricing",
+        "value_usd": "0"
+      },
+      "cost_status": "unknown",
+      "cost_value": null,
+      "input_tokens": 328,
+      "output_tokens": 554,
+      "request_id": "SESSION4-FINAL-004:rorch-fix",
+      "total_tokens": 882
+    },
+    {
+      "actual_model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "catalog_cost": {
+        "formula": "prompt_tokens*prompt_unit_price + completion_tokens*completion_unit_price",
+        "status": "computed_from_public_unit_pricing",
+        "value_usd": "0"
+      },
+      "cost_status": "unknown",
+      "cost_value": null,
+      "input_tokens": 212,
+      "output_tokens": 310,
+      "request_id": "SESSION4-FINAL-004:qa-review-2",
+      "total_tokens": 522
+    }
+  ],
+  "captured_at": "2026-11-09T21:19:05.968661+00:00",
+  "catalog_sha256": "19c75c6617f0fd7542375d275d14ee12b0e6a29151243adf325376c9029ef935",
+  "limitation": "Public catalog pricing is authoritative unit pricing, not a provider billing ledger. The completion response did not return cost.",
+  "schema": "upgrade-ta.openrouter-pricing-reconciliation/v1",
+  "selected_models": {
+    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
+      "canonical_slug": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning-20260428",
+      "found": true,
+      "pricing": {
+        "completion": "0",
+        "prompt": "0"
+      }
+    },
+    "nvidia/nemotron-3-ultra-550b-a55b:free": {
+      "canonical_slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+      "found": true,
+      "pricing": {
+        "completion": "0",
+        "prompt": "0"
+      }
+    }
+  },
+  "source_url": "https://openrouter.ai/api/v1/models"
+}

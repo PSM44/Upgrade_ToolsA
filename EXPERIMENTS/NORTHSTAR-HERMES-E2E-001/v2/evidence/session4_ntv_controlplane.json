@@ -1,0 +1,71 @@
+{
+  "check_count": 12,
+  "checks": [
+    {
+      "detail": "wrong capability rejected",
+      "name": "fake_sender_identity",
+      "passed": true
+    },
+    {
+      "detail": "first=PENDING, duplicate=DUPLICATE",
+      "name": "duplicate_delivery",
+      "passed": true
+    },
+    {
+      "detail": "nonce replay rejected",
+      "name": "replay_nonce",
+      "passed": true
+    },
+    {
+      "detail": "wrong claim token rejected",
+      "name": "failed_ack",
+      "passed": true
+    },
+    {
+      "detail": "stats={'acked': 1, 'requeued': 1, 'dead': 0, 'invalid_receipt': 0}, reclaimed=True",
+      "name": "expired_lease",
+      "passed": true
+    },
+    {
+      "detail": "RORCH QA_PASS rejected by route authorization",
+      "name": "false_qa_acceptance",
+      "passed": true
+    },
+    {
+      "detail": "{\"chain_valid\": true, \"checkpoint\": {\"context\": {\"cursor\": 1}, \"event_id\": \"checkpoint-1\", \"state\": \"TASK_ASSIGNED\"}, \"checkpoint_seq\": 2, \"records_after_checkpoint\": [], \"task_id\": \"NTV-CONTROL-PLANE\"}",
+      "name": "memory_database_restart",
+      "passed": true
+    },
+    {
+      "detail": "corrupted chain detected",
+      "name": "memory_recovery_failure",
+      "passed": true
+    },
+    {
+      "detail": "invalid file set rejected",
+      "name": "invalid_patch_empty",
+      "passed": true
+    },
+    {
+      "detail": "invalid file set rejected",
+      "name": "invalid_patch_escape",
+      "passed": true
+    },
+    {
+      "detail": "valid exact file set materialized",
+      "name": "valid_patch_control",
+      "passed": true
+    },
+    {
+      "detail": "{\"app_write\": \"DENIED:OSError\", \"code_write\": \"DENIED:OSError\", \"host_visible\": false, \"host_write\": \"DENIED:FileNotFoundError\", \"passed\": true, \"qa_write\": \"SUCCEEDED\", \"state_visible\": false}",
+      "exit_code": 0,
+      "name": "qa_filesystem_escape",
+      "passed": true
+    }
+  ],
+  "implementation_modified_by_reviewer": false,
+  "pass_count": 12,
+  "reviewer": "/root/ntv_controlplane",
+  "schema": "upgrade-ta.northstar.control-plane-independent-ntv/v1",
+  "status": "PASS"
+}

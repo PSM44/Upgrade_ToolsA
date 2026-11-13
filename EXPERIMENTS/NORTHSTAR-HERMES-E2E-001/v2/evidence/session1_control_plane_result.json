@@ -1,0 +1,50 @@
+{
+  "schema": "upgrade-ta.northstar.session1-control-plane/v1",
+  "mission_id": "NORTHSTAR-DELIVERY-20261209",
+  "product_status": "NORTHSTAR_FAIL",
+  "control_plane_status": "RUNNING_UNATTENDED_USER_SCOPED",
+  "pid_at_checkpoint": 68312,
+  "endpoint": "/tmp/northstar-control-271543e769bb/transport.sock",
+  "morch_identity": "MORCH_LOCAL_CONTROL_PLANE_NOT_CHATGPT",
+  "objectives_completed": 4,
+  "dispatches_completed": 28,
+  "transport": {"outbox_acked": 28, "inbox_acked": 28, "audit_rows": 116},
+  "restart_trial": {
+    "objective_id": "SESSION1-CRASH-001",
+    "state_before_restart": "ACTIVE_AFTER_TASK_HANDOFF",
+    "pending_edge": "DELIVERY",
+    "state_after_restart": "COMPLETED",
+    "unique_edges": 7,
+    "duplicate_edges": 0,
+    "human_relay_count": 0
+  },
+  "memory_trial": {
+    "objective_id": "SESSION1-MEMORY-001",
+    "database_reopened": true,
+    "chain_valid": true,
+    "query": "punctuation normalization decision",
+    "relevant_records_returned": 1
+  },
+  "tests": {
+    "new_control_plane": {"passed": 6, "total": 6, "exit_code": 0},
+    "full_v2": {"passed": 50, "total": 50, "exit_code": 0},
+    "adversarial_verifier": {"passed": 12, "total": 12, "exit_code": 0}
+  },
+  "model_route": "MULTIMODEL_UNVERIFIED",
+  "full_ntv_root": "UNVERIFIED",
+  "blocking_contracts": [
+    "RORCH adapter is deterministic and not a new isolated real Hermes inference",
+    "two real underlying model IDs and authoritative cost receipts are not verified",
+    "external ChatGPT MORCH activation/authority is unsupported; local MORCH identity is explicit",
+    "gateway and Windows/WSL host subprocesses are outside a full-system isolation boundary",
+    "Session 1 control-plane changes lack a fresh fully independent acceptance reviewer"
+  ],
+  "sha256": {
+    "src/persistent_control_plane.py": "3df6fa47ff369a30a699ea4977f1fb3daa0e9bfdade8593d459a0d85bc7f51e1",
+    "src/control_actor.py": "2ff7da11b23c7be4ddd70bdea51bcb34126a8603f8a03f99345610064e8608d8",
+    "src/transport_rpc.py": "e50398f64f9f530068e302d79532eee2ed17d6b466b41ba8e77a7c99117f0502",
+    "src/operational_memory.py": "f84c4caac8b2c2ec5ccd7fcc2c58d19d8a73af15612c26bc5bb56d9ae0b37749",
+    "NORTHSTAR_STATE.json": "91afddffcefd19657e883e0ed8769136a327fec73894b90fbd3178d48e27f786"
+  }
+}
+

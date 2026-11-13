@@ -1,0 +1,48 @@
+{
+  "correlation_id": "northstar-v2-eb1576a68cd49f4f155f",
+  "fsm_state": "TERMINAL_COMPLETED",
+  "human_relay_count": 0,
+  "memory_chain_valid": true,
+  "memory_recovery": {
+    "chain_valid": true,
+    "checkpoint": {
+      "context": {
+        "note": "terminal convergence",
+        "run_id": "RUN-V2-003"
+      },
+      "event_id": "checkpoint:TERMINAL_COMPLETED:1794218690475021900",
+      "state": "TERMINAL_COMPLETED"
+    },
+    "checkpoint_seq": 10,
+    "records_after_checkpoint": [],
+    "task_id": "NORTHSTAR-HERMES-CONVERGENCE-002"
+  },
+  "model_execution": "PINNED_REAL_HERMES_BASELINE_REPLAY",
+  "morch_component": "MORCH_LOCAL_ADAPTER_NOT_CHATGPT",
+  "multimodel": "UNVERIFIED_EXTERNAL_DEPENDENCY",
+  "qa_permission_probe": {
+    "actor": "QA",
+    "passed": true,
+    "results": {
+      "qa_can_write_evidence": "WRITE_SUCCEEDED",
+      "qa_cannot_modify_app": "DENIED:OSError",
+      "qa_cannot_modify_state": "DENIED:FileNotFoundError"
+    }
+  },
+  "run_id": "RUN-V2-003",
+  "status": "NORTHSTAR_V2_FUNCTIONAL_PASS",
+  "task_id": "NORTHSTAR-HERMES-CONVERGENCE-002",
+  "transport_audit_rows": 32,
+  "transport_counts": {
+    "audit": 32,
+    "inbox": 7,
+    "outbox": 7
+  },
+  "uws_integrity": {
+    "event_count": 15,
+    "issues": [],
+    "run_id": "RUN-V2-003",
+    "task_id": "NORTHSTAR-HERMES-CONVERGENCE-002",
+    "valid": true
+  }
+}
