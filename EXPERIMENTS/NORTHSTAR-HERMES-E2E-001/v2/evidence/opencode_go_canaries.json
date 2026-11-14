@@ -1,0 +1,79 @@
+{
+  "account_status": "OpenCode Go stored",
+  "allowance": "not_exposed_by_opencode_2.2.7_jsonl",
+  "api_key_exported": false,
+  "auth_files": [
+    {
+      "mode": "0o600",
+      "name": "opencode.db",
+      "owner_uid": 1000
+    },
+    {
+      "mode": "0o600",
+      "name": "opencode.db-shm",
+      "owner_uid": 1000
+    },
+    {
+      "mode": "0o600",
+      "name": "opencode.db-wal",
+      "owner_uid": 1000
+    },
+    {
+      "mode": "0o600",
+      "name": "service.json",
+      "owner_uid": 1000
+    }
+  ],
+  "calls": [
+    {
+      "cost_status": "provider_reported",
+      "cost_value": 0,
+      "family": "GLM",
+      "model": "opencode-go/glm-5.3-flash",
+      "output": {
+        "canary": "PASS",
+        "family": "GLM"
+      },
+      "session_id": "ses_e38ebe76effeXasW11BHBw61mQ",
+      "tokens": {
+        "cache": {
+          "read": 0,
+          "write": 0
+        },
+        "input": 587,
+        "output": 13,
+        "reasoning": 35
+      },
+      "trace_sha256": "287a9e4a3f48c55fbc7cc526f3b4d9e0036e48dead3df4847d92d1039b62ec91"
+    },
+    {
+      "cost_status": "provider_reported",
+      "cost_value": 0,
+      "family": "KIMI",
+      "model": "opencode-go/kimi-k2.7-code",
+      "output": {
+        "canary": "PASS",
+        "family": "KIMI"
+      },
+      "session_id": "ses_e38eb3967ffeMadAw6ricbrQY7",
+      "tokens": {
+        "cache": {
+          "read": 0,
+          "write": 0
+        },
+        "input": 2115,
+        "output": 14,
+        "reasoning": 69
+      },
+      "trace_sha256": "95bb2f59c312cd151668eb9f4171eef0b4b32d8215710c089d792f10b873a8c4"
+    }
+  ],
+  "extra_usage": {
+    "available_credit_usd": 0,
+    "enabled": false,
+    "evidence_source": "HUMAN mandate; not re-read from billing UI"
+  },
+  "go_model_catalog_count": 32,
+  "opencode_version": "2.2.7",
+  "schema": "upgrade-ta.northstar.opencode-go-canaries/v1"
+}

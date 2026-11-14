@@ -1,0 +1,50 @@
+{
+  "config_sha256": "12766e2c4b19c7692d31ea1f545cb8c30391bb1bcfae557676fd19079f3c086d",
+  "configured_routes": [
+    {
+      "max_attempts": 1,
+      "model": "20261030_RORCH",
+      "provider": "baseline-replay",
+      "route_id": "baseline-morch",
+      "selector": "MORCH"
+    },
+    {
+      "max_attempts": 1,
+      "model": "20261030_RORCH",
+      "provider": "baseline-replay",
+      "route_id": "baseline-rorch",
+      "selector": "RORCH"
+    },
+    {
+      "max_attempts": 1,
+      "model": "20261030_RORCH",
+      "provider": "baseline-replay",
+      "route_id": "baseline-qa",
+      "selector": "QA"
+    }
+  ],
+  "declared_identities": [
+    {
+      "model": "20261030_RORCH",
+      "provider": "baseline-replay"
+    }
+  ],
+  "limitations": [
+    "Declarative provider/model labels are not identity evidence.",
+    "This probe performs no provider request and reads no credential value."
+  ],
+  "probe_mode": "OFFLINE_NO_INFERENCE_NO_SECRET_READ",
+  "real_multimodel_verified": false,
+  "runtime_observation": {
+    "configured_model": null,
+    "configured_provider": null,
+    "fallbacks": [],
+    "hermes_version": "0.22.6",
+    "openrouter_configured": null,
+    "source_sha256": "6e2615c4f6581dbc608ee9792733f3ceb80c491730f95588d93747b906f157b3"
+  },
+  "schema": "northstar.model-route-readiness/v1",
+  "status": "MULTIMODEL_UNVERIFIED",
+  "verified_identities": []
+}
+

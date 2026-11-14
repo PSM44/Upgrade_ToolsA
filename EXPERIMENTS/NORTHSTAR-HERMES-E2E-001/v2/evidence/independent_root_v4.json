@@ -1,0 +1,245 @@
+{
+  "schema_version": "upgrade-ta.ntv.independent-root-review/v4",
+  "task_id": "NORTHSTAR-HERMES-CONVERGENCE-002",
+  "run_id": "RUN-V2-003",
+  "reviewer_identity": "CODEX_SUBAGENT_ISOLATION_NTV_V4",
+  "executor_identity": "CODEX_DESKTOP",
+  "observed_utc": "2026-11-09T10:13:12.9563869Z",
+  "scope": "Focused NTV_ROOT V4 review of the ephemeral WSL transport daemon, actor RPC bubblewrap clients, QA state exclusion, post-run process/socket cleanup, key exposure, original-root preservation, and V4 runtime residue.",
+  "status": "NTV_ROOT_V4_BOUNDED_PASS",
+  "overall_ntv_status": "NTV_UNVERIFIED",
+  "full_root_pass": false,
+  "rationale": "V4 closes the actor-level transport and QA mount gaps under bubblewrap, terminates the daemon, removes the Unix socket, restricts each persisted capability file to the owning Windows account plus SYSTEM, and leaves its three V4 databases internally consistent without V4 WAL/SHM sidecars. Full root confinement remains unverified because the Windows supervisor and privileged WSL daemon execute outside bubblewrap with the owning account's authority, and Hermes/OmniRoute remain in host WSL namespaces.",
+  "independence": {
+    "separate_reviewer_context": true,
+    "implementation_changes_by_reviewer": false,
+    "authorized_output_written": "v2/evidence/independent_root_v4.json"
+  },
+  "original_repository": {
+    "root": "C:/01. GitHub/Upgrade_TA",
+    "branch": "review/UTA-ROADMAP-V07-BRIDGE-001",
+    "head": "e85a0de276cde4ad74bd8466c68f51d6274e689c",
+    "current_manifest_sha256": "d7935f76603df520b7b4ec5aaa899b09abb2bba8da6027ef6eadb78c8f63ce19",
+    "prior_baseline_manifest_sha256": "d7935f76603df520b7b4ec5aaa899b09abb2bba8da6027ef6eadb78c8f63ce19",
+    "counts": {
+      "directories": 128,
+      "files": 258,
+      "hidden": 10,
+      "special": 0,
+      "symlinks": 0
+    },
+    "git_status_line_count": 224,
+    "result": "PASS_UNCHANGED_DIRTY_BASELINE"
+  },
+  "v4_fixture_snapshot": {
+    "root": "C:/UTA_ISOLATION/NORTHSTAR-HERMES-E2E-001/v2",
+    "file_count_excluding_this_report": 99,
+    "directory_count_excluding_this_report": 17,
+    "total_bytes_excluding_this_report": 1350900,
+    "content_tree_digest_excluding_this_report": "b00fe07fe1cf811d8abeaf111bbec8c448ce5e042310a66e16950b2995e5b918",
+    "stable_observation_window_seconds": 3,
+    "stable_during_observation": true,
+    "reparse_points": [],
+    "symlinks": [],
+    "special_objects": [],
+    "cache_paths_observed": 14,
+    "cache_finding": "Python __pycache__/pyc residue exists under v2/src; it was not removed.",
+    "host_storage": "The parent WSL namespace sees C: through 9p/drvfs. Actor guests do not receive /mnt/c."
+  },
+  "qa_mount_boundary": {
+    "source_policy": "QA receives /code read-only, /role/app read-only and /role/qa writable. No /role/state or /workspace mount is provided.",
+    "synthetic_negative_test": {
+      "exit_code": 0,
+      "qa_state_visible": false,
+      "workspace_visible": false,
+      "original_repository_visible": false,
+      "qa_app_write_succeeded": false,
+      "code_write_succeeded": false,
+      "wsl_interop_visible": false,
+      "network_devices": ["lo"],
+      "forbidden_probe_files_created": false
+    },
+    "runtime_permission_probe": {
+      "passed": true,
+      "qa_can_write_evidence": "WRITE_SUCCEEDED",
+      "qa_cannot_modify_app": "DENIED:OSError",
+      "qa_cannot_modify_state": "DENIED:FileNotFoundError"
+    },
+    "result": "PASS_QA_NO_STATE_MOUNT"
+  },
+  "transport_daemon": {
+    "implementation": "v2/src/transport_rpc.py",
+    "implementation_sha256": "cbc3fe166772afa5d6b8b11b8e7c65ede4e2833e9e3c4842eceaea1980d61b76",
+    "launch_boundary": "Direct WSL process outside bubblewrap; sole process with transport DB and full actor-key directory access.",
+    "active_process_found_after_run": false,
+    "process_search": "No transport_rpc.py serve, role_worker, or supervisor_v2 process remained at review.",
+    "socket_path": "/tmp/northstar-v4-transport-7bba2609a4f8/transport.sock",
+    "socket_present_after_run": false,
+    "socket_directory_present_after_run": true,
+    "socket_directory": {
+      "path": "/tmp/northstar-v4-transport-7bba2609a4f8",
+      "empty": true,
+      "mode": "0755",
+      "owner": "aazcl:aazcl"
+    },
+    "shutdown_behavior": "UWS-authenticated shutdown followed by daemon.wait(timeout=10); server unlinks the socket on exit.",
+    "result": "PASS_DAEMON_AND_SOCKET_TERMINATED_WITH_EMPTY_DIRECTORY_RESIDUE"
+  },
+  "actor_rpc_boundary": {
+    "mechanism": "Each RPC client runs in a new bubblewrap user/mount/network/PID namespace with clearenv, read-only code, one exact actor capability file, the exact socket directory at /ipc, private /proc/dev, and tmpfs /tmp.",
+    "synthetic_mount_probe": {
+      "identity_files_visible": ["key.bin"],
+      "other_actor_key_visible": false,
+      "state_visible": false,
+      "rpc_socket_visible_after_shutdown": false,
+      "host_drive_visible": false
+    },
+    "authentication_order_verified": [
+      "parse requested actor and supplied key",
+      "constant-time HMAC capability comparison",
+      "required-role authorization",
+      "operation dispatch"
+    ],
+    "identity_boundary_probe": {
+      "qa_key_as_morch": "REJECTED: actor capability mismatch",
+      "qa_role_privileged_snapshot": "REJECTED: operation requires UWS",
+      "sha256": "ac4e35178affa31da8fb68e82ffcff680c381b5152db39ac631a00bae2c689c8"
+    },
+    "result": "PASS_ACTOR_RPC_BOUNDED"
+  },
+  "capability_files": {
+    "directory": "v2/runtime/state/identity_v4",
+    "actors": ["MORCH", "RORCH", "QA", "UWS"],
+    "size_each_bytes": 32,
+    "guest_exposure": "One exact read-only capability file per actor RPC client; role workers receive no capability file.",
+    "wsl_drvfs_mode_observed": "0777 (drvfs projection; not the authoritative Windows DACL)",
+    "windows_acl_inheritance_protected": true,
+    "windows_acl_observed": "Exactly two non-inherited Allow ACEs on every key: PABLOKUMQUAT\\aazcl FullControl and NT AUTHORITY\\SYSTEM FullControl. No BUILTIN Users or Authenticated Users ACE remains on the files.",
+    "acl_files_verified": ["morch.key", "rorch.key", "qa.key", "uws.key"],
+    "icacls_failed_file_count": 0,
+    "secret_bytes_read_into_review_evidence": false,
+    "result": "PASS_REMEDIATED_BOUNDED",
+    "impact": "Broad inherited host-principal exposure is remediated. The owning account, SYSTEM, the Windows supervisor, and the direct WSL daemon remain trusted host authorities outside the bwrap actor boundary, so this does not establish full-root confinement."
+  },
+  "v4_sqlite": {
+    "databases": [
+      {
+        "path": "runtime/state/memory_v4.db",
+        "sha256": "6d1c1657f1613d6cdbfa9d3e7fd740dd93d9c8796916d5a226616d18a5e5dd68",
+        "quick_check": "ok",
+        "journal_mode_readonly_immutable": "delete"
+      },
+      {
+        "path": "runtime/state/transport_v4.db",
+        "sha256": "84a0569f9af785a0938466f951a0f37992a263b8606902e8378f139e7f8a6632",
+        "quick_check": "ok",
+        "journal_mode_readonly_immutable": "delete"
+      },
+      {
+        "path": "runtime/state/uws_v4.db",
+        "sha256": "cd2d1484816e68ad43e9ad1e474f783cc061681a71267c1d3fd6e3b5aa6ded42",
+        "quick_check": "ok",
+        "journal_mode_readonly_immutable": "delete"
+      }
+    ],
+    "v4_wal_shm_journal_sidecars": [],
+    "legacy_shared_v2_sidecars_still_present": [
+      "memory.db-shm (32768 bytes)",
+      "memory.db-wal (0 bytes)",
+      "transport.db-shm (32768 bytes)",
+      "transport.db-wal (0 bytes)",
+      "uws.db-shm (32768 bytes)",
+      "uws.db-wal (0 bytes)"
+    ],
+    "result": "PASS_V4_DATABASES_WITH_LEGACY_RESIDUE_OUTSIDE_V4_DB_SET"
+  },
+  "v4_logs": {
+    "files": [
+      "evidence/v4_phase1_stdout.log",
+      "evidence/v4_phase1_stderr.log",
+      "evidence/v4_phase2_stdout.log",
+      "evidence/v4_phase2_stderr.log"
+    ],
+    "stderr_nonempty": false,
+    "confined_under_fixture": true,
+    "external_hermes_and_omniroute_logs_covered": false
+  },
+  "functional_evidence_boundary": {
+    "v4_functional_result_sha256": "83cb53baf966b54799e2af39a1be8e44e028c5de1226c82269acf37a037ed83f",
+    "supervisor_sha256": "6a11cb729c8e340022dfb9afebe781e80c26c3ba5393bf9fa4bbeeb83c85de04",
+    "functional_status_claim": "NORTHSTAR_V2_FUNCTIONAL_PASS",
+    "review_boundary": "Recorded for root correlation only; this report does not issue NTV_FUNCTIONAL acceptance."
+  },
+  "external_model_boundary": {
+    "hermes_gateway_pid": 1588,
+    "omniroute_pid": 532,
+    "inside_actor_or_role_bwrap": false,
+    "live_multimodel_verified": false,
+    "model_execution": "PINNED_REAL_HERMES_BASELINE_REPLAY",
+    "status": "UNVERIFIED_EXTERNAL_DEPENDENCY",
+    "separation": "This limitation does not invalidate the bounded local V4 transport result, but it independently prevents NORTHSTAR full-root/full-multimodel PASS."
+  },
+  "findings": [
+    {
+      "id": "V4-ROOT-001",
+      "severity": "PASS",
+      "title": "Original worktree preserved",
+      "evidence": "Fresh in-memory inventory matches the prior manifest exactly at d7935f...ce19."
+    },
+    {
+      "id": "V4-ROOT-002",
+      "severity": "PASS_BOUNDED",
+      "title": "QA has no state mount",
+      "evidence": "Current source omits /role/state for QA; independent guest probe reports state absent, app/code read-only, host root absent, loopback only."
+    },
+    {
+      "id": "V4-ROOT-003",
+      "severity": "PASS_BOUNDED",
+      "title": "Actor RPC exposes one key and rejects impersonation",
+      "evidence": "Independent mount probe saw only key.bin; final identity probe rejected QA-key-as-MORCH and QA privileged snapshot after HMAC-first authentication."
+    },
+    {
+      "id": "V4-ROOT-004",
+      "severity": "PASS_BOUNDED",
+      "title": "Ephemeral daemon and socket terminated",
+      "evidence": "No daemon process remains and transport.sock is absent; only an empty 0755 /tmp directory remains."
+    },
+    {
+      "id": "V4-ROOT-005",
+      "severity": "MATERIAL_FOR_FULL_ROOT",
+      "title": "Supervisor and daemon are host-authority processes",
+      "evidence": "The supervisor runs on Windows and the daemon runs directly in the host WSL namespace, outside bubblewrap."
+    },
+    {
+      "id": "V4-ROOT-006",
+      "severity": "PASS_REMEDIATED_BOUNDED",
+      "title": "Capability-file DACL restricted",
+      "evidence": "All four 32-byte capability files have inheritance disabled and exactly two non-inherited FullControl ACEs: PABLOKUMQUAT\\aazcl and NT AUTHORITY\\SYSTEM. WSL still projects mode 0777 through drvfs, but the Windows DACL no longer grants BUILTIN Users or Authenticated Users access."
+    },
+    {
+      "id": "V4-ROOT-007",
+      "severity": "PASS_BOUNDED",
+      "title": "V4 databases closed without sidecars",
+      "evidence": "memory_v4, transport_v4 and uws_v4 pass quick_check and have no V4 WAL/SHM/journal files."
+    },
+    {
+      "id": "V4-ROOT-008",
+      "severity": "WARN",
+      "title": "Filesystem residue remains",
+      "evidence": "The empty socket directory, legacy V2 WAL/SHM files, and Python cache files remain; no cleanup was performed."
+    },
+    {
+      "id": "V4-ROOT-009",
+      "severity": "SEPARATE_BLOCKER",
+      "title": "Hermes live isolation and multimodel remain unverified",
+      "evidence": "Hermes/OmniRoute are external host processes and V4 continues to consume a pinned single-model replay rather than two live isolated model routes."
+    },
+    {
+      "id": "V4-ROOT-010",
+      "severity": "LIMITATION",
+      "title": "Late-write assurance is time-bounded",
+      "evidence": "The full V2/V4 tree digest was stable for three seconds after the final identity rerun; writes after reviewer exit are not ruled out."
+    }
+  ]
+}
+

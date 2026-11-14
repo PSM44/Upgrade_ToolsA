@@ -1,0 +1,100 @@
+....................................s...............s....
+----------------------------------------------------------------------
+Ran 55 tests in 0.191s
+
+OK (skipped=2)
+{"functional_pass": true, "output": "/tmp/northstar_opencode_go_acceptance.recheck.json", "passed": "10/13", "status": "NORTHSTAR_FAIL"}
+{
+  "dispatches": [
+    {
+      "actor": "RORCH",
+      "attempt": 1,
+      "exit_code": 0,
+      "finished_at": 1794342673.6536405,
+      "message_id": "NORTHSTAR-GO-E2E-004:task-handoff",
+      "objective_id": "NORTHSTAR-GO-E2E-004",
+      "output_json": "{\"stdout\": \"{\\\"actor\\\": \\\"RORCH\\\", \\\"completed_at\\\": 1794342673.646988, \\\"message_id\\\": \\\"NORTHSTAR-GO-E2E-004:task-handoff\\\", \\\"message_type\\\": \\\"TASK_HANDOFF\\\", \\\"objective_id\\\": \\\"NORTHSTAR-GO-E2E-004\\\", \\\"receipt_sha256\\\": \\\"70cbe9e4342ae787d34e812bef73a62f81e8dc785e0c46fd8e30cb04854a46d1\\\"}\\n\", \"stderr\": \"\"}",
+      "started_at": 1794342666.7551267,
+      "state": "COMPLETED"
+    },
+    {
+      "actor": "QA",
+      "attempt": 1,
+      "exit_code": 0,
+      "finished_at": 1794342781.904936,
+      "message_id": "NORTHSTAR-GO-E2E-004:delivery-1",
+      "objective_id": "NORTHSTAR-GO-E2E-004",
+      "output_json": "{\"stdout\": \"{\\\"actor\\\": \\\"QA\\\", \\\"completed_at\\\": 1794342781.896758, \\\"message_id\\\": \\\"NORTHSTAR-GO-E2E-004:delivery-1\\\", \\\"message_type\\\": \\\"DELIVERY\\\", \\\"objective_id\\\": \\\"NORTHSTAR-GO-E2E-004\\\", \\\"receipt_sha256\\\": \\\"aaada3ebfaa2b0db11e9ad3061137c2515fcca79e8ee51419df8953d435a65f0\\\"}\\n\", \"stderr\": \"\"}",
+      "started_at": 1794342673.9182825,
+      "state": "COMPLETED"
+    },
+    {
+      "actor": "RORCH",
+      "attempt": 1,
+      "exit_code": 0,
+      "finished_at": 1794342794.7481372,
+      "message_id": "NORTHSTAR-GO-E2E-004:qa-rejected-1",
+      "objective_id": "NORTHSTAR-GO-E2E-004",
+      "output_json": "{\"stdout\": \"{\\\"actor\\\": \\\"RORCH\\\", \\\"completed_at\\\": 1794342794.7406402, \\\"message_id\\\": \\\"NORTHSTAR-GO-E2E-004:qa-rejected-1\\\", \\\"message_type\\\": \\\"QA_REJECTED\\\", \\\"objective_id\\\": \\\"NORTHSTAR-GO-E2E-004\\\", \\\"receipt_sha256\\\": \\\"31a863d412fdbca8138a684392cfc85fee65d4460935bbdb3fec3375d42af7f3\\\"}\\n\", \"stderr\": \"\"}",
+      "started_at": 1794342782.1762302,
+      "state": "COMPLETED"
+    },
+    {
+      "actor": "QA",
+      "attempt": 3,
+      "exit_code": 0,
+      "finished_at": 1794343536.2374034,
+      "message_id": "NORTHSTAR-GO-E2E-004:rework-2",
+      "objective_id": "NORTHSTAR-GO-E2E-004",
+      "output_json": "{\"stdout\": \"{\\\"actor\\\": \\\"QA\\\", \\\"completed_at\\\": 1794343536.2309985, \\\"message_id\\\": \\\"NORTHSTAR-GO-E2E-004:rework-2\\\", \\\"message_type\\\": \\\"REWORK_RESPONSE\\\", \\\"objective_id\\\": \\\"NORTHSTAR-GO-E2E-004\\\", \\\"receipt_sha256\\\": \\\"3f39b83407c06b7badab234ae48be8cea7910c2bcb9269b51a22fccc6d99e55b\\\"}\\n\", \"stderr\": \"\"}",
+      "started_at": 1794343498.351493,
+      "state": "COMPLETED"
+    },
+    {
+      "actor": "MORCH",
+      "attempt": 1,
+      "exit_code": 0,
+      "finished_at": 1794343536.564748,
+      "message_id": "NORTHSTAR-GO-E2E-004:qa-pass-2",
+      "objective_id": "NORTHSTAR-GO-E2E-004",
+      "output_json": "{\"stdout\": \"{\\\"actor\\\": \\\"MORCH\\\", \\\"completed_at\\\": 1794343536.5578475, \\\"message_id\\\": \\\"NORTHSTAR-GO-E2E-004:qa-pass-2\\\", \\\"message_type\\\": \\\"QA_PASS\\\", \\\"objective_id\\\": \\\"NORTHSTAR-GO-E2E-004\\\", \\\"receipt_sha256\\\": \\\"d0ab90afbd87af3abd4d016daa19e1f9164fd620c3f0d5fd8eab3e1f72c0ff88\\\"}\\n\", \"stderr\": \"\"}",
+      "started_at": 1794343536.503946,
+      "state": "COMPLETED"
+    },
+    {
+      "actor": "RORCH",
+      "attempt": 1,
+      "exit_code": 0,
+      "finished_at": 1794343536.8844137,
+      "message_id": "NORTHSTAR-GO-E2E-004:accepted",
+      "objective_id": "NORTHSTAR-GO-E2E-004",
+      "output_json": "{\"stdout\": \"{\\\"actor\\\": \\\"RORCH\\\", \\\"completed_at\\\": 1794343536.8784883, \\\"message_id\\\": \\\"NORTHSTAR-GO-E2E-004:accepted\\\", \\\"message_type\\\": \\\"ACCEPTED\\\", \\\"objective_id\\\": \\\"NORTHSTAR-GO-E2E-004\\\", \\\"receipt_sha256\\\": \\\"7c094cc0a7623114b8679420667944617265b433d301e25e487acd5373198d48\\\"}\\n\", \"stderr\": \"\"}",
+      "started_at": 1794343536.8240616,
+      "state": "COMPLETED"
+    },
+    {
+      "actor": "MORCH",
+      "attempt": 1,
+      "exit_code": 0,
+      "finished_at": 1794343537.197623,
+      "message_id": "NORTHSTAR-GO-E2E-004:rorch-ack",
+      "objective_id": "NORTHSTAR-GO-E2E-004",
+      "output_json": "{\"stdout\": \"{\\\"actor\\\": \\\"MORCH\\\", \\\"completed_at\\\": 1794343537.1916885, \\\"message_id\\\": \\\"NORTHSTAR-GO-E2E-004:rorch-ack\\\", \\\"message_type\\\": \\\"RORCH_ACK\\\", \\\"objective_id\\\": \\\"NORTHSTAR-GO-E2E-004\\\", \\\"receipt_sha256\\\": \\\"85951c4bec3f87a8e2e90a01ce4b153470a87508414c04cdb66b85b17f486089\\\"}\\n\", \"stderr\": \"\"}",
+      "started_at": 1794343537.1454906,
+      "state": "COMPLETED"
+    }
+  ],
+  "event_count": 24,
+  "objectives": [
+    {
+      "created_at": 1794342666.734926,
+      "current_message_id": "NORTHSTAR-GO-E2E-004:rorch-ack",
+      "last_error": null,
+      "objective_id": "NORTHSTAR-GO-E2E-004",
+      "result_json": "{\"completed_at\": 1794343537.2587488, \"human_relay_count\": 0, \"objective_id\": \"NORTHSTAR-GO-E2E-004\", \"status\": \"ACCEPTED\"}",
+      "state": "COMPLETED",
+      "updated_at": 1794343537.2589276
+    }
+  ]
+}
+CHECKPOINT_RECHECK_PASS / EXPECTED_PRODUCT_VERDICT=NORTHSTAR_FAIL

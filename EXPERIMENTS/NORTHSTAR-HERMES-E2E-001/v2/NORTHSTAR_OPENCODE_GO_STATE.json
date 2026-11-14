@@ -1,0 +1,31 @@
+{
+  "schema_version": "northstar-opencode-go-checkpoint-v1",
+  "task_id": "NORTHSTAR-HERMES-E2E-001",
+  "objective_id": "NORTHSTAR-GO-E2E-004",
+  "verdict": "NORTHSTAR_FAIL",
+  "functional_pass": true,
+  "base_head": "d9a80c85e512489bbb8f65892f15799db4ba737c",
+  "branch": "codex/northstar-hermes-e2e-001-evidence",
+  "runtime": "/home/psm/northstar/state/NORTHSTAR_OPENCODE_GO_E2E_004",
+  "authority": "MORCH_LOCAL_DELEGATE_NOT_CHATGPT",
+  "models": [
+    "opencode-go/glm-5.3-flash",
+    "opencode-go/mimo-v2.6-flash"
+  ],
+  "completed_model_calls": 5,
+  "measured_input_output_tokens": 37996,
+  "provider_reported_cost": 0.0,
+  "model_call_limit": 6,
+  "human_relay_count": 0,
+  "control_plane_starts": 3,
+  "rework_attempts": 3,
+  "go_auth_exported": false,
+  "extra_usage_enabled": false,
+  "available_credit_usd": 0,
+  "open_gates": [
+    "AUTHORITATIVE_GO_ALLOWANCE_NOT_EXPOSED_BY_CLI",
+    "FULL_WINDOWS_NTV_ROOT_UNVERIFIED",
+    "INDEPENDENT_REVIEWER_AUTHORITY_UNVERIFIED"
+  ],
+  "continuation": "bash EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tools/resume_opencode_go_evidence.sh"
+}

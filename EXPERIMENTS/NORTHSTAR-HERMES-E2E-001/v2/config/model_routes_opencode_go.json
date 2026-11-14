@@ -1,0 +1,35 @@
+{
+  "schema_version": "northstar-model-routes-v3",
+  "authority": "MORCH_LOCAL_DELEGATE_NOT_CHATGPT",
+  "credential_boundary": "HOST_TRUSTED_OPENCODE_GO_BROKER_SECRET_ZERO_GUEST",
+  "limits": {
+    "max_calls": 6,
+    "max_prompt_chars": 12000,
+    "timeout_seconds": 180,
+    "extra_usage": false,
+    "available_credit_usd": 0
+  },
+  "roles": {
+    "RORCH": {
+      "runtime": "opencode",
+      "provider": "opencode-go",
+      "model": "opencode-go/glm-5.3-flash",
+      "binary": "/home/psm/.opencode/bin/opencode",
+      "timeout_seconds": 180
+    },
+    "QA": {
+      "runtime": "opencode",
+      "provider": "opencode-go",
+      "model": "opencode-go/mimo-v2.6-flash",
+      "binary": "/home/psm/.opencode/bin/opencode",
+      "timeout_seconds": 300
+    },
+    "MORCH": {
+      "runtime": "opencode",
+      "provider": "opencode-go",
+      "model": "opencode-go/glm-5.3-flash",
+      "binary": "/home/psm/.opencode/bin/opencode",
+      "timeout_seconds": 180
+    }
+  }
+}

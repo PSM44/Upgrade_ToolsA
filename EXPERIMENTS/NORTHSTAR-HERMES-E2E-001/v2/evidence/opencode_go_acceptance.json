@@ -1,0 +1,185 @@
+{
+  "actual_models": [
+    "opencode-go/glm-5.3-flash",
+    "opencode-go/mimo-v2.6-flash"
+  ],
+  "auth_modes": {
+    "opencode.db": 384,
+    "service.json": 384
+  },
+  "authority": "MORCH_LOCAL_DELEGATE_NOT_CHATGPT",
+  "checks": [
+    {
+      "detail": "authenticated local delegate returned terminal result; it is not ChatGPT MORCH",
+      "gate": "FUNCTIONAL",
+      "name": "morch_local_delegate_ingress_egress",
+      "passed": true
+    },
+    {
+      "detail": "durable producer enqueue, consumer claim and consumer-owned ACK for seven edges",
+      "gate": "FUNCTIONAL",
+      "name": "seven_edge_consumer_cycle",
+      "passed": true
+    },
+    {
+      "detail": "separate QA guest rejected round 1 and accepted corrected round 2",
+      "gate": "FUNCTIONAL",
+      "name": "qa_reject_fix_accept",
+      "passed": true
+    },
+    {
+      "detail": "control_starts=3; worker_failures=2; rework_attempt=3",
+      "gate": "FUNCTIONAL",
+      "name": "restart_lease_recovery",
+      "passed": true
+    },
+    {
+      "detail": "seven unique dispatches ended successfully after bounded recovery",
+      "gate": "FUNCTIONAL",
+      "name": "dispatch_terminal",
+      "passed": true
+    },
+    {
+      "detail": "hash chain verifies and semantic recovery returns a checkpoint",
+      "gate": "FUNCTIONAL",
+      "name": "memory_integrity_retrieval",
+      "passed": true
+    },
+    {
+      "detail": "actual_models=['opencode-go/glm-5.3-flash', 'opencode-go/mimo-v2.6-flash']; calls=5; tokens=37996",
+      "gate": "MULTIMODEL",
+      "name": "two_real_go_models",
+      "passed": true
+    },
+    {
+      "detail": "five completed calls under configured max_calls=6",
+      "gate": "COST",
+      "name": "bounded_model_budget",
+      "passed": true
+    },
+    {
+      "detail": "OpenCode step_finish aggregate=0.0; Go allowance header not exposed by CLI",
+      "gate": "COST",
+      "name": "provider_reported_cost",
+      "passed": true
+    },
+    {
+      "detail": "modes={opencode.db:0o600, service.json:0o600}",
+      "gate": "ISOLATION",
+      "name": "go_auth_file_permissions",
+      "passed": true
+    },
+    {
+      "detail": "CLI step_finish reported cost=0 but did not expose opencode.allowance; Extra Usage OFF and $0 credit are HUMAN-provided policy evidence",
+      "gate": "BILLING",
+      "name": "authoritative_allowance_and_extra_usage",
+      "passed": false
+    },
+    {
+      "detail": "bwrap guest and Debian process tree were inspected; WSL Debian is not full Windows host isolation",
+      "gate": "ROOT",
+      "name": "full_ntv_root",
+      "passed": false
+    },
+    {
+      "detail": "mechanical verifier is a separate read-only process, but no separately authorized reviewer principal signed comprehensive acceptance",
+      "gate": "INDEPENDENCE",
+      "name": "independent_reviewer_authority",
+      "passed": false
+    }
+  ],
+  "functional_pass": true,
+  "model_calls": [
+    {
+      "actor": "RORCH",
+      "actual_model": "opencode-go/glm-5.3-flash",
+      "actual_provider": "opencode-go",
+      "cost_source": "opencode_step_finish",
+      "cost_status": "provider_reported",
+      "cost_value": 0.0,
+      "exit_code": 0,
+      "input_tokens": 843,
+      "output_tokens": 240,
+      "request_id": "NORTHSTAR-GO-E2E-004:rorch-build",
+      "requested_model": "opencode-go/glm-5.3-flash",
+      "session_id": "ses_e38d7bbd1ffeScfVrR95oZUo0K",
+      "stage": "BUILD",
+      "status": "COMPLETED",
+      "total_tokens": 1083
+    },
+    {
+      "actor": "QA",
+      "actual_model": "opencode-go/mimo-v2.6-flash",
+      "actual_provider": "opencode-go",
+      "cost_source": "opencode_step_finish",
+      "cost_status": "provider_reported",
+      "cost_value": 0.0,
+      "exit_code": 0,
+      "input_tokens": 9917,
+      "output_tokens": 931,
+      "request_id": "NORTHSTAR-GO-E2E-004:qa-review-1",
+      "requested_model": "opencode-go/mimo-v2.6-flash",
+      "session_id": "ses_e38d79ff0ffeCAFCUUrxEQGsed",
+      "stage": "REVIEW1",
+      "status": "COMPLETED",
+      "total_tokens": 10848
+    },
+    {
+      "actor": "RORCH",
+      "actual_model": "opencode-go/glm-5.3-flash",
+      "actual_provider": "opencode-go",
+      "cost_source": "opencode_step_finish",
+      "cost_status": "provider_reported",
+      "cost_value": 0.0,
+      "exit_code": 0,
+      "input_tokens": 5376,
+      "output_tokens": 458,
+      "request_id": "NORTHSTAR-GO-E2E-004:rorch-fix",
+      "requested_model": "opencode-go/glm-5.3-flash",
+      "session_id": "ses_e38d5f8f3ffeVidlSoulIchRMf",
+      "stage": "FIX",
+      "status": "COMPLETED",
+      "total_tokens": 5834
+    },
+    {
+      "actor": "QA",
+      "actual_model": "opencode-go/mimo-v2.6-flash",
+      "actual_provider": "opencode-go",
+      "cost_source": "opencode_step_finish",
+      "cost_status": "provider_reported",
+      "cost_value": 0.0,
+      "exit_code": 0,
+      "input_tokens": 7816,
+      "output_tokens": 1119,
+      "request_id": "NORTHSTAR-GO-E2E-004:qa-review-2",
+      "requested_model": "opencode-go/mimo-v2.6-flash",
+      "session_id": "ses_e38d5c640ffedtLn9Scmd86p8l",
+      "stage": "REVIEW2",
+      "status": "COMPLETED",
+      "total_tokens": 8935
+    },
+    {
+      "actor": "QA",
+      "actual_model": "opencode-go/mimo-v2.6-flash",
+      "actual_provider": "opencode-go",
+      "cost_source": "opencode_step_finish",
+      "cost_status": "provider_reported",
+      "cost_value": 0.0,
+      "exit_code": 0,
+      "input_tokens": 10956,
+      "output_tokens": 340,
+      "request_id": "NORTHSTAR-GO-E2E-004:qa-review-2-retry-1",
+      "requested_model": "opencode-go/mimo-v2.6-flash",
+      "session_id": "ses_e38cb0b53ffelBT1Bvku33A3xr",
+      "stage": "REVIEW2",
+      "status": "COMPLETED",
+      "total_tokens": 11296
+    }
+  ],
+  "objective_id": "NORTHSTAR-GO-E2E-004",
+  "provider_reported_cost": 0.0,
+  "runtime": "/home/psm/northstar/state/NORTHSTAR_OPENCODE_GO_E2E_004",
+  "schema": "upgrade-ta.northstar.opencode-go-acceptance/v1",
+  "status": "NORTHSTAR_FAIL",
+  "total_tokens": 37996
+}

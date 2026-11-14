@@ -1,0 +1,9 @@
+{
+  "roles": {
+    "MORCH": {"provider": "custom", "model": "20261030_RORCH", "timeout_seconds": 300},
+    "RORCH": {"provider": "custom", "model": "20261030_RORCH", "timeout_seconds": 300},
+    "QA": {"provider": "custom", "model": "nvidia/nemotron-3-ultra-550b-a55b:free", "timeout_seconds": 300}
+  },
+  "policy": "Two explicit underlying model IDs through the existing custom OmniRoute endpoint; QA route must be proven by a real receipt before acceptance. No fallback aliases."
+}
+

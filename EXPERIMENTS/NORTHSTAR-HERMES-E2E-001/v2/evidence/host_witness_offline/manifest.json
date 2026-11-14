@@ -1,0 +1,26 @@
+{
+  "task_id": "NORTHSTAR-P2-HOST-WITNESS-OFFLINE-IMPLEMENTATION",
+  "baseline": "1f2c010cbf66742e38dbd4445d5c9464f083e77c",
+  "files": [
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/host_witness_offline.py",
+      "sha256": "2a7ec5d701338fa72a724326dd6678e5096b4930bb533d43545a095ff2bc6060"
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_host_witness_offline.py",
+      "sha256": "75251c311eebeff1179a52f475fb306567715060c7836567a3556aa40cf3d436"
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_offline/report.md",
+      "sha256": "267123e10fc30e69e815538e8ebb5cc9ba4a8c2fce7bf16fb801865d0d43d810"
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_offline/qa.md",
+      "sha256": "01b5254a82c16b7e7e6ee0f0eabe57fa269ea840c2b94d6ad627590d8937db89"
+    }
+  ],
+  "secret_scan": "no private-key/token patterns; TEST keys not included",
+  "existing_files_preserved": true,
+  "qa": "QA_PASS_OFFLINE_BOUNDED",
+  "operational_gates": "G1-G5 OPEN"
+}

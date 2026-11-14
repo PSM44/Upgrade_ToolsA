@@ -1,0 +1,878 @@
+{
+  "AGENTS": {
+    "type": "directory"
+  },
+  "AGENTS/README.md": {
+    "sha256": "ad5b8d2e98b215fd70a2a7aa2e88b8217c7405f22e938a223977c86bc0cc1e14",
+    "type": "file"
+  },
+  "AI_History": {
+    "type": "directory"
+  },
+  "AI_History/.gitkeep": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "type": "file"
+  },
+  "AI_History/20261015_TOOLING_DELTA.md": {
+    "sha256": "ffd4a7a71f63efccf1c286711314929263132895bf19be7f1a34d68ab2a1bfc1",
+    "type": "file"
+  },
+  "AI_History/20261016_UTA021_ARCHITECTURE_DELTA.md": {
+    "sha256": "8ff0eea2dcc5847903f22d7c4ab04f1c1c221c14adcc05fec8b7a1ab54f701b7",
+    "type": "file"
+  },
+  "ARENA": {
+    "type": "directory"
+  },
+  "ARENA/ARENA_CONTRACT.md": {
+    "sha256": "72f5e67832a8c46905d7e0b98ff6d27396fcf1ce8b7396e4926423811410e32a",
+    "type": "file"
+  },
+  "ARENA/EXPERIMENT_TEMPLATE.md": {
+    "sha256": "903c8ae3a102093625372cb518fc28083c7107a67eb44ee2a92c7b03f324244f",
+    "type": "file"
+  },
+  "BATON": {
+    "type": "directory"
+  },
+  "BATON/BATON.json": {
+    "sha256": "fe52887685df8eae10a2685898df8dedf5d57d72b1313cefcf381a1412f59a45",
+    "type": "file"
+  },
+  "BATON/BATON.md": {
+    "sha256": "0ee313d4fc66379058a2acb57d7ba23635979cfc17753de02211e7083eb9d994",
+    "type": "file"
+  },
+  "BATON/START_HERE.md": {
+    "sha256": "2beb3da50f431a07a7167a4e87d157f3bbd43d125a14af079bccc2ff6eeedba6",
+    "type": "file"
+  },
+  "BOOSTRAP": {
+    "type": "directory"
+  },
+  "BOOSTRAP/BASELINE.json": {
+    "sha256": "97d22586e91c3e79943ca46dc9d85bb1743040d7e11b0f7a0ebe7f096b99ee01",
+    "type": "file"
+  },
+  "CONTINUITY": {
+    "type": "directory"
+  },
+  "CONTINUITY/HO1": {
+    "type": "directory"
+  },
+  "CONTINUITY/HO1/HO1_CONTRACT.md": {
+    "sha256": "d10b751038388499c6404f094c61f07cbdb4ed97a9b22266b583467053c67a1f",
+    "type": "file"
+  },
+  "CONTINUITY/PROFILE_AND_RECOVERY_RUNBOOK.md": {
+    "sha256": "4f5392d0f187acea7f606dc86c28bfc0285e234155f972db310c1c7cb08b56b5",
+    "type": "file"
+  },
+  "CONTINUITY/STATE.md": {
+    "sha256": "a76428dccb6421fa9be7f10cdc7ad73e8c884504ba5ca59acfe49bdc8697df17",
+    "type": "file"
+  },
+  "CONTINUITY/UTA011_HANDOFF.md": {
+    "sha256": "9ae7d62e2281a1d13a171f020c56d5b7dda40566666601a8466ecdf147a94045",
+    "type": "file"
+  },
+  "EXPERIMENTS": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/NORTHSTAR_HERMES_E2E_REPORT.md": {
+    "sha256": "ac7c2fdfcca6b0b530b841c316dccb5af90c8c3569ddcdcf4d5b725e60e0fa7e",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/evidence": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/evidence/independent_functional_review.json": {
+    "sha256": "f03faeba0507cbe8cf2261fdf6f15bfde88086381f0feb1f9cf536482634af58",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/evidence/independent_root_review.json": {
+    "sha256": "ce70b9433c37c4d6f97cedc99059e51efe75d5df8bd228d2486fe4026f29c5a8",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/fixture": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/fixture/app.py": {
+    "sha256": "f91422216c09d64df383eeb209bd0a2e85dcf01ca2697a79120a19516550419b",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/fixture/test_app.py": {
+    "sha256": "c190531c672340d726baeb7ff1e864de9085298a44980bfd471e1d75d4a0a68c",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/src": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/src/guest_worker.py": {
+    "sha256": "78010fafef2ac3b87dc8b32eed63ff20f004307a2210e8f9cbe7c08db3dd8bb7",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/src/northstar_supervisor.py": {
+    "sha256": "8a1939f816da8c08109ed4e02b24c688938a0ff7190508d8ca7983f7983a9b9f",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/NORTHSTAR_CONVERGENCE_002_REPORT.md": {
+    "sha256": "d4155e3335b3ad5b6bc8ca76bed94ff783c647a54a67a14aab5c59ad5adbe621",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/NORTHSTAR_OPENCODE_GO_REPORT.md": {
+    "sha256": "8f63ad6ec7caaf69854d1bd821987edf5673a82036991a9425a83e94312347b4",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/NORTHSTAR_OPENCODE_GO_STATE.json": {
+    "sha256": "b5adc95049989c5559332f22b3dfeceef61de49417e61165c17811ad31e68775",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/NORTHSTAR_SESSION1_REPORT.md": {
+    "sha256": "cc605c685bff9596930a6faafe3496b59912245984b906835ab6549791e1d350",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/NORTHSTAR_SESSION2_REPORT.md": {
+    "sha256": "aebdeed187bde65b5c4573915048c5f56179c82947787c56225939df84fcd56a",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/NORTHSTAR_SESSION3_REPORT.md": {
+    "sha256": "71cb2923936f7ca19d358216af7ebe76f347decc83148277a628468e04f66ee3",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/NORTHSTAR_STATE.json": {
+    "sha256": "12f8e4fd73b29a8c320a40dbb326899e12f753abcdc6e3c1c15e20230b964e3d",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/config": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/config/model_routes.json": {
+    "sha256": "909d364d897b814f9b80edaf6c9b61c0ead31ce299590a05ac72be2d2fd550ae",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/config/model_routes_opencode_go.json": {
+    "sha256": "6b77cf252750ae39132b9a03327112a41761089eb631379f729dbb89a24abde4",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/config/model_routes_p2.json": {
+    "sha256": "20fd6825738004784ebe627f20bf18abe51dfbab8483751e9bcc90896a767c70",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/config/model_routes_session2.json": {
+    "sha256": "c0a877fc009f333cd99e042f9ed7a4b0e408ca1613bdc2f8e4ae11945ec4f129",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/config/model_routes_session3.json": {
+    "sha256": "9374935ee3cdf7bab3827c2eef898fb570fed4efebad87c07a6d74737e4cd7b5",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/config/model_routes_session4.json": {
+    "sha256": "09b2cf9cd3bd4bf0ddf6b0b2a430a93f4664ce6f96794a01c3748fa84aeb026a",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/NORTHSTAR_OPENCODE_GO_SHA256SUMS.txt": {
+    "sha256": "8cbaf3b35643e1790e770b57052090349d0400ac767af9c37e871604a7183b45",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_offline": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_offline/manifest.json": {
+    "sha256": "e5242182353a7811485ea228860881b84c9dd968873851e73bb65741479fe608",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_offline/qa.md": {
+    "sha256": "01b5254a82c16b7e7e6ee0f0eabe57fa269ea840c2b94d6ad627590d8937db89",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_offline/report.md": {
+    "sha256": "267123e10fc30e69e815538e8ebb5cc9ba4a8c2fce7bf16fb801865d0d43d810",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe/body.bin": {
+    "sha256": "bc6ead6496790c2e121484e684862a0252834c156de11c38f3289dfe6200a508",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe/signature.der": {
+    "sha256": "2cfcce441c484519496c5bcf661f8073ef4369993f664ad92f4ce921357ee05d",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe/signature.p1363": {
+    "sha256": "1a2e9627361138ca3d6d40cacd2acd10072d6d01ec9248aea0574af65b7a859f",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe/tampered.bin": {
+    "sha256": "b82b6a58e132e955798f97f299bc057c807b650d4256f07abc545272518baf50",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe/test_public.pem": {
+    "sha256": "592e5bcc1e1ae0510fe653c80258911ec4dd7342ce7e227ad8b1d631a85fc3ba",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe_results.json": {
+    "sha256": "e622d6cb35a15284c59916db35490d35b464767b7db582c1b34a01b6d9cc1440",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/history": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/history/host_witness_design.rev2.md": {
+    "sha256": "9ede222e391dd8239343d305988cccdb811517567e44b9b9543aa36989aef8a7",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/history/qa_pass_rev2.md": {
+    "sha256": "19a735e423f45eb98c508756d3b3f973ceb65dc51b86c38f7efed52d9433ca4c",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/history/qa_rejected_full.md": {
+    "sha256": "fe1b862ac242d5e2ae712b512e7dd5fadd214ffa7853e6432329323c77367745",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/host_witness_design.md": {
+    "sha256": "176183ba7ee314a31c4e6b7e6df83144a0cd27d98725a9511543fe3261b3b38a",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/publication_manifest.json": {
+    "sha256": "5d5ded1b7b81672b5715aaa7085fb59e68fa025c25d3fb6b79702deeb3df4e81",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/qa_rev3.md": {
+    "sha256": "1129c593bebe405929e5d4a7ac30862911379b274cd943a545a949a569c26c06",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/resolution_matrix.md": {
+    "sha256": "9cf0e65f9bb77f2fe027de3142996d9e3e5afb163b52a40e531aece7783daf75",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/run_crypto_probe.py": {
+    "sha256": "54192515df71a9bbe0298b234cea824e065bac6c6475aac0c12533c684d04212",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/technical_evidence.md": {
+    "sha256": "8e97d5ca4b00b4ce570c1f3c44aabd97f7181c29ae8e0c1b93a1f75931340d69",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/identity_boundary_probe.json": {
+    "sha256": "e81d347bcbeb05372de442abaa141ecec5ea01e43de41dbec99f634b120d0034",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/independent_functional_v4.json": {
+    "sha256": "18392796654d60d99c1a2d41aa0ce720bf41dfc0b61d8cef445ed434ae313057",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/independent_model_runtime_v2.json": {
+    "sha256": "acf1c6612da8c012cbb4463f2e3eb4d4684c44de28cc496dcb6c439acc2bd407",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/independent_root_v4.json": {
+    "sha256": "b852ea207a3d8569d7a8cdbab220e63402e853f464fedcd74180f12551717896",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/model_baseline_result.json": {
+    "sha256": "af90db4c4d822cb9185ea38bd707cfde4bccf1245a24b9357ef4a78c0dc662eb",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/opencode_calculator_pilot.json": {
+    "sha256": "f9f30d4b3d11a042757e7202ee0505bdf9cc8ef91d080505fe057d5c8697a43e",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/opencode_go_acceptance.json": {
+    "sha256": "d9251db8933463b794dfccd9b9c313137464c29693194e32f8a56250e047ffec",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/opencode_go_canaries.json": {
+    "sha256": "5a1b89f8a8eab7234523c98faaafe5d643f96d06b0363574f0bca1f2005ff0eb",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/opencode_go_full_tests.log": {
+    "sha256": "a8a5f5038caf7b7d3214162c3ba466afe2ce1186ab23ccba5482eb70099de0b1",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/opencode_go_resume_test.log": {
+    "sha256": "b5a0325159810f02383274c23bd90eb5a8ed872913693560770d236bab52e916",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/opencode_go_verifier.exit": {
+    "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/opencode_go_verifier.log": {
+    "sha256": "f3cdd742a2a5bdb8b3834cd5eb19e0a52fd01f0cb1b4ccbe68feedeba32652df",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/p1_ro_sqlite_verifier_evidence.md": {
+    "sha256": "bf3d7b2056571f8deec197d7adb4366ba649c3643db07735854112f3e39216fb",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/p1_ro_sqlite_verifier_sha256sums.txt": {
+    "sha256": "e1a29a5223c4a57542c6904334d96168d96427fc7d637ed87445ffc38dd7c8d3",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/p2_codex_recovery_evidence.md": {
+    "sha256": "7ce68c052e4d07938610eeec81d90346b0d1426017054a1745b6489c03db935e",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/runtime_probe.json": {
+    "sha256": "8b050b8243b3e147d0e2f644a1ed832fe47103d74212ac258d11551222351fcb",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session1_control_plane_result.json": {
+    "sha256": "1e09d60066a6a6e5f2a821f16e3a4719d64ff5a1e591a3e1cf9ca6c3d0d9d74b",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session1_model_route_probe.json": {
+    "sha256": "6c1ad1e16988b6dc8eb9d497bee62a03924a12d889d8f88c6ea0c68265e1e8c6",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session1_ntv_controlplane.json": {
+    "sha256": "6c49b92c63720837031220023aa405b7915255ca65bd66ecfdca5fc653262dd4",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session2_ntv_controlplane.json": {
+    "sha256": "6c49b92c63720837031220023aa405b7915255ca65bd66ecfdca5fc653262dd4",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session3_acceptance.json": {
+    "sha256": "7bee7638d2f36b45ceebcdaaa0fa73e07da468e2a2e2649af747166571d9835c",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session3_full_tests.log": {
+    "sha256": "285871c46fed2f6c75e4d2900c68aee4cb83545a1a6241eb53a2adc9915cfca8",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session3_ntv_controlplane.json": {
+    "sha256": "6c49b92c63720837031220023aa405b7915255ca65bd66ecfdca5fc653262dd4",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session3_ntv_root.json": {
+    "sha256": "9436e96ae83fe6e83ab2e2c1db4b067c55d1cd813eddfa9a6efc07e745e97dfb",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session3_root_post.json": {
+    "sha256": "65c2f8f8dba60f3a0489aaaaf11c9b4f6e302500c0ec48da4dd93494a074b246",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session3_root_pre.json": {
+    "sha256": "46d4e10147be0805f275d1622db69f38f1a2c3f262246315f3cd3f6a68ee4fce",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_acceptance.json": {
+    "sha256": "1b10e473bc8a8e60f6ca6335554b126750c49c7eb10e20a67fd4fa30e7428f6c",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_affected_retry.log": {
+    "sha256": "c297eddaf34dadd291ca2a3e969ff26d53322ffed115cc7731d7bbb8117685cb",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_affected_tests.log": {
+    "sha256": "c59b619f20c2d41af5c376119bcdca68ccda50ebd5a081b265595e384d20ba86",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_full_tests.log": {
+    "sha256": "3501e103dd688ed01af005e7a44681ba426e0c28db11dd8444565d57adbab09b",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_full_tests_final.log": {
+    "sha256": "fc2008236c2650a91ac62f67a956684575d42a3b6f523a6463ef6c6ab41829ff",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_full_tests_retry.log": {
+    "sha256": "ca0c95bc7f1e3b5b29848dedd53892a8cd4afbc5bba2ded9d20b7b66a1a995f3",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_ntv_controlplane.json": {
+    "sha256": "afc2dec24bb6870d56d652c7b8b4776b339e4420f9d0aefde70338656a275786",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_openrouter_pricing.json": {
+    "sha256": "dab7be669ee1424ed0dfe8f8b4d909c41caa0509c2fbe0e91f31cf5fb7f08016",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_qa_nano_canary.json": {
+    "sha256": "e9a8fb052874415d87ede5d218b5b05d9faa9b7292cbc28c1e8cab709c761f04",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_root_post.json": {
+    "sha256": "3a15a27555d642a576332f669150c6dd47346719771aba4a587096a6abf8c353",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_root_pre.json": {
+    "sha256": "c2579060ac1c4c2eb71c31a7939763f86f7041245ff50bcce98f7bc011881862",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/session4_root_verdict.json": {
+    "sha256": "57d739371617fc280f2315dec92e1c7313af9a0d392d02d3fded0a37adece3f8",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/v4_functional_result.json": {
+    "sha256": "c667ce65a9101f5c6028a36b2783ea73b4d66993a7e14363c00f6b4d113e2b1b",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/ntv": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/ntv/ntv_controlplane.py": {
+    "sha256": "b5c3246e5aab8e322b98dd302b7bbd5f3d4a5e543769f9fb0b19c9d51ac683f2",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/ntv/ntv_opencode_go_acceptance.py": {
+    "sha256": "cc06d63a9dcce32f4cf615567b8509ad2a41c05f9e12e535ef223e5d91228963",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/ntv/ntv_root_session3.py": {
+    "sha256": "ae2db7f7e1119cd1f0707f06ee1aaf0f4a10f56c1f938122c68d54a3b3408747",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/ntv/ntv_session3_acceptance.py": {
+    "sha256": "c4c4ff0a7e6bb3839dc8b017f4cb69b30a7f01d5b1f555720154d6983847576f",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/ntv/ntv_session4_acceptance.py": {
+    "sha256": "400885155909cee7cc36062b418ca918be3a5b783b678d8da41711c58283b50d",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/resume_northstar.ps1": {
+    "sha256": "2ca5170fa80ee87c639ad65abad14f86a712ea4414d759bfa0f73990437e58d8",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/UWS": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/UWS/__init__.py": {
+    "sha256": "97edf1cb6333862a24e820cc036b025f3e74c9cc26a9fcc25b08d03f2d61f9a7",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/UWS/artifacts.py": {
+    "sha256": "837ff5a9846676a7698856ceac8725c5425ced813c89459f7ff4717e4fbace9e",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/UWS/fsm.py": {
+    "sha256": "2a695396408120414115577e97dca3a3c1cba363112611c825ec268ff3d73dc3",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/UWS/idempotency.py": {
+    "sha256": "a084291a4d0077e509d9e98c8ad39a10272dde5106f8500c492b940243687878",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/UWS/lease.py": {
+    "sha256": "bbfaf8edbe27e63af8017187b0bc39a334c38292d6360cbeed71c6e39e7ef673",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/UWS/ledger.py": {
+    "sha256": "81c9fa27519cd364b5e0c619d350815928393b087934ccd4a1d7d08c3229a6a6",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/UWS/models.py": {
+    "sha256": "7ff835a93b5da7abeda7797f8ad81dcf31e07b49e478d930195c1381477c77cb",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/control_actor.py": {
+    "sha256": "c0b246d1e59e38c623baeeb306f9ebdd1d867208d8bad06f6de7ed182a53616d",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/guest_worker.py": {
+    "sha256": "78010fafef2ac3b87dc8b32eed63ff20f004307a2210e8f9cbe7c08db3dd8bb7",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/host_witness_offline.py": {
+    "sha256": "2a7ec5d701338fa72a724326dd6678e5096b4930bb533d43545a095ff2bc6060",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/mission_checkpoint.py": {
+    "sha256": "64732455a39e85933e9f7f926518b4d9b897e3c0f76fc761fa12778eb12d8474",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/model_broker.py": {
+    "sha256": "98d9fe24584d4c02a71e081c3023246eed8bf3c9113238fe92a8d465e385ad39",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/model_route_probe.py": {
+    "sha256": "2503642437915f45d0e24dbf854667599625c865111e61f9c4fbcd7710fc64ef",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/model_router.py": {
+    "sha256": "ae225363dfab3c8be8ac70b0021027f74834d21b8199f54a6a7c7540301ca5e0",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/morch_delegate.py": {
+    "sha256": "3e94cac94c40bc3976ecf434b8fd7210104e32e42b0f6887ead74f29b20deb39",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/morch_submit.py": {
+    "sha256": "e60a800ff147ff03b07101f130d4fd6f23e2e5b46b3b1ee2bfcc45c847aaae47",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/omniroute_direct.mjs": {
+    "sha256": "fde96f038be006abd6c0ff0d29fdc0509f39eeb4a382258c445126e86f83e519",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/opencode_adapter.py": {
+    "sha256": "8a8a9bdfa35496b40bb1ed970a44e2009c03c54a8cc242e5336c6fc3b52cc026",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/operational_memory.py": {
+    "sha256": "9a24dea42c4becc2f753a1b14629b3ec90d429cd874cde863cf789a15ff019bb",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/p2_editor.py": {
+    "sha256": "3151d1b5a82341d56d7cec058294ba3843d34ab49979b610196cecb159b59a61",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/p2_task.py": {
+    "sha256": "4a2e8e40d34118be7890ac84bb65ece83a2f9e8021408a66a1bf88759fe3b0fd",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/persistent_control_plane.py": {
+    "sha256": "bdb8e3f168e3ac856efa611b8478596e7d2000ac4337e0c3b27ddc92028d37f8",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/persistent_control_plane_debian.py": {
+    "sha256": "8eb84c311702cf808ee6c250678889ea9db19c081fa24dbf6b078df98381918d",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/record_model_baseline.py": {
+    "sha256": "0cd1054184337cb80f174ffc3acce017cc9c97098887c29425ade7aed269970e",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/role_worker.py": {
+    "sha256": "040eb48a4e139da037071fad10cfcd43c00ae3d353187553c34921712f8fb3a6",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/secure_transport.py": {
+    "sha256": "738a13ad57e591da2900bbc383d99a0c3b9cb0e4e15169cc78e86cb8d991f842",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/supervisor_v2.py": {
+    "sha256": "0cf423bfa7d7829dc109e4220d3e4c00a6cb753928d9fb0d021b3a014de7c32b",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/transport_rpc.py": {
+    "sha256": "b6fbb08662f831049013b5796db3704fb61b0b38984b343d020e8b12a3457490",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/src/update_session_checkpoint.py": {
+    "sha256": "5bfd6a330d0e52f21a90c88807d722fdacf68fc9ba09fa2ff54d6363371d8217",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_host_witness_offline.py": {
+    "sha256": "75251c311eebeff1179a52f475fb306567715060c7836567a3556aa40cf3d436",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_mission_checkpoint.py": {
+    "sha256": "e6e0c04c9f8faf812f6f8c7c0a23530f0ade3eb3aba86bdc8ab9fd15341be2a8",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_model_route_probe.py": {
+    "sha256": "19df6470ac199965ac355942895761094917f3a6ad12ec5ded06afb222df9660",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_model_router.py": {
+    "sha256": "24c714701a677065034c629fd581dfbfa192cebd0329b3650668221cdd1301b4",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_morch_delegate.py": {
+    "sha256": "5312d2b87f248e7f760ef568b2ceca6cccfa8f0259e1198be2d9e79004f17c7c",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_opencode_go_broker.py": {
+    "sha256": "b2309219664d36d95979908f8ba3de3846570810773484b801167d4fe0f21a71",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_operational_memory.py": {
+    "sha256": "2da004873ee67b8075ccbdc7c79cf852174dabbd30f47433c1cbdd794c83eab3",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_p2_external.py": {
+    "sha256": "f4461b9f04baad6bb2f642e61348b492fed662caebdc7583d2be48b3480f9010",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_p2_task.py": {
+    "sha256": "1e91dcc0004a6404b04af6c47ebf15bc50ae8e02629ebb90fa8c5f53be0f1941",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_persistent_control_plane.py": {
+    "sha256": "153ead153a0e84ef04e9a337ee6d6fb8cab793c8005830ed0fde02b7c0e2f82e",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_secure_transport.py": {
+    "sha256": "59679c83f729f21f2b1a178af2c11408687c587063c8dafad762f36bb40d42e0",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_session2_model_broker.py": {
+    "sha256": "5cf8bcd99ba1e98febbb18d0ab3dada1d41cd3986ba50c397ed3b0e9911a9f2a",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_session2_real_runtime.py": {
+    "sha256": "ca5641295cc99c57913e62242063b6cb8aeaf1bb72dffa3702c13b410c56939c",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_session3_role_mounts.py": {
+    "sha256": "8485f75c8945ef7b530de01e7e8fdfa87587af0cb80d7f47c2b6977ed4302a3b",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tests/test_session4_omniroute_broker.py": {
+    "sha256": "bf3d489a255f8520378fbc571525fe10876652534a5d7071a8b801ef1268e5d4",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tools": {
+    "type": "directory"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tools/capture_openrouter_pricing.py": {
+    "sha256": "f8831a49e75f56513b694afd206ab68c3fea0fb27274e285e7f78e3e0bd47c68",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tools/p2_external.py": {
+    "sha256": "879c79d523fd9cafde44a8e37fba73b315c899288f34dc8239c228488665e0ce",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tools/p2_external.sh": {
+    "sha256": "c32b7ad25be7255501db3023ababb48ff92c07ce988246fb5b7f5245a97d1631",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tools/resume_opencode_go_evidence.sh": {
+    "sha256": "2500405b6d3efd21c1f4a973ec0e03b8a5397a8cdafcc23760ecf81a67357ef8",
+    "type": "file"
+  },
+  "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/tools/trace_omniroute_headers.mjs": {
+    "sha256": "c13036e31fd3691fa085b1d5d4d6aef68afc1a339fa858473d1f719e4f3ee1a5",
+    "type": "file"
+  },
+  "HARNESS": {
+    "type": "directory"
+  },
+  "HARNESS/CANDIDATES": {
+    "type": "directory"
+  },
+  "HARNESS/CANDIDATES/README.md": {
+    "sha256": "c249a3f6e339e729a7b2d655e0ee1957ea9ab91138804e4884cbab6de0f1b815",
+    "type": "file"
+  },
+  "HARNESS/COMPARISONS": {
+    "type": "directory"
+  },
+  "HARNESS/COMPARISONS/CRITERIA.md": {
+    "sha256": "922ed0457fedc6dd927966cf6a828e26b44b0c65a36534d87d53b3f5d15039b3",
+    "type": "file"
+  },
+  "HARNESS/DSH": {
+    "type": "directory"
+  },
+  "HARNESS/DSH/README.md": {
+    "sha256": "33b3c2c36f1f8aa31f09b6fd021f73376616026bb03a5c6a8b1a853f17f0d27d",
+    "type": "file"
+  },
+  "HARNESS/HERMES": {
+    "type": "directory"
+  },
+  "HARNESS/HERMES/README.md": {
+    "sha256": "14562baa87af331bd2efb3c2f66a2c1ec0c05073a61c60f394df6799447faa7e",
+    "type": "file"
+  },
+  "HARNESS/README.md": {
+    "sha256": "77acd96495a6e7e3f3ba1277ee4fa4db4d352c488d2bd2afd5f16ede241906fb",
+    "type": "file"
+  },
+  "HUMAN": {
+    "type": "directory"
+  },
+  "HUMAN/DICTIONARY": {
+    "type": "directory"
+  },
+  "HUMAN/DICTIONARY/DICTIONARY.md": {
+    "sha256": "f7fc5845965ee1c7476298027f5e62308baecb9827968d5e3e3038c26f0a8410",
+    "type": "file"
+  },
+  "HUMAN/MR0": {
+    "type": "directory"
+  },
+  "HUMAN/MR0/DECISION_LOG.md": {
+    "sha256": "be2e4615aee7b70b32c2cff540189a57bab2893c42e7bef2a3f94ed9d0d471ce",
+    "type": "file"
+  },
+  "HUMAN/MR0/MR0.md": {
+    "sha256": "94b7797633a60a70fbd8d2a615b4078c439b0faf0349086814dc3bc27019a6a8",
+    "type": "file"
+  },
+  "HUMAN/NORTH_STAR.md": {
+    "sha256": "52478ccd5889917d9ec2ad09692ff9b69582e57a8819c34db650eb07ccb7329e",
+    "type": "file"
+  },
+  "HUMAN/PLUGIN_AND_TOOL_REGISTER.md": {
+    "sha256": "d1605b9e4f951d748ffdd5db892b5510e70b22c7de09c014dc4f3ea3d6667314",
+    "type": "file"
+  },
+  "HUMAN/ROADMAP.md": {
+    "sha256": "ae56efc7696748c28c7e55df7373d9c6070c330f70d0376fe28749856020f38a",
+    "type": "file"
+  },
+  "HUMAN/UPGRADE_PLAN.md": {
+    "sha256": "6b374bf7ec8026bae31ddb513746ce5593c7e260fea7cf33145a2b09e3e657ca",
+    "type": "file"
+  },
+  "HUMAN/UTA011_ARCHITECTURE_DECISIONS.md": {
+    "sha256": "b68e2ef3c70587b8163003989d8d38313099bcf9bf19d0e430c33d91806aea2a",
+    "type": "file"
+  },
+  "HUMAN/UTA018_TOOLS_ARENA_ROADMAP.md": {
+    "sha256": "913a8566891b04430e82d22d1a79ff724c9cf6354b109d32b2bcc9d2d3585378",
+    "type": "file"
+  },
+  "IDEAS": {
+    "type": "directory"
+  },
+  "IDEAS/.gitkeep": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "type": "file"
+  },
+  "IDEAS/README.md": {
+    "sha256": "0355b5800d2de56ace3a3f4ec97a5e5ad86333f5a05c6bd878f4954c8939e093",
+    "type": "file"
+  },
+  "INTEGRATIONS": {
+    "type": "directory"
+  },
+  "INTEGRATIONS/README.md": {
+    "sha256": "4126c6e9e5c9c670c07955133259eb8e7e86fe9e02a5bfec72b4bc00a3ddb1a8",
+    "type": "file"
+  },
+  "LEGACY": {
+    "type": "directory"
+  },
+  "LEGACY/.gitkeep": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "type": "file"
+  },
+  "LEGACY/README.md": {
+    "sha256": "5b025ae1551c0440e7f4b71c5fcaa32738d3baacc5fcb7a3e3b6282395f56ad1",
+    "type": "file"
+  },
+  "MEMORY": {
+    "type": "directory"
+  },
+  "MEMORY/README.md": {
+    "sha256": "e92de2749eb858056bd729dcfd33b3e5e6e2d330d5e7bb1a35765c95439c7bf8",
+    "type": "file"
+  },
+  "MODELS": {
+    "type": "directory"
+  },
+  "MODELS/README.md": {
+    "sha256": "a9faa670e29e4e65507e982d51f45948f3e6e0e8c417d8b0d088bfd555c8c73c",
+    "type": "file"
+  },
+  "ORCHESTRATION": {
+    "type": "directory"
+  },
+  "ORCHESTRATION/README.md": {
+    "sha256": "6ad6bb463a770bca6d8754172162d8d592b0c3c058aef10ce0d32554b53f4216",
+    "type": "file"
+  },
+  "RADAR": {
+    "type": "directory"
+  },
+  "RADAR/20261016_SNAPSHOT.md": {
+    "sha256": "90268f1e5b2253de48b66b41fccd797d34bdf69f9bb97f0b1169d260adf68a12",
+    "type": "file"
+  },
+  "RADAR/RADAR_POLICY.md": {
+    "sha256": "13620f4e32f324581a35281e966b0b66f7aeb1976f4ba6e29e9d55924627cc0d",
+    "type": "file"
+  },
+  "REGISTRY": {
+    "type": "directory"
+  },
+  "REGISTRY/README.md": {
+    "sha256": "311fdbaecb45a26e90dc9e7f581065d224071b4c92272fbb22ee3e5ec25f03f9",
+    "type": "file"
+  },
+  "REGISTRY/schema.json": {
+    "sha256": "88ea695c6148cf8cb97473cef55201a6607c5947812e61aea1d5245552b59991",
+    "type": "file"
+  },
+  "REGISTRY/technologies.json": {
+    "sha256": "6dbd903099613afff5fe5c0c552f7f2b74804f74847029000c63c6137e763004",
+    "type": "file"
+  },
+  "SECURITY": {
+    "type": "directory"
+  },
+  "SECURITY/SUPPLY_CHAIN_POLICY.md": {
+    "sha256": "96d980ea16327ff3910e334c8e881993efa241058d0f55963597344416fdfef2",
+    "type": "file"
+  },
+  "SKILLS": {
+    "type": "directory"
+  },
+  "SKILLS/INTERNAL": {
+    "type": "directory"
+  },
+  "SKILLS/INTERNAL/INTEGRATION_SAFETY.md": {
+    "sha256": "7dcbdce821a9a7698f7ff0882432557bd63e724cb7af6d03f92b847a733a8e12",
+    "type": "file"
+  },
+  "SKILLS/INTERNAL/TOOL_QUALIFICATION_AND_COST_SKILL.md": {
+    "sha256": "3286ce4cfc8dc00ced1287527b170bee8ea8a916c74c8d8c0e320aaf7c6f80fb",
+    "type": "file"
+  },
+  "SKILLS/README.md": {
+    "sha256": "e9b2471890bc4581ce6900f7c036340d82a5d3314c056264617100cfba4aa015",
+    "type": "file"
+  },
+  "SKILLS/TRANSVERSAL": {
+    "type": "directory"
+  },
+  "SKILLS/TRANSVERSAL/DIAGRAMS_AND_CHARTS_SKILL.md": {
+    "sha256": "ed2ce602807861fbccaa68d003704fb1e2882aa894a95dbb801ad29c452991c9",
+    "type": "file"
+  },
+  "TOOLS": {
+    "type": "directory"
+  },
+  "TOOLS/CHARTS": {
+    "type": "directory"
+  },
+  "TOOLS/CHARTS/README.md": {
+    "sha256": "06752ec2bdc877cfbe888a0b8099d91e9314d2e218fd6d3043240224dfe763d0",
+    "type": "file"
+  },
+  "TOOLS/CONNECTORS": {
+    "type": "directory"
+  },
+  "TOOLS/CONNECTORS/README.md": {
+    "sha256": "9c1714731b2d6fe8e8d96f0cf325005fb9f15623ec365c9674975a2599ea97d9",
+    "type": "file"
+  },
+  "TOOLS/DIAGRAMS": {
+    "type": "directory"
+  },
+  "TOOLS/DIAGRAMS/README.md": {
+    "sha256": "4eae2980c158e79799c82e8b7141ce4c0bea40d8f478b748907b7a9dcaf8633f",
+    "type": "file"
+  },
+  "UTA_ROADMAP_V07_INTEGRATION_REPORT.md": {
+    "sha256": "c3e72f14023ec082051b24444597def1f353c4762ac1919205ba7884ee14dfb2",
+    "type": "file"
+  }
+}

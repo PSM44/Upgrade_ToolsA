@@ -1,0 +1,135 @@
+{
+  "checkpoint_sha256": "43e1d85f7de2da43447b0d888ba5154484ee006ecdd8d14b1351c9aa6ab5f78e",
+  "completed_requirements": [
+    "authenticated HUMAN ingress and terminal egress through MORCH_LOCAL_DELEGATE",
+    "persistent UWS dispatcher",
+    "automatic isolated role launch",
+    "consumer-owned ACK/NACK",
+    "real Hermes RORCH build and fix",
+    "separate QA process and filesystem permissions",
+    "QA rejection and rework",
+    "MORCH result and RORCH ACK",
+    "real process restart and UWS dead-letter redrive",
+    "cross-objective memory retrieval",
+    "invalid/legitimate patch controls",
+    "secret-zero model broker ACL and idempotency",
+    "zero-tool Hermes invocation without --ignore-rules",
+    "Session 3 seven-edge E2E with HUMAN_RELAY_COUNT=0"
+  ],
+  "external_dependencies": [
+    "second distinct underlying authorized model route",
+    "authoritative provider billing receipt",
+    "full-system VM or equivalent boundary for Windows supervisor and Hermes/OmniRoute gateway",
+    "independent reviewer authority"
+  ],
+  "last_independently_verified": {
+    "baseline": "NTV_FUNCTIONAL_PASS_V4",
+    "full_ntv_root": "FAIL_HOST_SCOPED_HERMES_OMNIROUTE",
+    "mechanical_control_plane_ntv": "12_OF_12",
+    "session3_functional": "MECHANICAL_FUNCTIONAL_PASS_5_OF_5_INDEPENDENCE_UNVERIFIED"
+  },
+  "mission_id": "NORTHSTAR-DELIVERY-20261209",
+  "next_action": {
+    "command": [
+      "{python}",
+      "src/persistent_control_plane.py",
+      "run",
+      "--runtime",
+      "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session3",
+      "--backend",
+      "hermes",
+      "--model-routes",
+      "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\config\\model_routes_session2.json",
+      "--poll",
+      "0.2"
+    ],
+    "id": "resume_control_plane"
+  },
+  "objective_ids": [
+    "P0_PERSISTENT_CONTROL_PLANE",
+    "P2_MEMORY_RETRIEVAL",
+    "P3_MODEL_ROUTING",
+    "P4_NTV",
+    "P5_E2E"
+  ],
+  "recovery": {
+    "behavior": "on restart, RUNNING dispatches become ABANDONED; pending/expired transport messages and idempotent model request IDs are reclaimed",
+    "control_db": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session3\\control_plane.db",
+    "endpoint": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session3\\endpoint.json",
+    "memory_db": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session3\\memory.db",
+    "model_db": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session3\\model_calls.db",
+    "transport_db": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2\\runtime\\control_plane_session3\\transport.db"
+  },
+  "remaining_tasks": [
+    "prove two real underlying model IDs (current receipts expose only 20261030_RORCH)",
+    "obtain authoritative cost receipts (current Hermes usage reports unknown)",
+    "contain Windows supervisor plus Hermes/OmniRoute gateway for full NTV_ROOT",
+    "obtain independently authorized reviewer acceptance"
+  ],
+  "revision": 7,
+  "running_processes": [],
+  "schema_version": "upgrade-ta.northstar-state/v1",
+  "security_restrictions": {
+    "allow_production_service_restart": false,
+    "allowed_write_root": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2",
+    "baton_protected": true,
+    "no_new_billing": true,
+    "original_worktree_read_only": true,
+    "production_uta006_hold_active": true
+  },
+  "source_artifacts": {
+    "config/model_routes_session2.json": "be715124c98b44c7b68a97ec1bffb05be407ade142c222bf53787bd83282c234",
+    "config/model_routes_session3.json": "6ee7c1d35f589c4064df990a9b6586ab6312aedd9baa90c32dcab3cfd2db7ba7",
+    "ntv/ntv_controlplane.py": "cb775fe432c8e35fed61f19e8dfc5aa70a547280b49d136b7a13dfab9d2dc56b",
+    "ntv/ntv_root_session3.py": "ae63214c1ffa13b6fb326fe36babcca1b0928e093f9ba91ee199b43c51c92d7c",
+    "ntv/ntv_session3_acceptance.py": "18d66ecb018d47522108cdf21f3993622dd092cccc8c6c72ae950489656edca5",
+    "resume_northstar.ps1": "8da085b41ccd8878e6cba0478c05bc54390a844b8c7d89c7ea9b3df2e23463e3",
+    "src/control_actor.py": "a113285431d7e68214abb4d145aad1d7af1d6b2634f9f597eb92ac03c4fe09a5",
+    "src/mission_checkpoint.py": "e43ed57976826063192fb9c86bcadac087e1b616bed23cb684d239cf7d869a19",
+    "src/model_broker.py": "44c24b474d614d986dc8e4c94efd82dc8f880fba250b7b6183e168706475d132",
+    "src/model_route_probe.py": "cdb6a3525bc3b80a3e02d1c6f5de1899cc341379a66d7e10bdb9e6f588d17572",
+    "src/model_router.py": "31101ca1b9587cb09bba133607fbdef35403039f644c26f99c3705647d36cbd2",
+    "src/morch_delegate.py": "5c3df4aab4efc86cfce03cf57285b5893332eaeb898ff386a38ccc6e9f4a616c",
+    "src/morch_submit.py": "3c21b032815d4db0326ed1a3f9d8c4ba5731dfba0626329fb147112dd96ddff7",
+    "src/operational_memory.py": "52718905001298fb7b916ad4b6dae9dffd4fd583b20438019f6538e924641b76",
+    "src/persistent_control_plane.py": "eb1a650d54257ad10a572d860cd782bae7740a20a6a343a426653be3d225db8d",
+    "src/secure_transport.py": "8dc5c9759903db91128aa857d9cf8188bfd79e5fd6c0188e0426711eee9b28c9",
+    "src/transport_rpc.py": "e204f7fc02c972f09df43fd735509a3ebe2ce4c371af3834077440c3e9e81eb1",
+    "tests/test_morch_delegate.py": "6881feabb4afcb8330bf2d8e29c597fccf0424580bd9dc13aef3dd101d815a26",
+    "tests/test_persistent_control_plane.py": "fb46f8de50f922680ee01d76915ff00454f74446cbbaecf63050f8d155fdb6b2",
+    "tests/test_session2_model_broker.py": "a71356108a392348753ece7c4e0726184ee0146f022416534ea1207f83625760",
+    "tests/test_session2_real_runtime.py": "b9b99e2de153ded07fb2d21774e788fc6b2270d0b8e8fcd148e3e7b4c8c242cb",
+    "tests/test_session3_role_mounts.py": "cbeabe0d995bc9f282e9213b367eaa7406005970edf4c28577d4ed8c9d5a49d5"
+  },
+  "source_commit": "7f264bf55bcbe835314632f45048ab2cec86ff5b",
+  "tests": [
+    {
+      "exit_code": 0,
+      "name": "session3_full_regression",
+      "passed": 50,
+      "skipped_evidence_suites_without_runtime": 2,
+      "total": 50
+    },
+    {
+      "exit_code": 0,
+      "name": "session3_affected_security",
+      "passed": 18,
+      "total": 18
+    },
+    {
+      "exit_code": 0,
+      "name": "mechanical_control_plane_ntv",
+      "passed": 12,
+      "total": 12
+    },
+    {
+      "exit_code": 1,
+      "name": "session3_acceptance",
+      "passed": 5,
+      "total": 9
+    }
+  ],
+  "updated_at": "2026-11-09T20:35:43.599204+00:00",
+  "workspace_root": "C:\\UTA_ISOLATION\\NORTHSTAR-HERMES-E2E-001\\v2"
+}
+

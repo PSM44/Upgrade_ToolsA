@@ -1,0 +1,93 @@
+{
+  "task_id": "NORTHSTAR-P2-HOST-WITNESS-REV3",
+  "baseline": "e096b6935f7e0be34186e3de21def4b77ca6f845",
+  "design_sha256": "176183ba7ee314a31c4e6b7e6df83144a0cd27d98725a9511543fe3261b3b38a",
+  "qa_scope": "static design only; G1-G5 OPEN",
+  "files": [
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/host_witness_design.md",
+      "sha256": "176183ba7ee314a31c4e6b7e6df83144a0cd27d98725a9511543fe3261b3b38a",
+      "git_blob": "c5408946819ee9dd2d25257de8ae7e23b6d40c8d",
+      "size": 26663
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/resolution_matrix.md",
+      "sha256": "9cf0e65f9bb77f2fe027de3142996d9e3e5afb163b52a40e531aece7783daf75",
+      "git_blob": "946aa7b74eb56e056766cc50982e26f7d587b692",
+      "size": 2341
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/technical_evidence.md",
+      "sha256": "8e97d5ca4b00b4ce570c1f3c44aabd97f7181c29ae8e0c1b93a1f75931340d69",
+      "git_blob": "acf31cdbfc88ec0552ce6feb494c1de0b4ea9471",
+      "size": 4769
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/qa_rev3.md",
+      "sha256": "1129c593bebe405929e5d4a7ac30862911379b274cd943a545a949a569c26c06",
+      "git_blob": "56251fd3f0168a69b8f6f9c18c5fb0f6e2453098",
+      "size": 10711
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/history/host_witness_design.rev2.md",
+      "sha256": "9ede222e391dd8239343d305988cccdb811517567e44b9b9543aa36989aef8a7",
+      "git_blob": "d200c3fba37d604e86ed1a4f8deba36799139bf6",
+      "size": 16163
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/history/qa_pass_rev2.md",
+      "sha256": "19a735e423f45eb98c508756d3b3f973ceb65dc51b86c38f7efed52d9433ca4c",
+      "git_blob": "7862fbff36acd00336012bf14d0fae67226d65e9",
+      "size": 6015
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/history/qa_rejected_full.md",
+      "sha256": "fe1b862ac242d5e2ae712b512e7dd5fadd214ffa7853e6432329323c77367745",
+      "git_blob": "06df62a2c491b59dcdea513b7fe7b61c610b4ab1",
+      "size": 7873
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe_results.json",
+      "sha256": "e622d6cb35a15284c59916db35490d35b464767b7db582c1b34a01b6d9cc1440",
+      "git_blob": "919db6f8e227ebfdee7742ec4a3724980762a7c6",
+      "size": 955
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/run_crypto_probe.py",
+      "sha256": "54192515df71a9bbe0298b234cea824e065bac6c6475aac0c12533c684d04212",
+      "git_blob": "0dccfd7122c841fdf4987f6438aa8ab7d1b08eae",
+      "size": 1184
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe/test_public.pem",
+      "sha256": "592e5bcc1e1ae0510fe653c80258911ec4dd7342ce7e227ad8b1d631a85fc3ba",
+      "git_blob": "33028fb6e5d0695bbe392300c87cfe2440251f94",
+      "size": 177
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe/body.bin",
+      "sha256": "bc6ead6496790c2e121484e684862a0252834c156de11c38f3289dfe6200a508",
+      "git_blob": "1f6fe27867844da1259dc90143e2162c87a7533a",
+      "size": 82
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe/signature.der",
+      "sha256": "2cfcce441c484519496c5bcf661f8073ef4369993f664ad92f4ce921357ee05d",
+      "git_blob": "842d0f28bdc3a8496a7f5e433f97efbde5cd4094",
+      "size": 71
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe/signature.p1363",
+      "sha256": "1a2e9627361138ca3d6d40cacd2acd10072d6d01ec9248aea0574af65b7a859f",
+      "git_blob": "fa1f541347f23bef164dc3d16e423c0d1aca2755",
+      "size": 64
+    },
+    {
+      "path": "EXPERIMENTS/NORTHSTAR-HERMES-E2E-001/v2/evidence/host_witness_rev3/crypto_probe/tampered.bin",
+      "sha256": "b82b6a58e132e955798f97f299bc057c807b650d4256f07abc545272518baf50",
+      "git_blob": "b060c470cbb8254763c210c68adb2adf4a52ac45",
+      "size": 83
+    }
+  ],
+  "secret_scan": "No private key/token patterns found; manual review of selected text; only TEST public key/signatures included"
+}

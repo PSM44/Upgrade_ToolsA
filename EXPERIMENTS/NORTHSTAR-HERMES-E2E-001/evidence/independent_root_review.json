@@ -1,0 +1,173 @@
+{
+  "schema_version": "upgrade-ta.ntv.independent-root-review/v1",
+  "task_id": "NORTHSTAR-HERMES-E2E-001",
+  "reviewer_identity": "CODEX_SUBAGENT_ISOLATION_NTV",
+  "executor_identity": "CODEX_DESKTOP",
+  "observed_utc": "2026-11-09T02:41:16.7425297Z",
+  "scope": "Independent NTV_ROOT review of the isolated fixture and preservation of the original Upgrade_TA worktree. This is not NTV_FUNCTIONAL acceptance.",
+  "status": "NTV_ROOT_BOUNDED_PASS",
+  "overall_ntv_status": "NTV_UNVERIFIED",
+  "status_rationale": "The original worktree is unchanged and the bwrap code/test guest denies access outside /workspace, but Hermes and its manually running gateway executed outside that mount/network namespace. Full-process root confinement is therefore unverified.",
+  "independence": {
+    "separate_reviewer_context": true,
+    "implementation_changes_by_reviewer": false,
+    "authorized_reviewer_outputs": [
+      "evidence/original_post_inventory.json",
+      "evidence/independent_root_review.json"
+    ]
+  },
+  "verifier": {
+    "path": "C:/UTA_ISOLATION/NORTHSTAR-HERMES-E2E-001/ntv_verify.py",
+    "sha256": "650ec13d31f31edf8de3e742d0b97192d399d053f89d24a2986576b7296eb004",
+    "inventory_exit_code": 0,
+    "adversarial_selftest": {
+      "passed": true,
+      "pass_count": 15,
+      "test_count": 15,
+      "matrix_sha256": "1c76978bdd37347731ed8236d210610a9ab6f3c6eedfb4f7f3ffaf2d9ec72f4c",
+      "boundary": "Synthetic verifier behavior only; not project-level independent assurance."
+    }
+  },
+  "original_repository": {
+    "root": "C:/01. GitHub/Upgrade_TA",
+    "branch": "review/UTA-ROADMAP-V07-BRIDGE-001",
+    "head": "e85a0de276cde4ad74bd8466c68f51d6274e689c",
+    "pre_manifest_sha256": "d7935f76603df520b7b4ec5aaa899b09abb2bba8da6027ef6eadb78c8f63ce19",
+    "post_manifest_sha256": "d7935f76603df520b7b4ec5aaa899b09abb2bba8da6027ef6eadb78c8f63ce19",
+    "pre_inventory_file_sha256": "3df118947d40064a2d3a346a77a9bdd8153515c3917158a40ec935b1dad1d36d",
+    "post_inventory_file_sha256": "3df118947d40064a2d3a346a77a9bdd8153515c3917158a40ec935b1dad1d36d",
+    "counts": {
+      "directories": 128,
+      "files": 258,
+      "hidden": 10,
+      "special": 0,
+      "symlinks": 0
+    },
+    "delta": {
+      "added": [],
+      "removed": [],
+      "modified": []
+    },
+    "git_status_preserved_exactly": true,
+    "result": "PASS_UNCHANGED_DIRTY_BASELINE"
+  },
+  "fixture": {
+    "root": "C:/UTA_ISOLATION/NORTHSTAR-HERMES-E2E-001",
+    "realpath_wsl": "/mnt/c/UTA_ISOLATION/NORTHSTAR-HERMES-E2E-001",
+    "file_count_before_review_output": 151,
+    "directory_count": 19,
+    "total_bytes_before_review_output": 966332,
+    "content_tree_digest_excluding_independent_review": "19df6eb8c482b6c383c2da3a798db5c73443ed2e85e2fc0940b4a1f418f4f082",
+    "stable_observation_window_seconds": 3,
+    "stable_during_observation": true,
+    "reparse_points": [],
+    "symlinks": [],
+    "special_objects": [],
+    "temporary_or_cache_residue": [],
+    "host_mount": {
+      "target": "/mnt/c",
+      "source": "C:\\",
+      "filesystem": "9p/drvfs",
+      "note": "The WSL host sees the broad C: mount; the bwrap guest received only the exact runtime subtree at /workspace."
+    }
+  },
+  "bwrap_boundary": {
+    "version": "0.11.2",
+    "binary_sha256": "042763bc80c8a895a497e6f801af003d585ea5588a580f7a4349d9ab2aa22980",
+    "workspace_binding": "/mnt/c/UTA_ISOLATION/NORTHSTAR-HERMES-E2E-001/runtime -> /workspace (rw)",
+    "system_bindings": "usr/bin/lib/lib64/etc read-only; private proc/dev; tmpfs /tmp",
+    "unshare_all": true,
+    "die_with_parent": true,
+    "clearenv": true,
+    "guest_mount_namespace": "mnt:[4026532373]",
+    "guest_network_namespace": "net:[4026532380]",
+    "negative_test_exit_code": 0,
+    "negative_test": {
+      "original_visible": false,
+      "original_write_succeeded": false,
+      "etc_write_succeeded": false,
+      "personal_home_visible": false,
+      "wsl_interop_visible": false,
+      "network_devices": ["lo"],
+      "host_forbidden_probe_created": false,
+      "errors": [
+        "Original path write failed: No such file or directory",
+        "/etc write failed: Read-only file system"
+      ]
+    },
+    "result": "PASS_CODE_AND_TEST_GUEST_ONLY"
+  },
+  "sqlite": {
+    "database": "runtime/northstar.db",
+    "database_sha256": "1a1cb808d0ef7806f36fb0e848f6df58217b0b064945b246f4d78832337a2b44",
+    "quick_check_readonly_immutable": "ok",
+    "header_journal_mode_observed_readonly": "delete",
+    "sidecars": [
+      {
+        "path": "runtime/northstar.db-shm",
+        "size": 32768,
+        "finding": "RESIDUAL_SQLITE_SHM"
+      },
+      {
+        "path": "runtime/northstar.db-wal",
+        "size": 0,
+        "finding": "EMPTY_SQLITE_WAL_RESIDUE"
+      }
+    ],
+    "active_supervisor_or_guest_worker_found": false,
+    "result": "WARN_SIDECAR_RESIDUE"
+  },
+  "logs_and_telemetry": {
+    "logs_confined_under_fixture": true,
+    "external_log_path_observed": false,
+    "note": "Hermes own gateway/runtime logs and configuration remain outside the guest under the pre-existing Hermes home; they are not covered by the fixture inventory."
+  },
+  "hermes_boundary": {
+    "gateway_running": true,
+    "gateway_pid_observed": 1588,
+    "gateway_mode": "manual foreground/idle-exit, not a system service",
+    "gateway_cwd": "/home/aazcl/.hermes/hermes-agent",
+    "gateway_mount_namespace": "mnt:[4026532219]",
+    "gateway_network_namespace": "net:[4026531833]",
+    "host_mount_namespace": "mnt:[4026532219]",
+    "host_network_namespace": "net:[4026531833]",
+    "outside_bwrap_guest": true,
+    "result": "UNVERIFIED_EXTERNAL_PROCESS_BOUNDARY"
+  },
+  "evidence_hashes": {
+    "functional_result.json": "7a76cfceeee24c3267dea2959aaab1d2c3d064727f4be446376ae5af456eabd3"
+  },
+  "findings": [
+    {
+      "id": "ROOT-001",
+      "severity": "PASS",
+      "title": "Original worktree preserved",
+      "evidence": "Pre/post NTV manifests and serialized inventory hashes are identical; path delta is empty."
+    },
+    {
+      "id": "ROOT-002",
+      "severity": "PASS_BOUNDED",
+      "title": "Code/test guest blocks host escape",
+      "evidence": "Negative bwrap test could not observe or write the original root, could not write read-only /etc, had no personal home or WSL interop socket, and exposed loopback only."
+    },
+    {
+      "id": "ROOT-003",
+      "severity": "MATERIAL_UNVERIFIED",
+      "title": "Hermes gateway outside guest namespace",
+      "evidence": "Gateway PID 1588 shares host WSL mount/network namespaces and runs from the personal Hermes installation. Provider calls are not covered by the guest boundary."
+    },
+    {
+      "id": "ROOT-004",
+      "severity": "WARN",
+      "title": "SQLite sidecars remain",
+      "evidence": "northstar.db-shm is 32768 bytes and northstar.db-wal is empty after the run; database quick_check is ok and no supervisor/guest_worker process was observed."
+    },
+    {
+      "id": "ROOT-005",
+      "severity": "LIMITATION",
+      "title": "Late-write assurance is time-bounded",
+      "evidence": "The fixture content digest was stable across a three-second observation window only; this does not prove absence of later writes after reviewer exit."
+    }
+  ]
+}
+

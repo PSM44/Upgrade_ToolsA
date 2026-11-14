@@ -1,0 +1,2328 @@
+{
+  "approved_root": {
+    "errors": [],
+    "exists": true,
+    "files": {
+      "NORTHSTAR_CONVERGENCE_002_REPORT.md": {
+        "mtime_ns": 1794219224952041300,
+        "size": 6010
+      },
+      "NORTHSTAR_SESSION1_REPORT.md": {
+        "mtime_ns": 1794236726683637600,
+        "size": 3978
+      },
+      "NORTHSTAR_SESSION2_REPORT.md": {
+        "mtime_ns": 1794239695270891200,
+        "size": 4314
+      },
+      "NORTHSTAR_SESSION3_REPORT.md": {
+        "mtime_ns": 1794256577479388000,
+        "size": 4487
+      },
+      "NORTHSTAR_STATE.json": {
+        "mtime_ns": 1794256543596866600,
+        "size": 6427
+      },
+      "config/model_routes.json": {
+        "mtime_ns": 1794235748262114000,
+        "size": 443
+      },
+      "config/model_routes_session2.json": {
+        "mtime_ns": 1794238248965056300,
+        "size": 398
+      },
+      "config/model_routes_session3.json": {
+        "mtime_ns": 1794255256183451400,
+        "size": 484
+      },
+      "config/model_routes_session4.json": {
+        "mtime_ns": 1794258927472013100,
+        "size": 901
+      },
+      "evidence/identity_boundary_probe.json": {
+        "mtime_ns": 1794219117537248700,
+        "size": 260
+      },
+      "evidence/independent_functional_v2.json": {
+        "mtime_ns": 1794218322822121700,
+        "size": 10776
+      },
+      "evidence/independent_functional_v4.json": {
+        "mtime_ns": 1794218980743166800,
+        "size": 9263
+      },
+      "evidence/independent_model_runtime_v2.json": {
+        "mtime_ns": 1794218294662784700,
+        "size": 6283
+      },
+      "evidence/independent_root_v2.json": {
+        "mtime_ns": 1794218396055391300,
+        "size": 9747
+      },
+      "evidence/independent_root_v4.json": {
+        "mtime_ns": 1794219197786109500,
+        "size": 11732
+      },
+      "evidence/memory_test.log": {
+        "mtime_ns": 1794193038215673600,
+        "size": 1388
+      },
+      "evidence/model_baseline_result.json": {
+        "mtime_ns": 1794218165341080200,
+        "size": 3771
+      },
+      "evidence/model_router_test.log": {
+        "mtime_ns": 1794193055704628900,
+        "size": 1020
+      },
+      "evidence/original_post_v2_inventory.json": {
+        "mtime_ns": 1794218141136767300,
+        "size": 137447
+      },
+      "evidence/runtime_probe.json": {
+        "mtime_ns": 1794193174844531500,
+        "size": 2800
+      },
+      "evidence/session1_control_plane_result.json": {
+        "mtime_ns": 1794236862297645400,
+        "size": 2276
+      },
+      "evidence/session1_model_route_probe.json": {
+        "mtime_ns": 1794236648298426700,
+        "size": 1433
+      },
+      "evidence/session1_ntv_controlplane.json": {
+        "mtime_ns": 1794236634589285000,
+        "size": 2191
+      },
+      "evidence/session2_ntv_controlplane.json": {
+        "mtime_ns": 1794239283954466100,
+        "size": 2191
+      },
+      "evidence/session3_acceptance.json": {
+        "mtime_ns": 1794256302492882000,
+        "size": 2868
+      },
+      "evidence/session3_full_tests.log": {
+        "mtime_ns": 1794256242229748900,
+        "size": 7228
+      },
+      "evidence/session3_ntv_controlplane.json": {
+        "mtime_ns": 1794256274637261300,
+        "size": 2191
+      },
+      "evidence/session3_ntv_root.json": {
+        "mtime_ns": 1794256293765979400,
+        "size": 897
+      },
+      "evidence/session3_root_post.json": {
+        "mtime_ns": 1794256285537891500,
+        "size": 234031
+      },
+      "evidence/session3_root_pre.json": {
+        "mtime_ns": 1794255529621683200,
+        "size": 221748
+      },
+      "evidence/session4_affected_retry.log": {
+        "mtime_ns": 1794259208579173000,
+        "size": 725
+      },
+      "evidence/session4_affected_tests.log": {
+        "mtime_ns": 1794258435949657500,
+        "size": 1205
+      },
+      "evidence/session4_full_tests.log": {
+        "mtime_ns": 1794259167236347500,
+        "size": 11094
+      },
+      "evidence/session4_full_tests_final.log": {
+        "mtime_ns": 1794259219498299700,
+        "size": 171
+      },
+      "evidence/session4_full_tests_retry.log": {
+        "mtime_ns": 1794259190538331900,
+        "size": 11233
+      },
+      "evidence/session4_openrouter_pricing.json": {
+        "mtime_ns": 1794259145974245800,
+        "size": 2860
+      },
+      "evidence/session4_qa_nano_canary.json": {
+        "mtime_ns": 1794258899982382000,
+        "size": 5711
+      },
+      "evidence/session4_root_pre.json": {
+        "mtime_ns": 1794258465755944900,
+        "size": 75119
+      },
+      "evidence/transport_test.log": {
+        "mtime_ns": 1794193108288559300,
+        "size": 1818
+      },
+      "evidence/v2_functional_result.json": {
+        "mtime_ns": 1794218089470168500,
+        "size": 1394
+      },
+      "evidence/v2_phase1_resume_stderr.log": {
+        "mtime_ns": 1794218058169833300,
+        "size": 0
+      },
+      "evidence/v2_phase1_resume_stdout.log": {
+        "mtime_ns": 1794218059818674400,
+        "size": 72
+      },
+      "evidence/v2_phase1_stderr.log": {
+        "mtime_ns": 1794218023224277300,
+        "size": 1173
+      },
+      "evidence/v2_phase1_stdout.log": {
+        "mtime_ns": 1794218022755584300,
+        "size": 0
+      },
+      "evidence/v2_phase2_stderr.log": {
+        "mtime_ns": 1794218069747772400,
+        "size": 0
+      },
+      "evidence/v2_phase2_stdout.log": {
+        "mtime_ns": 1794218072215672500,
+        "size": 175
+      },
+      "evidence/v2_rorch_test_round1.json": {
+        "mtime_ns": 1794218673906244700,
+        "size": 345
+      },
+      "evidence/v2_rorch_test_round2.json": {
+        "mtime_ns": 1794218687417561400,
+        "size": 815
+      },
+      "evidence/v2_unit_tests.log": {
+        "mtime_ns": 1794218022695885000,
+        "size": 4097
+      },
+      "evidence/v3_phase1_stderr.log": {
+        "mtime_ns": 1794218624857061600,
+        "size": 2115
+      },
+      "evidence/v3_phase1_stdout.log": {
+        "mtime_ns": 1794218622915305000,
+        "size": 0
+      },
+      "evidence/v4_functional_result.json": {
+        "mtime_ns": 1794219117775305300,
+        "size": 1404
+      },
+      "evidence/v4_phase1_stderr.log": {
+        "mtime_ns": 1794218671666143800,
+        "size": 0
+      },
+      "evidence/v4_phase1_stdout.log": {
+        "mtime_ns": 1794218676050097300,
+        "size": 72
+      },
+      "evidence/v4_phase2_stderr.log": {
+        "mtime_ns": 1794218685788218800,
+        "size": 0
+      },
+      "evidence/v4_phase2_stdout.log": {
+        "mtime_ns": 1794218690952830000,
+        "size": 175
+      },
+      "ntv/__pycache__/ntv_controlplane.cpython-315.pyc": {
+        "mtime_ns": 1794255540079328900,
+        "size": 19464
+      },
+      "ntv/__pycache__/ntv_root_session3.cpython-315.pyc": {
+        "mtime_ns": 1794255540084326900,
+        "size": 13114
+      },
+      "ntv/ntv_controlplane.py": {
+        "mtime_ns": 1794236624452401600,
+        "size": 11062
+      },
+      "ntv/ntv_root_session3.py": {
+        "mtime_ns": 1794255506424328300,
+        "size": 5939
+      },
+      "ntv/ntv_session3_acceptance.py": {
+        "mtime_ns": 1794256231932616800,
+        "size": 4269
+      },
+      "ntv/ntv_session4_acceptance.py": {
+        "mtime_ns": 1794259267648206900,
+        "size": 5008
+      },
+      "resume_northstar.ps1": {
+        "mtime_ns": 1794235763510098300,
+        "size": 670
+      },
+      "runtime/control_plane/STOP": {
+        "mtime_ns": 1794238509071948100,
+        "size": 0
+      },
+      "runtime/control_plane_session1/STOP": {
+        "mtime_ns": 1794238542785844500,
+        "size": 0
+      },
+      "runtime/control_plane_session1/control_plane.db": {
+        "mtime_ns": 1794238543144544000,
+        "size": 53248
+      },
+      "runtime/control_plane_session1/control_plane.db-shm": {
+        "mtime_ns": 1794258454851910100,
+        "size": 32768
+      },
+      "runtime/control_plane_session1/control_plane.db-wal": {
+        "mtime_ns": 1794255516610260500,
+        "size": 0
+      },
+      "runtime/control_plane_session1/daemon.stderr.log": {
+        "mtime_ns": 1794236009829058300,
+        "size": 0
+      },
+      "runtime/control_plane_session1/daemon.stdout.log": {
+        "mtime_ns": 1794236009828058500,
+        "size": 0
+      },
+      "runtime/control_plane_session1/daemon2.stderr.log": {
+        "mtime_ns": 1794236094532838300,
+        "size": 0
+      },
+      "runtime/control_plane_session1/daemon2.stdout.log": {
+        "mtime_ns": 1794236094532838300,
+        "size": 0
+      },
+      "runtime/control_plane_session1/daemon3.stderr.log": {
+        "mtime_ns": 1794236128555680500,
+        "size": 0
+      },
+      "runtime/control_plane_session1/daemon3.stdout.log": {
+        "mtime_ns": 1794236128554845900,
+        "size": 0
+      },
+      "runtime/control_plane_session1/daemon4.stderr.log": {
+        "mtime_ns": 1794236204436621600,
+        "size": 0
+      },
+      "runtime/control_plane_session1/daemon4.stdout.log": {
+        "mtime_ns": 1794236204435619500,
+        "size": 0
+      },
+      "runtime/control_plane_session1/daemon5.stderr.log": {
+        "mtime_ns": 1794236250955843800,
+        "size": 0
+      },
+      "runtime/control_plane_session1/daemon5.stdout.log": {
+        "mtime_ns": 1794236250955843800,
+        "size": 0
+      },
+      "runtime/control_plane_session1/endpoint.json": {
+        "mtime_ns": 1794236252125544900,
+        "size": 111
+      },
+      "runtime/control_plane_session1/identity/morch.key": {
+        "mtime_ns": 1794236010676873100,
+        "size": 32
+      },
+      "runtime/control_plane_session1/identity/qa.key": {
+        "mtime_ns": 1794236010713372500,
+        "size": 32
+      },
+      "runtime/control_plane_session1/identity/rorch.key": {
+        "mtime_ns": 1794236010695211800,
+        "size": 32
+      },
+      "runtime/control_plane_session1/identity/uws.key": {
+        "mtime_ns": 1794236010731396300,
+        "size": 32
+      },
+      "runtime/control_plane_session1/launcher.pid": {
+        "mtime_ns": 1794236250990194200,
+        "size": 7
+      },
+      "runtime/control_plane_session1/memory.db": {
+        "mtime_ns": 1794236235911943800,
+        "size": 45056
+      },
+      "runtime/control_plane_session1/memory.db-shm": {
+        "mtime_ns": 1794258454879031400,
+        "size": 32768
+      },
+      "runtime/control_plane_session1/memory.db-wal": {
+        "mtime_ns": 1794255516615260400,
+        "size": 0
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-CRASH-001/app/app.py": {
+        "mtime_ns": 1794236130733464600,
+        "size": 146
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-CRASH-001/app/test_app.py": {
+        "mtime_ns": 1794236113735475900,
+        "size": 182
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-CRASH-001/qa/qa_round1.json": {
+        "mtime_ns": 1794236130058631800,
+        "size": 449
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-CRASH-001/qa/qa_round2.json": {
+        "mtime_ns": 1794236131527385400,
+        "size": 92
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-CRASH-001/qa/rorch_round1.json": {
+        "mtime_ns": 1794236113810866200,
+        "size": 197
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-CRASH-001/qa/rorch_round2.json": {
+        "mtime_ns": 1794236130806558800,
+        "size": 197
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-E2E-001/app/app.py": {
+        "mtime_ns": 1794236025778527900,
+        "size": 146
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-E2E-001/app/test_app.py": {
+        "mtime_ns": 1794236024259701600,
+        "size": 182
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-E2E-001/qa/qa_round1.json": {
+        "mtime_ns": 1794236025087939500,
+        "size": 449
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-E2E-001/qa/qa_round2.json": {
+        "mtime_ns": 1794236026580436800,
+        "size": 92
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-E2E-001/qa/rorch_round1.json": {
+        "mtime_ns": 1794236024348596100,
+        "size": 197
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-E2E-001/qa/rorch_round2.json": {
+        "mtime_ns": 1794236025852933100,
+        "size": 197
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-MEMORY-001/app/app.py": {
+        "mtime_ns": 1794236232542996200,
+        "size": 146
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-MEMORY-001/app/test_app.py": {
+        "mtime_ns": 1794236230978316900,
+        "size": 182
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-MEMORY-001/qa/qa_round1.json": {
+        "mtime_ns": 1794236231782673800,
+        "size": 449
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-MEMORY-001/qa/qa_round2.json": {
+        "mtime_ns": 1794236233367979700,
+        "size": 92
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-MEMORY-001/qa/rorch_round1.json": {
+        "mtime_ns": 1794236231052746300,
+        "size": 197
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-MEMORY-001/qa/rorch_round2.json": {
+        "mtime_ns": 1794236232617671800,
+        "size": 197
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-RESTART-001/app/app.py": {
+        "mtime_ns": 1794236063683123000,
+        "size": 146
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-RESTART-001/app/test_app.py": {
+        "mtime_ns": 1794236062143086500,
+        "size": 182
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-RESTART-001/qa/qa_round1.json": {
+        "mtime_ns": 1794236062988655000,
+        "size": 449
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-RESTART-001/qa/qa_round2.json": {
+        "mtime_ns": 1794236064519399600,
+        "size": 92
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-RESTART-001/qa/rorch_round1.json": {
+        "mtime_ns": 1794236062217629200,
+        "size": 197
+      },
+      "runtime/control_plane_session1/objectives/SESSION1-RESTART-001/qa/rorch_round2.json": {
+        "mtime_ns": 1794236063763403600,
+        "size": 197
+      },
+      "runtime/control_plane_session1/transport.db": {
+        "mtime_ns": 1794236250902987900,
+        "size": 94208
+      },
+      "runtime/control_plane_session1/transport.db-shm": {
+        "mtime_ns": 1794258454904556400,
+        "size": 32768
+      },
+      "runtime/control_plane_session1/transport.db-wal": {
+        "mtime_ns": 1794255516621403200,
+        "size": 0
+      },
+      "runtime/control_plane_session2/STOP": {
+        "mtime_ns": 1794238774605536000,
+        "size": 0
+      },
+      "runtime/control_plane_session2/control_plane.db": {
+        "mtime_ns": 1794238775186414100,
+        "size": 36864
+      },
+      "runtime/control_plane_session2/control_plane.db-shm": {
+        "mtime_ns": 1794258454934716500,
+        "size": 32768
+      },
+      "runtime/control_plane_session2/control_plane.db-wal": {
+        "mtime_ns": 1794255516628863200,
+        "size": 0
+      },
+      "runtime/control_plane_session2/endpoint.json": {
+        "mtime_ns": 1794238583979138300,
+        "size": 321
+      },
+      "runtime/control_plane_session2/identity/morch.key": {
+        "mtime_ns": 1794238582887927900,
+        "size": 32
+      },
+      "runtime/control_plane_session2/identity/qa.key": {
+        "mtime_ns": 1794238582909040600,
+        "size": 32
+      },
+      "runtime/control_plane_session2/identity/rorch.key": {
+        "mtime_ns": 1794238582900965400,
+        "size": 32
+      },
+      "runtime/control_plane_session2/identity/uws.key": {
+        "mtime_ns": 1794238582925255500,
+        "size": 32
+      },
+      "runtime/control_plane_session2/launcher_pid.txt": {
+        "mtime_ns": 1794238582351712700,
+        "size": 7
+      },
+      "runtime/control_plane_session2/memory.db": {
+        "mtime_ns": 1794238619926373800,
+        "size": 45056
+      },
+      "runtime/control_plane_session2/memory.db-shm": {
+        "mtime_ns": 1794258454960938500,
+        "size": 32768
+      },
+      "runtime/control_plane_session2/memory.db-wal": {
+        "mtime_ns": 1794255516634374000,
+        "size": 0
+      },
+      "runtime/control_plane_session2/model_calls.db": {
+        "mtime_ns": 1794238774803990200,
+        "size": 12288
+      },
+      "runtime/control_plane_session2/model_calls.db-shm": {
+        "mtime_ns": 1794258454989372300,
+        "size": 32768
+      },
+      "runtime/control_plane_session2/model_calls.db-wal": {
+        "mtime_ns": 1794255516641376000,
+        "size": 0
+      },
+      "runtime/control_plane_session2/model_calls/SESSION2-REAL-HERMES-001_qa-review-1/usage.json": {
+        "mtime_ns": 1794238663927871500,
+        "size": 1183
+      },
+      "runtime/control_plane_session2/model_calls/SESSION2-REAL-HERMES-001_rorch-build/usage.json": {
+        "mtime_ns": 1794238619636981600,
+        "size": 1179
+      },
+      "runtime/control_plane_session2/objectives/SESSION2-REAL-HERMES-001/app/app.py": {
+        "mtime_ns": 1794238619758593600,
+        "size": 202
+      },
+      "runtime/control_plane_session2/objectives/SESSION2-REAL-HERMES-001/app/test_app.py": {
+        "mtime_ns": 1794238619761592000,
+        "size": 444
+      },
+      "runtime/control_plane_session2/objectives/SESSION2-REAL-HERMES-001/qa/rorch_round1.json": {
+        "mtime_ns": 1794238619843944000,
+        "size": 1027
+      },
+      "runtime/control_plane_session2/supervisor.stderr.log": {
+        "mtime_ns": 1794238582315932100,
+        "size": 0
+      },
+      "runtime/control_plane_session2/supervisor.stdout.log": {
+        "mtime_ns": 1794238582307043600,
+        "size": 0
+      },
+      "runtime/control_plane_session2/transport.db": {
+        "mtime_ns": 1794238775150441100,
+        "size": 45056
+      },
+      "runtime/control_plane_session2/transport.db-shm": {
+        "mtime_ns": 1794258455014747300,
+        "size": 32768
+      },
+      "runtime/control_plane_session2/transport.db-wal": {
+        "mtime_ns": 1794255516647943300,
+        "size": 0
+      },
+      "runtime/control_plane_session2b/STOP": {
+        "mtime_ns": 1794239414455199800,
+        "size": 0
+      },
+      "runtime/control_plane_session2b/control_plane.db": {
+        "mtime_ns": 1794239415115543300,
+        "size": 45056
+      },
+      "runtime/control_plane_session2b/control_plane.db-shm": {
+        "mtime_ns": 1794258455045601800,
+        "size": 32768
+      },
+      "runtime/control_plane_session2b/control_plane.db-wal": {
+        "mtime_ns": 1794255516653940700,
+        "size": 0
+      },
+      "runtime/control_plane_session2b/endpoint.json": {
+        "mtime_ns": 1794239090165658100,
+        "size": 321
+      },
+      "runtime/control_plane_session2b/identity/morch.key": {
+        "mtime_ns": 1794238792606412400,
+        "size": 32
+      },
+      "runtime/control_plane_session2b/identity/qa.key": {
+        "mtime_ns": 1794238792632529300,
+        "size": 32
+      },
+      "runtime/control_plane_session2b/identity/rorch.key": {
+        "mtime_ns": 1794238792618923200,
+        "size": 32
+      },
+      "runtime/control_plane_session2b/identity/uws.key": {
+        "mtime_ns": 1794238792644991300,
+        "size": 32
+      },
+      "runtime/control_plane_session2b/launcher_pid.txt": {
+        "mtime_ns": 1794238792067831800,
+        "size": 7
+      },
+      "runtime/control_plane_session2b/memory.db": {
+        "mtime_ns": 1794239234326537800,
+        "size": 57344
+      },
+      "runtime/control_plane_session2b/memory.db-shm": {
+        "mtime_ns": 1794258455073270800,
+        "size": 32768
+      },
+      "runtime/control_plane_session2b/memory.db-wal": {
+        "mtime_ns": 1794255516659940800,
+        "size": 0
+      },
+      "runtime/control_plane_session2b/model_calls.db": {
+        "mtime_ns": 1794239231067955600,
+        "size": 36864
+      },
+      "runtime/control_plane_session2b/model_calls/SESSION2-REAL-HERMES-002_qa-review-1/usage.json": {
+        "mtime_ns": 1794238866158774400,
+        "size": 1179
+      },
+      "runtime/control_plane_session2b/model_calls/SESSION2-REAL-HERMES-002_qa-review-2/usage.json": {
+        "mtime_ns": 1794238952229962200,
+        "size": 1184
+      },
+      "runtime/control_plane_session2b/model_calls/SESSION2-REAL-HERMES-002_rorch-build/usage.json": {
+        "mtime_ns": 1794238821827946600,
+        "size": 1179
+      },
+      "runtime/control_plane_session2b/model_calls/SESSION2-REAL-HERMES-002_rorch-fix/usage.json": {
+        "mtime_ns": 1794238885263617100,
+        "size": 1179
+      },
+      "runtime/control_plane_session2b/model_calls/SESSION2-RESTART-HERMES-003_qa-review-1/usage.json": {
+        "mtime_ns": 1794239117100938500,
+        "size": 1179
+      },
+      "runtime/control_plane_session2b/model_calls/SESSION2-RESTART-HERMES-003_qa-review-2/usage.json": {
+        "mtime_ns": 1794239230954597100,
+        "size": 1180
+      },
+      "runtime/control_plane_session2b/model_calls/SESSION2-RESTART-HERMES-003_rorch-build/usage.json": {
+        "mtime_ns": 1794239006196952500,
+        "size": 1179
+      },
+      "runtime/control_plane_session2b/model_calls/SESSION2-RESTART-HERMES-003_rorch-fix/usage.json": {
+        "mtime_ns": 1794239142245180900,
+        "size": 1179
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-REAL-HERMES-002/app/app.py": {
+        "mtime_ns": 1794238885383927400,
+        "size": 139
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-REAL-HERMES-002/app/test_app.py": {
+        "mtime_ns": 1794238885387940800,
+        "size": 1171
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-REAL-HERMES-002/qa/qa_round1.json": {
+        "mtime_ns": 1794238866882090800,
+        "size": 1460
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-REAL-HERMES-002/qa/qa_round2.json": {
+        "mtime_ns": 1794238952941064300,
+        "size": 1201
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-REAL-HERMES-002/qa/rorch_round1.json": {
+        "mtime_ns": 1794238822022567800,
+        "size": 1479
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-REAL-HERMES-002/qa/rorch_round2.json": {
+        "mtime_ns": 1794238885462113900,
+        "size": 1475
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-RESTART-HERMES-003/app/app.py": {
+        "mtime_ns": 1794239142382555900,
+        "size": 139
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-RESTART-HERMES-003/app/test_app.py": {
+        "mtime_ns": 1794239142386947000,
+        "size": 967
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-RESTART-HERMES-003/qa/qa_round1.json": {
+        "mtime_ns": 1794239117224803400,
+        "size": 1481
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-RESTART-HERMES-003/qa/qa_round2.json": {
+        "mtime_ns": 1794239231642243800,
+        "size": 1184
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-RESTART-HERMES-003/qa/rorch_round1.json": {
+        "mtime_ns": 1794239006388941700,
+        "size": 1030
+      },
+      "runtime/control_plane_session2b/objectives/SESSION2-RESTART-HERMES-003/qa/rorch_round2.json": {
+        "mtime_ns": 1794239142461866900,
+        "size": 1118
+      },
+      "runtime/control_plane_session2b/restart.stderr.log": {
+        "mtime_ns": 1794239089292970000,
+        "size": 0
+      },
+      "runtime/control_plane_session2b/restart.stdout.log": {
+        "mtime_ns": 1794239089281983900,
+        "size": 0
+      },
+      "runtime/control_plane_session2b/restart_pid.txt": {
+        "mtime_ns": 1794239089324951100,
+        "size": 7
+      },
+      "runtime/control_plane_session2b/supervisor.stderr.log": {
+        "mtime_ns": 1794238792035689500,
+        "size": 0
+      },
+      "runtime/control_plane_session2b/supervisor.stdout.log": {
+        "mtime_ns": 1794238792026516100,
+        "size": 0
+      },
+      "runtime/control_plane_session2b/transport.db": {
+        "mtime_ns": 1794239415078917500,
+        "size": 69632
+      },
+      "runtime/control_plane_session2b/transport.db-shm": {
+        "mtime_ns": 1794258455111942900,
+        "size": 32768
+      },
+      "runtime/control_plane_session2b/transport.db-wal": {
+        "mtime_ns": 1794255516669940600,
+        "size": 0
+      },
+      "runtime/control_plane_session3/STOP": {
+        "mtime_ns": 1794256136651814100,
+        "size": 33
+      },
+      "runtime/control_plane_session3/control_plane.db": {
+        "mtime_ns": 1794256093759162800,
+        "size": 40960
+      },
+      "runtime/control_plane_session3/delegate.db": {
+        "mtime_ns": 1794256094039591500,
+        "size": 16384
+      },
+      "runtime/control_plane_session3/endpoint.json": {
+        "mtime_ns": 1794255950569687700,
+        "size": 454
+      },
+      "runtime/control_plane_session3/identity/human.key": {
+        "mtime_ns": 1794255579429808100,
+        "size": 32
+      },
+      "runtime/control_plane_session3/identity/morch.key": {
+        "mtime_ns": 1794255578123970900,
+        "size": 32
+      },
+      "runtime/control_plane_session3/identity/qa.key": {
+        "mtime_ns": 1794255578149662200,
+        "size": 32
+      },
+      "runtime/control_plane_session3/identity/rorch.key": {
+        "mtime_ns": 1794255578136916300,
+        "size": 32
+      },
+      "runtime/control_plane_session3/identity/uws.key": {
+        "mtime_ns": 1794255578164504000,
+        "size": 32
+      },
+      "runtime/control_plane_session3/launcher_pid.txt": {
+        "mtime_ns": 1794255577521652900,
+        "size": 7
+      },
+      "runtime/control_plane_session3/memory.db": {
+        "mtime_ns": 1794256093771624900,
+        "size": 53248
+      },
+      "runtime/control_plane_session3/memory.db-shm": {
+        "mtime_ns": 1794258455161836900,
+        "size": 32768
+      },
+      "runtime/control_plane_session3/memory.db-wal": {
+        "mtime_ns": 1794258455147837400,
+        "size": 0
+      },
+      "runtime/control_plane_session3/model_calls.db": {
+        "mtime_ns": 1794256090415645100,
+        "size": 24576
+      },
+      "runtime/control_plane_session3/model_calls/SESSION3-FINAL-001_qa-review-1/AGENTS.md": {
+        "mtime_ns": 1794256019036608900,
+        "size": 349
+      },
+      "runtime/control_plane_session3/model_calls/SESSION3-FINAL-001_qa-review-1/usage.json": {
+        "mtime_ns": 1794256041558320800,
+        "size": 1176
+      },
+      "runtime/control_plane_session3/model_calls/SESSION3-FINAL-001_qa-review-2/AGENTS.md": {
+        "mtime_ns": 1794256059874135200,
+        "size": 349
+      },
+      "runtime/control_plane_session3/model_calls/SESSION3-FINAL-001_qa-review-2/usage.json": {
+        "mtime_ns": 1794256090299313900,
+        "size": 920
+      },
+      "runtime/control_plane_session3/model_calls/SESSION3-FINAL-001_rorch-build/AGENTS.md": {
+        "mtime_ns": 1794255960298210100,
+        "size": 349
+      },
+      "runtime/control_plane_session3/model_calls/SESSION3-FINAL-001_rorch-build/usage.json": {
+        "mtime_ns": 1794256017347228400,
+        "size": 920
+      },
+      "runtime/control_plane_session3/model_calls/SESSION3-FINAL-001_rorch-fix/AGENTS.md": {
+        "mtime_ns": 1794256042490026100,
+        "size": 349
+      },
+      "runtime/control_plane_session3/model_calls/SESSION3-FINAL-001_rorch-fix/usage.json": {
+        "mtime_ns": 1794256058746959100,
+        "size": 920
+      },
+      "runtime/control_plane_session3/objectives/SESSION3-FINAL-001/app/app.py": {
+        "mtime_ns": 1794256058868104500,
+        "size": 139
+      },
+      "runtime/control_plane_session3/objectives/SESSION3-FINAL-001/app/test_app.py": {
+        "mtime_ns": 1794256058872187400,
+        "size": 1371
+      },
+      "runtime/control_plane_session3/objectives/SESSION3-FINAL-001/dev/rorch_round1.json": {
+        "mtime_ns": 1794256018198859400,
+        "size": 1031
+      },
+      "runtime/control_plane_session3/objectives/SESSION3-FINAL-001/dev/rorch_round2.json": {
+        "mtime_ns": 1794256058980993600,
+        "size": 1735
+      },
+      "runtime/control_plane_session3/objectives/SESSION3-FINAL-001/qa/qa_round1.json": {
+        "mtime_ns": 1794256041686029700,
+        "size": 1447
+      },
+      "runtime/control_plane_session3/objectives/SESSION3-FINAL-001/qa/qa_round2.json": {
+        "mtime_ns": 1794256090966681400,
+        "size": 1134
+      },
+      "runtime/control_plane_session3/restart.stderr.log": {
+        "mtime_ns": 1794255910484396900,
+        "size": 2275
+      },
+      "runtime/control_plane_session3/restart.stdout.log": {
+        "mtime_ns": 1794255724389537400,
+        "size": 0
+      },
+      "runtime/control_plane_session3/restart2.stderr.log": {
+        "mtime_ns": 1794255949266386300,
+        "size": 0
+      },
+      "runtime/control_plane_session3/restart2.stdout.log": {
+        "mtime_ns": 1794255949242974400,
+        "size": 0
+      },
+      "runtime/control_plane_session3/restart2_pid.txt": {
+        "mtime_ns": 1794255949280285800,
+        "size": 7
+      },
+      "runtime/control_plane_session3/restart_pid.txt": {
+        "mtime_ns": 1794255724415989000,
+        "size": 7
+      },
+      "runtime/control_plane_session3/supervisor.stderr.log": {
+        "mtime_ns": 1794255577488869000,
+        "size": 0
+      },
+      "runtime/control_plane_session3/supervisor.stdout.log": {
+        "mtime_ns": 1794255577488160300,
+        "size": 0
+      },
+      "runtime/control_plane_session3/transport.db": {
+        "mtime_ns": 1794256121452626900,
+        "size": 53248
+      },
+      "runtime/control_plane_session3/transport.db-shm": {
+        "mtime_ns": 1794258455199748800,
+        "size": 32768
+      },
+      "runtime/control_plane_session3/transport.db-wal": {
+        "mtime_ns": 1794256121570127100,
+        "size": 0
+      },
+      "runtime/control_plane_session4/STOP": {
+        "mtime_ns": 1794258683308376300,
+        "size": 23
+      },
+      "runtime/control_plane_session4/control_plane.db": {
+        "mtime_ns": 1794258619543942100,
+        "size": 36864
+      },
+      "runtime/control_plane_session4/delegate.db": {
+        "mtime_ns": 1794258525007236400,
+        "size": 16384
+      },
+      "runtime/control_plane_session4/endpoint.json": {
+        "mtime_ns": 1794258486392249300,
+        "size": 454
+      },
+      "runtime/control_plane_session4/identity/human.key": {
+        "mtime_ns": 1794258485918840600,
+        "size": 32
+      },
+      "runtime/control_plane_session4/identity/morch.key": {
+        "mtime_ns": 1794258484540602400,
+        "size": 32
+      },
+      "runtime/control_plane_session4/identity/qa.key": {
+        "mtime_ns": 1794258484571221900,
+        "size": 32
+      },
+      "runtime/control_plane_session4/identity/rorch.key": {
+        "mtime_ns": 1794258484558402200,
+        "size": 32
+      },
+      "runtime/control_plane_session4/identity/uws.key": {
+        "mtime_ns": 1794258484583939100,
+        "size": 32
+      },
+      "runtime/control_plane_session4/launcher_pid.txt": {
+        "mtime_ns": 1794258483943141600,
+        "size": 7
+      },
+      "runtime/control_plane_session4/memory.db": {
+        "mtime_ns": 1794258527833971600,
+        "size": 45056
+      },
+      "runtime/control_plane_session4/model_calls.db": {
+        "mtime_ns": 1794258589507221500,
+        "size": 12288
+      },
+      "runtime/control_plane_session4/model_calls/SESSION4-FINAL-001_qa-review-1/AGENTS.md": {
+        "mtime_ns": 1794258589244956800,
+        "size": 349
+      },
+      "runtime/control_plane_session4/model_calls/SESSION4-FINAL-001_rorch-build/AGENTS.md": {
+        "mtime_ns": 1794258525311297000,
+        "size": 349
+      },
+      "runtime/control_plane_session4/objectives/SESSION4-FINAL-001/app/app.py": {
+        "mtime_ns": 1794258527672103900,
+        "size": 210
+      },
+      "runtime/control_plane_session4/objectives/SESSION4-FINAL-001/app/test_app.py": {
+        "mtime_ns": 1794258527676104800,
+        "size": 539
+      },
+      "runtime/control_plane_session4/objectives/SESSION4-FINAL-001/dev/rorch_round1.json": {
+        "mtime_ns": 1794258527760818400,
+        "size": 1053
+      },
+      "runtime/control_plane_session4/supervisor.stderr.log": {
+        "mtime_ns": 1794258483916799500,
+        "size": 0
+      },
+      "runtime/control_plane_session4/supervisor.stdout.log": {
+        "mtime_ns": 1794258483916799500,
+        "size": 0
+      },
+      "runtime/control_plane_session4/transport.db": {
+        "mtime_ns": 1794258684064979500,
+        "size": 45056
+      },
+      "runtime/control_plane_session4b/STOP": {
+        "mtime_ns": 1794258881780757300,
+        "size": 30
+      },
+      "runtime/control_plane_session4b/control_plane.db": {
+        "mtime_ns": 1794258815212253500,
+        "size": 36864
+      },
+      "runtime/control_plane_session4b/delegate.db": {
+        "mtime_ns": 1794258722843422000,
+        "size": 16384
+      },
+      "runtime/control_plane_session4b/endpoint.json": {
+        "mtime_ns": 1794258714176273700,
+        "size": 453
+      },
+      "runtime/control_plane_session4b/identity/human.key": {
+        "mtime_ns": 1794258713715996300,
+        "size": 32
+      },
+      "runtime/control_plane_session4b/identity/morch.key": {
+        "mtime_ns": 1794258712298336600,
+        "size": 32
+      },
+      "runtime/control_plane_session4b/identity/qa.key": {
+        "mtime_ns": 1794258712323541100,
+        "size": 32
+      },
+      "runtime/control_plane_session4b/identity/rorch.key": {
+        "mtime_ns": 1794258712311139400,
+        "size": 32
+      },
+      "runtime/control_plane_session4b/identity/uws.key": {
+        "mtime_ns": 1794258712336703100,
+        "size": 32
+      },
+      "runtime/control_plane_session4b/launcher_pid.txt": {
+        "mtime_ns": 1794258711717795000,
+        "size": 7
+      },
+      "runtime/control_plane_session4b/memory.db": {
+        "mtime_ns": 1794258723582060500,
+        "size": 45056
+      },
+      "runtime/control_plane_session4b/model_calls.db": {
+        "mtime_ns": 1794258785223013800,
+        "size": 12288
+      },
+      "runtime/control_plane_session4b/model_calls/SESSION4-FINAL-002_qa-review-1/AGENTS.md": {
+        "mtime_ns": 1794258784966867500,
+        "size": 349
+      },
+      "runtime/control_plane_session4b/model_calls/SESSION4-FINAL-002_rorch-build/AGENTS.md": {
+        "mtime_ns": 1794258723166332500,
+        "size": 349
+      },
+      "runtime/control_plane_session4b/objectives/SESSION4-FINAL-002/app/app.py": {
+        "mtime_ns": 1794258723432365500,
+        "size": 210
+      },
+      "runtime/control_plane_session4b/objectives/SESSION4-FINAL-002/app/test_app.py": {
+        "mtime_ns": 1794258723435369600,
+        "size": 539
+      },
+      "runtime/control_plane_session4b/objectives/SESSION4-FINAL-002/dev/rorch_round1.json": {
+        "mtime_ns": 1794258723505342300,
+        "size": 1053
+      },
+      "runtime/control_plane_session4b/supervisor.stderr.log": {
+        "mtime_ns": 1794258711695459800,
+        "size": 0
+      },
+      "runtime/control_plane_session4b/supervisor.stdout.log": {
+        "mtime_ns": 1794258711694459400,
+        "size": 0
+      },
+      "runtime/control_plane_session4b/transport.db": {
+        "mtime_ns": 1794258882599280300,
+        "size": 45056
+      },
+      "runtime/control_plane_session4c/STOP": {
+        "mtime_ns": 1794259061204302200,
+        "size": 20
+      },
+      "runtime/control_plane_session4c/control_plane.db": {
+        "mtime_ns": 1794258982390176500,
+        "size": 28672
+      },
+      "runtime/control_plane_session4c/delegate.db": {
+        "mtime_ns": 1794258995338799800,
+        "size": 16384
+      },
+      "runtime/control_plane_session4c/endpoint.json": {
+        "mtime_ns": 1794258949378983300,
+        "size": 454
+      },
+      "runtime/control_plane_session4c/identity/human.key": {
+        "mtime_ns": 1794258948912982400,
+        "size": 32
+      },
+      "runtime/control_plane_session4c/identity/morch.key": {
+        "mtime_ns": 1794258947490313100,
+        "size": 32
+      },
+      "runtime/control_plane_session4c/identity/qa.key": {
+        "mtime_ns": 1794258947517277000,
+        "size": 32
+      },
+      "runtime/control_plane_session4c/identity/rorch.key": {
+        "mtime_ns": 1794258947505878100,
+        "size": 32
+      },
+      "runtime/control_plane_session4c/identity/uws.key": {
+        "mtime_ns": 1794258947531263300,
+        "size": 32
+      },
+      "runtime/control_plane_session4c/launcher_pid.txt": {
+        "mtime_ns": 1794258946899174800,
+        "size": 7
+      },
+      "runtime/control_plane_session4c/memory.db": {
+        "mtime_ns": 1794258982399788800,
+        "size": 45056
+      },
+      "runtime/control_plane_session4c/model_calls.db": {
+        "mtime_ns": 1794258979735808400,
+        "size": 20480
+      },
+      "runtime/control_plane_session4c/model_calls/SESSION4-FINAL-003_qa-review-1/AGENTS.md": {
+        "mtime_ns": 1794258959365569800,
+        "size": 349
+      },
+      "runtime/control_plane_session4c/model_calls/SESSION4-FINAL-003_qa-review-2/AGENTS.md": {
+        "mtime_ns": 1794258976435824100,
+        "size": 349
+      },
+      "runtime/control_plane_session4c/model_calls/SESSION4-FINAL-003_rorch-build/AGENTS.md": {
+        "mtime_ns": 1794258958137772600,
+        "size": 349
+      },
+      "runtime/control_plane_session4c/model_calls/SESSION4-FINAL-003_rorch-fix/AGENTS.md": {
+        "mtime_ns": 1794258965693773900,
+        "size": 349
+      },
+      "runtime/control_plane_session4c/objectives/SESSION4-FINAL-003/app/app.py": {
+        "mtime_ns": 1794258975541030100,
+        "size": 251
+      },
+      "runtime/control_plane_session4c/objectives/SESSION4-FINAL-003/app/test_app.py": {
+        "mtime_ns": 1794258975545248300,
+        "size": 1057
+      },
+      "runtime/control_plane_session4c/objectives/SESSION4-FINAL-003/dev/rorch_round1.json": {
+        "mtime_ns": 1794258958483895400,
+        "size": 1053
+      },
+      "runtime/control_plane_session4c/objectives/SESSION4-FINAL-003/dev/rorch_round2.json": {
+        "mtime_ns": 1794258975603340000,
+        "size": 1141
+      },
+      "runtime/control_plane_session4c/objectives/SESSION4-FINAL-003/qa/qa_round1.json": {
+        "mtime_ns": 1794258964892317300,
+        "size": 1487
+      },
+      "runtime/control_plane_session4c/objectives/SESSION4-FINAL-003/qa/qa_round2.json": {
+        "mtime_ns": 1794258979740806600,
+        "size": 1113
+      },
+      "runtime/control_plane_session4c/supervisor.stderr.log": {
+        "mtime_ns": 1794258946876980400,
+        "size": 0
+      },
+      "runtime/control_plane_session4c/supervisor.stdout.log": {
+        "mtime_ns": 1794258946874980100,
+        "size": 0
+      },
+      "runtime/control_plane_session4c/transport.db": {
+        "mtime_ns": 1794259061999959900,
+        "size": 53248
+      },
+      "runtime/control_plane_session4d/STOP": {
+        "mtime_ns": 1794259144373860200,
+        "size": 20
+      },
+      "runtime/control_plane_session4d/control_plane.db": {
+        "mtime_ns": 1794259093259981300,
+        "size": 28672
+      },
+      "runtime/control_plane_session4d/delegate.db": {
+        "mtime_ns": 1794259114879894800,
+        "size": 16384
+      },
+      "runtime/control_plane_session4d/endpoint.json": {
+        "mtime_ns": 1794259077890841900,
+        "size": 460
+      },
+      "runtime/control_plane_session4d/identity/human.key": {
+        "mtime_ns": 1794259077420354300,
+        "size": 32
+      },
+      "runtime/control_plane_session4d/identity/morch.key": {
+        "mtime_ns": 1794259076041015600,
+        "size": 32
+      },
+      "runtime/control_plane_session4d/identity/qa.key": {
+        "mtime_ns": 1794259076067979900,
+        "size": 32
+      },
+      "runtime/control_plane_session4d/identity/rorch.key": {
+        "mtime_ns": 1794259076054483100,
+        "size": 32
+      },
+      "runtime/control_plane_session4d/identity/uws.key": {
+        "mtime_ns": 1794259076081990600,
+        "size": 32
+      },
+      "runtime/control_plane_session4d/launcher_pid.txt": {
+        "mtime_ns": 1794259075455895000,
+        "size": 7
+      },
+      "runtime/control_plane_session4d/memory.db": {
+        "mtime_ns": 1794259093269935200,
+        "size": 45056
+      },
+      "runtime/control_plane_session4d/model_calls.db": {
+        "mtime_ns": 1794259090600192800,
+        "size": 20480
+      },
+      "runtime/control_plane_session4d/model_calls/SESSION4-FINAL-004_qa-review-1/AGENTS.md": {
+        "mtime_ns": 1794259088042069900,
+        "size": 349
+      },
+      "runtime/control_plane_session4d/model_calls/SESSION4-FINAL-004_qa-review-2/AGENTS.md": {
+        "mtime_ns": 1794259090344074000,
+        "size": 349
+      },
+      "runtime/control_plane_session4d/model_calls/SESSION4-FINAL-004_rorch-build/AGENTS.md": {
+        "mtime_ns": 1794259086863963100,
+        "size": 349
+      },
+      "runtime/control_plane_session4d/model_calls/SESSION4-FINAL-004_rorch-fix/AGENTS.md": {
+        "mtime_ns": 1794259089158140200,
+        "size": 349
+      },
+      "runtime/control_plane_session4d/objectives/SESSION4-FINAL-004/app/app.py": {
+        "mtime_ns": 1794259089435221900,
+        "size": 251
+      },
+      "runtime/control_plane_session4d/objectives/SESSION4-FINAL-004/app/test_app.py": {
+        "mtime_ns": 1794259089439223600,
+        "size": 1057
+      },
+      "runtime/control_plane_session4d/objectives/SESSION4-FINAL-004/dev/rorch_round1.json": {
+        "mtime_ns": 1794259087191943700,
+        "size": 1053
+      },
+      "runtime/control_plane_session4d/objectives/SESSION4-FINAL-004/dev/rorch_round2.json": {
+        "mtime_ns": 1794259089507143100,
+        "size": 1141
+      },
+      "runtime/control_plane_session4d/objectives/SESSION4-FINAL-004/qa/qa_round1.json": {
+        "mtime_ns": 1794259088326672300,
+        "size": 1487
+      },
+      "runtime/control_plane_session4d/objectives/SESSION4-FINAL-004/qa/qa_round2.json": {
+        "mtime_ns": 1794259090605190900,
+        "size": 1113
+      },
+      "runtime/control_plane_session4d/supervisor.stderr.log": {
+        "mtime_ns": 1794259075433865600,
+        "size": 0
+      },
+      "runtime/control_plane_session4d/supervisor.stdout.log": {
+        "mtime_ns": 1794259075432865300,
+        "size": 0
+      },
+      "runtime/control_plane_session4d/transport.db": {
+        "mtime_ns": 1794259145264331600,
+        "size": 53248
+      },
+      "runtime/mail/v3-task-handoff.json": {
+        "mtime_ns": 1794218624299603500,
+        "size": 418
+      },
+      "runtime/mail/v4-delivery-round1.json": {
+        "mtime_ns": 1794218673933438800,
+        "size": 836
+      },
+      "runtime/mail/v4-morch-accepted.json": {
+        "mtime_ns": 1794218689050944000,
+        "size": 471
+      },
+      "runtime/mail/v4-qa-pass.json": {
+        "mtime_ns": 1794218688353073100,
+        "size": 488
+      },
+      "runtime/mail/v4-qa-rejected.json": {
+        "mtime_ns": 1794218675105078100,
+        "size": 1072
+      },
+      "runtime/mail/v4-rework-response.json": {
+        "mtime_ns": 1794218687438081100,
+        "size": 1403
+      },
+      "runtime/mail/v4-rorch-ack.json": {
+        "mtime_ns": 1794218689765507700,
+        "size": 324
+      },
+      "runtime/mail/v4-task-handoff.json": {
+        "mtime_ns": 1794218672761078700,
+        "size": 418
+      },
+      "runtime/ntv-controlplane-ssrdthar/memory-corrupt.db": {
+        "mtime_ns": 1794236573610447300,
+        "size": 45056
+      },
+      "runtime/ntv-controlplane-ssrdthar/memory-corrupt.db-shm": {
+        "mtime_ns": 1794258455228722400,
+        "size": 32768
+      },
+      "runtime/ntv-controlplane-ssrdthar/memory-corrupt.db-wal": {
+        "mtime_ns": 1794255516675940800,
+        "size": 0
+      },
+      "runtime/ntv-controlplane-ssrdthar/memory.db": {
+        "mtime_ns": 1794236573552277600,
+        "size": 45056
+      },
+      "runtime/ntv-controlplane-ssrdthar/memory.db-shm": {
+        "mtime_ns": 1794258455255747900,
+        "size": 32768
+      },
+      "runtime/ntv-controlplane-ssrdthar/memory.db-wal": {
+        "mtime_ns": 1794255516681154700,
+        "size": 0
+      },
+      "runtime/ntv-controlplane-ssrdthar/transport.db": {
+        "mtime_ns": 1794236573531188200,
+        "size": 45056
+      },
+      "runtime/ntv-controlplane-ssrdthar/transport.db-shm": {
+        "mtime_ns": 1794258455282898000,
+        "size": 32768
+      },
+      "runtime/ntv-controlplane-ssrdthar/transport.db-wal": {
+        "mtime_ns": 1794255516686815500,
+        "size": 0
+      },
+      "runtime/qa/permission_probe.json": {
+        "mtime_ns": 1794218675006621900,
+        "size": 208
+      },
+      "runtime/qa/qa-allowed.txt": {
+        "mtime_ns": 1794218675003829400,
+        "size": 21
+      },
+      "runtime/qa/qa_probe_round1.json": {
+        "mtime_ns": 1794218674780602300,
+        "size": 638
+      },
+      "runtime/qa/qa_probe_round2.json": {
+        "mtime_ns": 1794218688289052100,
+        "size": 634
+      },
+      "runtime/rorch/app.py": {
+        "mtime_ns": 1794218687114978500,
+        "size": 219
+      },
+      "runtime/rorch/test_app.py": {
+        "mtime_ns": 1794218687114978500,
+        "size": 806
+      },
+      "runtime/session3_canary/broker.stderr.log": {
+        "mtime_ns": 1794254914174108600,
+        "size": 0
+      },
+      "runtime/session3_canary/broker.stdout.log": {
+        "mtime_ns": 1794254914165082500,
+        "size": 0
+      },
+      "runtime/session3_canary/broker_pid.txt": {
+        "mtime_ns": 1794254914201295700,
+        "size": 7
+      },
+      "runtime/session3_canary/calls/SESSION3_qa-canary/AGENTS.md": {
+        "mtime_ns": 1794254926931775400,
+        "size": 349
+      },
+      "runtime/session3_canary/model_calls.db": {
+        "mtime_ns": 1794254928162135500,
+        "size": 12288
+      },
+      "runtime/session3_canary2/broker.stderr.log": {
+        "mtime_ns": 1794255271079807300,
+        "size": 0
+      },
+      "runtime/session3_canary2/broker.stdout.log": {
+        "mtime_ns": 1794255271072212600,
+        "size": 0
+      },
+      "runtime/session3_canary2/broker_pid.txt": {
+        "mtime_ns": 1794255271109864000,
+        "size": 7
+      },
+      "runtime/session3_canary2/calls/SESSION3_qa-canary2/AGENTS.md": {
+        "mtime_ns": 1794255283445570000,
+        "size": 349
+      },
+      "runtime/session3_canary2/model_calls.db": {
+        "mtime_ns": 1794255284380170600,
+        "size": 12288
+      },
+      "runtime/state/build.json": {
+        "mtime_ns": 1794218058532511300,
+        "size": 836
+      },
+      "runtime/state/build_v3.json": {
+        "mtime_ns": 1794218673452750300,
+        "size": 836
+      },
+      "runtime/state/fix.json": {
+        "mtime_ns": 1794218070052263900,
+        "size": 1403
+      },
+      "runtime/state/fix_v3.json": {
+        "mtime_ns": 1794218686953518300,
+        "size": 1403
+      },
+      "runtime/state/identity_v3/morch.key": {
+        "mtime_ns": 1794218623620385400,
+        "size": 32
+      },
+      "runtime/state/identity_v3/qa.key": {
+        "mtime_ns": 1794218623655797100,
+        "size": 32
+      },
+      "runtime/state/identity_v3/rorch.key": {
+        "mtime_ns": 1794218623636855800,
+        "size": 32
+      },
+      "runtime/state/identity_v3/uws.key": {
+        "mtime_ns": 1794218623671236100,
+        "size": 32
+      },
+      "runtime/state/identity_v4/morch.key": {
+        "mtime_ns": 1794218672293677300,
+        "size": 32
+      },
+      "runtime/state/identity_v4/qa.key": {
+        "mtime_ns": 1794218672329510000,
+        "size": 32
+      },
+      "runtime/state/identity_v4/rorch.key": {
+        "mtime_ns": 1794218672316088500,
+        "size": 32
+      },
+      "runtime/state/identity_v4/uws.key": {
+        "mtime_ns": 1794218672350636200,
+        "size": 32
+      },
+      "runtime/state/memory.db": {
+        "mtime_ns": 1794218072198041700,
+        "size": 53248
+      },
+      "runtime/state/memory.db-shm": {
+        "mtime_ns": 1794258455337102900,
+        "size": 32768
+      },
+      "runtime/state/memory.db-wal": {
+        "mtime_ns": 1794218184786000300,
+        "size": 0
+      },
+      "runtime/state/memory_v3.db": {
+        "mtime_ns": 1794218624534508600,
+        "size": 45056
+      },
+      "runtime/state/memory_v3.db-shm": {
+        "mtime_ns": 1794258455362558400,
+        "size": 32768
+      },
+      "runtime/state/memory_v3.db-wal": {
+        "mtime_ns": 1794255516711519100,
+        "size": 0
+      },
+      "runtime/state/memory_v4.db": {
+        "mtime_ns": 1794218690705532400,
+        "size": 53248
+      },
+      "runtime/state/memory_v4.db-shm": {
+        "mtime_ns": 1794258455391995200,
+        "size": 32768
+      },
+      "runtime/state/memory_v4.db-wal": {
+        "mtime_ns": 1794255516719901600,
+        "size": 0
+      },
+      "runtime/state/model_routes.db": {
+        "mtime_ns": 1794218165312472300,
+        "size": 24576
+      },
+      "runtime/state/model_routes.db-shm": {
+        "mtime_ns": 1794258455418044100,
+        "size": 32768
+      },
+      "runtime/state/model_routes.db-wal": {
+        "mtime_ns": 1794255516726370300,
+        "size": 0
+      },
+      "runtime/state/transport.db": {
+        "mtime_ns": 1794218072172680400,
+        "size": 65536
+      },
+      "runtime/state/transport.db-shm": {
+        "mtime_ns": 1794258455442314000,
+        "size": 32768
+      },
+      "runtime/state/transport.db-wal": {
+        "mtime_ns": 1794218184744286200,
+        "size": 0
+      },
+      "runtime/state/transport_v3.db": {
+        "mtime_ns": 1794218624727744300,
+        "size": 45056
+      },
+      "runtime/state/transport_v3.db-shm": {
+        "mtime_ns": 1794258455471005400,
+        "size": 32768
+      },
+      "runtime/state/transport_v3.db-wal": {
+        "mtime_ns": 1794255516742306200,
+        "size": 0
+      },
+      "runtime/state/transport_v4.db": {
+        "mtime_ns": 1794218690907125500,
+        "size": 65536
+      },
+      "runtime/state/transport_v4.db-shm": {
+        "mtime_ns": 1794258455497071800,
+        "size": 32768
+      },
+      "runtime/state/transport_v4.db-wal": {
+        "mtime_ns": 1794255516751123800,
+        "size": 0
+      },
+      "runtime/state/uws.db": {
+        "mtime_ns": 1794218072198041700,
+        "size": 102400
+      },
+      "runtime/state/uws.db-shm": {
+        "mtime_ns": 1794258455522865800,
+        "size": 32768
+      },
+      "runtime/state/uws.db-wal": {
+        "mtime_ns": 1794218184701085400,
+        "size": 0
+      },
+      "runtime/state/uws_v3.db": {
+        "mtime_ns": 1794218624538621600,
+        "size": 90112
+      },
+      "runtime/state/uws_v3.db-shm": {
+        "mtime_ns": 1794258455551303500,
+        "size": 32768
+      },
+      "runtime/state/uws_v3.db-wal": {
+        "mtime_ns": 1794255516765197700,
+        "size": 0
+      },
+      "runtime/state/uws_v4.db": {
+        "mtime_ns": 1794218690708896000,
+        "size": 102400
+      },
+      "runtime/state/uws_v4.db-shm": {
+        "mtime_ns": 1794258455577329800,
+        "size": 32768
+      },
+      "runtime/state/uws_v4.db-wal": {
+        "mtime_ns": 1794255516773249600,
+        "size": 0
+      },
+      "src/UWS/__init__.py": {
+        "mtime_ns": 1793744469782388500,
+        "size": 258
+      },
+      "src/UWS/__pycache__/__init__.cpython-315.pyc": {
+        "mtime_ns": 1794218821926675300,
+        "size": 408
+      },
+      "src/UWS/__pycache__/artifacts.cpython-315.pyc": {
+        "mtime_ns": 1794255112974086400,
+        "size": 8035
+      },
+      "src/UWS/__pycache__/fsm.cpython-315.pyc": {
+        "mtime_ns": 1794218821926675300,
+        "size": 30022
+      },
+      "src/UWS/__pycache__/idempotency.cpython-315.pyc": {
+        "mtime_ns": 1794218821955986100,
+        "size": 6318
+      },
+      "src/UWS/__pycache__/lease.cpython-315.pyc": {
+        "mtime_ns": 1794255112989496400,
+        "size": 16357
+      },
+      "src/UWS/__pycache__/ledger.cpython-315.pyc": {
+        "mtime_ns": 1794218821951985200,
+        "size": 36909
+      },
+      "src/UWS/__pycache__/models.cpython-315.pyc": {
+        "mtime_ns": 1794218821926675300,
+        "size": 17110
+      },
+      "src/UWS/artifacts.py": {
+        "mtime_ns": 1793744522119694200,
+        "size": 4388
+      },
+      "src/UWS/fsm.py": {
+        "mtime_ns": 1793745650760825300,
+        "size": 20886
+      },
+      "src/UWS/idempotency.py": {
+        "mtime_ns": 1793744498268759700,
+        "size": 2697
+      },
+      "src/UWS/lease.py": {
+        "mtime_ns": 1793744601746825700,
+        "size": 10918
+      },
+      "src/UWS/ledger.py": {
+        "mtime_ns": 1793744593025794300,
+        "size": 22584
+      },
+      "src/UWS/models.py": {
+        "mtime_ns": 1793744628442041300,
+        "size": 9236
+      },
+      "src/__pycache__/control_actor.cpython-313.pyc": {
+        "mtime_ns": 1794259045602426100,
+        "size": 14540
+      },
+      "src/__pycache__/control_actor.cpython-315.pyc": {
+        "mtime_ns": 1794255540049511700,
+        "size": 16093
+      },
+      "src/__pycache__/guest_worker.cpython-315.pyc": {
+        "mtime_ns": 1794255113004799500,
+        "size": 6032
+      },
+      "src/__pycache__/mission_checkpoint.cpython-315.pyc": {
+        "mtime_ns": 1794235770579499500,
+        "size": 17636
+      },
+      "src/__pycache__/model_broker.cpython-313.pyc": {
+        "mtime_ns": 1794258354630657200,
+        "size": 23814
+      },
+      "src/__pycache__/model_broker.cpython-315.pyc": {
+        "mtime_ns": 1794256239825368900,
+        "size": 19272
+      },
+      "src/__pycache__/model_route_probe.cpython-315.pyc": {
+        "mtime_ns": 1794236379835426700,
+        "size": 6779
+      },
+      "src/__pycache__/model_router.cpython-315.pyc": {
+        "mtime_ns": 1794235755533974900,
+        "size": 34402
+      },
+      "src/__pycache__/morch_delegate.cpython-315.pyc": {
+        "mtime_ns": 1794240995413998100,
+        "size": 17268
+      },
+      "src/__pycache__/morch_submit.cpython-315.pyc": {
+        "mtime_ns": 1794235970430068000,
+        "size": 2984
+      },
+      "src/__pycache__/operational_memory.cpython-315.pyc": {
+        "mtime_ns": 1794240995432934700,
+        "size": 26684
+      },
+      "src/__pycache__/persistent_control_plane.cpython-313.pyc": {
+        "mtime_ns": 1794259045577995300,
+        "size": 31667
+      },
+      "src/__pycache__/persistent_control_plane.cpython-315.pyc": {
+        "mtime_ns": 1794256239837103700,
+        "size": 34025
+      },
+      "src/__pycache__/record_model_baseline.cpython-315.pyc": {
+        "mtime_ns": 1794255113028193900,
+        "size": 4060
+      },
+      "src/__pycache__/role_worker.cpython-315.pyc": {
+        "mtime_ns": 1794235760938491100,
+        "size": 7852
+      },
+      "src/__pycache__/secure_transport.cpython-313.pyc": {
+        "mtime_ns": 1794256137535123400,
+        "size": 29481
+      },
+      "src/__pycache__/secure_transport.cpython-315.pyc": {
+        "mtime_ns": 1794256239801466800,
+        "size": 34570
+      },
+      "src/__pycache__/supervisor_v2.cpython-315.pyc": {
+        "mtime_ns": 1794218893870637500,
+        "size": 28058
+      },
+      "src/__pycache__/transport_rpc.cpython-315.pyc": {
+        "mtime_ns": 1794240995440937100,
+        "size": 15402
+      },
+      "src/__pycache__/update_session_checkpoint.cpython-315.pyc": {
+        "mtime_ns": 1794255113045964800,
+        "size": 7702
+      },
+      "src/control_actor.py": {
+        "mtime_ns": 1794259036355162700,
+        "size": 9456
+      },
+      "src/guest_worker.py": {
+        "mtime_ns": 1794191808858454900,
+        "size": 3205
+      },
+      "src/mission_checkpoint.py": {
+        "mtime_ns": 1794235763508092600,
+        "size": 9467
+      },
+      "src/model_broker.py": {
+        "mtime_ns": 1794258328360898300,
+        "size": 12050
+      },
+      "src/model_route_probe.py": {
+        "mtime_ns": 1794236367118527800,
+        "size": 4003
+      },
+      "src/model_router.py": {
+        "mtime_ns": 1794235717327354300,
+        "size": 21240
+      },
+      "src/morch_delegate.py": {
+        "mtime_ns": 1794240919757375600,
+        "size": 6728
+      },
+      "src/morch_submit.py": {
+        "mtime_ns": 1794235960223059200,
+        "size": 1134
+      },
+      "src/omniroute_direct.mjs": {
+        "mtime_ns": 1794258328358898400,
+        "size": 2528
+      },
+      "src/operational_memory.py": {
+        "mtime_ns": 1794240876804056100,
+        "size": 16752
+      },
+      "src/persistent_control_plane.py": {
+        "mtime_ns": 1794259199491186800,
+        "size": 14946
+      },
+      "src/record_model_baseline.py": {
+        "mtime_ns": 1794218156968765300,
+        "size": 2447
+      },
+      "src/role_worker.py": {
+        "mtime_ns": 1794217978399276000,
+        "size": 4346
+      },
+      "src/secure_transport.py": {
+        "mtime_ns": 1794256136651814100,
+        "size": 22251
+      },
+      "src/supervisor_v2.py": {
+        "mtime_ns": 1794218756399772600,
+        "size": 17147
+      },
+      "src/transport_rpc.py": {
+        "mtime_ns": 1794255887800144300,
+        "size": 9227
+      },
+      "src/update_session_checkpoint.py": {
+        "mtime_ns": 1794256343175511200,
+        "size": 5213
+      },
+      "tests/__pycache__/test_mission_checkpoint.cpython-315.pyc": {
+        "mtime_ns": 1794235770000344700,
+        "size": 11164
+      },
+      "tests/__pycache__/test_model_route_probe.cpython-315.pyc": {
+        "mtime_ns": 1794236379795392000,
+        "size": 4206
+      },
+      "tests/__pycache__/test_model_router.cpython-315.pyc": {
+        "mtime_ns": 1794235755814224500,
+        "size": 13343
+      },
+      "tests/__pycache__/test_morch_delegate.cpython-315.pyc": {
+        "mtime_ns": 1794240995656258300,
+        "size": 5259
+      },
+      "tests/__pycache__/test_operational_memory.cpython-315.pyc": {
+        "mtime_ns": 1794255139619944800,
+        "size": 15112
+      },
+      "tests/__pycache__/test_persistent_control_plane.cpython-315.pyc": {
+        "mtime_ns": 1794236318718285000,
+        "size": 8635
+      },
+      "tests/__pycache__/test_secure_transport.cpython-315.pyc": {
+        "mtime_ns": 1794256273775506600,
+        "size": 17108
+      },
+      "tests/__pycache__/test_session2_model_broker.cpython-315.pyc": {
+        "mtime_ns": 1794256239815870000,
+        "size": 8081
+      },
+      "tests/__pycache__/test_session2_real_runtime.cpython-315.pyc": {
+        "mtime_ns": 1794239317951273400,
+        "size": 8378
+      },
+      "tests/__pycache__/test_session3_role_mounts.cpython-315.pyc": {
+        "mtime_ns": 1794255539323524900,
+        "size": 2634
+      },
+      "tests/test_mission_checkpoint.py": {
+        "mtime_ns": 1794235763512094000,
+        "size": 5449
+      },
+      "tests/test_model_route_probe.py": {
+        "mtime_ns": 1794236367121528800,
+        "size": 1946
+      },
+      "tests/test_model_router.py": {
+        "mtime_ns": 1794235739867713400,
+        "size": 7243
+      },
+      "tests/test_morch_delegate.py": {
+        "mtime_ns": 1794240984745193600,
+        "size": 1987
+      },
+      "tests/test_operational_memory.py": {
+        "mtime_ns": 1794255131797493400,
+        "size": 6082
+      },
+      "tests/test_persistent_control_plane.py": {
+        "mtime_ns": 1794236297526189500,
+        "size": 3387
+      },
+      "tests/test_secure_transport.py": {
+        "mtime_ns": 1794256261918583900,
+        "size": 8941
+      },
+      "tests/test_session2_model_broker.py": {
+        "mtime_ns": 1794255680263975700,
+        "size": 3677
+      },
+      "tests/test_session2_real_runtime.py": {
+        "mtime_ns": 1794239307043083400,
+        "size": 2866
+      },
+      "tests/test_session3_role_mounts.py": {
+        "mtime_ns": 1794255447409268400,
+        "size": 1073
+      },
+      "tests/test_session4_omniroute_broker.py": {
+        "mtime_ns": 1794258426855424300,
+        "size": 2067
+      },
+      "tools/capture_openrouter_pricing.py": {
+        "mtime_ns": 1794259133307061600,
+        "size": 2276
+      },
+      "tools/trace_omniroute_headers.mjs": {
+        "mtime_ns": 1794258035468945300,
+        "size": 1012
+      }
+    },
+    "links": []
+  },
+  "captured_at": 1794259277.5570374,
+  "original_root": {
+    "errors": [],
+    "exists": false,
+    "files": {},
+    "links": []
+  },
+  "schema": "upgrade-ta.northstar.full-root-inventory/v1",
+  "sqlite": [
+    {
+      "path": "runtime/control_plane_session1/control_plane.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session1/memory.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session1/transport.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session2/control_plane.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session2/memory.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session2/model_calls.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session2/transport.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session2b/control_plane.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session2b/memory.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session2b/model_calls.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session2b/transport.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session3/control_plane.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session3/delegate.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session3/memory.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session3/model_calls.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session3/transport.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4/control_plane.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4/delegate.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4/memory.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4/model_calls.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4/transport.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4b/control_plane.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4b/delegate.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4b/memory.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4b/model_calls.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4b/transport.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4c/control_plane.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4c/delegate.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4c/memory.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4c/model_calls.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4c/transport.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4d/control_plane.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4d/delegate.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4d/memory.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4d/model_calls.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/control_plane_session4d/transport.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/ntv-controlplane-ssrdthar/memory-corrupt.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/ntv-controlplane-ssrdthar/memory.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/ntv-controlplane-ssrdthar/transport.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/session3_canary/model_calls.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/session3_canary2/model_calls.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": false,
+        "-wal": false
+      }
+    },
+    {
+      "path": "runtime/state/memory.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/state/memory_v3.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/state/memory_v4.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/state/model_routes.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/state/transport.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/state/transport_v3.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/state/transport_v4.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/state/uws.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/state/uws_v3.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    },
+    {
+      "path": "runtime/state/uws_v4.db",
+      "quick_check": "ok",
+      "sidecars": {
+        "-journal": false,
+        "-shm": true,
+        "-wal": true
+      }
+    }
+  ],
+  "windows_processes": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "[{\"ProcessId\":6688,\"ParentProcessId\":1768,\"Name\":\"wslservice.exe\",\"ExecutablePath\":null},{\"ProcessId\":55724,\"ParentProcessId\":33640,\"Name\":\"wsl.exe\",\"ExecutablePath\":\"C:\\\\WINDOWS\\\\system32\\\\wsl.exe\"},{\"ProcessId\":25788,\"ParentProcessId\":55724,\"Name\":\"wsl.exe\",\"ExecutablePath\":\"C:\\\\Program Files\\\\WSL\\\\wsl.exe\"},{\"ProcessId\":61244,\"ParentProcessId\":30816,\"Name\":\"vmmemWSL\",\"ExecutablePath\":null},{\"ProcessId\":52940,\"ParentProcessId\":6688,\"Name\":\"wslrelay.exe\",\"ExecutablePath\":\"C:\\\\Program Files\\\\WSL\\\\wslrelay.exe\"},{\"ProcessId\":34976,\"ParentProcessId\":6688,\"Name\":\"wslhost.exe\",\"ExecutablePath\":\"C:\\\\Program Files\\\\WSL\\\\wslhost.exe\"},{\"ProcessId\":68060,\"ParentProcessId\":6688,\"Name\":\"wslhost.exe\",\"ExecutablePath\":\"C:\\\\Program Files\\\\WSL\\\\wslhost.exe\"},{\"ProcessId\":59628,\"ParentProcessId\":25788,\"Name\":\"wslhost.exe\",\"ExecutablePath\":\"C:\\\\Program Files\\\\WSL\\\\wslhost.exe\"},{\"ProcessId\":35720,\"ParentProcessId\":10492,\"Name\":\"wslhost.exe\",\"ExecutablePath\":\"C:\\\\Program Files\\\\WSL\\\\wslhost.exe\"},{\"ProcessId\":70772,\"ParentProcessId\":13056,\"Name\":\"wsl.exe\",\"ExecutablePath\":\"C:\\\\Windows\\\\system32\\\\wsl.exe\"},{\"ProcessId\":67392,\"ParentProcessId\":70772,\"Name\":\"wsl.exe\",\"ExecutablePath\":\"C:\\\\Program Files\\\\WSL\\\\wsl.exe\"},{\"ProcessId\":68236,\"ParentProcessId\":67392,\"Name\":\"wslhost.exe\",\"ExecutablePath\":\"C:\\\\Program Files\\\\WSL\\\\wslhost.exe\"}]\n"
+  },
+  "wsl": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "a12f65f97969eccdb21bcd255f6d0bbf3024e5b7ea20209baf\", \"size\": 978, \"mtime_ns\": 1794238085306037921}, {\"path_hash\": \"db9a527df38e759158dd19812a8e92063d652c9969559bb0e05080a4ff81edca\", \"size\": 978, \"mtime_ns\": 1794238088162037791}, {\"path_hash\": \"3d41ebb93b0887408bd1ebde135e0ae27f86b7c985f984b7a881878ec4d656ea\", \"size\": 978, \"mtime_ns\": 1794238091186037657}, {\"path_hash\": \"99da846f89859dc8fc11468b903998d6fe53ee5c026a48c8e58c9c92b62667f6\", \"size\": 978, \"mtime_ns\": 1794238094206037343}, {\"path_hash\": \"a4108487b4fe5eddfa043c21064992477fa5af3be4d6fbe22b2453ecd93d78d9\", \"size\": 978, \"mtime_ns\": 1794238097234036882}, {\"path_hash\": \"5b23bb3cf509f11c03db03f7fc68434f9564f2531ae456957a53451f591e7a80\", \"size\": 886, \"mtime_ns\": 1794238100142036450}, {\"path_hash\": \"7bf3a7b5e0109f4ba28e91901bbfaac0ae02bccb7603749f3a2734674a84cf58\", \"size\": 50879, \"mtime_ns\": 1794238616621979606}, {\"path_hash\": \"50872df1dda13f8f5f23ac476c6d5b50674bc7f705b74b89f1ff2f2863e2e5ea\", \"size\": 3558, \"mtime_ns\": 1794238619537979329}, {\"path_hash\": \"314f3cddd94be9ab4fc441906bcdb15124447f778975f3fb3f35e1c0896ff768\", \"size\": 52483, \"mtime_ns\": 1794238646053976942}, {\"path_hash\": \"60afacb767309695d923772fa0417c7bcb668de4f9f1d670c2349bd4f0e4cd42\", \"size\": 56312, \"mtime_ns\": 1794238662801975255}, {\"path_hash\": \"05122a75f40bfc28558f2936993a9e27befc21255bdfbe5b6b2eca81902ec38f\", \"size\": 3674, \"mtime_ns\": 1794238663837975061}, {\"path_hash\": \"c7120a6ab2e96a8f18cf806d037ad8664eb6a65a57acbf609f70d997f076d4b5\", \"size\": 51133, \"mtime_ns\": 1794238818069959258}, {\"path_hash\": \"2053107e6eb7b7e5888813e3137de3eed61ea4644f2de7c4e06c2d6cfac1c46c\", \"size\": 3559, \"mtime_ns\": 1794238821757958714}, {\"path_hash\": \"7d6ab685b6154ed10e5c736418975cdfe0f6f5c78a2242201100561091b9fd69\", \"size\": 52939, \"mtime_ns\": 1794238860061951756}, {\"path_hash\": \"a3d5c4e25c300d1112bc70d11b1217a9a5b2396f5decd52ba3d400352c6b1384\", \"size\": 3588, \"mtime_ns\": 1794238866085951281}, {\"path_hash\": \"b39ee8cfb7cc51e31a62f5b76fd3a6d98d9ac6bc3263283f0805599594752fb2\", \"size\": 52434, \"mtime_ns\": 1794238881817949972}, {\"path_hash\": \"8f441e728235f77d290e194c6c4e54604705275258eb0bf3491495428b873ade\", \"size\": 4282, \"mtime_ns\": 1794238885185949673}, {\"path_hash\": \"50a3773ccd7168b1ef4a500a023c136538af158483557edb383262f78a19a1c5\", \"size\": 53130, \"mtime_ns\": 1794238921891122689}, {\"path_hash\": \"08ee5f9e6e935b51bb625e84b53a9e071e36df7179c1c02170505de9c357c1d5\", \"size\": 57480, \"mtime_ns\": 1794238945413937170}, {\"path_hash\": \"c2e5285d8956978fdcce8e284bad3a9f4a6219119b537d466b3e36b320169c10\", \"size\": 59954, \"mtime_ns\": 1794238950629934283}, {\"path_hash\": \"372256f7eae2ebcc704e6b288405e13a2e84ced86f5d503d1bbc4ba07b6ebff3\", \"size\": 3588, \"mtime_ns\": 1794238952125934994}, {\"path_hash\": \"ce93878bbfd300f2d22ee9e666b8898276920ff2f73b5d4666e6cea6bda25129\", \"size\": 50952, \"mtime_ns\": 1794239003909936804}, {\"path_hash\": \"24d159f76eee3f280f3e7e664799f0299861ed48e9722747cc2472e331031758\", \"size\": 3551, \"mtime_ns\": 1794239006125936680}, {\"path_hash\": \"549fc7caa6a88323b25c6d15ff01a92aa10a58e448669dfdf545caac71a3b705\", \"size\": 52117, \"mtime_ns\": 1794239024329935511}, {\"path_hash\": \"779c6daa85a5625b41461dea949592d0f19ddfed3145a49937e5d065445d832f\", \"size\": 58520, \"mtime_ns\": 1794239071513928046}, {\"path_hash\": \"c5d1400fba04e6dc4b18cc52b449a73f07d4c6dfdb5cbe6f8fa0c67eedab2671\", \"size\": 3601, \"mtime_ns\": 1794239074393927676}, {\"path_hash\": \"0fb1760fa5e9bae28643a8fbcc4a578150215c61c73019f0bfad2903b7f14f43\", \"size\": 51679, \"mtime_ns\": 1794239115277923599}, {\"path_hash\": \"088fccfba78f0ad8f765ba59288cd0b33abe0f5ecf8b1bbbc7deb400088cf834\", \"size\": 3574, \"mtime_ns\": 1794239117029923423}, {\"path_hash\": \"ed86f3b9841bd040529f8b6b18fd54661a160c7756a2744ca0b1fc438acc5f68\", \"size\": 52121, \"mtime_ns\": 1794239140165920779}, {\"path_hash\": \"1d5d57eea1206c86436a3d83480cd7410996dac6e8eb46a2461d04af03ca8a63\", \"size\": 4186, \"mtime_ns\": 1794239142173920533}, {\"path_hash\": \"e8106a9ed253a158539151f8b4efcc3c5a0811cbe8dff2a85e49e556a43bbd22\", \"size\": 52765, \"mtime_ns\": 1794239173878521220}, {\"path_hash\": \"34b2c77245144d545b73ee739ac99c667a7e0257005ae69565001edc25b3f9c9\", \"size\": 76040, \"mtime_ns\": 1794239227853909478}, {\"path_hash\": \"06bc77a0a6f931b51ae4eab8c32d156af1cb250cd881562e40661878e0579ae6\", \"size\": 3592, \"mtime_ns\": 1794239230853908759}, {\"path_hash\": \"f2e9969e29605874afb70ae4d677f55ba39afef07265b808301fed4baedb886d\", \"size\": 1935, \"mtime_ns\": 1794240671977748684}, {\"path_hash\": \"35aa46c6002f84e5a8b9f17cb93ab9e31d2550a0881846230430ee7782838203\", \"size\": 920, \"mtime_ns\": 1794240673293748517}, {\"path_hash\": \"df92a02629cd0f8c1014a2a53b43159b5ee0453d708f21324526021772faa778\", \"size\": 1282, \"mtime_ns\": 1794240688253746043}, {\"path_hash\": \"77e336c40e279f12c4acefd65aa4bb2cbf74210d59aad309892400d5d67c839d\", \"size\": 968, \"mtime_ns\": 1794240709453731197}, {\"path_hash\": \"0bdb53b72a53119781d9a3e1e7920b543f114c05549666b15f6e42d721e28bec\", \"size\": 968, \"mtime_ns\": 1794240711653730483}, {\"path_hash\": \"4ca2546af95a746f6b3e2499f50e09488dae0f1680814831bf14868c1c88a1c7\", \"size\": 968, \"mtime_ns\": 1794240714673740412}, {\"path_hash\": \"0e2f3f16eac1064ee3fb49c1530423ab685d06342ecad1beb971897742b6d722\", \"size\": 968, \"mtime_ns\": 1794240717705740141}, {\"path_hash\": \"d1cc54faa4f052d39dfa34d93d94498f6ccd5d9eee74c4cf778cc5f2403ac8b9\", \"size\": 968, \"mtime_ns\": 1794240720729739871}, {\"path_hash\": \"c13be4cfcb7c36c75c929ffb4c3165aeb1c4159d9b4e512dd9ec04d58bdaf174\", \"size\": 968, \"mtime_ns\": 1794240723777739614}, {\"path_hash\": \"e4dc3a1eaf329e240e4309bded468e1e20cc327551a6903f15ac71ff106fa27d\", \"size\": 968, \"mtime_ns\": 1794240726769739366}, {\"path_hash\": \"db1b53a4691debd80c8989f213420cc28aa6df1441ac3676f7d0e42e0871bd5c\", \"size\": 968, \"mtime_ns\": 1794240729785739123}, {\"path_hash\": \"3850ad83f4073ef41bd0971159ece90f66534fbf2e0a1a13e1bac3761aafa99a\", \"size\": 968, \"mtime_ns\": 1794240732805738920}, {\"path_hash\": \"167504494bb6c39f7061c347a9bc8e234967f73d292104e13f622f23b7b6217f\", \"size\": 968, \"mtime_ns\": 1794240735825738711}, {\"path_hash\": \"9af54d7a1fabbb3de51137bcec731a8b0d281e803c0feb1497f6906837c28286\", \"size\": 968, \"mtime_ns\": 1794240738861738759}, {\"path_hash\": \"a3b241ad9e12770adde9173bef99d97dd18197eb89a348cf1c29aa45a85d2bd9\", \"size\": 968, \"mtime_ns\": 1794240741777738897}, {\"path_hash\": \"6c3cbdd0636d997fd004b52e9ceb586768b1c5bfc9b01d426f68994313b6c866\", \"size\": 968, \"mtime_ns\": 1794240744797739020}, {\"path_hash\": \"ecaa5f6caacdfb0a4381b14b9e15d19e5e9dc122c6119f1e03e44d5bb9c2b880\", \"size\": 968, \"mtime_ns\": 1794240747817738503}, {\"path_hash\": \"2880e25d17abeeededbaa516d74626af4a2f29b2b47619e120e1c594afa59c1a\", \"size\": 968, \"mtime_ns\": 1794240750873737984}, {\"path_hash\": \"08771847a32532c4f4c1a0507be3868555eea6595b3090bd41b0d7c9363638f6\", \"size\": 1249, \"mtime_ns\": 1794254980668112131}, {\"path_hash\": \"8d41f29b5e9eced2d22eb7df5485f619899f62ffe6a1e3dc83642a6a177e41a2\", \"size\": 952, \"mtime_ns\": 1794254995584110307}, {\"path_hash\": \"edd87b5e23511bf639c2ac62373f84ebd5906f6e794a7d98a80b5c1a0beba06b\", \"size\": 1249, \"mtime_ns\": 1794255011136108413}, {\"path_hash\": \"1152d72fbf4764fa8b5e24072d9967a70f091abcf9efbd4ba2fba54184c79a7c\", \"size\": 952, \"mtime_ns\": 1794255026112106578}, {\"path_hash\": \"aac957c1e9433d5d2a1160638790ad80ed7fe26df7206b3e128db80eb081abe8\", \"size\": 1249, \"mtime_ns\": 1794255042328104612}, {\"path_hash\": \"4293f043dd95268839831d26bd5d6e362504970edaebe7ebcef912de50eee10a\", \"size\": 952, \"mtime_ns\": 1794255057292102942}, {\"path_hash\": \"6d06d13431c29483cb61500f80a5ec809777ea9a26092a8dfa5b7bffa5eecef0\", \"size\": 1258, \"mtime_ns\": 1794255337120074074}, {\"path_hash\": \"d5527bb7a913af1a6e867890d1714266274cc434d4767f8fdb9854545bea2b38\", \"size\": 961, \"mtime_ns\": 1794255352028072240}, {\"path_hash\": \"5e752029ae48ff9c8071859e3411e40af8153f8d353b1a56250044a7304844a3\", \"size\": 961, \"mtime_ns\": 1794255366204070507}, {\"path_hash\": \"b4207bb925ce2ab2d4a674ce454e59bfed23b59484172a7e3dbc87ce18c6e4fb\", \"size\": 8033, \"mtime_ns\": 1794256007255994146}, {\"path_hash\": \"cf3fe609b6f4b87e554ccbca8c71ef2ec26303836975c77aea80391e042676e2\", \"size\": 2945, \"mtime_ns\": 1794256022335992658}, {\"path_hash\": \"8fa74565ea8ca162540b1e6982f003793e9efb5fa29b0439e74c0692ba05f4dc\", \"size\": 3462, \"mtime_ns\": 1794256024003992507}, {\"path_hash\": \"8419ef5724e105571811eef63b9e92c28bcffe90e7fcf3fe74ac2eb98eebf0e5\", \"size\": 3464, \"mtime_ns\": 1794256024915992424}, {\"path_hash\": \"b41b9fcd7fe38fe6813160214cd6b57226e053cc80566d0e3f3d2a642459f9b8\", \"size\": 8310, \"mtime_ns\": 1794256032431991930}, {\"path_hash\": \"c1049dcfa4fc235efccd2e9f3c0f8ebd1cff31a0bac042525a3a088071e1cd49\", \"size\": 3572, \"mtime_ns\": 1794256041479993426}, {\"path_hash\": \"190cf1ac5fce0d529b2ad2dfa15decff997aa67fb1c6fcbad4b621f4407ee477\", \"size\": 9045, \"mtime_ns\": 1794256048647993065}, {\"path_hash\": \"4c19013c74661ca817157bfaa91de26ae41b58d11b1f8cc6123cf56e72a3afea\", \"size\": 4279, \"mtime_ns\": 1794256061239990092}, {\"path_hash\": \"82b5dba84f5342158a13cf35d3d60f790d83613aeed4408d16d43d7c361c62c4\", \"size\": 8800, \"mtime_ns\": 1794256080191987990}, {\"path_hash\": \"64bef54fae0ebcd674bf1bbe3d3b7e20cd6fd74732ec310f6291532101658f6b\", \"size\": 2993, \"mtime_ns\": 1794256095283986362}, {\"path_hash\": \"36cbe8da7a7695104110ad8e3989bac4f1c6e906b675ba29a17a82bcdfd8c3f3\", \"size\": 3515, \"mtime_ns\": 1794256096987986171}, {\"path_hash\": \"b1fa0130ded7dcd262a45357366a32f0a865cf40b6a3dc5fd018539e781b07f6\", \"size\": 3512, \"mtime_ns\": 1794256097823986077}, {\"path_hash\": \"1b189554fdfb99cae51fa69ce142c87fb14a123239a018cf11621d8db03adcf8\", \"size\": 1811, \"mtime_ns\": 1794257784767793482}, {\"path_hash\": \"830811e66e821e915a253bf505243be34812afc386ecaca50a5f1c10774ca559\", \"size\": 1863, \"mtime_ns\": 1794258049131763326}, {\"path_hash\": \"03f3d09809f13d351329be21cf7e8a3d7ac37013783c2232853c03e3aa295e60\", \"size\": 1878, \"mtime_ns\": 1794258060931762035}, {\"path_hash\": \"8b6fe22b2ad31f6de99a44c2b4e54c6efa598193597fb805fd99b391e6454b79\", \"size\": 1314, \"mtime_ns\": 1794258182371749552}, {\"path_hash\": \"9ac32985aa1b6894939ee1bbae4b9663557bb96af5f90fd6ea54ecd4add245c6\", \"size\": 1322, \"mtime_ns\": 1794258183607749407}, {\"path_hash\": \"77167829c2a7a591f5e1b131d31d1c4e6376827dc09551e421250cfa66062f93\", \"size\": 2464, \"mtime_ns\": 1794258222251745296}, {\"path_hash\": \"a168061d0c9233cdfd043e8d732502d101a86ccd45cf171cad23ca543360b5d6\", \"size\": 962, \"mtime_ns\": 1794258222963745216}, {\"path_hash\": \"5943fcdda1bef17e4123d59cd046e2612ba3e08e22ae22884b1184c3867ed9f6\", \"size\": 2272, \"mtime_ns\": 1794258257791741305}, {\"path_hash\": \"56baa4927220116209ebdc7abe84d658d2c0b778d21e24ded0ce5b484ae3f1f1\", \"size\": 2403, \"mtime_ns\": 1794258258895741171}, {\"path_hash\": \"f33c21646525343562200c344ad1363962efb467063d8929f2d04e7e6ac58663\", \"size\": 2874, \"mtime_ns\": 1794258261455740860}, {\"path_hash\": \"4a01abd8b9c1e3a67f6809d4ef95627ed762791a4185083faabdbd24924d8295\", \"size\": 2366, \"mtime_ns\": 1794258262971740687}, {\"path_hash\": \"2602cad4adbf9c2dfbf471aa59c99854d96c08d5a29a6f98e1d4f2013428e5d8\", \"size\": 2617, \"mtime_ns\": 1794258264631740503}, {\"path_hash\": \"a932a8ce20a0739ea48fbb4a00214855d88f21b5473ad9abe57af1e7f0912948\", \"size\": 881, \"mtime_ns\": 1794258270819739812}, {\"path_hash\": \"74dd472506bf497c87d9fe030b6cc336203d5d11b20b4401d578466c050d3414\", \"size\": 881, \"mtime_ns\": 1794258279619738774}, {\"path_hash\": \"646bd94e59b88bf4af4127e68a4eb98bb7a6197f63e76f12234dd52672b7a148\", \"size\": 881, \"mtime_ns\": 1794258291175737210}, {\"path_hash\": \"be2c888e9bef3e3c6100a86b582b9ac4f062f5a49256dbfb00d587fe1a44fd31\", \"size\": 881, \"mtime_ns\": 1794258308911734721}, {\"path_hash\": \"c6e26e1ecc6d8d8c2275badabd8ce6674e2f15972e3a70baad6e5c5dd70ab306\", \"size\": 869, \"mtime_ns\": 1794258315079733970}, {\"path_hash\": \"edb7ecbb9f9f52a33c915b916990d0da2ca3759daf922a6010974844a591d8d1\", \"size\": 869, \"mtime_ns\": 1794258323751732956}, {\"path_hash\": \"4062dfb4353f59221ed9cb83cdd2d1db8a239085d63e9e9f81e8827b43c86bd0\", \"size\": 869, \"mtime_ns\": 1794258336379731196}, {\"path_hash\": \"82a9480e9987bfb27b6c8ade4d4021e47b6a71288719f69552d85345a2664611\", \"size\": 869, \"mtime_ns\": 1794258354695728591}, {\"path_hash\": \"2dfa10d3d50065a39dbdd686a8cec25197d2f859adaa55259a6d402952ccdda2\", \"size\": 1959, \"mtime_ns\": 1794258355099728541}, {\"path_hash\": \"e1b2b6ad134c2e0d463c3e3925f6ba33eec3321433856d7a885034aa7efc2627\", \"size\": 2020, \"mtime_ns\": 1794258356563728356}, {\"path_hash\": \"8c861bca3ea6f99e6536a330ae3ecf33824eb2b6ca31d97f193b4b0734f7a622\", \"size\": 4070, \"mtime_ns\": 1794258527631711608}, {\"path_hash\": \"f7c3720d75cceda7f2d999407202ef7ceb4c4b6bb750c7c95884e3a887803c9f\", \"size\": 12468, \"mtime_ns\": 1794258532619711068}, {\"path_hash\": \"e10cda37b2e4e6e77b5aaea697016aa7ea46f2ba7b4130eb0a05d516f520ff73\", \"size\": 12132, \"mtime_ns\": 1794258559079708263}, {\"path_hash\": \"49100ba4744b194f4d8f0619d1217824ce1954739cac038864e4738ad69a0d4b\", \"size\": 12132, \"mtime_ns\": 1794258589471704906}, {\"path_hash\": \"9b34d782cc39c1e1455c2fef27b296d2d92067a555e6171f8b665fe846f4998c\", \"size\": 3740, \"mtime_ns\": 1794258723391685734}, {\"path_hash\": \"a3fdca766374544a9ea93a6b2d26c0a837114711b8946aa2fb71f1008e62a538\", \"size\": 11949, \"mtime_ns\": 1794258738467684268}, {\"path_hash\": \"a58fe979d6a3aebce5274dbe30a03b016dac767c71e44345e127e2d70a49b677\", \"size\": 11612, \"mtime_ns\": 1794258754923682360}, {\"path_hash\": \"bccb0efed8d0c810164e93b7f585ec72b849c2fbc1fd234d76bef690003da246\", \"size\": 11612, \"mtime_ns\": 1794258785191678725}, {\"path_hash\": \"8822d65a4be5e6e44b87c5c9f750a69d649fed25e1654d12799daf03eda00547\", \"size\": 39061, \"mtime_ns\": 1794258845387672225}, {\"path_hash\": \"8b06de567f1f596d7c0ef2d738cdf24ab0d8f72da50d37435328bcc618a888b5\", \"size\": 42663, \"mtime_ns\": 1794258855903671470}, {\"path_hash\": \"9cd0db1329d3a21ce86db4a4c618d7fa6e57f9e755ac364f3b6597c76eb70da7\", \"size\": 7432, \"mtime_ns\": 1794258861283670822}, {\"path_hash\": \"998c2779c45471578975025f28a834b68d5e9182abf4d8ca4dae237a9f8f7f5f\", \"size\": 7102, \"mtime_ns\": 1794258899951666624}, {\"path_hash\": \"7236764277ed567f37be3bdb3d01b62bf3e10ff26c67e27bd9b5d454ceae1c77\", \"size\": 3740, \"mtime_ns\": 1794258958367659680}, {\"path_hash\": \"2a1741c316f228f1cafd484d056c8eed7d8d365264ee5a94e6c9191b5e153cbb\", \"size\": 5674, \"mtime_ns\": 1794258964811658926}, {\"path_hash\": \"24b1e2fa6fb307a9d011ecd2bc80883c8c5aceff03b51ce20c13f75bafb1d800\", \"size\": 5818, \"mtime_ns\": 1794258975459657845}, {\"path_hash\": \"6fcc14aa0de24e6fd2991850e91291bd4dad2fde0954b9db2cbd1350434c46a1\", \"size\": 5327, \"mtime_ns\": 1794258979663657555}, {\"path_hash\": \"3c1cd51e344959fb8e8d4aa811ba1b5718f73e9192092261e7b93e095627b07a\", \"size\": 3740, \"mtime_ns\": 1794259087083643998}, {\"path_hash\": \"58f211603e5258e3eaf8370403d9b56bef50de69018b5b69db0e590146a4e40e\", \"size\": 5344, \"mtime_ns\": 1794259088239643904}, {\"path_hash\": \"b91f26c47b90d957ddaa14612aa723604a00e889a8abdfbc87d711eea6660396\", \"size\": 5488, \"mtime_ns\": 1794259089347643825}, {\"path_hash\": \"ccdff7eefbbd4763f4d649f75b67dfa17bf796515f41298115bd598eec3739b2\", \"size\": 4997, \"mtime_ns\": 1794259090527643742}, {\"path_hash\": \"c0242f31bcaa0a5b954494f9e57f4e30ff9741dea2665ad41b3feb2428c9a604\", \"size\": 1686, \"mtime_ns\": 1794258049103763330}, {\"path_hash\": \"d6f4474c0c15617c9d00e3f59e0e2008b2f3a1940dc7a3ea72d56eda5123bb78\", \"size\": 299008, \"mtime_ns\": 1788217501909076082}, {\"path_hash\": \"bb3155b928c2a3c23e85092277f085dfcc1d378042c125166b6809097028585d\", \"size\": 2428928, \"mtime_ns\": 1788287392223195312}, {\"path_hash\": \"ce91865ab25a894e8741a604f6c8a5d751ee8948f7fcb814f535af6835ce99d0\", \"size\": 14766080, \"mtime_ns\": 1788358140536404446}, {\"path_hash\": \"20a70537d552ccf1e0f4bd87fd192709679bff681e7c8e71e526ccb82258257d\", \"size\": 18313216, \"mtime_ns\": 1788379740528345120}, {\"path_hash\": \"59b0b82143483b79ea7929ed0a2565b49ceb37a1e227def4fb27f89026017a2e\", \"size\": 20070400, \"mtime_ns\": 1788391787603628352}, {\"path_hash\": \"8694a503f237f28062d6f4a27b90f301bdb5c7174b668d050f7c154809bb7adf\", \"size\": 24055808, \"mtime_ns\": 1788447393243903411}, {\"path_hash\": \"0eca305d0a7ee92470f72111a4613fdf732e011eb65874d86322248ff067a527\", \"size\": 27123712, \"mtime_ns\": 1788553778267726422}, {\"path_hash\": \"9fde81f3287417aeca99386a279447ce3465a2411ed8e39413295e3a97c99bc3\", \"size\": 29048832, \"mtime_ns\": 1788575378603833899}, {\"path_hash\": \"0feb13fa2132a41dc408dc68ef756f54e77a4411c0c8453c1e622a2351248587\", \"size\": 26112000, \"mtime_ns\": 1789306783782886615}, {\"path_hash\": \"6d463034dfb472d63fe0e7ddbb41bcab424839d47d51eecc8a3350f31dba9742\", \"size\": 32399360, \"mtime_ns\": 1789328384055720803}, {\"path_hash\": \"9e571c8570c41f9a2c7b8e762f22e0201e8e76d080a1c4f8f73d5e4d3db7da8d\", \"size\": 34799616, \"mtime_ns\": 1789349984068531822}, {\"path_hash\": \"07073e2bc8eab2e66b32492084210c7d1aa4ad706641697b53dd8d602025d88a\", \"size\": 37871616, \"mtime_ns\": 1789409701251819991}, {\"path_hash\": \"7d325b7ff21b92dfb015eb322b1840d932e84d76c464ce6537c40d6f57194842\", \"size\": 39600128, \"mtime_ns\": 1789434661980346185}, {\"path_hash\": \"53119281ac327b84cbaaf7f3a0f7ac5dcf91cd100649ba097f186dae520bba28\", \"size\": 41152512, \"mtime_ns\": 1789472304048461787}, {\"path_hash\": \"bb9543224c786ccbf0a6d4a2536fa710fa73ab58a0f04e9c6349519741af02ef\", \"size\": 24549504, \"mtime_ns\": 1794259249707628402}, {\"path_hash\": \"f3fdcc748e42bfcbce4d0104a9758428789fc7cac007154f04e3801bbbdbd18d\", \"size\": 3, \"mtime_ns\": 1794183151673974217}, {\"path_hash\": \"b12556da8c0bbdf596d4952c36b77a5f007dc8e09e8e19822d4cb261ad6183b3\", \"size\": 191008768, \"mtime_ns\": 1794259191483634418}, {\"path_hash\": \"6ae19e0720b34f1901d72a71603049e82b2ac5b0e70fdfc8740d423b9caa42ff\", \"size\": 393216, \"mtime_ns\": 1794259250991628626}, {\"path_hash\": \"1ba01cd43baa7cc3d0e37884f36591c62862ec774f6ec4d805feba83a4aed9e0\", \"size\": 4161232, \"mtime_ns\": 1794259250991628626}, {\"path_hash\": \"c22336fc06ea68c6368b539fbbd325d95d79767245fa69b020b12a71f5d68345\", \"size\": 3, \"mtime_ns\": 1794183151665974217}]}\n\n--PROCESSES--\n459 node /usr/local/bin/omniroute serve --port 20128 --no-open --no-tray\n532 omniroute (v16.3.1)\n1588 /home/aazcl/.hermes/tools/python-3.14.9+20261021-linux-x64/bin/python3 -m hermes_cli.main --profile default gateway run --quiet --idle-exit\n19767 /init /mnt/c/Windows/system32/wsl.exe wsl.exe -d kali-linux -- bash -lc python3 - <<'PY' import hashlib,json,os from pathlib import Path def meta(root):  out=[]  if not root.exists(): return out  for p in sorted(root.rglob('*'),key=lambda x:str(x)):   try:    if p.is_file():     s=p.stat(); rel=str(p.relative_to(root)); out.append({'path_hash':hashlib.sha256(rel.encode()).hexdigest(),'size':s.st_size,'mtime_ns':s.st_mtime_ns})   except Exception as e: out.append({'path_hash':hashlib.sha256(str(p).encode()).hexdigest(),'error':type(e).__name__})  return out print(json.dumps({'hermes_meta':meta(Path.home()/'.hermes'),'omniroute_meta':meta(Path.home()/'.omniroute')})) PY printf '\\n--PROCESSES--\\n' pgrep -af 'hermes|omniroute|model_broker.py|persistent_control_plane.py|morch_delegate.py' || true printf '\\n--SOCKETS--\\n' find /tmp -maxdepth 2 -type s -name '*.sock' -path '*northstar*' -printf '%m %u %g %p\\n' 2>/dev/null || true printf '\\n--MOUNTS--\\n' grep -E ' /mnt/c |northstar|UTA_ISOLATION' /proc/mounts || true \n19772 bash -lc python3 - <<'PY' import hashlib,json,os from pathlib import Path def meta(root):  out=[]  if not root.exists(): return out  for p in sorted(root.rglob('*'),key=lambda x:str(x)):   try:    if p.is_file():     s=p.stat(); rel=str(p.relative_to(root)); out.append({'path_hash':hashlib.sha256(rel.encode()).hexdigest(),'size':s.st_size,'mtime_ns':s.st_mtime_ns})   except Exception as e: out.append({'path_hash':hashlib.sha256(str(p).encode()).hexdigest(),'error':type(e).__name__})  return out print(json.dumps({'hermes_meta':meta(Path.home()/'.hermes'),'omniroute_meta':meta(Path.home()/'.omniroute')})) PY printf '\\n--PROCESSES--\\n' pgrep -af 'hermes|omniroute|model_broker.py|persistent_control_plane.py|morch_delegate.py' || true printf '\\n--SOCKETS--\\n' find /tmp -maxdepth 2 -type s -name '*.sock' -path '*northstar*' -printf '%m %u %g %p\\n' 2>/dev/null || true printf '\\n--MOUNTS--\\n' grep -E ' /mnt/c |northstar|UTA_ISOLATION' /proc/mounts || true \n\n--SOCKETS--\n\n--MOUNTS--\nC:\\134 /mnt/c 9p rw,noatime,aname=drvfs;path=C:\\;uid=1000;gid=1000;symlinkroot=/mnt/,cache=0x5,access=client,msize=65536,trans=fd,rfd=6,wfd=6 0 0\n"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "actual_models": [
+    "20261030_RORCH"
+  ],
+  "checks": [
+    {
+      "detail": "one authenticated HUMAN objective and terminal result",
+      "gate": "FUNCTIONAL",
+      "name": "morch_delegate_ingress_egress",
+      "passed": true
+    },
+    {
+      "detail": "exact ordered autonomous cycle, all consumer ACKed",
+      "gate": "FUNCTIONAL",
+      "name": "seven_edge_cycle",
+      "passed": true
+    },
+    {
+      "detail": "separate QA process and deterministic adversarial evidence",
+      "gate": "FUNCTIONAL",
+      "name": "independent_qa_reject_then_pass",
+      "passed": true
+    },
+    {
+      "detail": "seven unique terminal dispatches",
+      "gate": "FUNCTIONAL",
+      "name": "dispatch_terminal",
+      "passed": true
+    },
+    {
+      "detail": "hash chain and latest checkpoint recover",
+      "gate": "FUNCTIONAL",
+      "name": "memory_integrity_recovery",
+      "passed": true
+    },
+    {
+      "detail": "actual_models=['20261030_RORCH']",
+      "gate": "MULTIMODEL",
+      "name": "two_actual_models",
+      "passed": false
+    },
+    {
+      "detail": "UNKNOWN is not zero",
+      "gate": "COST",
+      "name": "authoritative_cost",
+      "passed": false
+    },
+    {
+      "detail": "root_status=FAIL",
+      "gate": "ROOT",
+      "name": "full_ntv_root",
+      "passed": false
+    },
+    {
+      "detail": "mechanical verifier is a separate process but no independent reviewer authority was available in this session",
+      "gate": "INDEPENDENCE",
+      "name": "independent_reviewer_identity",
+      "passed": false
+    }
+  ],
+  "functional_pass": true,
+  "model_calls": [
+    {
+      "actual_model": "20261030_RORCH",
+      "actual_provider": "custom",
+      "cost_status": "unknown",
+      "cost_value": null,
+      "request_id": "SESSION3-FINAL-001:rorch-build",
+      "status": "COMPLETED",
+      "total_tokens": 1747
+    },
+    {
+      "actual_model": "20261030_RORCH",
+      "actual_provider": "custom",
+      "cost_status": "unknown",
+      "cost_value": null,
+      "request_id": "SESSION3-FINAL-001:qa-review-1",
+      "status": "COMPLETED",
+      "total_tokens": 1756
+    },
+    {
+      "actual_model": "20261030_RORCH",
+      "actual_provider": "custom",
+      "cost_status": "unknown",
+      "cost_value": null,
+      "request_id": "SESSION3-FINAL-001:rorch-fix",
+      "status": "COMPLETED",
+      "total_tokens": 2034
+    },
+    {
+      "actual_model": "20261030_RORCH",
+      "actual_provider": "custom",
+      "cost_status": "unknown",
+      "cost_value": null,
+      "request_id": "SESSION3-FINAL-001:qa-review-2",
+      "status": "COMPLETED",
+      "total_tokens": 1851
+    }
+  ],
+  "objective_id": "SESSION3-FINAL-001",
+  "schema": "upgrade-ta.northstar.session3-acceptance/v1",
+  "status": "NORTHSTAR_FAIL"
+}

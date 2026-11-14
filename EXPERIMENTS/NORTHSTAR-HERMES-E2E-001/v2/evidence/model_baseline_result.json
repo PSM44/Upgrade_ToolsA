@@ -1,0 +1,72 @@
+{
+  "invocations": [
+    {
+      "attempts": 1,
+      "fallback_used": false,
+      "invocation_id": "921dc2b2-19c3-4767-a5ea-441656bd6eb9",
+      "model": "20261030_RORCH",
+      "provider": "baseline-replay",
+      "response": "{\n  \"actor\": \"MORCH\",\n  \"correlation_id\": \"northstar-a56425d7f513c4a20405e199\",\n  \"decision\": \"TASK_HANDOFF\",\n  \"human_relay_count\": 0,\n  \"max_rework_rounds\": 2,\n  \"requirements\": \"is_palindrome(text) ignores case and all non-alphanumeric characters\",\n  \"task_id\": \"NORTHSTAR-HERMES-E2E-001\"\n}",
+      "role": "MORCH",
+      "usage": {
+        "api_calls": 1,
+        "cost_status": "unknown",
+        "cost_usd": null,
+        "input_tokens": 12850,
+        "output_tokens": 171
+      }
+    },
+    {
+      "attempts": 1,
+      "fallback_used": false,
+      "invocation_id": "de65089f-3aae-42df-8177-743500b0009a",
+      "model": "20261030_RORCH",
+      "provider": "baseline-replay",
+      "response": "{\n  \"action\": \"DELIVERY\",\n  \"actor\": \"RORCH\",\n  \"correlation_id\": \"northstar-a56425d7f513c4a20405e199\",\n  \"files\": {\n    \"app.py\": \"def is_palindrome(text):\\n    \\\"\\\"\\\"Check if text is a palindrome (case-insensitive, but punctuation is NOT removed - seeded defect).\\\"\\\"\\\"\\n    cleaned = text.lower()\\n    return cleaned == cleaned[::-1]\",\n    \"test_app.py\": \"import unittest\\nfrom app import is_palindrome\\n\\nclass TestIsPalindrome(unittest.TestCase):\\n    def test_racecar(self):\\n        self.assertTrue(is_palindrome(\\\"Racecar\\\"))\\n    \\n    def test_hello(self):\\n        self.assertFalse(is_palindrome(\\\"hello\\\"))\\n\\nif __name__ == \\\"__main__\\\":\\n    unittest.main()\"\n  },\n  \"task_id\": \"NORTHSTAR-HERMES-E2E-001\"\n}",
+      "role": "RORCH",
+      "usage": {
+        "api_calls": 1,
+        "cost_status": "unknown",
+        "cost_usd": null,
+        "input_tokens": 12849,
+        "output_tokens": 457
+      }
+    },
+    {
+      "attempts": 1,
+      "fallback_used": false,
+      "invocation_id": "e1272790-ba8c-4b16-8efe-44399152b302",
+      "model": "20261030_RORCH",
+      "provider": "baseline-replay",
+      "response": "{\n  \"actor\": \"QA\",\n  \"correlation_id\": \"northstar-a56425d7f513c4a20405e199\",\n  \"evidence_sha256\": \"1c5f0d1a624db91adfa747afff853864fb9bebfa36a3bf8f6cfad2400759b86c\",\n  \"expected\": \"is_palindrome ignores case and all non-alphanumeric characters per requirement\",\n  \"finding_id\": \"QA-FINDING-001\",\n  \"observed\": \"Implementation only lowercases input; punctuation and spaces remain, causing false negatives on 'A man, a plan, a canal: Panama!' and \\\"No 'x' in Nixon\\\"\",\n  \"reproducible_test\": \"assert is_palindrome(\\\"A man, a plan, a canal: Panama!\\\") == True\\nassert is_palindrome(\\\"No 'x' in Nixon\\\") == True\\nassert is_palindrome(\\\"OpenAI\\\") == False\\nassert is_palindrome(\\\"!!!\\\") == True\",\n  \"task_id\": \"NORTHSTAR-HERMES-E2E-001\",\n  \"verdict\": \"REJECTED\"\n}",
+      "role": "QA",
+      "usage": {
+        "api_calls": 1,
+        "cost_status": "unknown",
+        "cost_usd": null,
+        "input_tokens": 13146,
+        "output_tokens": 381
+      }
+    }
+  ],
+  "limitation": "No second authorized live model route is configured; replay does not prove a new inference call.",
+  "mode": "PINNED_REAL_HERMES_OUTPUT_REPLAY",
+  "multimodel_verified": false,
+  "successful_routes": [
+    [
+      "baseline-replay",
+      "20261030_RORCH"
+    ]
+  ],
+  "usage": {
+    "api_calls": 3,
+    "cost_complete": false,
+    "cost_statuses": [
+      "unknown"
+    ],
+    "cost_usd": null,
+    "input_tokens": 38845,
+    "output_tokens": 1009,
+    "successful_attempts": 3
+  }
+}

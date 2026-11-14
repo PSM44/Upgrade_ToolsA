@@ -1,0 +1,12 @@
+{
+  "qa_key_as_morch": {
+    "detail": "actor capability mismatch",
+    "error": "PermissionError",
+    "ok": false
+  },
+  "qa_role_privileged_snapshot": {
+    "detail": "operation requires UWS",
+    "error": "PermissionError",
+    "ok": false
+  }
+}

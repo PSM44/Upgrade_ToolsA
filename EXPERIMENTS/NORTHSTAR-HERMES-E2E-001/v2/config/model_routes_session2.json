@@ -1,0 +1,9 @@
+{
+  "roles": {
+    "MORCH": {"provider": "custom", "model": "20261030_RORCH", "timeout_seconds": 300},
+    "RORCH": {"provider": "custom", "model": "20261030_RORCH", "timeout_seconds": 300},
+    "QA": {"provider": "custom", "model": "20261030_RORCH", "timeout_seconds": 300}
+  },
+  "limitation": "One verified Hermes route only; distinct actor identities/processes do not constitute multimodel."
+}
+

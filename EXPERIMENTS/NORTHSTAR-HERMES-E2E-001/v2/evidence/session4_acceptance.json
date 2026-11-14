@@ -1,0 +1,118 @@
+{
+  "actual_models": [
+    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+    "nvidia/nemotron-3-ultra-550b-a55b:free"
+  ],
+  "checks": [
+    {
+      "detail": "authenticated ingress and terminal result; HUMAN_RELAY_COUNT=0",
+      "gate": "FUNCTIONAL",
+      "name": "morch_delegate_ingress_egress",
+      "passed": true
+    },
+    {
+      "detail": "exact cycle and consumer-owned receipts",
+      "gate": "FUNCTIONAL",
+      "name": "seven_edge_consumer_cycle",
+      "passed": true
+    },
+    {
+      "detail": "independent QA process plus deterministic adversarial probes",
+      "gate": "FUNCTIONAL",
+      "name": "qa_reject_fix_pass",
+      "passed": true
+    },
+    {
+      "detail": "seven terminal unique dispatches",
+      "gate": "FUNCTIONAL",
+      "name": "dispatch_terminal",
+      "passed": true
+    },
+    {
+      "detail": "hash chain and checkpoint recover",
+      "gate": "FUNCTIONAL",
+      "name": "memory_integrity_recovery",
+      "passed": true
+    },
+    {
+      "detail": "actual_models=['nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free', 'nvidia/nemotron-3-ultra-550b-a55b:free']",
+      "gate": "MULTIMODEL",
+      "name": "two_provider_returned_models",
+      "passed": true
+    },
+    {
+      "detail": "exact returned model IDs, measured tokens, pinned public catalog unit pricing; not a billing ledger",
+      "gate": "COST",
+      "name": "public_catalog_cost_reconciliation",
+      "passed": true
+    },
+    {
+      "detail": "completion endpoint omitted authoritative per-call billing cost; unknown remains null",
+      "gate": "BILLING",
+      "name": "provider_billing_receipt",
+      "passed": false
+    },
+    {
+      "detail": "root_status=FAIL",
+      "gate": "ROOT",
+      "name": "full_ntv_root",
+      "passed": false
+    },
+    {
+      "detail": "verifier is a separate read-only process but no separately authorized reviewer principal signed acceptance",
+      "gate": "INDEPENDENCE",
+      "name": "independent_reviewer_authority",
+      "passed": false
+    }
+  ],
+  "functional_pass": true,
+  "model_calls": [
+    {
+      "actor": "RORCH",
+      "actual_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "actual_provider": "openrouter",
+      "cost_status": "unknown",
+      "cost_value": null,
+      "request_id": "SESSION4-FINAL-004:rorch-build",
+      "requested_model": "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free",
+      "stage": "BUILD",
+      "total_tokens": 470
+    },
+    {
+      "actor": "QA",
+      "actual_model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "actual_provider": "openrouter",
+      "cost_status": "unknown",
+      "cost_value": null,
+      "request_id": "SESSION4-FINAL-004:qa-review-1",
+      "requested_model": "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "stage": "REVIEW1",
+      "total_tokens": 540
+    },
+    {
+      "actor": "RORCH",
+      "actual_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "actual_provider": "openrouter",
+      "cost_status": "unknown",
+      "cost_value": null,
+      "request_id": "SESSION4-FINAL-004:rorch-fix",
+      "requested_model": "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free",
+      "stage": "FIX",
+      "total_tokens": 882
+    },
+    {
+      "actor": "QA",
+      "actual_model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "actual_provider": "openrouter",
+      "cost_status": "unknown",
+      "cost_value": null,
+      "request_id": "SESSION4-FINAL-004:qa-review-2",
+      "requested_model": "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "stage": "REVIEW2",
+      "total_tokens": 522
+    }
+  ],
+  "objective_id": "SESSION4-FINAL-004",
+  "schema": "upgrade-ta.northstar.session4-acceptance/v1",
+  "status": "NORTHSTAR_FAIL"
+}
