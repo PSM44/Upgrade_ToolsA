@@ -102,7 +102,8 @@ jobs:
           
           # The attestation bundle has the provenance in rekorBundle.Payload.body (base64 encoded)
           # which contains the DSSE envelope with the subject digest
-          PROV_SUBJECT_DIGEST=$(cat ${{ env.SIGSTORE_NAME }}.provenance | jq -r '.rekorBundle.Payload.body' | base64 -d | jq -r '.dsseEnvelope.payload' | base64 -d | jq -r '.subject[0].digest.sha256' 2>/dev/null || echo "PARSE_FAILED")
+          # Need to decode twice: rekorBundle.Payload.body -> DSSE envelope -> subject digest
+          PROV_SUBJECT_DIGEST=$(cat ${{ env.SIGSTORE_NAME }}.provenance | jq -r '.rekorBundle.Payload.body' | base64 -d | jq -r '.payload' | base64 -d | jq -r '.subject[0].digest.sha256' 2>/dev/null || echo "PARSE_FAILED")
           echo "Provenance subject digest: $PROV_SUBJECT_DIGEST"
           
           if [ "$PROV_SUBJECT_DIGEST" = "PARSE_FAILED" ] || [ "$ZIP_SHA256" != "$PROV_SUBJECT_DIGEST" ]; then
