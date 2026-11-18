@@ -81,7 +81,7 @@ jobs:
       - name: Create SLSA provenance attestation
         run: |
           cosign attest-blob \
-            --predicate-type https://slsa.dev/provenance/v1 \
+            --type https://slsa.dev/provenance/v1 \
             --predicate ${{ env.IN_TOTO_NAME }} \
             --bundle ${{ env.SIGSTORE_NAME }}.provenance \
             --yes \
