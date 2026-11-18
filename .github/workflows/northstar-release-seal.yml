@@ -98,13 +98,16 @@ jobs:
       - name: Verify provenance subject digest matches ZIP SHA-256
         run: |
           ZIP_SHA256=$(cat ${{ env.SHA256_NAME }} | cut -d' ' -f1)
-          PROV_SUBJECT_DIGEST=$(cat ${{ env.SIGSTORE_NAME }}.provenance | jq -r '.dsseEnvelope.payload' | base64 -d | jq -r '.subject[0].digest.sha256')
-          
           echo "ZIP SHA-256: $ZIP_SHA256"
+          
+          # The attestation bundle has the provenance in its DSSE envelope
+          PROV_SUBJECT_DIGEST=$(cat ${{ env.SIGSTORE_NAME }}.provenance | jq -r '.dsseEnvelope.payload' | base64 -d | jq -r '.subject[0].digest.sha256' 2>/dev/null || echo "PARSE_FAILED")
           echo "Provenance subject digest: $PROV_SUBJECT_DIGEST"
           
-          if [ "$ZIP_SHA256" != "$PROV_SUBJECT_DIGEST" ]; then
+          if [ "$PROV_SUBJECT_DIGEST" = "PARSE_FAILED" ] || [ "$ZIP_SHA256" != "$PROV_SUBJECT_DIGEST" ]; then
             echo "ERROR: Provenance subject digest does not match ZIP SHA-256"
+            echo "Debug: Printing bundle structure..."
+            cat ${{ env.SIGSTORE_NAME }}.provenance | jq '.'
             exit 1
           fi
           echo "Provenance subject digest matches ZIP SHA-256 ✅"
