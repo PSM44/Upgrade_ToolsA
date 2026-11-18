@@ -100,10 +100,20 @@ jobs:
           ZIP_SHA256=$(cat ${{ env.SHA256_NAME }} | cut -d' ' -f1)
           echo "ZIP SHA-256: $ZIP_SHA256"
           
-          # The attestation bundle has the provenance in rekorBundle.Payload.body (base64 encoded)
-          # which contains the DSSE envelope with the subject digest
-          # Need to decode twice: rekorBundle.Payload.body -> DSSE envelope -> subject digest
-          PROV_SUBJECT_DIGEST=$(cat ${{ env.SIGSTORE_NAME }}.provenance | jq -r '.rekorBundle.Payload.body' | base64 -d | jq -r '.payload' | base64 -d | jq -r '.subject[0].digest.sha256' 2>/dev/null || echo "PARSE_FAILED")
+          # Extract provenance subject digest from cosign attestation bundle
+          # Structure: rekorBundle.Payload.body (base64) -> DSSE envelope (payloadType, payload) -> in-toto statement -> subject[0].digest.sha256
+          echo "Extracting provenance subject digest..."
+          
+          # Step 1: Get the base64 encoded DSSE envelope from rekor bundle
+          DSSE_ENVELOPE_B64=$(cat ${{ env.SIGSTORE_NAME }}.provenance | jq -r '.rekorBundle.Payload.body')
+          echo "DSSE envelope (base64): ${DSSE_ENVELOPE_B64:0:100}..."
+          
+          # Step 2: Decode DSSE envelope to get the in-toto statement payload (base64)
+          IN_TOTO_B64=$(echo "$DSSE_ENVELOPE_B64" | base64 -d | jq -r '.payload')
+          echo "In-toto statement (base64): ${IN_TOTO_B64:0:100}..."
+          
+          # Step 3: Decode in-toto statement to get subject digest
+          PROV_SUBJECT_DIGEST=$(echo "$IN_TOTO_B64" | base64 -d | jq -r '.subject[0].digest.sha256' 2>/dev/null || echo "PARSE_FAILED")
           echo "Provenance subject digest: $PROV_SUBJECT_DIGEST"
           
           if [ "$PROV_SUBJECT_DIGEST" = "PARSE_FAILED" ] || [ "$ZIP_SHA256" != "$PROV_SUBJECT_DIGEST" ]; then
