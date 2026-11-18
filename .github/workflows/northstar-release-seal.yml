@@ -1,0 +1,259 @@
+name: NorthStar Release Seal
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+env:
+  RELEASE_TAG: northstar-port-20261117-v1.0.0
+  ZIP_NAME: NorthStar.Port_20261117-v1.0.0.zip
+  SHA256_NAME: NorthStar.Port_20261117-v1.0.0.zip.sha256
+  IN_TOTO_NAME: NorthStar.Port_20261117-v1.0.0.intoto.jsonl
+  SIGSTORE_NAME: NorthStar.Port_20261117-v1.0.0.zip.sigstore.json
+  COSIGN_VERSION: v2.4.1
+
+jobs:
+  sign-and-attest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download release assets from draft release
+        uses: actions/github-script@v7
+        id: download-assets
+        with:
+          script: |
+            const release = await github.rest.repos.getReleaseByTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: '${{ env.RELEASE_TAG }}'
+            });
+            
+            if (release.data.draft !== true) {
+              core.setFailed('Release is not a draft');
+              return;
+            }
+            
+            for (const asset of release.data.assets) {
+              if (asset.name === '${{ env.ZIP_NAME }}' || 
+                  asset.name === '${{ env.SHA256_NAME }}' ||
+                  asset.name === '${{ env.IN_TOTO_NAME }}') {
+                const download = await github.rest.repos.getReleaseAsset({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  asset_id: asset.id,
+                  headers: { accept: 'application/octet-stream' }
+                });
+                const fs = require('fs');
+                fs.writeFileSync(asset.name, Buffer.from(download.data));
+                console.log(`Downloaded ${asset.name} (${download.data.length} bytes)`);
+              }
+            }
+            
+            return release.data.html_url;
+
+      - name: Verify ZIP SHA-256
+        run: |
+          sha256sum -c ${{ env.SHA256_NAME }}
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3
+        with:
+          cosign-release: ${{ env.COSIGN_VERSION }}
+
+      - name: Sign ZIP with keyless signing
+        run: |
+          cosign sign-blob \
+            --bundle ${{ env.SIGSTORE_NAME }} \
+            --yes \
+            ${{ env.ZIP_NAME }}
+
+      - name: Create SLSA provenance attestation
+        run: |
+          cosign attest-blob \
+            --predicate-type https://slsa.dev/provenance/v1 \
+            --predicate ${{ env.IN_TOTO_NAME }} \
+            --bundle ${{ env.SIGSTORE_NAME }}.provenance \
+            --yes \
+            ${{ env.ZIP_NAME }}
+
+      - name: Verify ZIP signature
+        run: |
+          cosign verify-blob \
+            --bundle ${{ env.SIGSTORE_NAME }} \
+            --certificate-identity-regexp "https://github.com/PSM44/Upgrade_ToolsA/.github/workflows/northstar-release-seal.yml@" \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+            ${{ env.ZIP_NAME }}
+
+      - name: Verify provenance subject digest matches ZIP SHA-256
+        run: |
+          ZIP_SHA256=$(cat ${{ env.SHA256_NAME }} | cut -d' ' -f1)
+          PROV_SUBJECT_DIGEST=$(cat ${{ env.SIGSTORE_NAME }}.provenance | jq -r '.dsseEnvelope.payload' | base64 -d | jq -r '.subject[0].digest.sha256')
+          
+          echo "ZIP SHA-256: $ZIP_SHA256"
+          echo "Provenance subject digest: $PROV_SUBJECT_DIGEST"
+          
+          if [ "$ZIP_SHA256" != "$PROV_SUBJECT_DIGEST" ]; then
+            echo "ERROR: Provenance subject digest does not match ZIP SHA-256"
+            exit 1
+          fi
+          echo "Provenance subject digest matches ZIP SHA-256 ✅"
+
+      - name: Upload Sigstore bundle to draft release
+        uses: actions/github-script@v7
+        id: upload-bundle
+        with:
+          script: |
+            const release = await github.rest.repos.getReleaseByTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: '${{ env.RELEASE_TAG }}'
+            });
+            
+            const fs = require('fs');
+            const bundleContent = fs.readFileSync('${{ env.SIGSTORE_NAME }}');
+            
+            await github.rest.repos.uploadReleaseAsset({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: release.data.id,
+              name: '${{ env.SIGSTORE_NAME }}',
+              data: bundleContent,
+              headers: {
+                'content-type': 'application/json',
+                'content-length': bundleContent.length
+              }
+            });
+            
+            console.log('Uploaded ${{ env.SIGSTORE_NAME }}');
+
+      - name: Upload provenance to draft release
+        uses: actions/github-script@v7
+        id: upload-provenance
+        with:
+          script: |
+            const release = await github.rest.repos.getReleaseByTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: '${{ env.RELEASE_TAG }}'
+            });
+            
+            const fs = require('fs');
+            const provContent = fs.readFileSync('${{ env.SIGSTORE_NAME }}.provenance');
+            
+            await github.rest.repos.uploadReleaseAsset({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: release.data.id,
+              name: '${{ env.SIGSTORE_NAME }}.provenance',
+              data: provContent,
+              headers: {
+                'content-type': 'application/json',
+                'content-length': provContent.length
+              }
+            });
+            
+            console.log('Uploaded ${{ env.SIGSTORE_NAME }}.provenance');
+
+      - name: Generate verification report
+        run: |
+          cat > release_attestation_verification.md << 'EOF'
+          # Release Attestation Verification Report
+
+          **TASK_ID:** NSP-CAPSULE-007  
+          **DATE:** $(date -u +"%Y-%m-%d")  
+          **WORKFLOW RUN:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  
+          **COMMIT SHA:** ${{ github.sha }}  
+          **RELEASE TAG:** ${{ env.RELEASE_TAG }}
+
+          ---
+
+          ## 01. Artifact Verification
+
+          | Artifact | Status |
+          |----------|--------|
+          | ${{ env.ZIP_NAME }} | ✅ Downloaded & SHA-256 verified |
+          | ${{ env.SHA256_NAME }} | ✅ Downloaded |
+          | ${{ env.IN_TOTO_NAME }} | ✅ Downloaded |
+
+          **ZIP SHA-256:** $(cat ${{ env.SHA256_NAME }} | cut -d' ' -f1)
+
+          ---
+
+          ## 02. Sigstore Bundle
+
+          | Field | Value |
+          |-------|-------|
+          | Bundle file | ${{ env.SIGSTORE_NAME }} |
+          | Signer certificate identity | $(cosign verify-blob --bundle ${{ env.SIGSTORE_NAME }} --certificate-identity-regexp "https://github.com/PSM44/Upgrade_ToolsA/.github/workflows/northstar-release-seal.yml@" --certificate-oidc-issuer https://token.actions.githubusercontent.com ${{ env.ZIP_NAME }} 2>&1 | grep "Subject" | head -1 | sed 's/.*Subject: //') |
+          | OIDC issuer | https://token.actions.githubusercontent.com |
+          | Rekor/log inclusion | Confirmed (bundle contains tlogEntries) |
+
+          ---
+
+          ## 03. Cosign Verification
+
+          **Command:**
+          \`\`\`bash
+          cosign verify-blob \
+            --bundle ${{ env.SIGSTORE_NAME }} \
+            --certificate-identity-regexp "https://github.com/PSM44/Upgrade_ToolsA/.github/workflows/northstar-release-seal.yml@" \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+            ${{ env.ZIP_NAME }}
+          \`\`\`
+
+          **Result:** ✅ PASS
+
+          ---
+
+          ## 04. Provenance Verification
+
+          | Check | Result |
+          |-------|--------|
+          | Provenance subject digest = ZIP SHA-256 | ✅ PASS |
+          | Predicate type | https://slsa.dev/provenance/v1 |
+          | Subject name | ${{ env.ZIP_NAME }} |
+
+          ---
+
+          ## 05. Final Statement
+
+          RUNTIME_VALIDATION=NOT_PERFORMED
+
+          ---
+
+          **VERDICT:** RELEASE_SIGNED_AND_EXTERNALLY_ATTESTED
+          EOF
+
+      - name: Upload verification report to draft release
+        uses: actions/github-script@v7
+        id: upload-verification
+        with:
+          script: |
+            const release = await github.rest.repos.getReleaseByTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: '${{ env.RELEASE_TAG }}'
+            });
+            
+            const fs = require('fs');
+            const reportContent = fs.readFileSync('release_attestation_verification.md');
+            
+            await github.rest.repos.uploadReleaseAsset({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: release.data.id,
+              name: 'release_attestation_verification.md',
+              data: reportContent,
+              headers: {
+                'content-type': 'text/markdown',
+                'content-length': reportContent.length
+              }
+            });
+            
+            console.log('Uploaded release_attestation_verification.md');
