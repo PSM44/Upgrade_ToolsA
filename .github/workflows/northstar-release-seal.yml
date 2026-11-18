@@ -101,11 +101,11 @@ jobs:
           echo "ZIP SHA-256: $ZIP_SHA256"
           
           # Extract provenance subject digest from cosign attestation bundle
-          # Structure: rekorBundle.Payload.body (base64) -> DSSE envelope (apiVersion, kind, spec, payload) -> in-toto statement -> subject[0].digest.sha256
+          # Structure: base64Signature (base64) -> DSSE envelope (payloadType, payload) -> in-toto statement -> subject[0].digest.sha256
           echo "Extracting provenance subject digest..."
           
-          # Step 1: Get the base64 encoded DSSE envelope from rekor bundle
-          DSSE_ENVELOPE_B64=$(cat ${{ env.SIGSTORE_NAME }}.provenance | jq -r '.rekorBundle.Payload.body')
+          # Step 1: Get the base64 encoded DSSE envelope from base64Signature field
+          DSSE_ENVELOPE_B64=$(cat ${{ env.SIGSTORE_NAME }}.provenance | jq -r '.base64Signature')
           echo "DSSE envelope (base64): ${DSSE_ENVELOPE_B64:0:100}..."
           
           # Step 2: Decode DSSE envelope to get the in-toto statement payload (base64)
