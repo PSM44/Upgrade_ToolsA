@@ -119,19 +119,19 @@ def create_receipt(
 
 def create_test_receipt(
     task_id: str = "TEST-UTA-BRIDGE-001",
-    artifact_sha256: str = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    artifact_sha256: str = "3235cd0c64fc0e390b5cff5b45510070b8161978ed8ed04a6a53ba982ee5a0bb",
 ) -> Receipt:
     """
     Create a synthetic test receipt for acceptance testing.
 
-    Uses a known SHA-256 of empty content for deterministic testing.
+    Uses a deterministic non-empty test fixture hash (bridge_test_v1.json).
     """
     return create_receipt(
         task_id=task_id,
         producer="DSH/RORCH",
         consumer="MORCH",
         state="EMITTED",
-        artifact_uri="github://PSM44/Upgrade_ToolsA/test/bridge-test",
+        artifact_uri="file:///mnt/c/01. GitHub/Upgrade_TA/HARNESS/UTA_BRIDGE/test_fixtures/bridge_test_v1.json",
         artifact_sha256=artifact_sha256,
         evidence_class="REPORTED_ONLY",
         test_only=True,

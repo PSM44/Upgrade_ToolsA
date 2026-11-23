@@ -62,6 +62,9 @@ UUID_PATTERN = re.compile(
 # SHA-256 hex pattern
 SHA256_PATTERN = re.compile(r"^[0-9a-f]{64}$", re.IGNORECASE)
 
+# Empty stream SHA-256 (SHA-256 of empty input)
+EMPTY_STREAM_SHA256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
 # ISO 8601 UTC datetime pattern (with Z suffix)
 ISO8601_UTC_PATTERN = re.compile(
     r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$"
@@ -137,7 +140,14 @@ def validate_artifact_sha256(value: str) -> List[str]:
     """Validate artifact_sha256 is valid SHA-256 hex."""
     if not SHA256_PATTERN.match(value):
         return [f"artifact_sha256 must be 64-char hex, got: {value}"]
+    # Reject empty stream hash
+    if value.lower() == EMPTY_STREAM_SHA256:
+        return ["artifact_sha256 must not be empty stream hash (SHA-256 of empty input)"]
     return []
+
+
+# Cross-field validators (prefixed with _)
+CROSS_FIELD_VALIDATORS = {}
 
 
 def validate_evidence_class(value: str) -> List[str]:
@@ -210,6 +220,10 @@ def validate_receipt(receipt: Dict[str, Any]) -> ValidationResult:
     for field, validator in VALIDATORS.items():
         if field in receipt:
             errors.extend(validator(receipt[field]))
+
+    # Run cross-field validators
+    for name, validator in CROSS_FIELD_VALIDATORS.items():
+        errors.extend(validator(receipt))
 
     # Cross-field validation
     if receipt.get("test_only") is True:
