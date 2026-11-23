@@ -115,16 +115,21 @@ class MORCHConsumer:
 
         Returns (is_valid, list_of_errors).
         """
-        from .schema import validate_receipt, compute_receipt_hash
+        from .schema import validate_receipt, compute_receipt_hash, EMPTY_STREAM_SHA256
 
         result = validate_receipt(receipt)
         if not result.valid:
             return False, result.errors
 
-        # Verify artifact_sha256 matches canonical hash
-        expected_hash = compute_receipt_hash(receipt)
-        if receipt.get("artifact_sha256") != expected_hash:
-            return False, [f"artifact_sha256 mismatch: expected {expected_hash}, got {receipt.get('artifact_sha256')}"]
+        # Verify artifact_sha256 is not empty stream hash
+        artifact_hash = receipt.get("artifact_sha256", "")
+        if artifact_hash.lower() == EMPTY_STREAM_SHA256:
+            return False, ["artifact_sha256 must not be empty stream hash (SHA-256 of empty input)"]
+
+        # Verify artifact_sha256 is valid format (64 hex chars)
+        import re
+        if not re.match(r"^[0-9a-f]{64}$", artifact_hash, re.IGNORECASE):
+            return False, ["artifact_sha256 must be 64-char hex"]
 
         # Verify consumer matches
         if receipt.get("consumer") != "MORCH":

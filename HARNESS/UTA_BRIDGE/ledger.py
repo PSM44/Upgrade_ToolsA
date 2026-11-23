@@ -64,6 +64,7 @@ def _map_state_for_update(state: str) -> str:
         'DELIVERED': 'DISPATCHED',
         'ACK_RECEIVED': 'ACKNOWLEDGED',
         'BLOCKED': 'FAILED',
+        'MORCH_REVIEW': 'EVIDENCE_WRITTEN',
     }
     return mapping.get(state, state)
 
