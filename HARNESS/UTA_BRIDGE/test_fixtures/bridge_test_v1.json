@@ -1,0 +1,11 @@
+{
+  "bridge_test": "UTA_BRIDGE-001",
+  "version": "uta-bridge-v1",
+  "purpose": "Bridge acceptance test fixture",
+  "generated": "2026-11-23T20:05:00Z",
+  "content": "This is a deterministic non-empty test fixture for UTA Bridge receipt integrity validation. It contains no secrets, personal data, or NorthStar content. Used only for receipt hash validation and idempotency testing.",
+  "deterministic_data": [
+    "item-001", "item-002", "item-003"
+  ],
+  "checksum_note": "SHA-256 of this exact file content must match artifact_sha256 in receipt"
+}
