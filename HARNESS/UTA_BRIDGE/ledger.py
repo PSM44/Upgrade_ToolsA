@@ -13,7 +13,11 @@ from datetime import datetime, timezone
 from typing import Optional, Dict, Any, List, Tuple
 from contextlib import contextmanager
 
-from .schema import validate_receipt, canonicalize_receipt, compute_receipt_hash
+# Try relative import first, fallback to absolute
+try:
+    from .schema import validate_receipt, canonicalize_receipt, compute_receipt_hash
+except ImportError:
+    from schema import validate_receipt, canonicalize_receipt, compute_receipt_hash
 
 
 DEFAULT_LEDGER_PATH = os.path.expanduser("~/.hermes/uta_bridge/ledger.db")
